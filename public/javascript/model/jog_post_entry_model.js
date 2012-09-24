@@ -13,9 +13,9 @@ var JogPostEntryModel = {
                 contentType: 'application/json',
                 data: data,
                 success: function ( data ) {
-                    console.log("user_profile_data"); 
                     console.log(data);
                     JogPostEntryView.init();
+                    JogDataPostListView.addPostEntry(data);
                 },error:function(XMLHttpRequest,textStatus, errorThrown){ 
                     // TODO: WHAT TO DO!!
                     console.log("error while creating post");

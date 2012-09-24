@@ -47,6 +47,15 @@ var JOGCache = {
                   } 
               }
         },
+
+        updateData: function(cache_id, cache_data, key)
+        {
+            var dataList = JOGCache.getData(cached_id, null);
+
+            $.each(dataList, function(index, data){
+
+            });
+        },
 };
 
 

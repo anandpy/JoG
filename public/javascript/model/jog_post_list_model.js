@@ -37,6 +37,8 @@ var JogPostListModel = {
                 success: function ( data ) {
                     console.log("post data vote success"); 
                     console.log(data);
+
+                    JogDataPostListView.updateVoteCount(data);
                     
                     //JogUserProfileInfoView.init(data);
 

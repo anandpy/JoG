@@ -21,6 +21,14 @@ var JogDataPostListView = {
 
     },
 
+    addPostEntry: function(data)
+    {
+        var html = JogDataPostListView.postHtml(data);
+
+        $("#jog_data_posts_list").prepend(html);
+
+    },
+
     postHtml : function(data)
     {
 
@@ -31,17 +39,35 @@ var JogDataPostListView = {
                              JOG.utils.truncateText(data.text, 300)+
                         '</div>'+
                         '<div class="jog_data_posts_box_metric">'+
-                            '<div class="jog_data_posts_box_metric_vote_action" post-id="1">'+
+                            '<div class="jog_data_posts_box_metric_vote_action" post-id="'+data.id+'">'+
                                  '<img src="/resources/heart.png">'+
                                  '<span>Vote</span>'+
                             '</div>'+
-                            '<div class="jog_data_posts_box_metric_vote_count"> '+data.vote_count+' Votes  </div>'+
+                            '<div class="jog_data_posts_box_metric_vote_count" post-id="'+data.id+'"> '+data.vote_count+' Votes  </div>'+
                         '</div>'+
                         JogDataPostListView.socialShareHtml(data)+
                     '</div>';
         
         return html;
     },
+
+    updateVoteCount: function(data)
+    {
+        var $this = $(".jog_data_posts_box_metric_vote_count[post-id="+data.id+"]");
+     
+        var text = data.vote_count + " Votes";
+
+        $this.html(text);
+
+        /* FIXME : BAD HACK, we need to have client cache updated in effective manner */
+        var dataList = JOGCache.getData(currentUserPosts, null);
+        $.each(dataList, function(index, list){
+            if (data.id === list.id) {
+                list.vote_count = data.vote_count;
+                return false;
+            }
+        });
+    }, 
 
     socialShareHtml: function(data)
     {
