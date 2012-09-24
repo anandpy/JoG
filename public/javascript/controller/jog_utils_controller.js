@@ -9,7 +9,6 @@ $(document).ready(function(){
     	$("#jog_leader_board_side_panel").hide();
 
     } else {
-        JogPostEntryController.init();
     	JogLeaderboardPanelView.init(leaderboardPanel);
 
     	JogPostEntryView.init();
@@ -105,21 +104,6 @@ var JOG = {
                     });
                 },
 	},
-
-
-
-    "utils": {
-
-        truncateText: function(text, truncateLength)
-        {
-            if (text && text.length > truncateLength)
-                //return jQuery.trim(text).substring(0, maxLength).split(" ").slice(0, -1).join(" ") + "..";
-                return jQuery.trim(text).substring(0, truncateLength) + "..";
-            else
-                return text;
-        },
-
-    },
 
 	"configs" :{
 			"page_title" : "landing"

@@ -2,6 +2,7 @@
 body
 {
   font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
+  background-image: url("/resources/bck.gif");
 }
 
 #jog_header

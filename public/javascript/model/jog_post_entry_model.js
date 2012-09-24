@@ -1,4 +1,7 @@
 var JogPostEntryModel = {
+    
+    "filepick" : {},
+    
     createPost: function(data)
     {
          alert(JSON.stringify(data));
@@ -12,13 +15,24 @@ var JogPostEntryModel = {
                 success: function ( data ) {
                     console.log("user_profile_data"); 
                     console.log(data);
-                    //irisCacheApiSETData("iris.friends", data);
-                    //$('#irisSearchOptionFriends').trigger('click');
                 },error:function(XMLHttpRequest,textStatus, errorThrown){ 
                     // TODO: WHAT TO DO!!
                     console.log("error while creating post");
                 }
           });
+    },
+
+    deleteUpload : function() {
+        var fileUrl = JogPostEntryModel.filepick.url;
+
+        filepicker.revokeFile(fileUrl, function(success, message){
+            alert(message);
+            JogPostEntryModel.filepick = {};
+            JogPostEntryView.cancelUpload();
+        });        
+
+
 
     },
+
 };

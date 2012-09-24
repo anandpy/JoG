@@ -11,7 +11,7 @@ var JogDataPostListView = {
           
         html = html + '<div id="jog_data_posts_list">';
 
-        $.each(data.posts, function(index, post) { 
+        $.each(data, function(index, post) { 
             html = html + JogDataPostListView.postHtml(post);
         });
 
@@ -24,15 +24,15 @@ var JogDataPostListView = {
     postHtml : function(data)
     {
 
-        var html = '<div class="jog_data_posts_box">'+
+        var html = '<div class="jog_data_posts_box" data-post-id="'+data.id+'" data-post-userid="'+data.user_id+'">'+
                         '<h3 class="jog_data_posts_box_title">'+data.title +'</h3>'+
                         '<div class="jog_data_posts_box_content">'+
-                            '<img src="'+data.image+'" align="right">'+
-                             data.postText+
+                            '<img src="'+data.pic+'" align="right">'+
+                             JOG.utils.truncateText(data.text, 300)+
                         '</div>'+
                         '<div class="jog_data_posts_box_metric">'+
                             '<div class="jog_data_posts_box_metric_vote_action" post-id="1"> Vote </div>'+
-                            '<div class="jog_data_posts_box_metric_vote_count"> '+data.voteCount+' Votes  </div>'+
+                            '<div class="jog_data_posts_box_metric_vote_count"> '+data.vote_count+' Votes  </div>'+
                         '</div>'+
                         JogDataPostListView.socialShareHtml(data)+
                     '</div>';

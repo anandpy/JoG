@@ -2,22 +2,29 @@
 {
   width: 95%;
   padding: 15px;
-  height: 300px;
   border: 1px solid #CCC;
+  border-radius: 10px;
+  background: #f4f4f4;
 }
 
+
+#jog_data_post_entry h3
+{
+  font-size: 14px;
+  color: #333;
+}
 
 
 #jog_data_post_entry_title
 {
-  width: 100%;
+  width: 98%;
   height: 35px;
 }
 
 #jog_data_post_entry_text
 {
   resize: none;
-  width: 100%;
+  width: 98%;
   height: 150px;
   margin: 0 auto;
 }
@@ -39,5 +46,77 @@
 
 #jog_data_post_entry_attach_photo
 {
+  float: right;
+  width: 300px;
+  margin-right: 20px;
+  border: 0px solid red;
+  display: none;
+}
+
+#jog_data_post_entry_actions_init
+{
+  width: 97.5%;
+  height: 30px;
+  border: 1px solid #CCC;
+  border-radius: 4px;
+  margin-top: 8px;
+  padding: 5px;
+  background: white;
+}
+
+#jog_data_post_entry_actions_init_button
+{
+  width: 120px;
+  height: 100%;
+  cursor: pointer;
+  float: left;
+}
+
+#jog_data_post_entry_actions_init_button img
+{
+  vertical-align: middle;
+
+}
+
+#jog_data_post_entry_actions_init_button span
+{
+  vertical-align: middle;
+  font-weight: bold;
+  color: #49AFCD;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+
+
+#jog_img_upload_spinner
+{
+  display: none;
+  float: right;
+}
+
+
+#jog_img_upload_preview
+{
+  display: none;
+  width: 98%;
+  height: 100px;
   margin-top: 10px;
+  border: 1px solid #CCC;
+  border-radius: 4px;
+  padding: 4px;
+  position: relative;
+}
+
+#jog_img_upload_preview img
+{
+  max-height: 100px;
+}
+
+
+#jog_cancel_img_preview
+{
+  position: absolute;
+  top: 30px;
+  right: 10px;
 }

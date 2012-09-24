@@ -1,6 +1,10 @@
 
 var JogPostEntryController = {
 
+    init: function()
+    {
+    	JogPostEntryController.initEvents();
+    },
 
 	createPostParams: function(data)
 	{
@@ -12,8 +16,18 @@ var JogPostEntryController = {
         postParam.userID = "123456789";
 
         JogPostEntryModel.createPost(postParam);
-
 	},
+
+    initEvents: function()
+    {
+		$("#jog_data_post_entry_actions_init_button").live("click",function(){
+    		JogPostEntryView.toggleFilePickView();
+    	});
+
+    	$("#jog_cancel_img_preview").live("click", function(){
+    		JogPostEntryModel.deleteUpload();
+    	});        
+    }
 
 
 };
