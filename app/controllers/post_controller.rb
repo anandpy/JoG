@@ -69,7 +69,7 @@ class PostController < ApplicationController
         #Rails.logger.info("[HOME] [COMMON] current user id #{session[:current_user_id]}")
         Rails.logger.info("[POST] [COMMON] current user id #{current_user.id}")
 
-        response_json = Post.where(:user_id => current_user.id) 
+        response_json = Post.where(:user_id => current_user.id).order('id DESC') 
 
         if request.xhr?
             #Rails.logger.debug("[CNTRL] [HOME] [get_locations] Return:#{response_json.inspect}")
@@ -79,6 +79,66 @@ class PostController < ApplicationController
         end
 
         Rails.logger.info("[CNTRL] [POST] [get_posts] leave");
+    end
+
+    ################################################################################################
+    #
+    #
+    #
+    ################################################################################################# 
+    def get_popular_posts
+        Rails.logger.info("[CNTRL] [POST] [get_popular_posts] enter #{params}");
+        if !user_signed_in? 
+          Rails.logger.error("[CNTRL] [POST] [get_popular_posts] ****USER NOT LOGGED IN****")
+          render :json => {:error => "No user loggedin" }, :status => 400
+        end
+
+        #Rails.logger.info("[HOME] [COMMON] current user id #{session[:current_user_id]}")
+        Rails.logger.info("[POST] [COMMON] current user id #{current_user.id}")
+
+        response_json = Post.where(:user_id => current_user.id).order('vote_count DESC') 
+
+        if request.xhr?
+            #Rails.logger.debug("[CNTRL] [HOME] [get_locations] Return:#{response_json.inspect}")
+            expires_in 10.minutes
+            render :json => response_json
+            return
+        end
+
+        Rails.logger.info("[CNTRL] [POST] [get_popular_posts] leave");
+    end
+
+    ################################################################################################
+    #
+    #
+    #
+    ################################################################################################# 
+    def get_leaderboard_posts
+        Rails.logger.info("[CNTRL] [POST] [get_leaderboard_posts] enter #{params}");
+        
+        response_json = []
+
+        posts = Post.order('vote_count DESC').limit(10)
+
+        posts.each do |p|
+            h = {}
+            user = p.user
+            h[:user_name] = user[:name]
+            h[:user_pic]  = user[:pic]
+            h[:post_title] = p[:title]
+            h[:post_text] = p[:text]
+            h[:post_pic]  = p[:pic]
+            response_json << h
+        end
+
+        if request.xhr?
+            #Rails.logger.debug("[CNTRL] [HOME] [get_locations] Return:#{response_json.inspect}")
+            expires_in 10.minutes
+            render :json => response_json
+            return
+        end
+
+        Rails.logger.info("[CNTRL] [POST] [get_leaderboard_posts] leave");
     end
 
 
