@@ -31,7 +31,7 @@ var JogDataPostListView = {
                              data.postText+
                         '</div>'+
                         '<div class="jog_data_posts_box_metric">'+
-                            '<div class="jog_data_posts_box_metric_vote_action" post-id="123456"> Vote </div>'+
+                            '<div class="jog_data_posts_box_metric_vote_action" post-id="1"> Vote </div>'+
                             '<div class="jog_data_posts_box_metric_vote_count"> '+data.voteCount+' Votes  </div>'+
                         '</div>'+
                         JogDataPostListView.socialShareHtml(data)+
@@ -67,15 +67,16 @@ var JogDataPostDetailView = {
     display: function(data)
     {
         var html = '<div id="jog_post_detail_view">'+
-                      '<h3 id="jog_post_detail_view_title">'+data.title+'</h3>'+
-                         '<div id="jog_post_detail_content">'+
+                        '<h3 id="jog_post_detail_view_title">'+data.title+'</h3>'+
+                        '<div id="jog_post_detail_content">'+
                             '<img src="'+data.image+'">'+
                              '<p>'+data.postText+'</p>'+
-                         '</div>'+
-                         '<div class="jog_data_posts_box_metric">'+
+                        '</div>'+
+                        '<div id="jog_data_posts_detail_box_metric">'+
                             '<div class="jog_data_posts_box_metric_vote_action"> Vote </div>'+
                             '<div class="jog_data_posts_box_metric_vote_count"> '+data.voteCount+' Votes  </div>'+
                         '</div>'+
+                        JogDataPostListView.socialShareHtml(data)+
                    '</div>';
 
         $("#jog_detail_post_view_modal").html(html);

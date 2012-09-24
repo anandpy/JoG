@@ -4,9 +4,6 @@ $(document).ready(function(){
 
 	JOG.Events.init();
 
-
-	
-
     if ( JOG.configs.page_title === "leaderboard") {
     	JogLeaderboardView.init(leaderboardData);
     	$("#jog_leader_board_side_panel").hide();
@@ -19,20 +16,15 @@ $(document).ready(function(){
     	JogDataPostListView.init(postList);
 
     	JogUserProfileModel.init();
+
+        JogUserPostListModel.init();
 	
     }
-   
-    
-    
-
 });
 
 
 
 var JOG = {
-
-    
-
 	"Events": {
 				init: function()
 				{
@@ -81,7 +73,7 @@ var JOG = {
                 			'padding': 0, 
                 			'autoSize': false, 
                 			'height' : 'auto', 
-                			'width' : 'auto',
+                			'width' : 600,
                 			openSpeed: 'normal',
                 			closeBtn: true,
                 			autoSize: true,
@@ -98,15 +90,8 @@ var JOG = {
                 createPost: function()
                 {
                     $("#jog_data_post_entry_action_submit").live("click", function(e){
-
-                        var postParam = {};
-                        
-                        postParam.title = $("#jog_data_post_entry_title").val();
-                        postParam.text = $("#jog_data_post_entry_text").val();
-                        postParam.imgSrc = "/123.png";
-                        postParam.userID = "123456789";
-
-                        JogPostEntryController.createPost(postParam);    
+                        JogPostEntryController.createPostParams();    
+                        e.preventDefault();
                     });
                 },
 
@@ -115,6 +100,7 @@ var JOG = {
                     $(".jog_data_posts_box_metric_vote_action").live("click", function(e){
                         var $this = $(this);
                         JogPostListController.postVoteUpdate($this);
+                        e.preventDefault();
                     });
                 },
 	},

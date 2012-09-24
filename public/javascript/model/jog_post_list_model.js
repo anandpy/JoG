@@ -1,7 +1,10 @@
 var JogPostListModel = {
 
 
-	updateVote: function(data)
+	
+
+    /* update vote for a particular vote*/
+    updateVote: function(data)
 	{
 		$.ajax({
 			    headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content'), 'Content-Type': 'application/x-www-form-urlencoded'},
@@ -24,5 +27,7 @@ var JogPostListModel = {
                 }
           });
 	},
+
+    
 
 };

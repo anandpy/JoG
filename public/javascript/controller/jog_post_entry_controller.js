@@ -2,26 +2,16 @@
 var JogPostEntryController = {
 
 
-	createPost: function(data)
+	createPostParams: function(data)
 	{
-         alert(JSON.stringify(data));
-		 $.ajax({
-                headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content'), 'Content-Type': 'application/x-www-form-urlencoded'},
-                url: JOG.urls.postUrl,
-                type: 'POST',
-                dataType: 'json',
-                contentType: 'application/json',
-                data: data,
-                success: function ( data ) {
-                    console.log("user_profile_data"); 
-                    console.log(data);
-                    //irisCacheApiSETData("iris.friends", data);
-                    //$('#irisSearchOptionFriends').trigger('click');
-                },error:function(XMLHttpRequest,textStatus, errorThrown){ 
-                    // TODO: WHAT TO DO!!
-                    console.log("error while creating post");
-                }
-          });
+        var postParam = {};
+                        
+        postParam.title = $("#jog_data_post_entry_title").val();
+        postParam.text = $("#jog_data_post_entry_text").val();
+        postParam.imgSrc = "/123.png";
+        postParam.userID = "123456789";
+
+        JogPostEntryModel.createPost(postParam);
 
 	},
 

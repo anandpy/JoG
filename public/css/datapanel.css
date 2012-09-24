@@ -140,3 +140,45 @@
   color: #ccc;
   text-align: right;
 }
+
+
+
+
+
+
+#jog_detail_post_view_modal
+{ 
+  width: 600px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+#jog_post_detail_view_title
+{
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+#jog_post_detail_content
+{
+  width: 97%;
+  display: inline-block;
+}
+
+#jog_post_detail_content img
+{
+  display: table-cell;
+  float: right;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#jog_data_posts_detail_box_metric
+{
+  position: relative;
+  display: block;
+  height: 30px;
+  margin-bottom: 50px;
+
+}
