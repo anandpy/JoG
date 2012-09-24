@@ -8,7 +8,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :name
       t.string :pic
       t.string :sex
-      t.string :vote_count
+      t.integer  :vote_count
       ## Rememberable
       t.datetime :remember_created_at
 

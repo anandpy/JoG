@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
 
 	  h[:srv_uid] = params[:srv_uid]
 	  h[:srv] = params[:srv]
-	  h[:vote_count] = "0"
+	  h[:vote_count] = 0
 
 	  u = User.create!(h)
 

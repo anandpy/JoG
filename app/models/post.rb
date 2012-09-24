@@ -9,7 +9,7 @@ class Post < ActiveRecord::Base
 	      :text => params[:text],
 	      :title => params[:title],
 	      :pic => params[:pic],
-	      :vote_count => "0",
+	      :vote_count => 0,
 	     }
 
 		p = Post.create!(h)

@@ -70,6 +70,7 @@ class HomeController < ApplicationController
 	    response_json[:pic] = info["pic"]
 	    response_json[:vote_count] = info["vote_count"]
 	    response_json[:auth_token] = current_user.access_token #session[:token]
+	    response_json[:post_count] = info.posts.length
 
 	    Rails.logger.info("[HOME] [get_current_user_details] auth #{response_json}")
 

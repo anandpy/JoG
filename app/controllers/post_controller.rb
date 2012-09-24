@@ -40,10 +40,11 @@ class PostController < ApplicationController
         Rails.logger.info("[POST] [update_vote] update #{post.inspect}")
         if !post.blank?
             user = post.user
-            post_vote = eval post[:vote_count]
-            user_vote = eval user[:vote_count]
-            post.update_attribute(:vote_count,"#{post_vote+1}")
-            user.update_attribute(:vote_count,"#{user_vote+1}")
+            
+            post_vote = post[:vote_count]
+            user_vote = user[:vote_count]
+            post.update_attribute(:vote_count,post_vote+1)
+            user.update_attribute(:vote_count,user_vote+1)
             
             Rails.logger.info("[POST] [update_vote] update #{post.inspect}")
             render :json => post, :status => 200

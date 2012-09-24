@@ -7,7 +7,7 @@ JoG::Application.routes.draw do
 
 
   match '/current_user_details' => "home#get_current_user_details"
-  match '/update_vote' => 'home#update_vote'
+  match '/update_vote' => 'post#update_vote'
   match '/create_post' => "post#create_post"
   match '/user' => 'home#show'
 
