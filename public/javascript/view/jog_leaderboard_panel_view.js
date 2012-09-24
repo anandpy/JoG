@@ -29,6 +29,11 @@ var JogLeaderboardPanelView = {
   			html = html + JogLeaderboardPanelView.leaderPostHtml(leader);
 		});
 
+        html = html + 
+               '<a href="/leaderboard">'+
+               '<button id="jog_view_full_leaderboard" class="btn btn-info" value="View All">View All</button>'+
+               '</a>';
+
         html = html + '</div>';
 
         $("#jog_leader_board_side_panel").html(html);
