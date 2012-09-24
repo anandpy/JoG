@@ -1,6 +1,6 @@
 #jog_leader_board_side_panel h3
 {
-  background-color: #F3F3F3;
+  background-color: #CAC4C4;
   color: #614F4F;
   text-align: center;
   padding: 4px;
@@ -11,12 +11,15 @@
 {
   width: 100%;
   height: auto;
+  margin-bottom: 25px;
 }
 
 .jog_leader_board_entry
 {
   width: 100%;
   margin-top: 10px;
+  border-bottom: 1px solid #CCC;
+  font-size: 11px;
 }
 
 .jog_leader_board_entry .jog_leader_board_entry_data img
@@ -48,11 +51,13 @@
 {
   position: absolute;
   right: 5px;
-  top: 4px;
+  top: 2px;
   height: 22px;
-  border: 1px solid #DDD;
+  border: 1px solid #CCC;
   text-align: center;
-  padding: 2px;
+  padding: 4px;
+  border-radius: 4px;
+  background: #DDD;
 }
 
 .jog_leader_board_entry_post_metrics span

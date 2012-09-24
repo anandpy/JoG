@@ -6,7 +6,9 @@ JoG::Application.routes.draw do
   end
 
 
-  match 'fetch_post' => "post#get_posts"
+  match '/fetchAllUser' => "home#get_all_users"
+  match '/leaderboard_posts' => "post#get_leaderboard_posts"
+  match '/fetch_post' => "post#get_posts"
   match '/current_user_details' => "home#get_current_user_details"
   match '/update_vote' => 'post#update_vote'
   match '/create_post' => "post#create_post"

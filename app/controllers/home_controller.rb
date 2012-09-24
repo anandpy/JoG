@@ -81,6 +81,20 @@ class HomeController < ApplicationController
 	    end 
 	end
 
-	
+	################################################################################################
+	#
+	#
+	#
+	################################################################################################# 
+	def get_all_users
+
+		response_json = User.all
+
+		if request.xhr?
+	        expires_in 10.minutes
+	        render :json => response_json
+	        return
+	    end 
+	end
 
 end

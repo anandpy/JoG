@@ -21,17 +21,15 @@ var JogLeaderboardPanelView = {
         }
 
         
-        html = html + '<div id="jog_leader_board_side_panel">';
-
         html = html + header();
 
         html = html + '<div id="jog_leader_board_lists">';
 
-        $.each(data.leaders, function(index, leader) { 
+        $.each(data, function(index, leader) { 
   			html = html + JogLeaderboardPanelView.leaderPostHtml(leader);
 		});
 
-        html = html + '</div></div>';
+        html = html + '</div>';
 
         $("#jog_leader_board_side_panel").html(html);
 
@@ -40,17 +38,19 @@ var JogLeaderboardPanelView = {
 	leaderPostHtml : function(data)
 	{
 		var html = "";
-        
+         
+        var imgHtml = (data.post_pic && data.post_pic !== "" ) ? '<img src="'+data.post_pic+'" align="left">' : "";  
+
 		html =  '<div class="jog_leader_board_entry">' +
     				'<div class="jog_leader_board_entry_data">' +
-    					'<img src="'+data.image+'" align="left">'+
-    				    data.postText+
+    					imgHtml+
+    				    JOG.utils.truncateText(data.post_text,120) +
     				'</div>'+
     				'<div class="jog_leader_board_entry_post_owner">'+
-    					'<img src="'+data.postOwnerPic+'">'+
-    					'<span>'+data.postOwner+'</span>'+
+    					'<img src="'+data.user_pic+'">'+
+    					'<span>'+data.user_name+'</span>'+
     					'<div class="jog_leader_board_entry_post_metric">'+
-    						'<span>'+data.voteCount+' Votes</span>'+
+    						'<span>'+data.vote_count+' Votes</span>'+
     					'</div>'+
     				'</div>'+
     			'</div>';

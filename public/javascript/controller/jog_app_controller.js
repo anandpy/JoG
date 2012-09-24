@@ -9,10 +9,14 @@ $(document).ready(function(){
     	$("#jog_leader_board_side_panel").hide();
 
     } else {
-        JogPostEntryController.init();
-    	JogLeaderboardPanelView.init(leaderboardPanel);
+        
+        JogUserListModel.init();
 
-    	JogPostEntryView.init();
+        JogPostEntryController.init();
+        
+        JogLeaderboardPanelController.init();
+    	
+        JogPostEntryView.init();
 
     	//JogDataPostListView.init(postList);
 
@@ -32,6 +36,7 @@ var JOG = {
 					JOG.Events.inviteUsersOnVote();
                     JOG.Events.voteClick();
                     JogPostListController.init();
+                    JOG.Events.logOut();
 				},
 
 				inviteUsersOnVote: function()
@@ -56,7 +61,12 @@ var JOG = {
 					});	
 				},
 
-				
+	            logOut: function()
+                {
+                    $("#jog_logout").live("click",function(){
+                        $
+                    });
+                },   			
 
                 
 
@@ -86,7 +96,7 @@ var JOG = {
     },
 
 	"configs" :{
-			"page_title" : "landing"
+			"page_title" : "leaderboard"
 	},
 
     "urls" : {
@@ -94,6 +104,8 @@ var JOG = {
         "fetchUser" : "/current_user_details",
         "updateVoteCount" : "/update_vote",
         "fetchPosts" : "/fetch_post",
+        "leaderboardPosts" : "/leaderboard_posts",
+        "fetchAllUser" : "/fetchAllUser",
     },
 
 	"currentUser": {

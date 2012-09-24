@@ -31,12 +31,13 @@ var JogDataPostListView = {
 
     postHtml : function(data)
     {
+        var imgHtml = (data.pic && data.pic !== "" ) ? '<img src="'+data.pic+'" align="right">' : "";  
 
         var html = '<div class="jog_data_posts_box" data-post-id="'+data.id+'" data-post-userid="'+data.user_id+'">'+
                         '<h3 class="jog_data_posts_box_title">'+data.title +'</h3>'+
                         '<div class="jog_data_posts_box_content">'+
-                            '<img src="'+data.pic+'" align="right">'+
-                             JOG.utils.truncateText(data.text, 300)+
+                            imgHtml+
+                            JOG.utils.truncateText(data.text, 300)+
                         '</div>'+
                         '<div class="jog_data_posts_box_metric">'+
                             '<div class="jog_data_posts_box_metric_vote_action" post-id="'+data.id+'">'+
@@ -108,11 +109,13 @@ var JogDataPostDetailView = {
 
     display: function(data)
     {
+        var imgHtml = (data.pic && data.pic !== "" ) ? '<img src="'+data.pic+'">' : "";  
+
         var html = '<div id="jog_post_detail_view">'+
                         '<h3 id="jog_post_detail_view_title">'+data.title+'</h3>'+
                         '<div id="jog_post_detail_content">'+
-                            '<img src="'+data.pic+'">'+
-                             '<p>'+data.text+'</p>'+
+                            imgHtml+
+                            '<p>'+data.text+'</p>'+
                         '</div>'+
                         '<div id="jog_data_posts_detail_box_metric">'+
                             '<div class="jog_data_posts_box_metric_vote_action"> Vote </div>'+
