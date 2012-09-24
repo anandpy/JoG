@@ -7,8 +7,9 @@ class Post < ActiveRecord::Base
 		h = {
 	      :user_id => params[:user_id],
 	      :text => params[:text],
+	      :title => params[:title],
 	      :pic => params[:pic],
-	      :vote_count => 0,
+	      :vote_count => "0",
 	     }
 
 		p = Post.create!(h)

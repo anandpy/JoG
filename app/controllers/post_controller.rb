@@ -6,7 +6,25 @@ class PostController < ApplicationController
 	################################################################################################# 
 	def create_post
 		Rails.logger.info("[CNTRL] [POST] [CREATE] New post create requested") 
-		Rails.logger.info("[CNTRL] [POST] [CREATE] params #{params.inspect}") 	
+        if !user_signed_in? 
+          Rails.logger.error("[CNTRL] [HOME] [get_posts] ****USER NOT LOGGED IN****")
+          render :json => {:error => "No user loggedin" }, :status => 400
+        end
+        Rails.logger.info("[HOME] [COMMON] current user id #{current_user.id}")
+		Rails.logger.info("[CNTRL] [POST] [CREATE] params #{params.inspect}") 
+
+        h = {:user_id => current_user.id,
+            :text => params["text"],
+            :title => params["title"],
+            :pic => params["imgSrc"]
+        }
+        
+        p = Post.create_post(h)
+
+        render :json => {:success => true }, :status => 200
+
+        Rails.logger.info("[CNTRL] [POST] [CREATE] leave")
+
 	end
 
 
@@ -16,16 +34,16 @@ class PostController < ApplicationController
     #
     ################################################################################################# 
     def get_posts
-        Rails.logger.info("[CNTRL] [HOME] [get_posts] enter #{params}");
+        Rails.logger.info("[CNTRL] [POST] [get_posts] enter #{params}");
         if !user_signed_in? 
-          Rails.logger.error("[CNTRL] [HOME] [get_posts] ****USER NOT LOGGED IN****")
+          Rails.logger.error("[CNTRL] [POST] [get_posts] ****USER NOT LOGGED IN****")
           render :json => {:error => "No user loggedin" }, :status => 400
         end
 
         #Rails.logger.info("[HOME] [COMMON] current user id #{session[:current_user_id]}")
-        Rails.logger.info("[HOME] [COMMON] current user id #{current_user.id}")
+        Rails.logger.info("[POST] [COMMON] current user id #{current_user.id}")
 
-        response_json = Post.where(:user_id => current_user_id) 
+        response_json = Post.where(:user_id => current_user.id) 
 
         if request.xhr?
             #Rails.logger.debug("[CNTRL] [HOME] [get_locations] Return:#{response_json.inspect}")
@@ -34,7 +52,7 @@ class PostController < ApplicationController
             return
         end
 
-        Rails.logger.info("[CNTRL] [HOME] [get_locations] leave");
+        Rails.logger.info("[CNTRL] [POST] [get_posts] leave");
     end
 
 
