@@ -82,11 +82,4 @@ class HomeController < ApplicationController
 
 	
 
-    def update_vote
-    	Rails.logger.info("[HOME] [update_vote] Entering #{params.inspect}")
-    end    
-
-
-
-
 end
