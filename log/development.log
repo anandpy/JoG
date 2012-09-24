@@ -57998,3 +57998,270 @@ Processing by PostController#get_posts as JSON
 [POST] [COMMON] current user id 1
   [1m[36mPost Load (1.5ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1 ORDER BY id DESC[0m
 Completed 200 OK in 7ms (Views: 2.8ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/update_vote" for 127.0.0.1 at 2012-09-25 03:40:36 +0530
+Processing by PostController#update_vote as JSON
+  Parameters: {"postID"=>"3"}
+[POST][CNTL][update_vote] Entering {"postID"=>"3", "controller"=>"post", "action"=>"update_vote"}
+  [1m[35mPost Load (1.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 3 LIMIT 1
+[POST] [update_vote] update #<Post id: 3, user_id: 1, vote_count: 16, pic: nil, title: "PETITION: Stop the Whale Murder in the Faroe Island...", text: "India is the place where people wear Levis jeans, P...", created_at: "2012-09-24 18:15:40", updated_at: "2012-09-24 20:48:33">
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (0.8ms)[0m  [1mUPDATE "posts" SET "vote_count" = 17, "updated_at" = '2012-09-24 22:10:36.930791' WHERE "posts"."id" = 3[0m
+  [1m[35m (19.3ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.8ms)[0m  UPDATE "users" SET "vote_count" = 20, "updated_at" = '2012-09-24 22:10:36.954685' WHERE "users"."id" = 1
+  [1m[36m (3.9ms)[0m  [1mCOMMIT[0m
+[POST] [update_vote] update #<Post id: 3, user_id: 1, vote_count: 17, pic: nil, title: "PETITION: Stop the Whale Murder in the Faroe Island...", text: "India is the place where people wear Levis jeans, P...", created_at: "2012-09-24 18:15:40", updated_at: "2012-09-24 22:10:36">
+Completed 200 OK in 42ms (Views: 0.8ms | ActiveRecord: 27.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-25 03:40:40 +0530
+Processing by HomeController#index as HTML
+[CNTRL] [HOME] [INDEX] New App Main Page requested
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+[CNTRL] [HOME] [INDEX] *****DETECTED USER***** #<User id: 1, srv: "facebook", srv_uid: "1452186072", access_token: "AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0Z...", username: "---\n- samarth.deo1\n- male\n", name: "Samarth Deo", pic: "http://graph.facebook.com/1452186072/picture?type=l...", sex: "male", vote_count: 20, remember_created_at: nil, sign_in_count: 2, current_sign_in_at: "2012-09-24 20:33:03", last_sign_in_at: "2012-09-24 17:44:49", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", authentication_token: nil, created_at: "2012-09-24 17:44:49", updated_at: "2012-09-24 22:10:36">
+Redirected to http://localhost:3000/user.1
+Completed 302 Found in 8ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/user.1" for 127.0.0.1 at 2012-09-25 03:40:41 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.1
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 11ms (Views: 8.5ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/create_post" for 127.0.0.1 at 2012-09-25 03:42:33 +0530
+Processing by PostController#create_post as JSON
+  Parameters: {"title"=>"Share your Joy of Giving, and participate in a chance to win free air ticket", "text"=>"India is the place where people wear Levis jeans, Pepe Shirt, Nike shoes, Rado watches, Davidoff perfume, go to McDonalds and then debate against FDI in retail. India is the place where people wear Levis jeans, Pepe Shirt, Nike shoes, Rado watches, Davidoff perfume, go to McDonalds and then debate against FDI in retail.India is the place where people wear Levis jeans, Pepe Shirt, Nike shoes, Rado watches, Davidoff perfume, go to McDonalds and then debate against FDI in retail.", "imgSrc"=>"https://www.filepicker.io/api/file/71oCU164TmiyqCGGJHjz", "userID"=>"123456789"}
+[CNTRL] [POST] [CREATE] New post create requested
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+[HOME] [COMMON] current user id 1
+[CNTRL] [POST] [CREATE] params {"title"=>"Share your Joy of Giving, and participate in a chance to win free air ticket", "text"=>"India is the place where people wear Levis jeans, Pepe Shirt, Nike shoes, Rado watches, Davidoff perfume, go to McDonalds and then debate against FDI in retail. India is the place where people wear Levis jeans, Pepe Shirt, Nike shoes, Rado watches, Davidoff perfume, go to McDonalds and then debate against FDI in retail.India is the place where people wear Levis jeans, Pepe Shirt, Nike shoes, Rado watches, Davidoff perfume, go to McDonalds and then debate against FDI in retail.", "imgSrc"=>"https://www.filepicker.io/api/file/71oCU164TmiyqCGGJHjz", "userID"=>"123456789", "controller"=>"post", "action"=>"create_post"}
+[MODEL] [POST] [CREATE_POST] Entering {:user_id=>1, :text=>"India is the place where people wear Levis jeans, Pepe Shirt, Nike shoes, Rado watches, Davidoff perfume, go to McDonalds and then debate against FDI in retail. India is the place where people wear Levis jeans, Pepe Shirt, Nike shoes, Rado watches, Davidoff perfume, go to McDonalds and then debate against FDI in retail.India is the place where people wear Levis jeans, Pepe Shirt, Nike shoes, Rado watches, Davidoff perfume, go to McDonalds and then debate against FDI in retail.", :title=>"Share your Joy of Giving, and participate in a chance to win free air ticket", :pic=>"https://www.filepicker.io/api/file/71oCU164TmiyqCGGJHjz"}
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.6ms)[0m  INSERT INTO "posts" ("created_at", "pic", "text", "title", "updated_at", "user_id", "vote_count") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["created_at", Mon, 24 Sep 2012 22:12:33 UTC +00:00], ["pic", "https://www.filepicker.io/api/file/71oCU164TmiyqCGGJHjz"], ["text", "India is the place where people wear Levis jeans, Pepe Shirt, Nike shoes, Rado watches, Davidoff perfume, go to McDonalds and then debate against FDI in retail. India is the place where people wear Levis jeans, Pepe Shirt, Nike shoes, Rado watches, Davidoff perfume, go to McDonalds and then debate against FDI in retail.India is the place where people wear Levis jeans, Pepe Shirt, Nike shoes, Rado watches, Davidoff perfume, go to McDonalds and then debate against FDI in retail."], ["title", "Share your Joy of Giving, and participate in a chance to win free air ticket"], ["updated_at", Mon, 24 Sep 2012 22:12:33 UTC +00:00], ["user_id", 1], ["vote_count", 0]]
+  [1m[36m (206.2ms)[0m  [1mCOMMIT[0m
+[MODEL] [POST] [CREATE_POST] Leaving
+Completed 200 OK in 219ms (Views: 1.2ms | ActiveRecord: 209.1ms)
+
+
+Started POST "/update_vote" for 127.0.0.1 at 2012-09-25 03:42:46 +0530
+Processing by PostController#update_vote as JSON
+  Parameters: {"postID"=>"4"}
+[POST][CNTL][update_vote] Entering {"postID"=>"4", "controller"=>"post", "action"=>"update_vote"}
+  [1m[35mPost Load (21.9ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 4 LIMIT 1
+[POST] [update_vote] update #<Post id: 4, user_id: 1, vote_count: 0, pic: "https://www.filepicker.io/api/file/71oCU164TmiyqCGG...", title: "Share your Joy of Giving, and participate in a chan...", text: "India is the place where people wear Levis jeans, P...", created_at: "2012-09-24 22:12:33", updated_at: "2012-09-24 22:12:33">
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (1.0ms)[0m  [1mUPDATE "posts" SET "vote_count" = 1, "updated_at" = '2012-09-24 22:12:46.061106' WHERE "posts"."id" = 4[0m
+  [1m[35m (49.5ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.8ms)[0m  UPDATE "users" SET "vote_count" = 21, "updated_at" = '2012-09-24 22:12:46.114297' WHERE "users"."id" = 1
+  [1m[36m (4.9ms)[0m  [1mCOMMIT[0m
+[POST] [update_vote] update #<Post id: 4, user_id: 1, vote_count: 1, pic: "https://www.filepicker.io/api/file/71oCU164TmiyqCGG...", title: "Share your Joy of Giving, and participate in a chan...", text: "India is the place where people wear Levis jeans, P...", created_at: "2012-09-24 22:12:33", updated_at: "2012-09-24 22:12:46">
+Completed 200 OK in 90ms (Views: 0.7ms | ActiveRecord: 79.4ms)
+
+
+Started GET "/leaderboard" for 127.0.0.1 at 2012-09-25 03:43:03 +0530
+Processing by HomeController#show as HTML
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /leaderboard
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 11ms (Views: 7.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2012-09-25 03:43:14 +0530
+Processing by Devise::SessionsController#destroy as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 7ms (ActiveRecord: 2.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-25 03:43:14 +0530
+Processing by HomeController#index as HTML
+[CNTRL] [HOME] [INDEX] New App Main Page requested
+[CNTRL] [HOME] [INDEX] ****USER NOT LOGGED IN****
+  Rendered home/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 13ms (Views: 11.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/auth/facebook" for 127.0.0.1 at 2012-09-25 03:43:19 +0530
+
+
+Started GET "/users/auth/facebook/callback?state=9d4910f6b91376c5c4cb9d35c0f2e911c08f0b893a5bc0c4&code=AQB7iQEotHmukez3ApkVaK5XmgoN773zy8pJyh7xwmS6cP_f9iAnSAGuFnm6KUdOBsRwUlHwGHcMlR5N-prfx4cWLm_Vxi3Xjzwpp_6SWOPqTzzR5IvFUJdgIadV0bM0T6cKMTlNzEf3Kdoe9jy4DN6PyDFz9llClFaVZ4bzyxBAjJAbEx0sgZBq3wh7rBrzeXBs_0wmw5mRf002WgkWeXHi" for 127.0.0.1 at 2012-09-25 03:43:21 +0530
+Processing by Users::OmniauthCallbacksController#facebook as HTML
+  Parameters: {"state"=>"9d4910f6b91376c5c4cb9d35c0f2e911c08f0b893a5bc0c4", "code"=>"AQB7iQEotHmukez3ApkVaK5XmgoN773zy8pJyh7xwmS6cP_f9iAnSAGuFnm6KUdOBsRwUlHwGHcMlR5N-prfx4cWLm_Vxi3Xjzwpp_6SWOPqTzzR5IvFUJdgIadV0bM0T6cKMTlNzEf3Kdoe9jy4DN6PyDFz9llClFaVZ4bzyxBAjJAbEx0sgZBq3wh7rBrzeXBs_0wmw5mRf002WgkWeXHi"}
+[CNTRL] [USERS] [OmniauthCallbacks] [FACEBOOK] Entering
+[MODEL] [USER] [CREATE_USER] Entering {:srv=>"facebook", :srv_uid=>"1452186072", :access_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :name=>"Samarth Deo", :pic=>"http://graph.facebook.com/1452186072/picture?type=square", :location=>"Bangalore, India", :sex=>"male", :username=>["samarth.deo1", "male"]}
+  [1m[35mUser Load (1.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' AND "users"."srv" = 'facebook' LIMIT 1
+[MODEL] [USER] [CREATE_USER] signed_in
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (1.0ms)[0m  SELECT 1 FROM "users" WHERE ("users"."srv_uid" = '1452186072' AND "users"."id" != 1 AND "users"."srv" = 'facebook') LIMIT 1
+  [1m[36m (0.9ms)[0m  [1mUPDATE "users" SET "username" = '---
+- samarth.deo1
+- male
+', "updated_at" = '2012-09-24 22:13:36.800513' WHERE "users"."id" = 1[0m
+  [1m[35m (18.0ms)[0m  COMMIT
+  [1m[36mUser Load (1.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+[MODEL] [USER] [CREATE_USER] Leaving
+[CNTRL] [USERS] [OmniauthCallbacks] [FACEBOOK] Leaving #<User id: 1, srv: "facebook", srv_uid: "1452186072", access_token: "AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0Z...", username: "---\n- samarth.deo1\n- male\n", name: "Samarth Deo", pic: "http://graph.facebook.com/1452186072/picture?type=l...", sex: "male", vote_count: 21, remember_created_at: nil, sign_in_count: 2, current_sign_in_at: "2012-09-24 20:33:03", last_sign_in_at: "2012-09-24 17:44:49", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", authentication_token: nil, created_at: "2012-09-24 17:44:49", updated_at: "2012-09-24 22:13:36">
+[CNTRL] [APPLICATION] [aw_sign_in] Entering
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36m (0.9ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2012-09-24 20:33:03.503132', "current_sign_in_at" = '2012-09-24 22:13:36.826903', "sign_in_count" = 3, "updated_at" = '2012-09-24 22:13:36.828392' WHERE "users"."id" = 1[0m
+  [1m[35m (6.5ms)[0m  COMMIT
+[CNTRL] [APPLICATION] [aw_sign_in] Entering
+Redirected to http://localhost:3000/user.1
+Completed 302 Found in 47ms (ActiveRecord: 31.0ms)
+
+
+Started GET "/user.1" for 127.0.0.1 at 2012-09-25 03:43:36 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.1
+  [1m[36mUser Load (1.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 15ms (Views: 11.0ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/create_post" for 127.0.0.1 at 2012-09-25 03:45:31 +0530
+Processing by PostController#create_post as JSON
+  Parameters: {"title"=>"HA HAHA PETITION: Stop the Whale Murder in the Faroe Islands", "text"=>"During the summer months, inhabitants of the Faroe Islands - a group of islands under the sovereignty of Denmark, situat.. During the summer months, inhabitants of the Faroe Islands - a group of islands under the sovereignty of Denmark, situat.. During the summer months, inhabitants of the Faroe Islands - a group of islands under the sovereignty of Denmark, situat..", "userID"=>"123456789"}
+[CNTRL] [POST] [CREATE] New post create requested
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+[HOME] [COMMON] current user id 1
+[CNTRL] [POST] [CREATE] params {"title"=>"HA HAHA PETITION: Stop the Whale Murder in the Faroe Islands", "text"=>"During the summer months, inhabitants of the Faroe Islands - a group of islands under the sovereignty of Denmark, situat.. During the summer months, inhabitants of the Faroe Islands - a group of islands under the sovereignty of Denmark, situat.. During the summer months, inhabitants of the Faroe Islands - a group of islands under the sovereignty of Denmark, situat..", "userID"=>"123456789", "controller"=>"post", "action"=>"create_post"}
+[MODEL] [POST] [CREATE_POST] Entering {:user_id=>1, :text=>"During the summer months, inhabitants of the Faroe Islands - a group of islands under the sovereignty of Denmark, situat.. During the summer months, inhabitants of the Faroe Islands - a group of islands under the sovereignty of Denmark, situat.. During the summer months, inhabitants of the Faroe Islands - a group of islands under the sovereignty of Denmark, situat..", :title=>"HA HAHA PETITION: Stop the Whale Murder in the Faroe Islands", :pic=>nil}
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "posts" ("created_at", "pic", "text", "title", "updated_at", "user_id", "vote_count") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["created_at", Mon, 24 Sep 2012 22:15:31 UTC +00:00], ["pic", nil], ["text", "During the summer months, inhabitants of the Faroe Islands - a group of islands under the sovereignty of Denmark, situat.. During the summer months, inhabitants of the Faroe Islands - a group of islands under the sovereignty of Denmark, situat.. During the summer months, inhabitants of the Faroe Islands - a group of islands under the sovereignty of Denmark, situat.."], ["title", "HA HAHA PETITION: Stop the Whale Murder in the Faroe Islands"], ["updated_at", Mon, 24 Sep 2012 22:15:31 UTC +00:00], ["user_id", 1], ["vote_count", 0]]
+  [1m[36m (23.4ms)[0m  [1mCOMMIT[0m
+[MODEL] [POST] [CREATE_POST] Leaving
+Completed 200 OK in 32ms (Views: 1.0ms | ActiveRecord: 25.6ms)
+
+
+Started GET "/user.1" for 127.0.0.1 at 2012-09-25 03:45:34 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.1
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 11ms (Views: 8.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-09-25 03:45:42 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[36mPost Load (1.1ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY vote_count DESC LIMIT 10[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Completed 200 OK in 12ms (Views: 1.6ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/fetchAllUser" for 127.0.0.1 at 2012-09-25 03:45:42 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_all_users"}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/current_user_details" for 127.0.0.1 at 2012-09-25 03:45:42 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+[HOME] [COMMON] current user id 1
+[HOME] [COMMON] current user data #<User:0x00000005b73950>
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (1.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :vote_count=>21, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>5}
+Completed 200 OK in 9ms (Views: 0.5ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/fetch_post" for 127.0.0.1 at 2012-09-25 03:45:42 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_posts] enter {"controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+[POST] [COMMON] current user id 1
+  [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1 ORDER BY id DESC
+Completed 200 OK in 9ms (Views: 4.9ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/user.1" for 127.0.0.1 at 2012-09-25 03:49:44 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.1
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 17ms (Views: 14.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-25 03:49:44 +0530
+Served asset /jquery.js - 200 OK (32ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-25 03:49:44 +0530
+Served asset /jquery_ujs.js - 200 OK (4ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-25 03:49:45 +0530
+Served asset /application.js - 200 OK (17ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-09-25 03:49:51 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[35mPost Load (1.3ms)[0m  SELECT "posts".* FROM "posts" ORDER BY vote_count DESC LIMIT 10
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Completed 200 OK in 11ms (Views: 1.6ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/fetchAllUser" for 127.0.0.1 at 2012-09-25 03:49:51 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_all_users"}}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" 
+Completed 200 OK in 4ms (Views: 1.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/current_user_details" for 127.0.0.1 at 2012-09-25 03:49:51 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+[HOME] [COMMON] current user id 1
+[HOME] [COMMON] current user data #<User:0x00000005815998>
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (1.5ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :vote_count=>21, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>5}
+Completed 200 OK in 10ms (Views: 0.5ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/fetch_post" for 127.0.0.1 at 2012-09-25 03:49:51 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_posts] enter {"controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+[POST] [COMMON] current user id 1
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1 ORDER BY id DESC[0m
+Completed 200 OK in 9ms (Views: 4.5ms | ActiveRecord: 2.0ms)
