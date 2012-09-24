@@ -21,11 +21,12 @@ class PostController < ApplicationController
         
         p = Post.create_post(h)
 
-        render :json => {:success => true }, :status => 200
-
-        Rails.logger.info("[CNTRL] [POST] [CREATE] leave")
-
-	end
+        if !p.blank?
+            render :json => p ,:status => 200
+        else
+            render :json => {:error => "Create post failed"}, :status => 400
+        end    
+    end
 
 
 	################################################################################################
