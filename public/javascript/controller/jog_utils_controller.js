@@ -9,7 +9,6 @@ $(document).ready(function(){
     	$("#jog_leader_board_side_panel").hide();
 
     } else {
-        JogPostEntryController.init();
     	JogLeaderboardPanelView.init(leaderboardPanel);
 
     	JogPostEntryView.init();
@@ -30,8 +29,9 @@ var JOG = {
 				init: function()
 				{
 					JOG.Events.inviteUsersOnVote();
+					JOG.Events.viewFullPost();
+                    JOG.Events.createPost();
                     JOG.Events.voteClick();
-                    JogPostListController.init();
 				},
 
 				inviteUsersOnVote: function()
@@ -56,9 +56,44 @@ var JOG = {
 					});	
 				},
 
-				
+				viewFullPost: function()
+				{
+					$(".jog_data_posts_box_title").live("click", function(e){
 
-                
+						var $this = $(this);
+
+						//var postID = $.this.attr("post-id");
+
+						JogDataPostDetailView.init(detailPost);
+
+						var $detailPost = $("#jog_detail_post_view_modal");
+
+						$.fancybox({
+                			content: $detailPost,
+                			'padding': 0, 
+                			'autoSize': false, 
+                			'height' : 'auto', 
+                			'width' : 600,
+                			openSpeed: 'normal',
+                			closeBtn: true,
+                			autoSize: true,
+                			topRatio: 0,
+                			beforeClose:function() {
+                                      //TODO: Nothing to be done on close
+                            }
+                      	});
+						e.preventDefault();
+					});
+				},
+
+
+                createPost: function()
+                {
+                    $("#jog_data_post_entry_action_submit").live("click", function(e){
+                        JogPostEntryController.createPostParams();    
+                        e.preventDefault();
+                    });
+                },
 
                 voteClick: function()
                 {
@@ -69,21 +104,6 @@ var JOG = {
                     });
                 },
 	},
-
-
-
-    "utils": {
-
-        truncateText: function(text, truncateLength)
-        {
-            if (text && text.length > truncateLength)
-                //return jQuery.trim(text).substring(0, maxLength).split(" ").slice(0, -1).join(" ") + "..";
-                return jQuery.trim(text).substring(0, truncateLength) + "..";
-            else
-                return text;
-        },
-
-    },
 
 	"configs" :{
 			"page_title" : "landing"

@@ -16,11 +16,12 @@
 .jog_data_posts_box
 {
   width: 97%;
-  height: 290px;
-  border: 1px solid #ddd;
+  border: 1px solid #CCC;
+  border-radius: 6px;
   margin-top: 10px;
   position: relative;
   padding: 10px;
+  background: #FEFEFA;
 }
 
 
@@ -56,17 +57,27 @@
 
 .jog_data_posts_box_metric_vote_action
 {
+  border-top-width: 1px;
   position: absolute;
   left: 5px;
   top: 4px;
-  height: 22px;
-  border: 1px solid #DDD;
-  width: 50px;
+  height: 20px;
+  border: 1px solid #CCC;
+  width: 70px;
   text-align: center;
   padding: 2px;
   cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
+  background: #20B2AA;
+  color: #FEFEFE;
 }
 
+.jog_data_posts_box_metric_vote_action span
+{
+  margin-left: 5px;
+
+}
 
 .jog_data_posts_box_metric_vote_count
 {
@@ -74,17 +85,33 @@
   right: 5px;
   top: 4px;
   height: 22px;
-  border: 1px solid #DDD;
+  border: 1px solid #CCC;
   text-align: center;
-  padding: 2px;
+  padding: 4px;
+  border-radius: 4px;
+  background: #CDBE70;
+  color: white;
+  font-weight: bold;
 }
 
 
 .jog_data_posts_box_social_share
 {
-  width: 100%;
-  height: 30px;
-  border: 0px solid red;
+  width: 98%;
+  margin-top: 10px;
+  height: 22px;
+  border: 1px solid #DDD;
+  padding: 4px;
+  border-radius: 4px;
+  background: white;
+  display: inline-block;
+}
+
+
+.jog_posts_box_social_share_container
+{
+  width: 80px;
+  float: left;
 }
 
 
@@ -139,4 +166,46 @@
   font-size: 14px;
   color: #ccc;
   text-align: right;
+}
+
+
+
+
+
+
+#jog_detail_post_view_modal
+{ 
+  width: 600px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+#jog_post_detail_view_title
+{
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+#jog_post_detail_content
+{
+  width: 97%;
+  display: inline-block;
+}
+
+#jog_post_detail_content img
+{
+  display: table-cell;
+  float: right;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#jog_data_posts_detail_box_metric
+{
+  position: relative;
+  display: block;
+  height: 30px;
+  margin: 20px 0 20px 0; 
+
 }

@@ -106,7 +106,13 @@ var userProfile = {
 var detailPost = {
 	"image" : "../resources/profile_img.jpg",
 	"postText" : "Texting drivers are 23 times more likely to be in an crash and over 100,000 people are \
-		              killed or injured each year in crashes. Take this pledge and encourage your",
+		          killed or injured each year in crashes. Take this pledge and encourage your \
+		          Texting drivers are 23 times more likely to be in an crash and over 100,000 people are \
+		          killed or injured each year in crashes. Take this pledge and encourage your \
+		          Texting drivers are 23 times more likely to be in an crash and over 100,000 people are \
+		          killed or injured each year in crashes. Take this pledge and encourage your\
+		          Texting drivers are 23 times more likely to be in an crash and over 100,000 people are \
+		          killed or injured each year in crashes. Take this pledge and encourage your",
 	"title" : "PLEDGE: Take the pledge to not text while driving",              
 	"voteCount" : 20,
 	"rank" : 1,

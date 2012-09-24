@@ -11,7 +11,7 @@ var JogDataPostListView = {
           
         html = html + '<div id="jog_data_posts_list">';
 
-        $.each(data.posts, function(index, post) { 
+        $.each(data, function(index, post) { 
             html = html + JogDataPostListView.postHtml(post);
         });
 
@@ -24,15 +24,18 @@ var JogDataPostListView = {
     postHtml : function(data)
     {
 
-        var html = '<div class="jog_data_posts_box">'+
+        var html = '<div class="jog_data_posts_box" data-post-id="'+data.id+'" data-post-userid="'+data.user_id+'">'+
                         '<h3 class="jog_data_posts_box_title">'+data.title +'</h3>'+
                         '<div class="jog_data_posts_box_content">'+
-                            '<img src="'+data.image+'" align="right">'+
-                             data.postText+
+                            '<img src="'+data.pic+'" align="right">'+
+                             JOG.utils.truncateText(data.text, 300)+
                         '</div>'+
                         '<div class="jog_data_posts_box_metric">'+
-                            '<div class="jog_data_posts_box_metric_vote_action" post-id="123456"> Vote </div>'+
-                            '<div class="jog_data_posts_box_metric_vote_count"> '+data.voteCount+' Votes  </div>'+
+                            '<div class="jog_data_posts_box_metric_vote_action" post-id="1">'+
+                                 '<img src="/resources/heart.png">'+
+                                 '<span>Vote</span>'+
+                            '</div>'+
+                            '<div class="jog_data_posts_box_metric_vote_count"> '+data.vote_count+' Votes  </div>'+
                         '</div>'+
                         JogDataPostListView.socialShareHtml(data)+
                     '</div>';
@@ -42,11 +45,24 @@ var JogDataPostListView = {
 
     socialShareHtml: function(data)
     {
-        var html = '<div class="jog_data_posts_box_social_share">';
-        html = html + '<div class="fb-send" data-href="http://example.com" data-font="lucida grande"></div>';
-        html = html + '<a href="https://twitter.com/share" class="twitter-share-button" data-url="https://makemytrip.com" data-via="makemytrip" data-text="vote for me to win free tickets" data-lang="en">Tweet</a>'+
+
+        var shareURL = "http://www.makemytrip.com";
+        
+        function fbHtml()
+        {
+            return '<div class="fb-send" data-href="'+shareURL+'" data-font="lucida grande"></div>';
+        }
+
+        function twitterHtml()
+        {
+            return '<a href="https://twitter.com/share" class="twitter-share-button" data-url="'+shareURL+'" data-via="makemytrip" data-text="vote for me to win free tickets" data-lang="en">Tweet</a>'+
             '<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';
 
+        }
+
+        var html = '<div class="jog_data_posts_box_social_share">';
+        html = html + '<div class="jog_posts_box_social_share_container">' + fbHtml() + '</div>';
+        html = html + '<div class="jog_posts_box_social_share_container">' + twitterHtml() + '</div>';
         html = html + '</div>';
         return html;
 
@@ -67,15 +83,16 @@ var JogDataPostDetailView = {
     display: function(data)
     {
         var html = '<div id="jog_post_detail_view">'+
-                      '<h3 id="jog_post_detail_view_title">'+data.title+'</h3>'+
-                         '<div id="jog_post_detail_content">'+
-                            '<img src="'+data.image+'">'+
-                             '<p>'+data.postText+'</p>'+
-                         '</div>'+
-                         '<div class="jog_data_posts_box_metric">'+
-                            '<div class="jog_data_posts_box_metric_vote_action"> Vote </div>'+
-                            '<div class="jog_data_posts_box_metric_vote_count"> '+data.voteCount+' Votes  </div>'+
+                        '<h3 id="jog_post_detail_view_title">'+data.title+'</h3>'+
+                        '<div id="jog_post_detail_content">'+
+                            '<img src="'+data.pic+'">'+
+                             '<p>'+data.text+'</p>'+
                         '</div>'+
+                        '<div id="jog_data_posts_detail_box_metric">'+
+                            '<div class="jog_data_posts_box_metric_vote_action"> Vote </div>'+
+                            '<div class="jog_data_posts_box_metric_vote_count"> '+data.vote_count+' Votes  </div>'+
+                        '</div>'+
+                        JogDataPostListView.socialShareHtml(data)+
                    '</div>';
 
         $("#jog_detail_post_view_modal").html(html);
