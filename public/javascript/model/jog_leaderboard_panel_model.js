@@ -15,7 +15,12 @@ var JogLeaderboardPanelModel = {
                     console.log(data);
                     
                     JOGCache.setData("leaderboardPosts", data);
-                    JogLeaderboardPanelView.init(data);
+                    
+                    if (JOG.configs.page_title === "leaderboard") {
+                        JogLeaderboardView.init(data);
+                    } else {
+                        JogLeaderboardPanelView.init(data);
+                    }
                     
                 },error:function(XMLHttpRequest,textStatus, errorThrown){ 
                     // TODO: WHAT TO DO!!

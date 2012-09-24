@@ -74,7 +74,7 @@ var JogLeaderboardView = {
           
         html = html + '<div id="jog_data_posts_leaderboard_list">';
 
-        $.each(data.posts, function(index, post) { 
+        $.each(data, function(index, post) { 
             html = html + JogLeaderboardView.postHtml(post);
         });
 
@@ -90,24 +90,26 @@ var JogLeaderboardView = {
 
         function userInfo()
         {
-            return '<img src="'+data.postOwnerPic+'">'+
-                   '<span>'+data.postOwner+'</span>';
+            return '<img src="'+data.user_pic+'">'+
+                   '<span>'+data.user_name+'</span>';
         }
 
-        var html = '<div class="jog_data_posts_leaderboard_list_box">'+
+        var imgHtml = (data.post_pic && data.post_pic !== "" ) ? '<img src="'+data.post_pic+'" align="right">' : ""; 
+
+        var html = '<div class="jog_data_posts_leaderboard_list_box" >'+
                         '<div class="jog_data_posts_leaderboard_list_user_info">'+
                         userInfo()+
                         '</div>'+
                         '<div class="jog_data_posts_leaderboard_list_box_content">'+ 
                             '<h5>'+data.date+'</h5>'+
-                            '<h3 class="jog_data_posts_box_title">'+data.title +'</h3>'+
+                            '<h3 class="jog_data_posts_box_title">'+data.post_title +'</h3>'+
                             '<div class="jog_data_posts_box_content">'+
-                                '<img src="'+data.image+'" align="right">'+
-                                data.postText+
+                                imgHtml+
+                                data.post_text+
                             '</div>'+
                             '<div class="jog_data_posts_box_metric">'+
                                 '<div class="jog_data_posts_box_metric_vote_action"> Vote </div>'+
-                                '<div class="jog_data_posts_box_metric_vote_count"> '+data.voteCount+' Votes  </div>'+
+                                '<div class="jog_data_posts_box_metric_vote_count"> '+data.vote_count+' Votes  </div>'+
                             '</div>'+
                         '</div>'+
                     '</div>';

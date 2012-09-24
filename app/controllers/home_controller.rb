@@ -28,9 +28,19 @@ class HomeController < ApplicationController
 	def show
 		Rails.logger.info("[CNTRL] [HOME] [SHOW] Entering")
 
+		Rails.logger.info("[CNTRL] [HOME] [SHOW] #{request.env['PATH_INFO']}")
+
+		if request.env['PATH_INFO'] == "/leaderboard"
+			@page_mode = "leaderboard"
+		else
+			@page_mode = "user_page"
+		end
+
 		if !user_signed_in? 
 		  redirect_to '/'
 		end
+
+
 
 		#only to test
 		#TODO Remove these 6 lines
