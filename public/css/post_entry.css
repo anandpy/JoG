@@ -1,0 +1,43 @@
+#jog_data_post_entry
+{
+  width: 95%;
+  padding: 15px;
+  height: 300px;
+  border: 1px solid #CCC;
+}
+
+
+
+#jog_data_post_entry_title
+{
+  width: 100%;
+  height: 35px;
+}
+
+#jog_data_post_entry_text
+{
+  resize: none;
+  width: 100%;
+  height: 150px;
+  margin: 0 auto;
+}
+
+#jog_data_post_entry_actions
+{
+  width: 100%;
+  height: 40px;
+  margin-top: 10px;
+  position: relative;
+}
+
+#jog_data_post_entry_actions button
+{
+  position: absolute;
+  right: 0;
+}
+
+
+#jog_data_post_entry_attach_photo
+{
+  margin-top: 10px;
+}

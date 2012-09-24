@@ -1,0 +1,145 @@
+<html>
+<head>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="../javascript/plugins/jquery.backstretch.min.js" type="text/javascript"></script>
+
+<script src="../javascript/plugins/jquery-autocomplete/jquery.bgiframe.min.js" type="text/javascript"></script>
+<script src="../javascript/plugins/jquery-autocomplete/jquery.ajaxQueue.js" type="text/javascript"></script>
+<script src="../javascript/plugins/jquery-autocomplete/thickbox-compressed.js" type="text/javascript"></script>
+<script src="../javascript/plugins/jquery-autocomplete/jquery.autocomplete.js" type="text/javascript"></script>
+
+<script src="../javascript/plugins/jquery-waitLoading/jquery.showLoading.min.js" type="text/javascript"></script>
+
+<script src="../fancybox/source/jquery.fancybox.js?v=2.0.6" type="text/javascript" ></script>
+
+
+<!-- COMMON SCRIPTS -->
+<script src="../javascript/json/json.js" type="text/javascript"></script>
+<script src="../javascript/controller/jog_app_controller.js" type="text/javascript"></script>
+<script src="../javascript/model/jog_cache.js" type="text/javascript"></script>
+
+
+<!-- LEADERBOARD PANEL -->
+<script src="../javascript/controller/jog_leaderboard_panel_controller.js" type="text/javascript"></script>
+<script src="../javascript/model/jog_leaderboard_panel_model.js" type="text/javascript"></script>
+<script src="../javascript/view/jog_leaderboard_panel_view.js" type="text/javascript"></script>
+
+
+<!-- POST ENTRY -->
+<script src="../javascript/controller/jog_post_entry_controller.js" type="text/javascript"></script>
+<script src="../javascript/model/jog_post_entry_model.js" type="text/javascript"></script>
+<script src="../javascript/view/jog_post_entry_view.js" type="text/javascript"></script>
+
+<!-- POST LIST -->
+<script src="../javascript/controller/jog_post_list_controller.js" type="text/javascript"></script>
+<script src="../javascript/model/jog_post_list_model.js" type="text/javascript"></script>
+<script src="../javascript/view/jog_post_list_view.js" type="text/javascript"></script>
+
+
+<!-- PROFILE INFO -->
+<script src="../javascript/controller/jog_user_profile_info_controller.js" type="text/javascript"></script>
+<script src="../javascript/model/jog_user_profile_info_model.js" type="text/javascript"></script>
+<script src="../javascript/view/jog_user_profile_info_view.js" type="text/javascript"></script>
+
+
+
+
+
+
+
+<!-- Plugin Css -->
+<link rel="stylesheet" href="../bootstrap/css/bootstrap.css" type="text/css" />
+<link rel="stylesheet" href="../css/jquery.autocomplete.css" type="text/css" />
+<link rel="stylesheet" href="../css/thickbox.css" type="text/css" />
+<link rel="stylesheet" href="../css/showLoading.css" type="text/css" />
+<link rel="stylesheet" href="../fancybox/source/jquery.fancybox.css?v=2.0.6" media="screen" type="text/css" />
+
+
+<link rel="stylesheet" href="../css/common.css" type="text/css" />
+<link rel="stylesheet" href="../css/leaderboard.css" type="text/css" />
+<link rel="stylesheet" href="../css/datapanel.css" type="text/css" />
+<link rel="stylesheet" href="../css/post_entry.css" type="text/css" />
+
+
+<script src="https://api.filepicker.io/v0/filepicker.js"></script>
+
+<script type="text/javascript">
+    //Seting up Filepicker.io with your api key
+    filepicker.setKey('AAgN_cK6iS2ivs0GBoVUcz');
+    alert("filepicker");
+</script>
+
+
+
+
+</head>
+
+<body>
+
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '244515575666539', // App ID
+      channelUrl : 'www.makemytrip.com', // Channel File
+      status     : true, // check login status
+      cookie     : true, // enable cookies to allow the server to access the session
+      xfbml      : true  // parse XFBML
+    });
+
+    // Additional initialization code here
+  };
+
+  // Load the SDK Asynchronously
+  (function(d){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     ref.parentNode.insertBefore(js, ref);
+   }(document));
+</script>
+
+
+
+
+<div id="jog_header">
+    <div id="jog_header_content">
+        <img class="jog_icon" src="../resources/jog.jpg" style="height:50px">
+        <img class="mmt_icon" src="../resources/mmtlogo.png" style="max-height:50px">
+    </div>
+</div>
+
+
+<div id="jog_main_container">
+    <!-- MAIN DATA CONTAINER STARTS-->    
+    <div id="jog_data_container">
+    	<div id="jog_leader_board_side_panel">
+    	   	
+    	</div>
+
+    	<div id="jog_data_panel">
+     	</div>
+    </div>
+    <!-- MAIN DATA CONTAINER ENDS--> 	
+
+
+
+
+</div>
+
+<div id="jog_invite_user_for_signup">
+Join us and share your joy of giving
+</div>
+
+<div id="jog_detail_post_view_modal">
+</div>
+
+
+
+</body>
+
+</html>

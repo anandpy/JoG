@@ -5,6 +5,8 @@ JoG::Application.routes.draw do
     get 'logout' => 'devise/sessions#destroy'
   end
 
+
+  match '/create_post' => "post#create_post"
   match '/user' => 'home#show'
 
   # The priority is based upon order of creation:
