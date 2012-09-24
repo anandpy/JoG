@@ -1,0 +1,15 @@
+# Enter your per-environment constants below
+
+development: &default
+  constant1:  "value1"
+  constant2:  "value2"
+  facebook_app_id:      '244515575666539'
+  facebook_secret_key:  '2ce9532a07461bf35f2ea18b50ff2afa'
+  server_base:          'http://localhost:3000'
+
+production:
+  <<: *default
+  constant1:  "overriden value1"
+  
+test:
+  <<: *default
