@@ -74,11 +74,12 @@ body
   position: absolute;
   right: 10px;
   top: 28px;
-  height: 26px;
-  border: 1px solid #DDD;
+  height: 21px;
+  border: 1px solid #CCC;
   border-radius: 4px;
-  padding: 13px 0 5px 0;
-  text-align: center;
+  padding: 13px;
+  text-align: center; 
+  background: navajoWhite;
 }
 
 #jog_user_profile_post_count span
