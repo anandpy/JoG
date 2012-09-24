@@ -7,6 +7,7 @@ var JogPostEntryView = {
 
 	init:  function()
 	{
+        $("#jog_data_post_entry").remove();
 		JogPostEntryView.display();
 	},
 

@@ -12,10 +12,12 @@ var JogPostEntryController = {
                         
         postParam.title = $("#jog_data_post_entry_title").val();
         postParam.text = $("#jog_data_post_entry_text").val();
-        postParam.imgSrc = "/123.png";
+        postParam.imgSrc = JogPostEntryModel.filepick.url;
         postParam.userID = "123456789";
 
         JogPostEntryModel.createPost(postParam);
+
+        
 	},
 
     initEvents: function()
@@ -26,7 +28,13 @@ var JogPostEntryController = {
 
     	$("#jog_cancel_img_preview").live("click", function(){
     		JogPostEntryModel.deleteUpload();
-    	});        
+    	}); 
+
+    	$("#jog_data_post_entry_action_submit").live("click", function(e){
+            JogPostEntryController.createPostParams();    
+            e.preventDefault();
+        });	
+  	
     }
 
 

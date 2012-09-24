@@ -1,6 +1,19 @@
 
 var JogPostListController = {
+	init: function()
+    {
+    	JogPostListController.initEvents();
+    },
 
+    initEvents: function()
+    {
+		$(".jog_data_posts_box_title").live("click", function(e){
+		    JogPostListController.viewFullPost($(this));
+			e.preventDefault();
+		});
+		
+
+    },
 
 	postVoteUpdate: function(obj)
 	{
@@ -12,6 +25,49 @@ var JogPostListController = {
 
 		JogPostListModel.updateVote(data);
 	},
+
+    
+
+    viewFullPost: function(obj)
+    {
+
+		var $this = obj;
+
+		var postID = $this.parent().attr("data-post-id");
+		var userID = $this.parent().attr("data-post-userid");
+
+		//alert(postID + " " userID);
+
+        var posts = JOGCache.getData("currentUserPosts", null);
+
+        var postData; 
+        $.each(posts, function(index, post){
+        	if (post.id == postID && post.user_id == userID) {
+        		postData = post;
+        		return false;
+        	}
+        });
+
+		JogDataPostDetailView.init(postData);
+
+		var $detailPost = $("#jog_detail_post_view_modal");
+
+		$.fancybox({
+        	content: $detailPost,
+            'padding': 0, 
+            'autoSize': false, 
+            'height' : 'auto', 
+            'width' : 600,
+            openSpeed: 'normal',
+            closeBtn: true,
+            autoSize: true,
+            topRatio: 0,
+            beforeClose:function() {
+                    //TODO: Nothing to be done on close
+            }
+        });
+
+    },
 
 };
 
