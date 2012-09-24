@@ -4,6 +4,7 @@ $(document).ready(function(){
 
 	JOG.Events.init();
 
+
 	
 
     if ( JOG.configs.page_title === "leaderboard") {
@@ -17,7 +18,7 @@ $(document).ready(function(){
 
     	JogDataPostListView.init(postList);
 
-    	JogUserProfileInfoView.init(userProfile);
+    	JogUserProfileModel.init();
 	
     }
    
@@ -38,6 +39,7 @@ var JOG = {
 					JOG.Events.inviteUsersOnVote();
 					JOG.Events.viewFullPost();
                     JOG.Events.createPost();
+                    JOG.Events.voteClick();
 				},
 
 				inviteUsersOnVote: function()
@@ -107,6 +109,14 @@ var JOG = {
                         JogPostEntryController.createPost(postParam);    
                     });
                 },
+
+                voteClick: function()
+                {
+                    $(".jog_data_posts_box_metric_vote_action").live("click", function(e){
+                        var $this = $(this);
+                        JogPostListController.postVoteUpdate($this);
+                    });
+                },
 	},
 
 	"configs" :{
@@ -115,7 +125,8 @@ var JOG = {
 
     "urls" : {
         "postUrl" : "/create_post",
-        "fetchUser" : "/fetchUser",
+        "fetchUser" : "/current_user_details",
+        "updateVoteCount" : "/update_vote",
     },
 
 	"currentUser": {

@@ -13,7 +13,7 @@ var JogPostEntryController = {
                 contentType: 'application/json',
                 data: data,
                 success: function ( data ) {
-                    console.log("back something"); 
+                    console.log("user_profile_data"); 
                     console.log(data);
                     //irisCacheApiSETData("iris.friends", data);
                     //$('#irisSearchOptionFriends').trigger('click');

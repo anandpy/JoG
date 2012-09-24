@@ -31,7 +31,7 @@ var JogDataPostListView = {
                              data.postText+
                         '</div>'+
                         '<div class="jog_data_posts_box_metric">'+
-                            '<div class="jog_data_posts_box_metric_vote_action"> Vote </div>'+
+                            '<div class="jog_data_posts_box_metric_vote_action" post-id="123456"> Vote </div>'+
                             '<div class="jog_data_posts_box_metric_vote_count"> '+data.voteCount+' Votes  </div>'+
                         '</div>'+
                         JogDataPostListView.socialShareHtml(data)+
@@ -44,11 +44,8 @@ var JogDataPostListView = {
     {
         var html = '<div class="jog_data_posts_box_social_share">';
         html = html + '<div class="fb-send" data-href="http://example.com" data-font="lucida grande"></div>';
-        //html = html + '<a href="https://twitter.com/share" class="twitter-share-button" data-url="https://makemytrip.com" data-via="makemytrip" data-text="vote for me to win free tickets" data-lang="en">Tweet</a>'+
-          //  '<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';
-
-        
-
+        html = html + '<a href="https://twitter.com/share" class="twitter-share-button" data-url="https://makemytrip.com" data-via="makemytrip" data-text="vote for me to win free tickets" data-lang="en">Tweet</a>'+
+            '<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';
 
         html = html + '</div>';
         return html;
