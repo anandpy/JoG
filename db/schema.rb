@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(:version => 20120922042327) do
 
   create_table "posts", :force => true do |t|
     t.integer  "user_id"
-    t.string   "vote_count"
+    t.integer  "vote_count"
     t.string   "pic"
     t.text     "title"
     t.text     "text"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(:version => 20120922042327) do
     t.string   "name"
     t.string   "pic"
     t.string   "sex"
-    t.string   "vote_count"
+    t.integer  "vote_count"
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",        :default => 0
     t.datetime "current_sign_in_at"
