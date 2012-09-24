@@ -3,47 +3,47 @@
  * CACHED DATA FETCH
  *************************************************/
 
-var FOGCache = {
+var JOGCache = {
 
       "data" : {},
 
       getData: function(cache_id, fn_cb)
       {
-          if ( !FOGCache.data[cache_id] ){
-              FOGCache.data[cache_id] = {
+          if ( !JOGCache.data[cache_id] ){
+              JOGCache.data[cache_id] = {
                                               data: null,
                                               fn_arr: []
                                            };
           }
-          if (FOGCache.data[cache_id] && FOGCache.data[cache_id].data) {
+          if (JOGCache.data[cache_id] && JOGCache.data[cache_id].data) {
               if (fn_cb != null)
-                  fn_cb(FOGCache.data[cache_id].data);
+                  fn_cb(JOGCache.data[cache_id].data);
               else
-                  return FOGCache.data[cache_id].data;
+                  return JOGCache.data[cache_id].data;
           } else{
-              FOGCache.data[cache_id].fn_arr.push(fn_cb);
+              JOGCache.data[cache_id].fn_arr.push(fn_cb);
           }
         },
 
-        setData: function()
+        setData: function(cache_id, cache_data)
         {
-              if ( !FOGCache.data[cache_id] ){
-                  FOGCache.data[cache_id] = {
+              if ( !JOGCache.data[cache_id] ){
+                  JOGCache.data[cache_id] = {
                                             data: cache_data,
                                             fn_arr: []
                                          };
               } else {
-                  if( FOGCache.data[cache_id].fn_arr &&
-                      FOGCache.data[cache_id].fn_arr.length){
-                          $.each(FOGCache.data[cache_id].fn_arr, function(index, fn_cb) {
+                  if( JOGCache.data[cache_id].fn_arr &&
+                      JOGCache.data[cache_id].fn_arr.length){
+                          $.each(JOGCache.data[cache_id].fn_arr, function(index, fn_cb) {
                               fn_cb(cache_data);
                          });
-                        FOGCache.data[cache_id] = {
+                        JOGCache.data[cache_id] = {
                                             data: cache_data,
                                             fn_arr: []
                                          };
                   } else { /* only set the data */
-                      FOGCache.data[cache_id].data = cache_data;
+                      JOGCache.data[cache_id].data = cache_data;
                   } 
               }
         },
