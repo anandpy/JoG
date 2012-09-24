@@ -58265,3 +58265,57 @@ Processing by PostController#get_posts as JSON
 [POST] [COMMON] current user id 1
   [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1 ORDER BY id DESC[0m
 Completed 200 OK in 9ms (Views: 4.5ms | ActiveRecord: 2.0ms)
+DEPRECATION WARNING: Passing a block to devise_for is deprecated. Please remove the block from devise_for (only the block, the call to devise_for must still exist) and call devise_scope :user do ... end with the block instead. (called from block in <top (required)> at /home/sammy/actwitty/makemytrip/joy_of_giving/rails/JoG/config/routes.rb:4)
+
+
+Started GET "/user.1" for 127.0.0.1 at 2012-09-25 04:02:31 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.1
+  [1m[36mUser Load (1.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (58.8ms)
+Completed 200 OK in 466ms (Views: 153.0ms | ActiveRecord: 14.8ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-09-25 04:02:35 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[35mPost Load (1.5ms)[0m  SELECT "posts".* FROM "posts" ORDER BY vote_count DESC LIMIT 10
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Completed 200 OK in 153ms (Views: 1.0ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/fetchAllUser" for 127.0.0.1 at 2012-09-25 04:02:35 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_all_users"}}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" 
+Completed 200 OK in 79ms (Views: 75.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/current_user_details" for 127.0.0.1 at 2012-09-25 04:02:35 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+[HOME] [COMMON] current user id 1
+[HOME] [COMMON] current user data #<User:0x000000039807d0>
+  [1m[35mUser Load (1.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :vote_count=>21, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>5}
+Completed 200 OK in 83ms (Views: 0.4ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/fetch_post" for 127.0.0.1 at 2012-09-25 04:02:36 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_posts] enter {"controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+[POST] [COMMON] current user id 1
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1 ORDER BY id DESC[0m
+Completed 200 OK in 7ms (Views: 3.4ms | ActiveRecord: 2.0ms)

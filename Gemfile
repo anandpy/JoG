@@ -11,7 +11,7 @@ gem 'heroku'
 
 gem 'pg'
 
-
+gem 'uglifier'
 gem 'nokogiri'
 gem 'thin'
 
