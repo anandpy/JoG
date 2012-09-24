@@ -28,6 +28,30 @@ class PostController < ApplicationController
         end    
     end
 
+    ################################################################################################
+    # Update vote
+    # 
+    ################################################################################################# 
+
+    def update_vote
+        Rails.logger.info("[POST][CNTL][update_vote] Entering #{params.inspect}")
+
+        post = Post.where(:id => params["postID"].to_i).first
+        Rails.logger.info("[POST] [update_vote] update #{post.inspect}")
+        if !post.blank?
+            user = post.user
+            post_vote = eval post[:vote_count]
+            user_vote = eval user[:vote_count]
+            post.update_attribute(:vote_count,"#{post_vote+1}")
+            user.update_attribute(:vote_count,"#{user_vote+1}")
+            
+            Rails.logger.info("[POST] [update_vote] update #{post.inspect}")
+            render :json => post, :status => 200
+        else
+            render :json => {:error => "No post found" }, :status => 400
+        end 
+    end 
+
 
 	################################################################################################
     #
