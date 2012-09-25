@@ -12,8 +12,8 @@ production:
 
   constant1:  "value1"
   constant2:  "value2"
-  facebook_app_id:      '394873557244955'
-  facebook_secret_key:  'd1f2df2473e2b36556445d4cbf20733e'
+  facebook_app_id:      '367153893359066'
+  facebook_secret_key:  'a682990551f7dc4b11dde5a7ffe375b6'
   server_base:          'http://whispering-plains-8323.herokuapp.com'
   <<: *default
   constant1:  "overriden value1"
