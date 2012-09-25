@@ -124,11 +124,13 @@
 .jog_data_posts_leaderboard_list_box
 {
   width: 97%;
-  border: 1px solid #ddd;
+  border: 1px solid #CCC;
   margin-top: 10px;
   position: relative;
   padding: 10px;
   display: inline-block;
+  border-radius: 10px;
+  background: #FEFEFE;
 }
 
 .jog_data_posts_leaderboard_list_user_info
@@ -168,6 +170,14 @@
   text-align: right;
 }
 
+
+.jog_data_posts_leaderboard_list_box_metric
+{
+  position: absolute;
+  bottom: 5px;
+  height: 50px;
+  width: 97%;
+}
 
 
 

@@ -22,9 +22,16 @@
   font-size: 11px;
 }
 
+.jog_leader_board_entry_data
+{
+  min-height: 110px;
+}
+
 .jog_leader_board_entry .jog_leader_board_entry_data img
 {
   max-width: 100px;
+  max-height: 100px;
+  margin-right: 8px;
 }
 
 .jog_leader_board_entry_post_owner
