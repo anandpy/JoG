@@ -58319,3 +58319,4 @@ Processing by PostController#get_posts as JSON
 [POST] [COMMON] current user id 1
   [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1 ORDER BY id DESC[0m
 Completed 200 OK in 7ms (Views: 3.4ms | ActiveRecord: 2.0ms)
+DEPRECATION WARNING: Passing a block to devise_for is deprecated. Please remove the block from devise_for (only the block, the call to devise_for must still exist) and call devise_scope :user do ... end with the block instead. (called from block in <top (required)> at /home/sammy/actwitty/makemytrip/joy_of_giving/rails/JoG/config/routes.rb:4)
