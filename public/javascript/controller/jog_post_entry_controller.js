@@ -9,15 +9,29 @@ var JogPostEntryController = {
 	createPostParams: function(data)
 	{
         var postParam = {};
-                        
-        postParam.title = $("#jog_data_post_entry_title").val();
-        postParam.text = $("#jog_data_post_entry_text").val();
+
+        var $title = $("#jog_data_post_entry_title");
+        var $text = $("#jog_data_post_entry_text");
+      
+        var valid = 0;
+
+        postParam.title = $title.val();
+        postParam.text = $text.val();
         postParam.imgSrc = JogPostEntryModel.filepick.url;
         postParam.userID = "123456789";
 
-        JogPostEntryModel.createPost(postParam);
-
-        
+        if (postParam.title === "") {
+            $title.next().slideToggle();
+            valid = 0;
+        }
+        if (postParam.text === "") {
+            $text.next().slideToggle();
+            valid = 0;
+        } 
+       
+        if (valid)
+            JogPostEntryModel.createPost(postParam);
+       
 	},
 
     initEvents: function()

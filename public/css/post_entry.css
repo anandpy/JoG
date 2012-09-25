@@ -29,6 +29,14 @@
   margin: 0 auto;
 }
 
+.jog_data_post_entry_error
+{
+  font-size: 10px;
+  color: #c00;
+  font-weight: normal;
+  display: none;
+}
+
 #jog_data_post_entry_actions
 {
   width: 100%;
