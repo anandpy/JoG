@@ -3,6 +3,10 @@
 
 var JogLeaderboardPanelView = {
  
+    "config": {
+        "panelViewCount" : 2,
+    },
+
 
 	init:  function(data)
 	{
@@ -12,7 +16,7 @@ var JogLeaderboardPanelView = {
 	display: function(data)
 	{
 		var html = "";
-
+        var itr = 0;
         
         function header()
         {
@@ -26,7 +30,11 @@ var JogLeaderboardPanelView = {
         html = html + '<div id="jog_leader_board_lists">';
 
         $.each(data, function(index, leader) { 
+            if (index > JogLeaderboardPanelView.config.panelViewCount)
+                return false;
   			html = html + JogLeaderboardPanelView.leaderPostHtml(leader);
+            
+            
 		});
 
         html = html + 
