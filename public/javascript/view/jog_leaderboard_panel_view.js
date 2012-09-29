@@ -54,7 +54,34 @@ var JogLeaderboardPanelView = {
          
         var imgHtml = (data.post_pic && data.post_pic !== "" ) ? '<img src="'+data.post_pic+'" align="left">' : "";  
 
-		html =  '<div class="jog_leader_board_entry">' +
+		
+        html = '<div class="jog_leader_board_entry">' +
+                    '<div class="jog_lb_user_name">'+
+                        '<h5>'+data.user_name+'</h5>'+
+                        '<div class="jog_lb_ul1"></div>'+
+                    '</div>'+
+                    '<div class="jog_lb_content">'+
+                        '<div class="jog_lb_leftside">'+
+                            '<div class="jog_lb_user_photo">'+
+                                '<img src="'+data.user_pic+'">'+
+                            '</div>'+
+                            '<div class="jog_lb_vote">'+
+                                '<div class="jog_lb_vote_count">'+data.vote_count+' Votes</div>'+
+                                '<div class="jog_lb_vote_action"></div>'+
+                            '</div>'+
+                        '</div>'+
+                        '<div class="jog_lb_rightside">'+
+                            '<div class="jog_lb_msg"></div>'+
+                            '<p class="jog_lb_text">'+JOG.utils.truncateText(data.post_text,120)+'</p>'+
+                            '<div class="jog_lb_by">'+
+                            '</div>'+
+                        '</div>'+
+                    '</div>'+
+                    '<div class="jog_lb_divider"></div>'+
+                '</div>'; 
+                    
+
+        /*html =  '<div class="jog_leader_board_entry">' +
     				'<div class="jog_leader_board_entry_data">' +
     					imgHtml+
     				    JOG.utils.truncateText(data.post_text,120) +
@@ -67,6 +94,7 @@ var JogLeaderboardPanelView = {
     					'</div>'+
     				'</div>'+
     			'</div>';
+        */
     	return html;
 	},
 
