@@ -4,157 +4,65 @@
 var JogLandingLeaderboardPanelView = {
  
     "config": {
-        "panelViewCount" : 4,
+        "panelViewCount" : 3,
     },
 
 
 	init:  function(data)
 	{
-		JogLeaderboardPanelView.display(data);
+		JogLandingLeaderboardPanelView.display(data);
 	},
 
-	display: function(data)
+    display: function(data)
 	{
 		var html = "";
         var itr = 0;
-        
-        function header()
-        {
-        	var headerHtml = "<h3>Leaderboard</h3>";
-        	return headerHtml;	
-        }
-
         $.each(data, function(index, leader) { 
-            if (index > JogLeaderboardPanelView.config.panelViewCount)
+            if (index > JogLandingLeaderboardPanelView.config.panelViewCount)
                 return false;
-  			html = html + JogLeaderboardPanelView.leaderPostHtml(leader);
-            
-            
+  			html = html + JogLandingLeaderboardPanelView.leaderPostHtml(leader, index);
+            JogLandingLeaderboardPanelController.addSlide();
 		});
-
-        html = html + 
-               '<a href="/leaderboard">'+
-               '<button id="jog_view_full_leaderboard" class="btn btn-info" value="View All">View All</button>'+
-               '</a>';
-
-        html = html + '</div>';
-
-        $("#jog_leader_board_side_panel").html(html);
-
+   
+        $(".slides_container").html(html);
 	},
 
-	leaderPostHtml : function(data)
+	
+    leaderPostHtml : function(data, index)
 	{
 		var html = "";
-         
-        var imgHtml = (data.post_pic && data.post_pic !== "" ) ? '<img src="'+data.post_pic+'" align="left">' : "";  
+        
+        var slide_hide_class = (index > 1) ? "slide_hide" : "no-class";
 
-		
-        html = '<div class="jog_leader_board_entry">' +
-                    '<div class="jog_lb_user_name">'+
-                        '<a href="/show/'+data.user_uid+'"><h5>'+data.user_name+'</h5></a>'+
-                        '<div class="jog_lb_ul1"></div>'+
-                    '</div>'+
-                    '<div class="jog_lb_content">'+
-                        '<div class="jog_lb_leftside">'+
-                            '<div class="jog_lb_user_photo">'+
-                                '<img src="'+data.user_pic+'">'+
+        html = //'<a href="http://www.flickr.com/photos/jliba/4665625073/" id="jog_lp_slide_index_'+index+'" class="jog_slider '+slide_hide_class+'" target="_blank">'+
+                    '<div class="jog_slider jog_lp_sp_main_container '+slide_hide_class+'" id="jog_lp_slide_index_'+index+'">'+  
+                        '<img class="jog_lp_sp_curl" src="/images/curl.png">'+
+                        '<div class="jog_lp_sp_user_name">'+
+                            '<h5>'+data.user_name+'</h5>'+
+                            '<div class="jog_lp_sp_ul1"></div>'+
+                        '</div>'+
+                        '<div class="jog_lp_sp_content">'+
+                            '<div class="jog_lp_sp_leftside">'+
+                                '<div class="jog_lp_sp_user_photo">'+
+                                    '<img src="'+data.user_pic+'">'+
+                                '</div>'+
+                                '<div class="jog_lp_sp_vote">'+
+                                    '<div class="jog_lp_sp_vote_count">'+data.vote_count+' Votes</div>'+
+                                    '<div class="jog_lp_sp_vote_action"></div>'+
+                                '</div>'+
                             '</div>'+
-                            '<div class="jog_lb_vote">'+
-                                '<div class="jog_lb_vote_count">'+data.vote_count+' Votes</div>'+
-                                '<div class="jog_lb_vote_action"></div>'+
+                            '<div class="jog_lp_sp_rightside">'+
+                                '<div class="jog_lp_sp_msg"></div>'+
+                                '<p class="jog_lp_sp_text">'+JOG.utils.truncateText(data.post_text,100)+'</p>'+
+                                '<div class="jog_lp_sp_by"></div>'+
                             '</div>'+
                         '</div>'+
-                        '<div class="jog_lb_rightside">'+
-                            '<div class="jog_lb_msg"></div>'+
-                            '<p class="jog_lb_text">'+JOG.utils.truncateText(data.post_text,120)+'</p>'+
-                            '<div class="jog_lb_by">'+
-                            '</div>'+
-                        '</div>'+
-                    '</div>'+
-                    '<div class="jog_lb_divider"></div>'+
-                '</div>'; 
-                    
-
-        /*html =  '<div class="jog_leader_board_entry">' +
-    				'<div class="jog_leader_board_entry_data">' +
-    					imgHtml+
-    				    JOG.utils.truncateText(data.post_text,120) +
-    				'</div>'+
-    				'<div class="jog_leader_board_entry_post_owner">'+
-    					'<img src="'+data.user_pic+'">'+
-    					'<span>'+data.user_name+'</span>'+
-    					'<div class="jog_leader_board_entry_post_metric">'+
-    						'<span>'+data.vote_count+' Votes</span>'+
-    					'</div>'+
-    				'</div>'+
-    			'</div>';
-        */
+                    '</div>';
+                //'</a>';
+        
     	return html;
 	},
 
 };
-
-
-var JogLeaderboardView = {
- 
-
-    init:  function(data)
-    {
-        JogLeaderboardView.display(data);
-    },
-
-    display: function(data)
-    {
-        var html = "";
-          
-        html = html + '<div id="jog_data_posts_leaderboard_list">' +
-                      '<h1>Leaderboard</h1>';
-
-        $.each(data, function(index, post) { 
-            html = html + JogLeaderboardView.postHtml(post);
-        });
-
-        html = html + '</div>';
-
-        $("#jog_data_container").append(html);
-    },
-
-    
-
-    postHtml : function(data)
-    {
-
-        function userInfo()
-        {
-            return '<img src="'+data.user_pic+'">'+
-                   '<span>'+data.user_name+'</span>';
-        }
-
-        var truncateTextLength = (data.post_pic && data.post_pic !== "" ) ? 200 : 300; ;
-        var imgHtml = (data.post_pic && data.post_pic !== "" ) ? '<img src="'+data.post_pic+'" align="right">' : ""; 
-
-        var html = '<div class="jog_data_posts_leaderboard_list_box" >'+
-                        '<div class="jog_data_posts_leaderboard_list_user_info">'+
-                        userInfo()+
-                        '</div>'+
-                        '<div class="jog_data_posts_leaderboard_list_box_content">'+ 
-                            '<h5>2nd Oct 2012</h5>'+
-                            '<h3 class="jog_data_posts_box_title">'+data.post_title +'</h3>'+
-                            '<div class="jog_data_posts_box_content">'+
-                                imgHtml+
-                                JOG.utils.truncateText(data.post_text,truncateTextLength) +
-                            '</div>'+
-                            '<div class="jog_data_posts_leaderboard_list_box_metric">'+
-                                '<div class="jog_data_posts_box_metric_vote_action"> Vote </div>'+
-                                '<div class="jog_data_posts_box_metric_vote_count"> '+data.vote_count+' Votes  </div>'+
-                            '</div>'+
-                        '</div>'+
-                    '</div>';
-        
-        return html;
-    },
-};
-
 
 

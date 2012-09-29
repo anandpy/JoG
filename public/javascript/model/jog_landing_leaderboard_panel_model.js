@@ -17,15 +17,15 @@ var JogLandingLeaderboardPanelModel = {
                     JOGCache.setData("leaderboardPosts", data);
                     
                     switch(JOG.configs.page_title) {
-                    case "leaderboard" :
-                       JogLeaderboardView.init(data);
-                       break;
+                    //case "leaderboard" :
+                    //   JogLeaderboardView.init(data);
+                    //   break;
                     case "landing_page" : 
                        JogLandingLeaderboardPanelView.init(data);
                        break;
-                    default:
-                        JogLeaderboardPanelView.init(data);
-                       break
+                    //default:
+                    //    JogLeaderboardPanelView.init(data);
+                    //   break
                     }
 
                     

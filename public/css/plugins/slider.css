@@ -13,9 +13,6 @@
 	position:absolute;
 	top: 5px;
 	left: 83px;
-	z-index:100;
-
-
 }
 
 /*
@@ -30,11 +27,14 @@
 	height: 230px;
 	overflow:hidden;
 	position:relative;
-	display:none;
+	
 	padding: 0px;
-	background-image: url("/images/lp_post_outer.png");
-	background-repeat: none;
+	
 	background-image: url("/images/leaderboard_bck.png");
+}
+
+.slide_hide {
+	display:none;
 }
 
 /*
@@ -59,7 +59,7 @@
 	Next/prev buttons
 */
 
-#slides .next,#slides .prev {
+#jog_lp_slide_prev, #jog_lp_slide_next {
 	position:absolute;
 	top:107px;
 	left:-24px;
@@ -67,9 +67,10 @@
 	height:43px;
 	display:block;
 	z-index:101;
+	cursor: pointer;
 }
 
-#slides .next {
+#jog_lp_slide_next {
 	left:325px;
 }
 

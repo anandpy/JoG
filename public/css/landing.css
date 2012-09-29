@@ -62,7 +62,6 @@ body
   width: 487px;
   height: 241px;
   margin: auto;
-  border: 1px solid red;
   position: relative;
 }
 
@@ -119,8 +118,8 @@ body
 
 .jog_lp_sp_main_container
 {
-  width: 314px;
-  height: 218px;
+  width: 319px;
+  height: 222px;
   position: relative;
   border: 0px solid white;
   position: relative;
@@ -179,6 +178,7 @@ body
   height: 100%;
   border: 0px solid black;
   position: relative;
+  margin-top: 20px;
 }
 
 
@@ -190,7 +190,7 @@ body
 
 .jog_lp_sp_user_photo img
 {
-  max-width: 120px;
+  max-width: 100px;
   max-height: 100px;
   padding: 5px;
   border: 1px solid #ccc;
@@ -200,7 +200,7 @@ body
 .jog_lp_sp_vote
 {
   position: absolute;
-  bottom: 0px;
+  bottom: 8px;
 }
 .jog_lp_sp_vote_count
 {
@@ -229,6 +229,7 @@ body
   width: 58%;
   height: 100%;
   border: 0px solid blue; 
+  margin-top: 20px;
 }
 
 .jog_lp_sp_msg
