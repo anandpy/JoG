@@ -2,14 +2,14 @@ var JOG = {
 	"Events": {
 				init: function()
 				{
-					JOG.Events.inviteUsersOnVote();
+					//JOG.Events.inviteUsersOnVote();
                     JOG.Events.voteClick();
                     
 				},
 
 				inviteUsersOnVote: function()
 				{
-					$(".jog_data_posts_box_metric_vote_action").live("click",function(e){
+					//$(".jog_data_posts_box_metric_vote_action").live("click",function(e){
 						var $dataID = $("#jog_invite_user_for_signup"); 
 						$.fancybox({
                 			content: $dataID,
@@ -25,8 +25,8 @@ var JOG = {
                                       //TODO: Nothing to be done on close
                             }
                       	});
-						e.preventDefault();	
-					});	
+					//	e.preventDefault();	
+					//});	
 				},
 
 
@@ -35,7 +35,10 @@ var JOG = {
                 {
                     $(".jog_data_posts_box_metric_vote_action").live("click", function(e){
                         var $this = $(this);
-                        JogPostListController.postVoteUpdate($this);
+                        if (JOG.configs.page_title == "loggedin_user")
+                            JogPostListController.postVoteUpdate($this);
+                        else    
+                            JOG.Events.inviteUsersOnVote();
                         e.preventDefault();
                     });
                 },
