@@ -87,20 +87,26 @@ class HomeController < ApplicationController
 	    	@user_uid = current_user.srv_uid
 	    end
 
-	    Rails.logger.info("[HOME] [COMMON] current user id #{current_user.id}")
-	    Rails.logger.info("[HOME] [COMMON] current user data #{current_user}")
+	    #Rails.logger.info("[HOME] [COMMON] current user id #{current_user.id}")
+	    #Rails.logger.info("[HOME] [COMMON] current user data #{current_user}")
 
 	    response_json = {}
 
 	    #info = User.where(:srv_uid => current_user.srv_uid).first
 	    info = User.where(:srv_uid => @user_uid).first	
 
+        if !info
+        	Rails.logger.info("[HOME] [get_current_user_details] not legal uid, redirect to home")
+        	redirect_to '/'
+        end
+
 	    response_json[:name] = info["name"]
-	    response_json[:uid] = current_user.srv_uid 
+	    response_json[:uid] = @user_uid 
 	    response_json[:sex] = info["sex"]
 	    response_json[:pic] = info["pic"]
 	    response_json[:vote_count] = info["vote_count"]
-	    response_json[:auth_token] = current_user.access_token #session[:token]
+	    #response_json[:auth_token] = current_user.access_token #session[:token]
+	    response_json[:auth_token] = info["access_token"] #session[:token]
 	    response_json[:post_count] = info.posts.length
 
 	    Rails.logger.info("[HOME] [get_current_user_details] auth #{response_json}")
