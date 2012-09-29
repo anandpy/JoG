@@ -13,7 +13,7 @@ class PostController < ApplicationController
         Rails.logger.info("[HOME] [COMMON] current user id #{current_user.id}")
 		Rails.logger.info("[CNTRL] [POST] [CREATE] params #{params.inspect}") 
 
-        h = {:user_id => current_user.id,
+        h = {:user_id => current_user.srv_uid,
             :text => params["text"],
             :title => params["title"],
             :pic => params["imgSrc"]

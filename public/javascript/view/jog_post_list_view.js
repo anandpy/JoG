@@ -8,11 +8,12 @@ var JogDataPostListView = {
 	display: function(data)
 	{
 		var html = "";
-          
+        var user = JOGCache.getData("currentUserDetail",null);
+
         html = html + '<div id="jog_data_posts_list">';
 
         $.each(data, function(index, post) { 
-            html = html + JogDataPostListView.postHtml(post);
+            html = html + JogDataPostListView.postHtml(post,user);
         });
 
         html = html + '</div>';
@@ -29,9 +30,15 @@ var JogDataPostListView = {
 
     },
 
-    postHtml : function(data)
+    postHtml : function(data, user)
     {
         var imgHtml = (data.pic && data.pic !== "" ) ? '<img src="'+data.pic+'" align="right">' : "";  
+
+        var postHtml = (user && data.user_id == user.uid) ? "" : 
+                            '<div class="jog_data_posts_box_metric_vote_action" post-id="'+data.id+'">'+
+                                 '<img src="/resources/heart.png">'+
+                                 '<span>Vote</span>'+
+                            '</div>';
 
         var html = '<div class="jog_data_posts_box" data-post-id="'+data.id+'" data-post-userid="'+data.user_id+'">'+
                         '<h3 class="jog_data_posts_box_title">'+data.title +'</h3>'+
@@ -40,10 +47,7 @@ var JogDataPostListView = {
                             JOG.utils.truncateText(data.text, 300)+
                         '</div>'+
                         '<div class="jog_data_posts_box_metric">'+
-                            '<div class="jog_data_posts_box_metric_vote_action" post-id="'+data.id+'">'+
-                                 '<img src="/resources/heart.png">'+
-                                 '<span>Vote</span>'+
-                            '</div>'+
+                            postHtml+
                             '<div class="jog_data_posts_box_metric_vote_count" post-id="'+data.id+'"> '+data.vote_count+' Votes  </div>'+
                         '</div>'+
                         JogDataPostListView.socialShareHtml(data)+
