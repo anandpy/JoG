@@ -8,7 +8,7 @@ var JogUserListModel = {
                 type: 'GET',
                 dataType: 'json',
                 contentType: 'application/json',
-                data: $("#cookie_val").val(),
+                data: {"user_id" : JOG.configs.page_id},
                 success: function ( data ) {
                     console.log("fetch all user success"); 
                     console.log(data);

@@ -13,7 +13,7 @@ var JogPostEntryController = {
         var $title = $("#jog_data_post_entry_title");
         var $text = $("#jog_data_post_entry_text");
       
-        var valid = 0;
+        var valid = 1;
 
         postParam.title = $title.val();
         postParam.text = $text.val();

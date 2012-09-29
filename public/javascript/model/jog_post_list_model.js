@@ -7,7 +7,7 @@ var JogPostListModel = {
                 type: 'GET',
                 dataType: 'json',
                 contentType: 'application/json',
-                data: $("#cookie_val").val(),
+                data: {"user_id" : JOG.configs.page_id},
                 success: function ( data ) {
                     console.log("post data vote success"); 
                     console.log(data);

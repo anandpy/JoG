@@ -61,15 +61,26 @@ class PostController < ApplicationController
     ################################################################################################# 
     def get_posts
         Rails.logger.info("[CNTRL] [POST] [get_posts] enter #{params}");
-        if !user_signed_in? 
-          Rails.logger.error("[CNTRL] [POST] [get_posts] ****USER NOT LOGGED IN****")
-          render :json => {:error => "No user loggedin" }, :status => 400
+
+        if params[:user_id] != "nil"
+            @user_uid = User.find_by_srv_uid(params[:user_id])[:id]
+        else 
+            if !user_signed_in? 
+                Rails.logger.error("[CNTRL] [HOME] [get_current_user_details] ****USER NOT LOGGED IN****")
+                render :json => {:error => "No user loggedin" }, :status => 400
+            end
+            @user_uid = current_user.id
         end
 
-        #Rails.logger.info("[HOME] [COMMON] current user id #{session[:current_user_id]}")
-        Rails.logger.info("[POST] [COMMON] current user id #{current_user.id}")
+        #if !user_signed_in? 
+        #  Rails.logger.error("[CNTRL] [POST] [get_posts] ****USER NOT LOGGED IN****")
+        #  render :json => {:error => "No user loggedin" }, :status => 400
+        #end
 
-        response_json = Post.where(:user_id => current_user.id).order('id DESC') 
+        #Rails.logger.info("[HOME] [COMMON] current user id #{session[:current_user_id]}")
+        #Rails.logger.info("[POST] [COMMON] current user id #{current_user.id}")
+
+        response_json = Post.where(:user_id => @user_uid).order('id DESC') 
 
         if request.xhr?
             #Rails.logger.debug("[CNTRL] [HOME] [get_locations] Return:#{response_json.inspect}")

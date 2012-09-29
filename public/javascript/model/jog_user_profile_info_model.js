@@ -8,15 +8,14 @@ var JogUserProfileModel = {
                 type: 'GET',
                 dataType: 'json',
                 contentType: 'application/json',
-                data: $("#cookie_val").val(),
+                data: {"user_id" : JOG.configs.page_id},
                 success: function ( data ) {
                     console.log("back something"); 
                     console.log(data);
                     JOGCache.setData("currentUserDetail", data);
                     JogUserProfileInfoView.init(data);
-
-                    //irisCacheApiSETData("iris.friends", data);
-                    //$('#irisSearchOptionFriends').trigger('click');
+                    //JogFacebookController.init();
+                  
                 },error:function(XMLHttpRequest,textStatus, errorThrown){ 
                     // TODO: WHAT TO DO!!
                     console.log("error while retrieving user");

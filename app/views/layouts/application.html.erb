@@ -15,8 +15,10 @@
 </head>
 <body>
 <input type="hidden" id="jog_page_mode">
+<input type="hidden" id="jog_page_id">
 <script>
   $("#jog_page_mode").val("<%= @page_mode %>"); 
+  $("#jog_page_id").val("<%= @page_id %>");
 </script>
 <%= yield %>
 

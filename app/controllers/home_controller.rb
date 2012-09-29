@@ -30,10 +30,18 @@ class HomeController < ApplicationController
 
 		Rails.logger.info("[CNTRL] [HOME] [SHOW] #{request.env['PATH_INFO']}")
 
-		if request.env['PATH_INFO'] == "/leaderboard"
+		if request.env['PATH_INFO'].split("/")[1] == "leaderboard"
 			@page_mode = "leaderboard"
+			@page_id = "all"
+		elsif request.env['PATH_INFO'].split("/")[1] == "show"
+			@page_id = params[:id]
+			@page_mode = "user_show_page"
+		elsif request.env['PATH_INFO'].split("/")[1] == "post"
+			@page_mode = "post_show_page"
+			@page_id = params[:id]
 		else
-			@page_mode = "user_page"
+			@page_mode = "loggedin_user"
+			@page_id = "nil"
 		end
 
 		if !user_signed_in? 
@@ -62,17 +70,24 @@ class HomeController < ApplicationController
 	################################################################################################# 
 	def get_current_user_details
 	    Rails.logger.info("[HOME] [get_current_user_details] Entering #{params}")
-	  if !user_signed_in? 
-	    Rails.logger.error("[CNTRL] [HOME] [get_current_user_details] ****USER NOT LOGGED IN****")
-	    render :json => {:error => "No user loggedin" }, :status => 400
-	  end
+
+	    if params[:user_id] != "nil"
+	    	@user_uid = params[:user_id]
+	    else 
+	    	if !user_signed_in? 
+	      		Rails.logger.error("[CNTRL] [HOME] [get_current_user_details] ****USER NOT LOGGED IN****")
+	      		render :json => {:error => "No user loggedin" }, :status => 400
+	    	end
+	    	@user_uid = current_user.srv_uid
+	    end
 
 	    Rails.logger.info("[HOME] [COMMON] current user id #{current_user.id}")
 	    Rails.logger.info("[HOME] [COMMON] current user data #{current_user}")
 
 	    response_json = {}
 
-	    info = User.where(:srv_uid => current_user.srv_uid).first
+	    #info = User.where(:srv_uid => current_user.srv_uid).first
+	    info = User.where(:srv_uid => @user_uid).first	
 
 	    response_json[:name] = info["name"]
 	    response_json[:uid] = current_user.srv_uid 

@@ -14,6 +14,8 @@ JoG::Application.routes.draw do
   match '/update_vote' => 'post#update_vote'
   match '/create_post' => "post#create_post"
   match '/user' => 'home#show'
+  match '/show/:id' => 'home#show'
+  match '/post/:id' => 'post#view_post'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

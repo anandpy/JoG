@@ -1,34 +1,3 @@
-
-
-$(document).ready(function(){
-
-	JOG.Events.init();
-    JogLeaderboardPanelController.init();
-    if ( JOG.configs.page_title === "leaderboard") {
-    	
-    	$("#jog_leader_board_side_panel").hide();
-
-    } else {
-        
-        JogUserListModel.init();
-
-        JogPostEntryController.init();
-        
-        
-    	
-        JogPostEntryView.init();
-
-    	//JogDataPostListView.init(postList);
-
-    	JogUserProfileModel.init();
-
-        JogPostListModel.init();
-	
-    }
-});
-
-
-
 var JOG = {
 	"Events": {
 				init: function()
@@ -89,6 +58,7 @@ var JOG = {
 
 	"configs" :{
 			"page_title" : $("#jog_page_mode").val(),
+            "page_id" : $("#jog_page_id").val(),
 	},
 
     "urls" : {
@@ -106,5 +76,53 @@ var JOG = {
 
 
 };
+
+
+
+
+$(document).ready(function(){
+
+    JOG.Events.init();
+    JogLeaderboardPanelController.init();
+
+
+
+    switch (JOG.configs.page_title) {
+    case "leaderboard" :
+        $("#jog_leader_board_side_panel").hide();
+        break;
+    case "user_show_page" :
+        JogUserProfileModel.init();
+        JogUserListModel.init();
+        JogPostListModel.init();
+        break;
+    case "user_post_page" :
+        break;
+    default:
+        JogUserProfileModel.init();
+        
+        JogUserListModel.init();
+
+        JogPostEntryController.init();
+                
+        JogPostEntryView.init();
+
+        //JogDataPostListView.init(postList);
+
+        JogPostListModel.init();
+        break;
+
+    }
+    
+    /* 
+    if ( JOG.configs.page_title === "leaderboard") {
+        $("#jog_leader_board_side_panel").hide();
+
+
+    } else {
+        
+    
+    }*/
+});
 
 
