@@ -118,6 +118,7 @@
   width: 40%;
   height: 100%;
   border: 0px solid black;
+  position: relative;
 }
 
 
@@ -136,7 +137,11 @@
   background: #fff;
 }
 
-
+.jog_lb_vote
+{
+  position: absolute;
+  bottom: 0px;
+}
 .jog_lb_vote_count
 {
   width: auto;
@@ -194,6 +199,6 @@
 {
   width: 330px;
   height: 9px;
-  margin: 0 auto;
+  margin: 10px 0px 10px 0px;
   background-image: url("/images/lb_divider.png");
 }
