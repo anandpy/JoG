@@ -39,13 +39,9 @@ var JogLandingLeaderboardPanelController = {
 		$("#jog_lp_slide_prev").live("click", function(){
 			var $currentSlide = $("#jog_lp_slide_index_"+JogLandingLeaderboardPanelController.slideConfig.current);
 			$currentSlide.removeClass("no-class").addClass("slide_hide");
-
 			JogLandingLeaderboardPanelController.updatePrevSlideIndex();
-
 			var $currentSlide = $("#jog_lp_slide_index_"+JogLandingLeaderboardPanelController.slideConfig.current);
 			$currentSlide.removeClass("slide_hide").addClass("no-class");
-
-
 		});
 
 		$("#jog_lp_slide_next").live("click", function(){

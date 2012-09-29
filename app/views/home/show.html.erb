@@ -71,7 +71,24 @@
    }(document));
 </script>
 
+<script>
+  function preload(arrayOfImages) {
+    $(arrayOfImages).each(function(){
+        $('<img/>')[0].src = this;
+        // Alternatively you could use:
+        // (new Image()).src = this;
+    });
+  }
 
+  preload([
+    '../images/vector_smart_object.png',
+    '../images/header_bck.png',
+    '../images/ul11.png',
+    '../images/lb_divider.png',
+    '../images/msg1.png',
+  ]);
+
+</script>
 
 
 

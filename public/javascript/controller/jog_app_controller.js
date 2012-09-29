@@ -87,6 +87,8 @@ $(document).ready(function(){
     switch (JOG.configs.page_title) {
     case "leaderboard" :
         $("#jog_leader_board_side_panel").hide();
+        JogLeaderboardPanelController.init();
+
         break;
     case "user_show_page" :
         JogUserProfileModel.init();
