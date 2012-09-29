@@ -4,7 +4,7 @@ var JOG = {
 				{
 					JOG.Events.inviteUsersOnVote();
                     JOG.Events.voteClick();
-                    JogPostListController.init();
+                    
 				},
 
 				inviteUsersOnVote: function()
@@ -83,10 +83,7 @@ var JOG = {
 $(document).ready(function(){
 
     JOG.Events.init();
-    JogLeaderboardPanelController.init();
-
-
-
+  
     switch (JOG.configs.page_title) {
     case "leaderboard" :
         $("#jog_leader_board_side_panel").hide();
@@ -95,34 +92,28 @@ $(document).ready(function(){
         JogUserProfileModel.init();
         JogUserListModel.init();
         JogPostListModel.init();
+        JogPostListController.init();
+        JogLeaderboardPanelController.init();
         break;
     case "user_post_page" :
         break;
+    case "landing_page" :
+        JogLandingLeaderboardPanelController.init();
+        break;
     default:
+        JogLeaderboardPanelController.init();
         JogUserProfileModel.init();
-        
         JogUserListModel.init();
-
+        JogPostListController.init();    
         JogPostEntryController.init();
-                
         JogPostEntryView.init();
-
         //JogDataPostListView.init(postList);
-
         JogPostListModel.init();
         break;
 
     }
-    
-    /* 
-    if ( JOG.configs.page_title === "leaderboard") {
-        $("#jog_leader_board_side_panel").hide();
+   
 
-
-    } else {
-        
-    
-    }*/
 });
 
 

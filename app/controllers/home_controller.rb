@@ -7,7 +7,8 @@ class HomeController < ApplicationController
 	def index
 		Rails.logger.info("[CNTRL] [HOME] [INDEX] New App Main Page requested")
 
-		@page_mode = "iris_pg_mode_index" 
+		@page_mode = "landing_page"
+		@page_id = "all" 
 		if user_signed_in?
 		  Rails.logger.error("[CNTRL] [HOME] [INDEX] *****DETECTED USER***** #{current_user.inspect}")
 		  redirect_to current_user
