@@ -1,11 +1,16 @@
+<script>
+	$.backstretch("/images/landing.png");
+</script>
+
  <link rel="stylesheet" href="/css/landing.css" type="text/css" />
  <link rel="stylesheet" href="/css/common.css" type="text/css" />
 
  <div id="jog_lp_container">
- 	<h4>Joy of Giving</h4>
- 	<h5>Share your Joy of Giving and win free tickets</h5>
+ 	<div id="jog_lp1_msg1"></div>
+ 	<div id="jog_lp1_msg2"></div>	
  	<a href="<%= user_omniauth_authorize_path(:facebook) %>">
     	<div id="jog_fconnect">
     	</div>
-  </a>
+    </a>
+    <div id="jog_lp1_mmt_logo"></div>
  </div>

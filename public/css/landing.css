@@ -2,16 +2,50 @@
 body
 {
   font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
-  background-image: url("/resources/bck.gif");
+  background-image: url("/images/leaderboard_bck.png");
 }
 
 #jog_lp_container
 {
-  width: 1000px;
-  height: 500px;
-  border: 0px solid red;
+  width: 520px;
+  height: 590px;
   margin: 0 auto;
+  margin-top: 60px;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 8px;
+  position: relative;
 }
+
+#jog_lp1_msg1
+{
+  width: 481px;
+  height: 38px;
+  background-image: url("/images/the_joy_of_giving_main.png");
+  margin: 0 auto;
+  margin-top: 12px;
+}
+
+#jog_lp1_msg2
+{
+  width: 506px;
+  height: 98px;
+  background-image: url("/images/lp_msg2.png");
+  margin: 0 auto;
+  margin-top: 35px;
+  margin-bottom: 30px;
+}
+
+
+#jog_lp1_mmt_logo
+{
+  background-image: url("/images/vector_smart_object.png");
+  width: 103px;
+  height: 44px;
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+}
+
 
 #jog_lp_container h4
 {
