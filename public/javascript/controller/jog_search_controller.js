@@ -34,7 +34,8 @@ var JogSearchController = {
                     return JogSearchController.autocompleteHtml(item);
                 }
             }).result(function(e, item) {
-                  console.log("hi there");  
+                  console.log(item); 
+                  window.location = "http://whispering-plains-8323.herokuapp.com/show/"+item.srv_uid ;
                   
             }); 
     }, 
