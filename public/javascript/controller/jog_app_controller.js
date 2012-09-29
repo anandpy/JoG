@@ -106,12 +106,12 @@ $(document).ready(function(){
         JogLandingLeaderboardPanelController.init();
         break;
     default:
-        JogLeaderboardPanelController.init();
         JogUserProfileModel.init();
+        JogLeaderboardPanelController.init();
         JogUserListModel.init();
         JogPostListController.init();    
         JogPostEntryController.init();
-        JogPostEntryView.init();
+        
         //JogDataPostListView.init(postList);
         JogPostListModel.init();
         break;

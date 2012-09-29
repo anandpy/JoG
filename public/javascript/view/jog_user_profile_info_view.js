@@ -27,7 +27,7 @@ var JogUserProfileInfoView = {
                         '</div>'+
                     '</div>';
 
-        $("#jog_main_container").prepend(html);
+        //$("#jog_data_panel").prepend(html);
 
     },
 

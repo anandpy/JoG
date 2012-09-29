@@ -16,9 +16,13 @@ var JogPostEntryView = {
 	{
 		var html = "";
 
+        var user = JOGCache.getData("currentUserDetail",null);
         
         var html = '<div id="jog_data_post_entry">'+
-                        '<h3>Share your Joy of Giving, and participate in a chance to win free air ticket</h3>'+
+                        '<div id="jog_data_post_entry_user_view">'+
+                            '<img id="jog_data_post_entry_user_pic" src="'+user.pic+'">'+
+                            '<span id="jog_data_post_entry_user_name">'+user.name+'</span>'+
+                        '</div>'+
                         '<input type="text" id="jog_data_post_entry_title" placeholder="Title for the post" ></input>'+
                         '<h5 class="jog_data_post_entry_error">Title field cannot be empty </h5>'+
                         '<textarea id="jog_data_post_entry_text" style="resize: none;" cols="1000" rows="8" placeholder="Text" name="myTextarea"></textarea>'+
