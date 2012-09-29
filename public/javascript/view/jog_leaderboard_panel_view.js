@@ -57,7 +57,7 @@ var JogLeaderboardPanelView = {
 		
         html = '<div class="jog_leader_board_entry">' +
                     '<div class="jog_lb_user_name">'+
-                        '<h5>'+data.user_name+'</h5>'+
+                        '<a href="/show/'+data.user_uid+'"><h5>'+data.user_name+'</h5></a>'+
                         '<div class="jog_lb_ul1"></div>'+
                     '</div>'+
                     '<div class="jog_lb_content">'+

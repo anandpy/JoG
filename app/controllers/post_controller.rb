@@ -136,6 +136,7 @@ class PostController < ApplicationController
             user = p.user
             h[:user_name] = user[:name]
             h[:user_pic]  = user[:pic]
+            h[:user_uid] = user[:srv_uid]
             h[:post_title] = p[:title]
             h[:post_text] = p[:text]
             h[:post_pic]  = p[:pic]

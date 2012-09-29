@@ -34,8 +34,13 @@ class HomeController < ApplicationController
 			@page_mode = "leaderboard"
 			@page_id = "all"
 		elsif request.env['PATH_INFO'].split("/")[1] == "show"
-			@page_id = params[:id]
-			@page_mode = "user_show_page"
+			if user_signed_in? && current_user.srv_uid == params[:id]
+				@page_mode = "loggedin_user"
+				@page_id = "nil"
+			else
+				@page_id = params[:id]
+				@page_mode = "user_show_page"
+			end
 		elsif request.env['PATH_INFO'].split("/")[1] == "post"
 			@page_mode = "post_show_page"
 			@page_id = params[:id]
