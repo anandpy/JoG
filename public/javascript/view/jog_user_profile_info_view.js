@@ -3,7 +3,14 @@ var JogUserProfileInfoView = {
 	init:  function(data)
 	{
 		JogUserProfileInfoView.display(data);
+        JogUserProfileInfoView.displayPostMetric(data);
 	},
+
+    displayPostMetric: function(data)
+    {
+        var html = '<span>'+data.post_count+' Entries, '+data.vote_count+' Votes</span>';
+        $("#jog_user_metric").html(html);
+    },
 
 	display: function(data)
 	{

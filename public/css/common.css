@@ -77,6 +77,17 @@ a
   position: relative;
 }
 
+#jog_user_metric
+{
+  width: 395px;
+  height: 24px;
+  position: absolute;
+  left: 15px;
+  top: 8px;
+  color: #333;
+  font-size: 27px;
+}
+
 #jog_mmt_msg1
 {
   position: absolute;

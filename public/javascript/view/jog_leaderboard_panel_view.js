@@ -18,15 +18,6 @@ var JogLeaderboardPanelView = {
 		var html = "";
         var itr = 0;
         
-        function header()
-        {
-        	var headerHtml = "<h3>Leaderboard</h3>";
-        	return headerHtml;	
-        }
-
-        
-        html = html + header();
-
         html = html + '<div id="jog_leader_board_lists">';
 
         $.each(data, function(index, leader) { 
