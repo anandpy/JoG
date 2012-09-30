@@ -65,7 +65,9 @@ var JogLeaderboardPanelView = {
                             '</div>'+
                         '</div>'+
                         '<div class="jog_lb_rightside">'+
-                            '<div class="jog_lb_msg">'+JOG.utils.truncateText(data.post_title, 26)+'</div>'+
+                            '<a href="'+JOG.getPostLink(data.post_id)+'">'+
+                              '<div class="jog_lb_msg">'+JOG.utils.truncateText(data.post_title, 26)+'</div>'+
+                            '</a>'+ 
                             '<p class="jog_lb_text">'+JOG.utils.truncateText(data.post_text,120)+'</p>'+
                             '<div class="jog_lb_by">'+
                             '</div>'+
@@ -100,7 +102,8 @@ var JogLeaderboardView = {
         var html = "";
           
         html = html + '<div id="jog_data_posts_leaderboard_list">' +
-                      '<h1>Leaderboard</h1>';
+                        '<h1>Leaderboard</h1>';
+                      
 
         $.each(data, function(index, post) { 
             html = html + JogLeaderboardView.postHtml(post);
@@ -118,8 +121,10 @@ var JogLeaderboardView = {
 
         function userInfo()
         {
-            return '<img src="'+data.user_pic+'">'+
-                   '<span>'+data.user_name+'</span>';
+            return '<a href="'+JOG.getUserLink(data.user_uid)+'">'+
+                     '<img src="'+data.user_pic+'">'+
+                     '<span>'+data.user_name+'</span>'+
+                    '</a>'; 
         }
         var loggedinUser = JOGCache.getData("loggedinUserData", null);
 
@@ -143,7 +148,9 @@ var JogLeaderboardView = {
                         '</div>'+
                         '<div class="jog_data_posts_leaderboard_list_box_content">'+ 
                             '<h5>2nd Oct 2012</h5>'+
-                            '<h3 class="jog_data_posts_box_title">'+data.post_title +'</h3>'+
+                            '<a href="'+JOG.getPostLink(data.post_id)+'">'+
+                                '<h3 class="jog_data_posts_box_title">'+data.post_title +'</h3>'+
+                            '</a>'+
                             '<div class="jog_data_posts_box_content">'+
                                 imgHtml+
                                 JOG.utils.truncateText(data.post_text,truncateTextLength) +

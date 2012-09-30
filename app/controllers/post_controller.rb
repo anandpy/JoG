@@ -182,6 +182,7 @@ class PostController < ApplicationController
             h[:post_title] = p[:title]
             h[:post_text] = p[:text]
             h[:post_pic]  = p[:pic]
+            h[:post_id] = p[:id]
             h[:votes_count] = p[:votes_count]
             response_json << h
         end

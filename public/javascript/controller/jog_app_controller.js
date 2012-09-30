@@ -136,6 +136,16 @@ var JOG = {
         if (!loggedinUser)
             $("#jog_logout").hide();
     },    
+
+    getPostLink: function(id)
+    {
+        return JOG.appUrl()+"/post/"+id;
+    },
+
+    getUserLink: function(id)
+    {
+        return JOG.appUrl()+"/show/"+id;
+    },
 };
 
 
@@ -161,6 +171,7 @@ $(document).ready(function(){
         break;
     case "post_show_page" :
         JogUserSinglePostController.init();
+        JogLandingPostMetricController.init();
         break;
     case "landing_page" :
         JogLandingPostMetricController.init();

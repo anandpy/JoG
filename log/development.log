@@ -6861,3 +6861,450 @@ Processing by HomeController#show as
 [CNTRL] [HOME] [SHOW] Leaving
   Rendered home/show.html.erb within layouts/application (0.5ms)
 Completed 200 OK in 6ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/leaderboard" for 127.0.0.1 at 2012-09-30 23:07:36 +0530
+Processing by HomeController#show as HTML
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /leaderboard
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-09-30 23:07:37 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+[HOME] [COMMON] current user id 1
+[HOME] [COMMON] current user data #<User:0x0000000519e650>
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-09-30 23:07:37 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[36mPost Load (1.1ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10[0m
+  [1m[35mUser Load (2.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Completed 200 OK in 9ms (Views: 0.9ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/post_metric" for 127.0.0.1 at 2012-09-30 23:07:37 +0530
+Processing by PostController#get_jog_post_metric as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_jog_post_metric] enter {"controller"=>"post", "action"=>"get_jog_post_metric", "post"=>{}}
+  [1m[35m (0.7ms)[0m  SELECT COUNT(*) FROM "posts" 
+  [1m[36m (0.6ms)[0m  [1mSELECT SUM("posts"."votes_count") AS sum_id FROM "posts" [0m
+[CNTRL] [POST] [get_jog_post_metric] result {:post_count=>2, :votes_count=>2}
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/leaderboard" for 127.0.0.1 at 2012-09-30 23:12:56 +0530
+Processing by HomeController#show as HTML
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /leaderboard
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 6ms (Views: 5.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-09-30 23:13:21 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[35mPost Load (0.8ms)[0m  SELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Completed 200 OK in 5ms (Views: 0.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/post_metric" for 127.0.0.1 at 2012-09-30 23:13:21 +0530
+Processing by PostController#get_jog_post_metric as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_jog_post_metric] enter {"controller"=>"post", "action"=>"get_jog_post_metric", "post"=>{}}
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "posts" [0m
+  [1m[35m (0.4ms)[0m  SELECT SUM("posts"."votes_count") AS sum_id FROM "posts" 
+[CNTRL] [POST] [get_jog_post_metric] result {:post_count=>2, :votes_count=>2}
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/leaderboard" for 127.0.0.1 at 2012-09-30 23:13:37 +0530
+Processing by HomeController#show as HTML
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /leaderboard
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 6ms (Views: 6.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-09-30 23:13:37 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+[HOME] [COMMON] current user id 1
+[HOME] [COMMON] current user data #<User:0x00000004e6a240>
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 5ms (Views: 0.4ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-09-30 23:13:37 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[35mPost Load (0.8ms)[0m  SELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Completed 200 OK in 7ms (Views: 0.5ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/post_metric" for 127.0.0.1 at 2012-09-30 23:13:37 +0530
+Processing by PostController#get_jog_post_metric as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_jog_post_metric] enter {"controller"=>"post", "action"=>"get_jog_post_metric", "post"=>{}}
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "posts" [0m
+  [1m[35m (0.5ms)[0m  SELECT SUM("posts"."votes_count") AS sum_id FROM "posts" 
+[CNTRL] [POST] [get_jog_post_metric] result {:post_count=>2, :votes_count=>2}
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/post/undefined" for 127.0.0.1 at 2012-09-30 23:13:43 +0530
+Processing by HomeController#show as HTML
+  Parameters: {"id"=>"undefined"}
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /post/undefined
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 7ms (Views: 6.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/fetch_single_post?post_id=undefined" for 127.0.0.1 at 2012-09-30 23:13:43 +0530
+Processing by PostController#get_post_detail as JSON
+  Parameters: {"post_id"=>"undefined", "post"=>{}}
+[CNTRL] [POST] [get_post_detail] enter {"post_id"=>"undefined", "controller"=>"post", "action"=>"get_post_detail", "post"=>{}}
+  [1m[36mPost Load (0.8ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 0[0m
+Completed 500 Internal Server Error in 3ms
+
+NoMethodError (undefined method `user' for nil:NilClass):
+  app/controllers/post_controller.rb:79:in `get_post_detail'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.0ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.5ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (8.9ms)
+
+
+Started GET "/leaderboard" for 127.0.0.1 at 2012-09-30 23:16:48 +0530
+Processing by HomeController#show as HTML
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /leaderboard
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-09-30 23:17:02 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[35mPost Load (0.7ms)[0m  SELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Completed 200 OK in 5ms (Views: 0.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/post_metric" for 127.0.0.1 at 2012-09-30 23:17:02 +0530
+Processing by PostController#get_jog_post_metric as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_jog_post_metric] enter {"controller"=>"post", "action"=>"get_jog_post_metric", "post"=>{}}
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "posts" [0m
+  [1m[35m (0.4ms)[0m  SELECT SUM("posts"."votes_count") AS sum_id FROM "posts" 
+[CNTRL] [POST] [get_jog_post_metric] result {:post_count=>2, :votes_count=>2}
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/post/undefined" for 127.0.0.1 at 2012-09-30 23:17:04 +0530
+Processing by HomeController#show as HTML
+  Parameters: {"id"=>"undefined"}
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /post/undefined
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 7ms (Views: 6.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/fetch_single_post?post_id=undefined" for 127.0.0.1 at 2012-09-30 23:17:04 +0530
+Processing by PostController#get_post_detail as JSON
+  Parameters: {"post_id"=>"undefined", "post"=>{}}
+[CNTRL] [POST] [get_post_detail] enter {"post_id"=>"undefined", "controller"=>"post", "action"=>"get_post_detail", "post"=>{}}
+  [1m[36mPost Load (0.8ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 0[0m
+Completed 500 Internal Server Error in 2ms
+
+NoMethodError (undefined method `user' for nil:NilClass):
+  app/controllers/post_controller.rb:79:in `get_post_detail'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.8ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.9ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.2ms)
+
+
+Started GET "/post/undefined" for 127.0.0.1 at 2012-09-30 23:18:07 +0530
+Processing by HomeController#show as HTML
+  Parameters: {"id"=>"undefined"}
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /post/undefined
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 7ms (Views: 6.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/fetch_single_post?post_id=undefined" for 127.0.0.1 at 2012-09-30 23:18:07 +0530
+Processing by PostController#get_post_detail as JSON
+  Parameters: {"post_id"=>"undefined", "post"=>{}}
+[CNTRL] [POST] [get_post_detail] enter {"post_id"=>"undefined", "controller"=>"post", "action"=>"get_post_detail", "post"=>{}}
+  [1m[35mPost Load (0.8ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 0
+Completed 500 Internal Server Error in 3ms
+
+NoMethodError (undefined method `user' for nil:NilClass):
+  app/controllers/post_controller.rb:79:in `get_post_detail'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.4ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.9ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.1ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-09-30 23:18:17 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+[HOME] [COMMON] current user id 1
+[HOME] [COMMON] current user data #<User:0x00000005079b58>
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.7ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 7ms (Views: 0.4ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/leaderboard" for 127.0.0.1 at 2012-09-30 23:18:24 +0530
+Processing by HomeController#show as HTML
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /leaderboard
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 8ms (Views: 7.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-09-30 23:18:24 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Completed 200 OK in 7ms (Views: 0.7ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/post_metric" for 127.0.0.1 at 2012-09-30 23:18:24 +0530
+Processing by PostController#get_jog_post_metric as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_jog_post_metric] enter {"controller"=>"post", "action"=>"get_jog_post_metric", "post"=>{}}
+  [1m[36m (0.7ms)[0m  [1mSELECT COUNT(*) FROM "posts" [0m
+  [1m[35m (0.5ms)[0m  SELECT SUM("posts"."votes_count") AS sum_id FROM "posts" 
+[CNTRL] [POST] [get_jog_post_metric] result {:post_count=>2, :votes_count=>2}
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/show/1452186072" for 127.0.0.1 at 2012-09-30 23:18:32 +0530
+Processing by HomeController#show as HTML
+  Parameters: {"id"=>"1452186072"}
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /show/1452186072
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 9ms (Views: 6.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-09-30 23:18:32 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 7ms (Views: 0.4ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/fetchAllUser?user_id=nil" for 127.0.0.1 at 2012-09-30 23:18:32 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Completed 200 OK in 5ms (Views: 2.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-09-30 23:18:32 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mPost Load (0.7ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC[0m
+Completed 200 OK in 6ms (Views: 2.4ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/post/undefined" for 127.0.0.1 at 2012-09-30 23:18:37 +0530
+Processing by HomeController#show as HTML
+  Parameters: {"id"=>"undefined"}
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /post/undefined
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 7ms (Views: 6.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/fetch_single_post?post_id=undefined" for 127.0.0.1 at 2012-09-30 23:18:37 +0530
+Processing by PostController#get_post_detail as JSON
+  Parameters: {"post_id"=>"undefined", "post"=>{}}
+[CNTRL] [POST] [get_post_detail] enter {"post_id"=>"undefined", "controller"=>"post", "action"=>"get_post_detail", "post"=>{}}
+  [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 0
+Completed 500 Internal Server Error in 2ms
+
+NoMethodError (undefined method `user' for nil:NilClass):
+  app/controllers/post_controller.rb:79:in `get_post_detail'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.9ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.8ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.2ms)
+
+
+Started GET "/leaderboard" for 127.0.0.1 at 2012-09-30 23:20:01 +0530
+Processing by HomeController#show as HTML
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /leaderboard
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 7ms (Views: 6.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-09-30 23:20:14 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[36mPost Load (1.2ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Completed 200 OK in 8ms (Views: 0.9ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/post_metric" for 127.0.0.1 at 2012-09-30 23:20:14 +0530
+Processing by PostController#get_jog_post_metric as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_jog_post_metric] enter {"controller"=>"post", "action"=>"get_jog_post_metric", "post"=>{}}
+  [1m[35m (0.7ms)[0m  SELECT COUNT(*) FROM "posts" 
+  [1m[36m (0.7ms)[0m  [1mSELECT SUM("posts"."votes_count") AS sum_id FROM "posts" [0m
+[CNTRL] [POST] [get_jog_post_metric] result {:post_count=>2, :votes_count=>2}
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/leaderboard" for 127.0.0.1 at 2012-09-30 23:21:14 +0530
+Processing by HomeController#show as HTML
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /leaderboard
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 7ms (Views: 5.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-09-30 23:21:16 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+[HOME] [COMMON] current user id 1
+[HOME] [COMMON] current user data #<User:0x000000050b5f40>
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 60ms (Views: 0.5ms | ActiveRecord: 8.0ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-09-30 23:21:16 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Completed 200 OK in 9ms (Views: 0.9ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/post_metric" for 127.0.0.1 at 2012-09-30 23:21:16 +0530
+Processing by PostController#get_jog_post_metric as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_jog_post_metric] enter {"controller"=>"post", "action"=>"get_jog_post_metric", "post"=>{}}
+  [1m[35m (0.7ms)[0m  SELECT COUNT(*) FROM "posts" 
+  [1m[36m (0.5ms)[0m  [1mSELECT SUM("posts"."votes_count") AS sum_id FROM "posts" [0m
+[CNTRL] [POST] [get_jog_post_metric] result {:post_count=>2, :votes_count=>2}
+Completed 200 OK in 4ms (Views: 0.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/post/2" for 127.0.0.1 at 2012-09-30 23:21:39 +0530
+Processing by HomeController#show as HTML
+  Parameters: {"id"=>"2"}
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /post/2
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/fetch_single_post?post_id=2" for 127.0.0.1 at 2012-09-30 23:21:39 +0530
+Processing by PostController#get_post_detail as JSON
+  Parameters: {"post_id"=>"2", "post"=>{}}
+[CNTRL] [POST] [get_post_detail] enter {"post_id"=>"2", "controller"=>"post", "action"=>"get_post_detail", "post"=>{}}
+  [1m[35mPost Load (0.8ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 2
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+[CNTRL] [POST] [get_post_detail] detail:{:user_name=>"Samarth Deo", :user_pic=>"http://graph.facebook.com/1452186072/picture?type=large", :user_uid=>"1452186072", :post_title=>"hi there my second post", :post_text=>"my second post", :post_pic=>nil, :votes_count=>1}
+Completed 200 OK in 5ms (Views: 0.4ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/post/2" for 127.0.0.1 at 2012-09-30 23:22:49 +0530
+Processing by HomeController#show as HTML
+  Parameters: {"id"=>"2"}
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /post/2
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/fetch_single_post?post_id=2" for 127.0.0.1 at 2012-09-30 23:23:01 +0530
+Processing by PostController#get_post_detail as JSON
+  Parameters: {"post_id"=>"2", "post"=>{}}
+[CNTRL] [POST] [get_post_detail] enter {"post_id"=>"2", "controller"=>"post", "action"=>"get_post_detail", "post"=>{}}
+  [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 2
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+[CNTRL] [POST] [get_post_detail] detail:{:user_name=>"Samarth Deo", :user_pic=>"http://graph.facebook.com/1452186072/picture?type=large", :user_uid=>"1452186072", :post_title=>"hi there my second post", :post_text=>"my second post", :post_pic=>nil, :votes_count=>1}
+Completed 200 OK in 7ms (Views: 0.6ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/post_metric" for 127.0.0.1 at 2012-09-30 23:23:01 +0530
+Processing by PostController#get_jog_post_metric as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_jog_post_metric] enter {"controller"=>"post", "action"=>"get_jog_post_metric", "post"=>{}}
+  [1m[35m (0.8ms)[0m  SELECT COUNT(*) FROM "posts" 
+  [1m[36m (0.6ms)[0m  [1mSELECT SUM("posts"."votes_count") AS sum_id FROM "posts" [0m
+[CNTRL] [POST] [get_jog_post_metric] result {:post_count=>2, :votes_count=>2}
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.4ms)

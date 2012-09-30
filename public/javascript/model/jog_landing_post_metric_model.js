@@ -14,7 +14,7 @@ var JogLandingPostMetricModel = {
                     console.log("post metric success"); 
                     console.log(data);
                     
-                    JOGCache.setData("leaderboardPosts", data);
+                    JOGCache.setData("leaderboardPostsMetric", data);
                     JogLandingPostMetricModel.updateView(data);
                     
                 },error:function(XMLHttpRequest,textStatus, errorThrown){ 
