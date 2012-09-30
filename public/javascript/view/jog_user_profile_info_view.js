@@ -8,7 +8,7 @@ var JogUserProfileInfoView = {
 
     displayPostMetric: function(data)
     {
-        var html = '<span>'+data.post_count+' Entries, '+data.vote_count+' Votes</span>';
+        var html = '<span>'+data.post_count+' Entries, '+data.votes_count+' Votes</span>';
         $("#jog_user_metric").html(html);
     },
 
