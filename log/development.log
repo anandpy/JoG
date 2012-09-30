@@ -6639,3 +6639,225 @@ Processing by HomeController#show as HTML
 [CNTRL] [HOME] [SHOW] Leaving
   Rendered home/show.html.erb within layouts/application (0.7ms)
 Completed 200 OK in 6ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2012-09-30 22:06:50 +0530
+Processing by Devise::SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-30 22:06:50 +0530
+Processing by HomeController#index as HTML
+[CNTRL] [HOME] [INDEX] New App Main Page requested
+[CNTRL] [HOME] [INDEX] ****USER NOT LOGGED IN****
+  Rendered home/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/images/lp_msg1.png" for 127.0.0.1 at 2012-09-30 22:06:50 +0530
+
+ActionController::RoutingError (No route matches [GET] "/images/lp_msg1.png"):
+  actionpack (3.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.1) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.1) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.1) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/static.rb:53:in `call'
+  railties (3.2.1) lib/rails/engine.rb:479:in `call'
+  railties (3.2.1) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.1) lib/rails/rack/log_tailer.rb:14:in `call'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  rack (1.4.1) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.1) lib/rack/server.rb:265:in `start'
+  railties (3.2.1) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.1) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.1) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.1) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/images/the_joy_of_giving" for 127.0.0.1 at 2012-09-30 22:06:50 +0530
+
+ActionController::RoutingError (No route matches [GET] "/images/the_joy_of_giving"):
+  actionpack (3.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.1) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.1) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.1) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/static.rb:53:in `call'
+  railties (3.2.1) lib/rails/engine.rb:479:in `call'
+  railties (3.2.1) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.1) lib/rails/rack/log_tailer.rb:14:in `call'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  rack (1.4.1) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.1) lib/rack/server.rb:265:in `start'
+  railties (3.2.1) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.1) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.1) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.1) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2012-09-30 22:09:00 +0530
+Processing by Devise::SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-30 22:09:00 +0530
+Processing by HomeController#index as HTML
+[CNTRL] [HOME] [INDEX] New App Main Page requested
+[CNTRL] [HOME] [INDEX] ****USER NOT LOGGED IN****
+  Rendered home/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/images/lp_msg1.png" for 127.0.0.1 at 2012-09-30 22:09:01 +0530
+
+ActionController::RoutingError (No route matches [GET] "/images/lp_msg1.png"):
+  actionpack (3.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.1) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.1) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.1) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/static.rb:53:in `call'
+  railties (3.2.1) lib/rails/engine.rb:479:in `call'
+  railties (3.2.1) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.1) lib/rails/rack/log_tailer.rb:14:in `call'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  rack (1.4.1) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.1) lib/rack/server.rb:265:in `start'
+  railties (3.2.1) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.1) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.1) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.1) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/images/the_joy_of_giving" for 127.0.0.1 at 2012-09-30 22:09:01 +0530
+
+ActionController::RoutingError (No route matches [GET] "/images/the_joy_of_giving"):
+  actionpack (3.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.1) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.1) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.1) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/static.rb:53:in `call'
+  railties (3.2.1) lib/rails/engine.rb:479:in `call'
+  railties (3.2.1) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.1) lib/rails/rack/log_tailer.rb:14:in `call'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  rack (1.4.1) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.1) lib/rack/server.rb:265:in `start'
+  railties (3.2.1) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.1) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.1) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.1) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/users/auth/facebook" for 127.0.0.1 at 2012-09-30 22:09:03 +0530
+
+
+Started GET "/users/auth/facebook/callback?state=deaf80952255d3a80759e548ebc44d58db308dec3128d745&code=AQCnswhPAz5h0WhSdVaeY27Iuk-lHneOXsYU0F0tqm4wuZQBctuIEyo1bMxjPRY6S8cioPUqrsYTo45XpycRlbNBumzcQNdRawnFmZCLPW9Yo6TtV9mrLzwzqg8NrhSBUn0JPBvKl4RtB9FXIRJLi97Pev8Ym3LVBzMSKGgWp19b5d0n_COJf1m2xSSo_GQJHtx_7TkgcXAErYvNb4witE1y" for 127.0.0.1 at 2012-09-30 22:09:05 +0530
+Processing by Users::OmniauthCallbacksController#facebook as HTML
+  Parameters: {"state"=>"deaf80952255d3a80759e548ebc44d58db308dec3128d745", "code"=>"AQCnswhPAz5h0WhSdVaeY27Iuk-lHneOXsYU0F0tqm4wuZQBctuIEyo1bMxjPRY6S8cioPUqrsYTo45XpycRlbNBumzcQNdRawnFmZCLPW9Yo6TtV9mrLzwzqg8NrhSBUn0JPBvKl4RtB9FXIRJLi97Pev8Ym3LVBzMSKGgWp19b5d0n_COJf1m2xSSo_GQJHtx_7TkgcXAErYvNb4witE1y"}
+[CNTRL] [USERS] [OmniauthCallbacks] [FACEBOOK] Entering
+[MODEL] [USER] [CREATE_USER] Entering {:srv=>"facebook", :srv_uid=>"1452186072", :access_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :name=>"Samarth Deo", :pic=>"http://graph.facebook.com/1452186072/picture?type=square", :location=>"Bangalore, India", :sex=>"male", :username=>["samarth.deo1", "male"]}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' AND "users"."srv" = 'facebook' LIMIT 1[0m
+[MODEL] [USER] [CREATE_USER] signed_in
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."srv_uid" = '1452186072' AND "users"."id" != 1 AND "users"."srv" = 'facebook') LIMIT 1[0m
+  [1m[35m (0.7ms)[0m  UPDATE "users" SET "username" = '---
+- samarth.deo1
+- male
+', "updated_at" = '2012-09-30 16:39:19.753445' WHERE "users"."id" = 1
+  [1m[36m (18.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+[MODEL] [USER] [CREATE_USER] Leaving
+[CNTRL] [USERS] [OmniauthCallbacks] [FACEBOOK] Leaving #<User id: 1, srv: "facebook", srv_uid: "1452186072", access_token: "AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0Z...", username: "---\n- samarth.deo1\n- male\n", name: "Samarth Deo", pic: "http://graph.facebook.com/1452186072/picture?type=l...", sex: "male", votes_count: 0, remember_created_at: nil, sign_in_count: 3, current_sign_in_at: "2012-09-30 16:29:12", last_sign_in_at: "2012-09-30 16:21:49", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", authentication_token: nil, created_at: "2012-09-30 14:25:14", updated_at: "2012-09-30 16:39:19">
+[CNTRL] [APPLICATION] [aw_sign_in] Entering
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.5ms)[0m  UPDATE "users" SET "last_sign_in_at" = '2012-09-30 16:29:12.041638', "current_sign_in_at" = '2012-09-30 16:39:19.777266', "sign_in_count" = 4, "updated_at" = '2012-09-30 16:39:19.778080' WHERE "users"."id" = 1
+  [1m[36m (11.2ms)[0m  [1mCOMMIT[0m
+[CNTRL] [APPLICATION] [aw_sign_in] Entering
+Redirected to http://localhost:3000/user.1
+Completed 302 Found in 45ms (ActiveRecord: 32.9ms)
+
+
+Started GET "/user.1" for 127.0.0.1 at 2012-09-30 22:09:19 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.1
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 6ms (Views: 6.0ms | ActiveRecord: 0.0ms)

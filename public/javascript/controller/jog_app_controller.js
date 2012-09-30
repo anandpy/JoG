@@ -135,9 +135,7 @@ var JOG = {
         var loggedinUser = JOGCache.getData("loggedinUserData", null);
         if (!loggedinUser)
             $("#jog_logout").hide();
-
     },    
-
 };
 
 

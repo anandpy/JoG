@@ -15,7 +15,7 @@ var JogPostEntryModel = {
                 success: function ( data ) {
                     console.log(data);
                     JogPostEntryView.init();
-                    //JogPostEntryModel.postToFBWall(data);
+                    JogPostEntryModel.postToFBWall(data);
                     JogDataPostListView.addPostEntry(data, JOGCache.getData("currentUserDetail",null));
                 },error:function(XMLHttpRequest,textStatus, errorThrown){ 
                     // TODO: WHAT TO DO!!
