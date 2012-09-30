@@ -47,7 +47,7 @@ var JogUserSinglePostView = {
                             '</div>'+
                             '<div class="jog_data_posts_leaderboard_list_box_metric">'+
                                 '<div class="jog_data_posts_box_metric_vote_action"> Vote </div>'+
-                                '<div class="jog_data_posts_box_metric_vote_count"> '+data.vote_count+' Votes  </div>'+
+                                '<div class="jog_data_posts_box_metric_vote_count"> '+data.votes_count+' Votes  </div>'+
                             '</div>'+
                         '</div>'+
                     '</div>';

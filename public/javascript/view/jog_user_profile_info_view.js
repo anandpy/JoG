@@ -22,7 +22,7 @@ var JogUserProfileInfoView = {
                             '<span>'+data.name+'</span>'+
                         '</div>'+
                         '<div id="jog_user_profile_post_count">'+
-                            '<span id="jog_user_profile_post_count_num">'+data.vote_count+'</span>'+
+                            '<span id="jog_user_profile_post_count_num">'+data.votes_count+'</span>'+
                             '<span> Posts</span>'+
                         '</div>'+
                     '</div>';

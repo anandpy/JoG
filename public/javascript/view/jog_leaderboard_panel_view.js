@@ -60,7 +60,7 @@ var JogLeaderboardPanelView = {
                                 '<img src="'+data.user_pic+'">'+
                             '</div>'+
                             '<div class="jog_lb_vote">'+
-                                '<div class="jog_lb_vote_count">'+data.vote_count+' Votes</div>'+
+                                '<div class="jog_lb_vote_count">'+data.votes_count+' Votes</div>'+
                                 '<div class="jog_lb_vote_action"></div>'+
                             '</div>'+
                         '</div>'+
@@ -128,7 +128,7 @@ var JogLeaderboardView = {
             
             var html = (loggedinUser && data.user_uid == loggedinUser.uid) ? "" : '<div data-value="'+data.post_id+'" class="jog_leaderboard_list_post_list_vote_action jog_lb_vote_action"></div>';
             return '<div class="jog_data_post_vote_box">'+
-                           '<div class="jog_js_leaderboard_vote_count jog_lb_vote_count" post-id="'+data.post_id+'">'+data.vote_count+' Votes</div>'+
+                           '<div class="jog_js_leaderboard_vote_count jog_lb_vote_count" post-id="'+data.post_id+'">'+data.votes_count+' Votes</div>'+
                             html+
                        '</div>';  
 
@@ -151,7 +151,7 @@ var JogLeaderboardView = {
                             postHtml()+
                             /*'<div class="jog_data_posts_leaderboard_list_box_metric">'+
                                 '<div class="jog_data_posts_box_metric_vote_action"> Vote </div>'+
-                                '<div class="jog_data_posts_box_metric_vote_count"> '+data.vote_count+' Votes  </div>'+
+                                '<div class="jog_data_posts_box_metric_vote_count"> '+data.votes_count+' Votes  </div>'+
                             '</div>'+*/
                         '</div>'+
                     '</div>';
@@ -163,14 +163,14 @@ var JogLeaderboardView = {
     {
         var $this = $(".jog_js_leaderboard_vote_count[post-id="+data.id+"]");
      
-        var text = data.vote_count + " Votes";
+        var text = data.votes_count + " Votes";
 
         $this.html(text);
         /* FIXME : BAD HACK, we need to have client cache updated in effective manner */
         var dataList = JOGCache.getData(currentUserPosts, null);
         $.each(dataList, function(index, list){
             if (data.id === list.id) {
-                list.vote_count = data.vote_count;
+                list.vote_count = data.votes_count;
                 return false;
             }
         });

@@ -46,7 +46,7 @@ var JogDataPostListView = {
             
             var html = (loggedinUser && data.user_uid == loggedinUser.uid) ? "" : '<div data-value="'+data.id+'" class="jog_data_post_list_vote_action jog_lb_vote_action"></div>';
             return '<div class="jog_data_post_vote_box">'+
-                           '<div class="jog_lb_vote_count" post-id="'+data.id+'">'+data.vote_count+' Votes</div>'+
+                           '<div class="jog_lb_vote_count" post-id="'+data.id+'">'+data.votes_count+' Votes</div>'+
                            //'<div data-value="'+data.id+'" class="jog_data_post_list_vote_action jog_lb_vote_action"></div>'+
                            html+
                        '</div>';  
@@ -74,7 +74,7 @@ var JogDataPostListView = {
                         '</div>'+
                         '<div class="jog_data_posts_box_metric">'+
                             postHtml()+
-                            //'<div class="jog_data_posts_box_metric_vote_count" post-id="'+data.id+'"> '+data.vote_count+' Votes  </div>'+
+                            //'<div class="jog_data_posts_box_metric_vote_count" post-id="'+data.id+'"> '+data.votes_count+' Votes  </div>'+
                         '</div>'+
                         deletePostHtml()+
                         JogDataPostListView.socialShareHtml(data)+
@@ -87,7 +87,7 @@ var JogDataPostListView = {
     {
         var $this = $(".jog_lb_vote_count[post-id="+data.id+"]");
      
-        var text = data.vote_count + " Votes";
+        var text = data.votes_count + " Votes";
 
         $this.html(text);
 
@@ -95,7 +95,7 @@ var JogDataPostListView = {
         var dataList = JOGCache.getData(currentUserPosts, null);
         $.each(dataList, function(index, list){
             if (data.id === list.id) {
-                list.vote_count = data.vote_count;
+                list.vote_count = data.votes_count;
                 return false;
             }
         });
@@ -150,7 +150,7 @@ var JogDataPostDetailView = {
                         '</div>'+
                         '<div id="jog_data_posts_detail_box_metric">'+
                             '<div class="jog_data_posts_box_metric_vote_action"> Vote </div>'+
-                            '<div class="jog_data_posts_box_metric_vote_count"> '+data.vote_count+' Votes  </div>'+
+                            '<div class="jog_data_posts_box_metric_vote_count"> '+data.votes_count+' Votes  </div>'+
                         '</div>'+
                         JogDataPostListView.socialShareHtml(data)+
                    '</div>';
