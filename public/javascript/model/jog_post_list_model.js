@@ -71,10 +71,12 @@ var JogPostListModel = {
                     //$('#irisSearchOptionFriends').trigger('click');
                 },error:function(XMLHttpRequest,textStatus, errorThrown){ 
                     // TODO: WHAT TO DO!!
-                    console.log("error while retrieving user");
+                    JogPostListController.restrainDoubleVoting();
                 }
           });
 	},
+
+
 
     updateVoteCountView: function(data)
     {

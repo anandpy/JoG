@@ -251,3 +251,15 @@ a
 {
   display:none;
 }
+
+#jog_double_vote_msg
+{
+  display: none;
+}
+
+#jog_double_vote_msg span
+{
+  font-size: 13px;
+  color: #333;
+  text-shadow: 0px 1px 1px #666;
+}

@@ -128,7 +128,7 @@ var JOG = {
 
     appUrl: function()
     {
-        $("#jog_url").val();
+        return $("#jog_url").val();
     },
 
 

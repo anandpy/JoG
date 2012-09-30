@@ -38,7 +38,7 @@ class PostController < ApplicationController
     def update_vote
         Rails.logger.info("[POST][CNTL][update_vote] Entering #{params.inspect}")
         
-        raise "wrong number of parameters" if params[:user_i].blank? or params[:post_id].blank?
+        raise "wrong number of parameters" if params[:user_id].blank? or params[:post_id].blank?
 
         post = Post.where(:id => params["post_id"].to_i).first
         Rails.logger.info("[POST] [update_vote] update #{post.inspect}")
@@ -48,8 +48,9 @@ class PostController < ApplicationController
             
             Rails.logger.info("[POST] [update_vote] update #{post.inspect}")
 
-            post.reload!
-            render :json => post, :status => 200
+            p = Post.where(:id => params["post_id"].to_i).first
+            #post.reload!
+            render :json => p, :status => 200
         else
             render :json => {:error => "No post found" }, :status => 400
         end 

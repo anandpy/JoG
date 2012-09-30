@@ -30,6 +30,25 @@ var JogPostListController = {
 
     },
 
+    restrainDoubleVoting: function()
+    {
+        var $dataID = $("#jog_double_vote_msg"); 
+        $.fancybox({
+                content: $dataID,
+                'padding': 4, 
+                'autoSize': false, 
+                'height' : 'auto', 
+                'width' : 'auto',
+                openSpeed: 'normal',
+                closeBtn: true,
+                autoSize: true,
+                topRatio: 0,
+                beforeClose:function() {
+                   //TODO: Nothing to be done on close
+                }
+        });
+    },
+
 	postVoteUpdate: function(postID)
 	{
 
