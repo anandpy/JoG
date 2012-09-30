@@ -25,8 +25,10 @@ var JogUserSinglePostView = {
 
         function userInfo()
         {
-            return '<img src="'+data.user_pic+'">'+
-                   '<span>'+data.user_name+'</span>';
+            return '<a href="/show/'+data.user_uid+'">'+
+                        '<img src="'+data.user_pic+'">'+
+                        '<span>'+data.user_name+'</span>'
+                    '</a>';
         }
 
         var truncateTextLength = (data.post_pic && data.post_pic !== "" ) ? 200 : 300; ;

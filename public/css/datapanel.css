@@ -140,18 +140,26 @@
   width: 30%;
   height: 100px;
   border: 0px solid red;
-  float: left;
+  position: absolute;
+  top: -44px;
+  left: 50px;
 }
 
 .jog_data_posts_leaderboard_list_user_info img
 {
   max-height: 70px;
+  margin-right: 8px;
+  border: 1px solid #CCC;
+  padding: 2px;
+  background: white;
 }
 
 .jog_data_posts_leaderboard_list_user_info span
 {
   vertical-align: middle;
   font-size: 14px;
+  color: #333;
+  text-shadow: 0px 1px 1px #666;
 }
 
 
