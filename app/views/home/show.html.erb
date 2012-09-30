@@ -149,10 +149,13 @@
 <img src="/images/mmt_logo.png" id="jog_mmt_logo">
 
 <div id="jog_invite_user_for_signup">
-<h4>Join us to share your joy of giving</h4>
-<h5>and Win a chance to grab free air ticket</h5>
-<img id="jog_invite_mmt_logo" src="/resources/mmtlogo.png">
-<a href="http://whispering-plains-8323.herokuapp.com"><div id="jog_invite_redirect">GET STARTED</div></a>
+  <h4>Join us to share your joy of giving</h4>
+  <h5>and Win a chance to grab free air ticket</h5>
+  <img id="jog_invite_mmt_logo" src="/images/vector_smart_object.png">
+  <!--<a href="http://whispering-plains-8323.herokuapp.com"><div id="jog_invite_redirect">GET STARTED</div></a>-->
+  <a href="<%= user_omniauth_authorize_path(:facebook) %>">
+      <div id="jog_fconnect"></div>
+  </a>
 </div>
 
 <div id="jog_detail_post_view_modal">

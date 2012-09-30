@@ -14,7 +14,7 @@ var JOG = {
 						var $dataID = $("#jog_invite_user_for_signup"); 
 						$.fancybox({
                 			content: $dataID,
-                			'padding': 0, 
+                			'padding': 10, 
                 			'autoSize': false, 
                 			'height' : 'auto', 
                 			'width' : 'auto',
@@ -29,8 +29,6 @@ var JOG = {
 					//	e.preventDefault();	
 					//});	
 				},
-
-
 
                 voteClick: function()
                 {
@@ -72,15 +70,16 @@ var JOG = {
                 initLoggedInUser: function()
                 {
                     $.ajax({
+                        async: false,
                         url: JOG.urls.loggedinUser,
                         type: 'GET',
                         dataType: 'json',
                         contentType: 'application/json',
-                        data: '',
                         success: function ( data ) {
                             console.log("Logged in user"); 
                             console.log(data);
                             JOGCache.setData("loggedinUserData", data);
+                            //alert(JSON.stringify(data));
                          },error:function(XMLHttpRequest,textStatus, errorThrown){ 
                             // TODO: WHAT TO DO!!
                             console.log("error while retrieving user");
@@ -131,6 +130,13 @@ var JOG = {
         return $("#jog_url").val();
     },
 
+    logOutSetup: function()
+    {
+        var loggedinUser = JOGCache.getData("loggedinUserData", null);
+        if (!loggedinUser)
+            $("#jog_logout").hide();
+
+    },    
 
 };
 
@@ -174,6 +180,8 @@ $(document).ready(function(){
         break;
 
     }
+ 
+    JOG.logOutSetup();
    
 
 });

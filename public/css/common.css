@@ -11,6 +11,13 @@ a
 {
   text-decoration: none;
 }
+#jog_fconnect
+{
+  background-image: url("/resources/fconnect.png");
+  width: 221px;
+  height: 57px;
+  margin: 0 auto;
+}
 
 #jog_mmt_logo
 {
@@ -64,6 +71,7 @@ a
   box-shadow: 0 0 5px #888;  
   position: relative;
   background-image: url("/images/body_bck.png");
+  padding-bottom: 14px;
 }
 
 #jog_metric_box
