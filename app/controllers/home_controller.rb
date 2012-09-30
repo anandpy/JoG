@@ -101,7 +101,8 @@ class HomeController < ApplicationController
         end
 
 	    response_json[:name] = info["name"]
-	    response_json[:uid] = @user_uid 
+	    response_json[:uid] = @user_uid
+	    response_json[:id] = info["id"] 
 	    response_json[:sex] = info["sex"]
 	    response_json[:pic] = info["pic"]
 	    response_json[:vote_count] = info["vote_count"]
@@ -146,7 +147,8 @@ class HomeController < ApplicationController
         end
 
 	    response_json[:name] = info["name"]
-	    response_json[:uid] = current_user.srv_uid 
+	    response_json[:uid] = current_user.srv_uid
+	    response_json[:id] = info["id"]  
 	    response_json[:sex] = info["sex"]
 	    response_json[:pic] = info["pic"]
 	    response_json[:vote_count] = info["vote_count"]
