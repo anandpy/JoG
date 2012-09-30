@@ -65,6 +65,7 @@ var JOG = {
 	},
 
     "urls" : {
+        "fetchSinglePost" : "/fetch_single_post",
         "postUrl" : "/create_post",
         "postMetric" : "/post_metric",
         "fetchUser" : "/current_user_details",
@@ -101,7 +102,8 @@ $(document).ready(function(){
         JogPostListController.init();
         JogLeaderboardPanelController.init();
         break;
-    case "user_post_page" :
+    case "post_show_page" :
+        JogUserSinglePostController.init();
         break;
     case "landing_page" :
         JogLandingPostMetricController.init();

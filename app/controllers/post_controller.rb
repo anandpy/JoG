@@ -56,6 +56,42 @@ class PostController < ApplicationController
     end 
 
 
+    ################################################################################################
+    #
+    # Get single post details for individual page
+    #
+    #################################################################################################     
+    def get_post_detail
+        Rails.logger.info("[CNTRL] [POST] [get_post_detail] enter #{params}");
+
+        post = Post.where(:id => params[:post_id])
+
+
+        if !post
+            redirect redirect_to '/'
+        else
+            response_json = {}
+            p = post[0]
+            user = p.user
+            response_json[:user_name] = user[:name]
+            response_json[:user_pic]  = user[:pic]
+            response_json[:user_uid] = user[:srv_uid]
+            response_json[:post_title] = p[:title]
+            response_json[:post_text] = p[:text]
+            response_json[:post_pic]  = p[:pic]
+            response_json[:vote_count] = p[:vote_count]
+            if request.xhr?
+                Rails.logger.debug("[CNTRL] [POST] [get_post_detail] detail:#{response_json.inspect}")
+                expires_in 10.minutes
+                render :json => response_json
+                return
+            end
+        end 
+
+
+    end
+
+
 	################################################################################################
     #
     #
