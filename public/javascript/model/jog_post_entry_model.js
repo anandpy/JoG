@@ -4,7 +4,7 @@ var JogPostEntryModel = {
     
     createPost: function(data)
     {
-         alert(JSON.stringify(data));
+         //alert(JSON.stringify(data));
          $.ajax({
                 headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content'), 'Content-Type': 'application/x-www-form-urlencoded'},
                 url: JOG.urls.postUrl,
@@ -40,9 +40,11 @@ var JogPostEntryModel = {
             message: 'Facebook Dialogs are easy!'
         }, function(response) {
             if (response && response.post_id) {
-                alert('Post was published.');
+                console.log("FB post not published");
+                //alert('Post was published.');
             } else {   
-                alert('Post was not published.');
+                //alert('Post was not published.');
+                console.log("FB post published");
             }
         }
  );
