@@ -49,7 +49,7 @@ var JogUserSinglePostView = {
                         userInfo()+
                         '</div>'+
                         '<div class="jog_data_posts_leaderboard_list_box_content">'+ 
-                            '<h5>2nd Oct 2012</h5>'+
+                            '<h5 class="jog_date_format">'+new Date($.prettyDate.parse(data.time_stamp)).toDateString()+'</h5>'+
                             '<a href="'+JOG.getPostLink(data.post_id)+'">'+
                                 '<h3 class="jog_data_posts_box_title">'+data.post_title +'</h3>'+
                             '</a>'+

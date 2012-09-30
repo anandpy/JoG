@@ -83,6 +83,7 @@ class PostController < ApplicationController
             response_json[:post_title] = p[:title]
             response_json[:post_text] = p[:text]
             response_json[:post_pic]  = p[:pic]
+            response_json[:time_stamp] = p[:created_at]
             response_json[:votes_count] = p[:votes_count]
             if request.xhr?
                 Rails.logger.debug("[CNTRL] [POST] [get_post_detail] detail:#{response_json.inspect}")
@@ -183,6 +184,7 @@ class PostController < ApplicationController
             h[:post_text] = p[:text]
             h[:post_pic]  = p[:pic]
             h[:post_id] = p[:id]
+            h[:time_stamp] = p[:created_at]
             h[:votes_count] = p[:votes_count]
             response_json << h
         end
