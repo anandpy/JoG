@@ -62,9 +62,13 @@
 
 .jog_data_post_vote_box
 {
-  position: absolute;
+  background-image: url("/images/leaderboard_bck.png");
+  border: 1px solid #CCCCCC;
+  border-radius: 6px 6px 6px 6px;
   bottom: 10px;
   left: 5px;
+  padding: 3px;
+  position: absolute;
 }
 
 .jog_data_posts_box_metric_vote_action
@@ -127,7 +131,7 @@
 #jog_data_posts_leaderboard_list
 {
   width: 800px;
-  margin-left: 60px;
+  margin-left: 92px;
   margin-bottom: 30px;
 }
 
