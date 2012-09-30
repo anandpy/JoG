@@ -98,6 +98,7 @@ var JOG = {
         "fetchPosts" : "/fetch_post",
         "leaderboardPosts" : "/leaderboard_posts",
         "fetchAllUser" : "/fetchAllUser",
+        "deletePost" : "/delete_post",
     },
 
 	"currentUser": {

@@ -12,6 +12,12 @@ var JogPostListController = {
 			e.preventDefault();
 		});
 		
+        $(".jog_data_post_delete").live("click", function(e){
+            var $this = $(this);
+            var postID = $this.attr("data-value");
+            JogPostListModel.deletePost(postID);
+            e.preventDefault();
+        });
 
     },
 

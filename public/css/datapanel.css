@@ -44,7 +44,13 @@
   max-height: 120px;
 }
 
-
+.jog_data_post_delete
+{
+  position: absolute;
+  bottom: 68px;
+  left: 15px;
+  cursor: pointer;
+}
 
 .jog_data_posts_box_metric
 {

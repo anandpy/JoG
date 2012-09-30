@@ -5,6 +5,7 @@ JoG::Application.routes.draw do
     get 'logout' => 'devise/sessions#destroy'
   end
 
+  match '/delete_post' => "post#delete_post"
   match '/fetch_single_post' => "post#get_post_detail"
   match '/post_metric' => "post#get_jog_post_metric"
   match '/leaderboard' => "home#show"
