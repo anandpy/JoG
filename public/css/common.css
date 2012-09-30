@@ -51,6 +51,12 @@ a
   top: 13px;
 }
 
+#jog_home
+{
+  position: absolute;
+  left: 10px;
+  top: 15px; 
+}
 
 #jog_logout
 {

@@ -130,11 +130,13 @@ var JOG = {
         return $("#jog_url").val();
     },
 
-    logOutSetup: function()
+    btnNavSetup: function()
     {
         var loggedinUser = JOGCache.getData("loggedinUserData", null);
-        if (!loggedinUser)
+        if (!loggedinUser) {
             $("#jog_logout").hide();
+            $("#jog_home").hide();
+        }
     },    
 
     getPostLink: function(id)
@@ -197,7 +199,7 @@ $(document).ready(function(){
 
     }
  
-    JOG.logOutSetup();
+    JOG.btnNavSetup();
    
 
 });
