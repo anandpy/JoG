@@ -147,9 +147,9 @@ var JOG = {
         return JOG.appUrl()+"/show/"+id;
     },
 
-    prettifyTimeStamps: function()
+    prettifyTimeStamps: function(date)
     {
-        //$(".jog_date_format").timeago();
+        return new Date($.prettyDate.parse(date)).toDateString();
     },
 };
 
@@ -199,7 +199,6 @@ $(document).ready(function(){
  
     JOG.logOutSetup();
    
-    JOG.prettifyTimeStamps();
 
 });
 
