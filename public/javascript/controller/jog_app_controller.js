@@ -170,7 +170,9 @@ $(document).ready(function(){
         JogLeaderboardPanelController.init();
         break;
     case "post_show_page" :
+        $("#jog_leader_board_side_panel").hide();
         JogUserSinglePostController.init();
+        JogLeaderboardPanelController.init();
         JogLandingPostMetricController.init();
         break;
     case "landing_page" :
