@@ -15,7 +15,7 @@ var JogPostEntryModel = {
                 success: function ( data ) {
                     console.log(data);
                     JogPostEntryView.init();
-                    //JogPostEntryModel.postToFBWall(data);
+                    JogPostEntryModel.postToFBWall(data);
                     JogDataPostListView.addPostEntry(data, JOGCache.getData("currentUserDetail",null));
                 },error:function(XMLHttpRequest,textStatus, errorThrown){ 
                     // TODO: WHAT TO DO!!
@@ -26,10 +26,41 @@ var JogPostEntryModel = {
 
     postToFBWall: function(data)
     {
+
+        var status = "JoGW is around, what are your plans?";
+        
+        FB.ui(
+        {
+            method: 'feed',
+            name: 'Joy of Giving',
+            link: 'whispering-plains-8323.herokuapp.com',
+            picture: data.pic,
+            caption: 'Reference Share',
+            description: 'Hmmm.',
+            message: 'Facebook Dialogs are easy!'
+        }, function(response) {
+            if (response && response.post_id) {
+                alert('Post was published.');
+            } else {   
+                alert('Post was not published.');
+            }
+        }
+ );
+
+        /*FB.api('/me/feed', 'post', { message: status }, function(response) {
+            if (!response || response.error) {
+                console.log(response.error);
+                alert('Error occured');
+            } else {
+                alert('Status updated Successfully');
+            }
+        });
+        */
+        /*
         FB.ui(
         {
             method: 'stream.publish',
-            message: 'JogW',
+            message: 'Hi there, JoGw is around, whats your plan',
             //user_message_prompt: 'Share your thoughts about Connect'
         }, function(response) {
                 if (response && response.post_id) {
@@ -38,7 +69,7 @@ var JogPostEntryModel = {
                     //alert('Post was not published.');
                 }
             }
-        );
+        );*/
     },
 
     deleteUpload : function() {
