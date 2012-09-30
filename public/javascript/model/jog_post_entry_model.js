@@ -33,7 +33,7 @@ var JogPostEntryModel = {
         {
             method: 'feed',
             name: 'Joy of Giving',
-            link: 'whispering-plains-8323.herokuapp.com',
+            link: JOG.appUrl(),
             picture: data.pic,
             caption: 'Reference Share',
             description: 'Hmmm.',

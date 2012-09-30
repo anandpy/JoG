@@ -35,7 +35,7 @@ var JogSearchController = {
                 }
             }).result(function(e, item) {
                   console.log(item); 
-                  window.location = "http://localhost:3000/show/"+item.srv_uid ;
+                  window.location = JOG.appUrl() + item.srv_uid ;
                   
             }); 
     }, 
