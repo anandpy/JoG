@@ -37,15 +37,18 @@ var JogLeaderboardPanelView = {
 
         $("#jog_leader_board_side_panel").html(html);
 
+        //$(".fnb_img").fancybox();
+
 	},
 
 	leaderPostHtml : function(data)
 	{
 		var html = "";
          
-        var imgHtml = (data.post_pic && data.post_pic !== "" ) ? '<img src="'+data.post_pic+'" align="left">' : "";  
+        var imgHtml = (data.post_pic && data.post_pic !== "" ) ? '<div class="jog_lb_view_image" data-value="'+data.post_pic+'"> View Image</div>' : "";  
 
-		
+        
+
         html = '<div class="jog_leader_board_entry">' +
                     '<div class="jog_lb_user_name">'+
                         '<a href="/show/'+data.user_uid+'"><h5>'+data.user_name+'</h5></a>'+
@@ -67,6 +70,8 @@ var JogLeaderboardPanelView = {
                             '<div class="jog_lb_by">'+
                             '</div>'+
                         '</div>'+
+                        imgHtml+
+                        
                     '</div>'+
                     '<div class="jog_lb_divider"></div>'+
                 '</div>'; 

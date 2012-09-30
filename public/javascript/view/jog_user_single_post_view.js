@@ -27,7 +27,7 @@ var JogUserSinglePostView = {
         {
             return '<a href="/show/'+data.user_uid+'">'+
                         '<img src="'+data.user_pic+'">'+
-                        '<span>'+data.user_name+'</span>'
+                        '<span>'+data.user_name+'</span>'+
                     '</a>';
         }
 

@@ -4,7 +4,7 @@ var JOG = {
 				{
 					//JOG.Events.inviteUsersOnVote();
                     JOG.Events.voteClick();
-                    
+                    JOG.Events.fancyboxImgView();
 				},
 
 				inviteUsersOnVote: function()
@@ -39,6 +39,31 @@ var JOG = {
                             JogPostListController.postVoteUpdate($this);
                         else    
                             JOG.Events.inviteUsersOnVote();
+                        e.preventDefault();
+                    });
+                },
+
+                fancyboxImgView: function()
+                {
+                    $(".jog_lb_view_image").live("click", function(){
+                        var $this = $(this);
+                        var url = $this.attr("data-value");
+                        $("#jog_view_full_image img").attr("src", url);
+                        var $dataID = $("#jog_view_full_image");
+                        $.fancybox({
+                            content: $dataID,
+                            'padding': 0, 
+                            'autoSize': false, 
+                            'height' : 'auto', 
+                            'width' : 'auto',
+                            openSpeed: 'normal',
+                            closeBtn: true,
+                            autoSize: true,
+                            topRatio: 0,
+                            beforeClose:function() {
+                                      //TODO: Nothing to be done on close
+                            }
+                        });
                         e.preventDefault();
                     });
                 },

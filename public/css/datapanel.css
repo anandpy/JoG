@@ -229,3 +229,17 @@
   margin: 20px 0 20px 0; 
 
 }
+
+
+#jog_view_full_image
+{
+  display: none;
+  max-width: 500px;
+  max-height: 500px;
+}
+
+#jog_view_full_image img
+{
+  max-width: 500px;
+  max-height: 500px;
+}
