@@ -47,7 +47,7 @@ var JogPostEntryModel = {
                 console.log("FB post published");
             }
         }
- );
+        );
 
         /*FB.api('/me/feed', 'post', { message: status }, function(response) {
             if (!response || response.error) {

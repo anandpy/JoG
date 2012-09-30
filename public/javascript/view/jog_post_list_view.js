@@ -104,7 +104,7 @@ var JogDataPostListView = {
     socialShareHtml: function(data)
     {
 
-        var shareURL = "http://www.makemytrip.com";
+        var shareURL = JOG.appUrl() + "/post/1";
         
         function fbHtml()
         {
