@@ -33,9 +33,9 @@ var JogPostEntryModel = {
             //user_message_prompt: 'Share your thoughts about Connect'
         }, function(response) {
                 if (response && response.post_id) {
-                    alert('Post was published.');
+                    //alert('Post was published.');
                 } else {
-                    alert('Post was not published.');
+                    //alert('Post was not published.');
                 }
             }
         );
@@ -45,7 +45,7 @@ var JogPostEntryModel = {
         var fileUrl = JogPostEntryModel.filepick.url;
 
         filepicker.revokeFile(fileUrl, function(success, message){
-            alert(message);
+            //alert(message);
             JogPostEntryModel.filepick = {};
             JogPostEntryView.cancelUpload();
         });        

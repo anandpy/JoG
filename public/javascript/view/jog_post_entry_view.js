@@ -71,7 +71,7 @@ var JogPostEntryView = {
                 $imgPreview.find("img").attr("src",data.url);
                 $imgPreview.show();
                 console.log(data);
-                alert(JSON.stringify(data)); 
+                //alert(JSON.stringify(data)); 
                 $loadSpin.hide();
                 JogPostEntryModel.filepick = data;
             });
