@@ -120,7 +120,11 @@
   width: 800px;
   margin-left: 60px;
   margin-bottom: 30px;
+}
 
+#jog_data_posts_leaderboard_list h1
+{
+  margin-bottom: 53px;
 }
 
 .jog_data_posts_leaderboard_list_box
@@ -133,6 +137,8 @@
   display: inline-block;
   border-radius: 10px;
   background: #FEFEFE;
+  margin-bottom: 51px;
+
 }
 
 .jog_data_posts_leaderboard_list_user_info
@@ -141,7 +147,7 @@
   height: 100px;
   border: 0px solid red;
   position: absolute;
-  top: -44px;
+  top: -48px;
   left: 50px;
 }
 
@@ -157,7 +163,7 @@
 .jog_data_posts_leaderboard_list_user_info span
 {
   vertical-align: middle;
-  font-size: 14px;
+  font-size: 17px;
   color: #333;
   text-shadow: 0px 1px 1px #666;
 }
