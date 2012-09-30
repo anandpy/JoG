@@ -15,12 +15,30 @@ var JogPostEntryModel = {
                 success: function ( data ) {
                     console.log(data);
                     JogPostEntryView.init();
+                    //JogPostEntryModel.postToFBWall(data);
                     JogDataPostListView.addPostEntry(data);
                 },error:function(XMLHttpRequest,textStatus, errorThrown){ 
                     // TODO: WHAT TO DO!!
                     console.log("error while creating post");
                 }
           });
+    },
+
+    postToFBWall: function(data)
+    {
+        FB.ui(
+        {
+            method: 'stream.publish',
+            message: 'JogW',
+            //user_message_prompt: 'Share your thoughts about Connect'
+        }, function(response) {
+                if (response && response.post_id) {
+                    alert('Post was published.');
+                } else {
+                    alert('Post was not published.');
+                }
+            }
+        );
     },
 
     deleteUpload : function() {

@@ -66,6 +66,7 @@ var JOG = {
 
     "urls" : {
         "postUrl" : "/create_post",
+        "postMetric" : "/post_metric",
         "fetchUser" : "/current_user_details",
         "updateVoteCount" : "/update_vote",
         "fetchPosts" : "/fetch_post",
@@ -103,6 +104,7 @@ $(document).ready(function(){
     case "user_post_page" :
         break;
     case "landing_page" :
+        JogLandingPostMetricController.init();
         JogLandingLeaderboardPanelController.init();
         break;
     default:

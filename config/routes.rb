@@ -6,6 +6,7 @@ JoG::Application.routes.draw do
   end
 
 
+  match '/post_metric' => "post#get_jog_post_metric"
   match '/leaderboard' => "home#show"
   match '/fetchAllUser' => "home#get_all_users"
   match '/leaderboard_posts' => "post#get_leaderboard_posts"

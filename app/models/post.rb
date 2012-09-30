@@ -6,6 +6,7 @@ class Post < ActiveRecord::Base
 
 		h = {
 	      :user_id => params[:user_id],
+	      :user_uid => params[:user_uid],
 	      :text => params[:text],
 	      :title => params[:title],
 	      :pic => params[:pic],

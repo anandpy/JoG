@@ -34,7 +34,7 @@ var JogDataPostListView = {
     {
         var imgHtml = (data.pic && data.pic !== "" ) ? '<img src="'+data.pic+'" align="right">' : "";  
 
-        var postHtml = (user && data.user_id == user.uid) ? "" : 
+        var postHtml = (user && data.user_uid == user.uid) ? "" : 
                             '<div class="jog_data_posts_box_metric_vote_action" post-id="'+data.id+'">'+
                                  '<img src="/resources/heart.png">'+
                                  '<span>Vote</span>'+

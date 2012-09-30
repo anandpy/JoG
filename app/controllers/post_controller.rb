@@ -12,8 +12,10 @@ class PostController < ApplicationController
         end
         Rails.logger.info("[HOME] [COMMON] current user id #{current_user.id}")
 		Rails.logger.info("[CNTRL] [POST] [CREATE] params #{params.inspect}") 
+        Rails.logger.info("[HOME] [COMMON] current user uid #{current_user.srv_uid}")
 
-        h = {:user_id => current_user.srv_uid,
+        h = {:user_id => current_user.id,
+            :user_uid => current_user.srv_uid,
             :text => params["text"],
             :title => params["title"],
             :pic => params["imgSrc"]
@@ -69,7 +71,7 @@ class PostController < ApplicationController
                 Rails.logger.error("[CNTRL] [HOME] [get_current_user_details] ****USER NOT LOGGED IN****")
                 render :json => {:error => "No user loggedin" }, :status => 400
             end
-            @user_uid = current_user.id
+            @user_uid = current_user.srv_uid
         end
 
         #if !user_signed_in? 
@@ -80,7 +82,7 @@ class PostController < ApplicationController
         #Rails.logger.info("[HOME] [COMMON] current user id #{session[:current_user_id]}")
         #Rails.logger.info("[POST] [COMMON] current user id #{current_user.id}")
 
-        response_json = Post.where(:user_id => @user_uid).order('id DESC') 
+        response_json = Post.where(:user_uid => @user_uid).order('id DESC') 
 
         if request.xhr?
             #Rails.logger.debug("[CNTRL] [HOME] [get_locations] Return:#{response_json.inspect}")
@@ -152,6 +154,32 @@ class PostController < ApplicationController
         end
 
         Rails.logger.info("[CNTRL] [POST] [get_leaderboard_posts] leave");
+    end
+
+    ################################################################################################
+    #
+    #
+    #
+    ################################################################################################# 
+    def get_jog_post_metric
+
+        Rails.logger.info("[CNTRL] [POST] [get_jog_post_metric] enter #{params}");
+
+        post_count = Post.count
+
+        vote_count = Post.sum("vote_count")
+
+        response_json = { :post_count => post_count , :vote_count => vote_count}
+
+        Rails.logger.info("[CNTRL] [POST] [get_jog_post_metric] result #{response_json}");
+
+        if request.xhr?
+            #Rails.logger.debug("[CNTRL] [HOME] [get_locations] Return:#{response_json.inspect}")
+            expires_in 10.minutes
+            render :json => response_json
+            return
+        end
+
     end
 
 

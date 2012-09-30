@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20120922042327) do
     t.string   "pic"
     t.text     "title"
     t.text     "text"
+    t.string   "user_uid"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
