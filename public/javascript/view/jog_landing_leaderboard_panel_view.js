@@ -48,7 +48,7 @@ var JogLandingLeaderboardPanelView = {
                                 '</div>'+
                                 '<div class="jog_lp_sp_vote">'+
                                     '<div class="jog_lp_sp_vote_count">'+data.vote_count+' Votes</div>'+
-                                    '<div class="jog_lp_sp_vote_action"></div>'+
+                                    //'<div class="jog_lp_sp_vote_action"></div>'+
                                 '</div>'+
                             '</div>'+
                             '<div class="jog_lp_sp_rightside">'+
