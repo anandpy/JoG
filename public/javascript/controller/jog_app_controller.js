@@ -128,10 +128,7 @@ var JOG = {
 
     appUrl: function()
     {
-        if (0)
-            return "http://localhost:3000/";
-        else
-            return "http://whispering-plains-8323.herokuapp.com/";
+        $("#jog_url").val();
     },
 
 
