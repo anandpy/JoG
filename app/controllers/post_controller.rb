@@ -32,27 +32,30 @@ class PostController < ApplicationController
 
     ################################################################################################
     # Update vote
-    # 
+    # INPUT => {:post_id => 123, :user_id => 234}
     ################################################################################################# 
 
     def update_vote
         Rails.logger.info("[POST][CNTL][update_vote] Entering #{params.inspect}")
+        
+        raise "wrong number of parameters" if params[:user_i].blank? or params[:post_id].blank?
 
-        post = Post.where(:id => params["postID"].to_i).first
+        post = Post.where(:id => params["post_id"].to_i).first
         Rails.logger.info("[POST] [update_vote] update #{post.inspect}")
+        
         if !post.blank?
-            user = post.user
-            
-            post_vote = post[:vote_count]
-            user_vote = user[:vote_count]
-            post.update_attribute(:vote_count,post_vote+1)
-            user.update_attribute(:vote_count,user_vote+1)
+            Vote.create!(:user_id => params["user_id"].to_i, :post_id => params["post_id"].to_i)
             
             Rails.logger.info("[POST] [update_vote] update #{post.inspect}")
+
+            post.reload!
             render :json => post, :status => 200
         else
             render :json => {:error => "No post found" }, :status => 400
         end 
+    rescue => e
+      Rails.logger.error("[POST] [update_vote] **** ERROR **** #{e.message} #{post.inspect}")
+      render :json => {:error => e.message }, :status => 400
     end 
 
 
@@ -109,7 +112,7 @@ class PostController < ApplicationController
         #Rails.logger.info("[HOME] [COMMON] current user id #{session[:current_user_id]}")
         Rails.logger.info("[POST] [COMMON] current user id #{current_user.id}")
 
-        response_json = Post.where(:user_id => current_user.id).order('vote_count DESC') 
+        response_json = Post.where(:user_id => current_user.id).order('votes_count DESC') 
 
         if request.xhr?
             #Rails.logger.debug("[CNTRL] [HOME] [get_locations] Return:#{response_json.inspect}")
@@ -131,7 +134,7 @@ class PostController < ApplicationController
         
         response_json = []
 
-        posts = Post.order('vote_count DESC').limit(10)
+        posts = Post.order('votes_count DESC').limit(10)
 
         posts.each do |p|
             h = {}
@@ -142,7 +145,7 @@ class PostController < ApplicationController
             h[:post_title] = p[:title]
             h[:post_text] = p[:text]
             h[:post_pic]  = p[:pic]
-            h[:vote_count] = p[:vote_count]
+            h[:votes_count] = p[:votes_count]
             response_json << h
         end
 
@@ -167,9 +170,9 @@ class PostController < ApplicationController
 
         post_count = Post.count
 
-        vote_count = Post.sum("vote_count")
+        votes_count = Post.sum("votes_count")
 
-        response_json = { :post_count => post_count , :vote_count => vote_count}
+        response_json = { :post_count => post_count , :votes_count => votes_count}
 
         Rails.logger.info("[CNTRL] [POST] [get_jog_post_metric] result #{response_json}");
 
@@ -181,6 +184,4 @@ class PostController < ApplicationController
         end
 
     end
-
-
 end

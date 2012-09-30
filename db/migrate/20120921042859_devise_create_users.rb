@@ -8,7 +8,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :name
       t.string :pic
       t.string :sex
-      t.integer  :vote_count
+      t.integer  :votes_count, :default => 0
       ## Rememberable
       t.datetime :remember_created_at
 
@@ -28,7 +28,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
     add_index :users, [:srv_uid, :srv], :unique => true
     add_index :users, :srv
-    add_index :users, :vote_count
+    add_index :users, :votes_count
 
     add_index :users, :authentication_token, :unique => true
     

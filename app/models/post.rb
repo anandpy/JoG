@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
 	belongs_to :user
+  has_many :votes, :dependent => :destroy
 
 	def self.create_post(params)
 		Rails.logger.info("[MODEL] [POST] [CREATE_POST] Entering #{params.inspect}")
@@ -10,7 +11,7 @@ class Post < ActiveRecord::Base
 	      :text => params[:text],
 	      :title => params[:title],
 	      :pic => params[:pic],
-	      :vote_count => 0,
+	      :votes_count => 0,
 	     }
 
 		p = Post.create!(h)

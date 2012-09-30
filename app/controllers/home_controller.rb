@@ -104,7 +104,7 @@ class HomeController < ApplicationController
 	    response_json[:uid] = @user_uid 
 	    response_json[:sex] = info["sex"]
 	    response_json[:pic] = info["pic"]
-	    response_json[:vote_count] = info["vote_count"]
+	    response_json[:votes_count] = info["votes_count"]
 	    #response_json[:auth_token] = current_user.access_token #session[:token]
 	    response_json[:auth_token] = info["access_token"] #session[:token]
 	    response_json[:post_count] = info.posts.length

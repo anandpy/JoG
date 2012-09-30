@@ -11,8 +11,10 @@ class User < ActiveRecord::Base
 
   validates_presence_of :srv_uid, :srv
 
-  attr_accessible :srv_uid, :access_token, :srv, :username, :name, :pic, :sex, :vote_count
+  attr_accessible :srv_uid, :access_token, :srv, :username, :name, :pic, :sex, :votes_count
   has_many :posts,:dependent => :destroy
+
+  has_many :votes
 
 
   def self.create_user(params)
@@ -35,7 +37,7 @@ class User < ActiveRecord::Base
 
 	  h[:srv_uid] = params[:srv_uid]
 	  h[:srv] = params[:srv]
-	  h[:vote_count] = 0
+	  h[:votes_count] = 0
 
 	  u = User.create!(h)
 
