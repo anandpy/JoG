@@ -65,7 +65,7 @@ class PostController < ApplicationController
     def update_vote
         Rails.logger.info("[POST][CNTL][update_vote] Entering #{params.inspect}")
 
-        post = Post.where(:id => params["postID"].to_i).first
+        post = Post.where(:id => params["post_id"].to_i).first
         Rails.logger.info("[POST] [update_vote] update #{post.inspect}")
         if !post.blank?
             user = post.user
