@@ -62,7 +62,8 @@ var JogPostListModel = {
                     console.log("post data vote success"); 
                     console.log(data);
 
-                    JogDataPostListView.updateVoteCount(data);
+                    
+                    JogPostListModel.updateVoteCountView(data);
                     
                     //JogUserProfileInfoView.init(data);
 
@@ -74,6 +75,15 @@ var JogPostListModel = {
                 }
           });
 	},
+
+    updateVoteCountView: function(data)
+    {
+        if (JOG.configs.page_title == "leaderboard") {
+            JogLeaderboardView.updateVoteCountText(data);
+            return;
+        }
+        JogDataPostListView.updateVoteCount(data);
+    },
 
     
 
