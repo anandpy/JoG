@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+
 gem 'rails', '3.2.1'
 
 # Bundle edge Rails instead:
@@ -36,6 +37,8 @@ gem 'omniauth-facebook'
 gem 'devise', '= 2.1.2'
 
 gem 'app_constants'
+
+gem 'algorithms'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
