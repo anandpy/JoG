@@ -65,7 +65,7 @@ class PostController < ApplicationController
         Rails.logger.info("[CNTRL] [POST] [get_posts] enter #{params}");
 
         if params[:user_id] != "nil"
-            @user_uid = User.find_by_srv_uid(params[:user_id])[:id]
+            @user_uid = User.find_by_srv_uid(params[:user_id])[:srv_uid]
         else 
             if !user_signed_in? 
                 Rails.logger.error("[CNTRL] [HOME] [get_current_user_details] ****USER NOT LOGGED IN****")
