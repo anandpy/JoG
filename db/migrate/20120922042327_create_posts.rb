@@ -6,7 +6,6 @@ class CreatePosts < ActiveRecord::Migration
       t.string  :pic
       t.text    :title
       t.text    :text
-      t.string  :user_uid
 
       t.timestamps
     end
