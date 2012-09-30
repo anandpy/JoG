@@ -27,10 +27,9 @@ a
 
 #jog_header_content
 {
-  width: 1000px;
-  height: 100%;
+  width: 100%;
+  height: 50px;
   margin: 0 auto;
-  border: 1px solid #ccc;
   padding: 4px;
   position: relative;
 }
@@ -60,7 +59,6 @@ a
   border: 1px solid #d6d6d6;
   border-radius: 5px;
   margin: 0 auto;
-  margin-top: 100px;
   -moz-box-shadow: 0 0 5px #888;
   -webkit-box-shadow: 0 0 5px#888;
   box-shadow: 0 0 5px #888;  
@@ -116,6 +114,7 @@ a
   height: 63px;
   background-image: url("/images/header_bck.png");
   margin-bottom: 30px;
+  margin-top: -5px;
 }
 
 

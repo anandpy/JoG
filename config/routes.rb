@@ -5,7 +5,8 @@ JoG::Application.routes.draw do
     get 'logout' => 'devise/sessions#destroy'
   end
 
-
+  match '/delete_post' => "post#delete_post"
+  match '/fetch_single_post' => "post#get_post_detail"
   match '/post_metric' => "post#get_jog_post_metric"
   match '/leaderboard' => "home#show"
   match '/fetchAllUser' => "home#get_all_users"
@@ -16,7 +17,8 @@ JoG::Application.routes.draw do
   match '/create_post' => "post#create_post"
   match '/user' => 'home#show'
   match '/show/:id' => 'home#show'
-  match '/post/:id' => 'post#view_post'
+  match '/post/:id' => 'home#show'
+  match '/loggedin_user' => "home#get_loggedin_user_details"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

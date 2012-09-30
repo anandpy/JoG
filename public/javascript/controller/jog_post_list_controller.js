@@ -12,18 +12,38 @@ var JogPostListController = {
 			e.preventDefault();
 		});
 		
+        $(".jog_data_post_delete").live("click", function(e){
+            var $this = $(this);
+            var postID = $this.attr("data-value");
+            JogPostListModel.deletePost(postID);
+            e.preventDefault();
+        });
+
+        $(".jog_data_post_list_vote_action").live("click", function(e){
+            var $this = $(this);
+            var postID = $this.attr("data-value");
+            JogPostListController.postVoteUpdate(postID)
+            //JogPostListModel.updateVote(postID);
+            e.preventDefault();
+        });
+
 
     },
 
-	postVoteUpdate: function(obj)
+	postVoteUpdate: function(postID)
 	{
 
-        var data = {};
+        //var data = {};
 
-        data.postID = obj.attr("post-id");
+        //data.postID = obj.attr("post-id");
         //var currentUserCredentials = JOGCache.getData("")
 
-		JogPostListModel.updateVote(data);
+        var loggedinUser = JOGCache.getData("loggedinUserData",null);
+
+        if (!loggedinUser)
+            JOG.Events.inviteUsersOnVote();
+        else
+		    JogPostListModel.updateVote(postID);
 	},
 
     

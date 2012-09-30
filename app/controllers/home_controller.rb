@@ -101,7 +101,8 @@ class HomeController < ApplicationController
         end
 
 	    response_json[:name] = info["name"]
-	    response_json[:uid] = @user_uid 
+	    response_json[:uid] = @user_uid
+	    response_json[:id] = info["id"] 
 	    response_json[:sex] = info["sex"]
 	    response_json[:pic] = info["pic"]
 	    response_json[:votes_count] = info["votes_count"]
@@ -117,6 +118,55 @@ class HomeController < ApplicationController
 	        return
 	    end 
 	end
+
+	################################################################################################
+	#
+	#
+	#
+	#################################################################################################
+	def get_loggedin_user_details
+		Rails.logger.info("[HOME] [get_current_user_details] Entering #{params}")
+
+	    if !user_signed_in? 
+	    	Rails.logger.error("[CNTRL] [HOME] [get_current_user_details] ****USER NOT LOGGED IN****")
+	        render :json => {:error => "No user loggedin" }, :status => 400
+	    	
+	    end
+
+	    Rails.logger.info("[HOME] [COMMON] current user id #{current_user.id}")
+	    Rails.logger.info("[HOME] [COMMON] current user data #{current_user}")
+
+	    response_json = {}
+
+	    info = User.where(:srv_uid => current_user.srv_uid).first
+	    #info = User.where(:srv_uid => @user_uid).first	
+
+        if !info
+        	Rails.logger.info("[HOME] [get_current_user_details] not legal uid, redirect to home")
+        	redirect_to '/'
+        end
+
+	    response_json[:name] = info["name"]
+	    response_json[:uid] = current_user.srv_uid
+	    response_json[:id] = info["id"]  
+	    response_json[:sex] = info["sex"]
+	    response_json[:pic] = info["pic"]
+	    response_json[:votes_count] = info["votes_count"]
+	    response_json[:auth_token] = current_user.access_token #session[:token]
+	    #response_json[:auth_token] = info["access_token"] #session[:token]
+	    response_json[:post_count] = info.posts.length
+
+	    Rails.logger.info("[HOME] [get_current_user_details] auth #{response_json}")
+
+	    if request.xhr?
+	        expires_in 10.minutes
+	        render :json => response_json
+	        return
+	    end 
+	end
+
+	
+
 
 	################################################################################################
 	#

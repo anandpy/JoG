@@ -44,7 +44,13 @@
   max-height: 120px;
 }
 
-
+.jog_data_post_delete
+{
+  position: absolute;
+  bottom: 68px;
+  right: 15px;
+  cursor: pointer;
+}
 
 .jog_data_posts_box_metric
 {
@@ -54,6 +60,12 @@
   width: 97%;
 }
 
+.jog_data_post_vote_box
+{
+  position: absolute;
+  bottom: 10px;
+  left: 5px;
+}
 
 .jog_data_posts_box_metric_vote_action
 {
@@ -85,12 +97,9 @@
   right: 5px;
   top: 4px;
   height: 22px;
-  border: 1px solid #CCC;
   text-align: center;
   padding: 4px;
-  border-radius: 4px;
-  background: #CDBE70;
-  color: white;
+  color: #333;
   font-weight: bold;
 }
 
@@ -119,6 +128,12 @@
 {
   width: 800px;
   margin-left: 60px;
+  margin-bottom: 30px;
+}
+
+#jog_data_posts_leaderboard_list h1
+{
+  margin-bottom: 53px;
 }
 
 .jog_data_posts_leaderboard_list_box
@@ -131,6 +146,8 @@
   display: inline-block;
   border-radius: 10px;
   background: #FEFEFE;
+  margin-bottom: 51px;
+
 }
 
 .jog_data_posts_leaderboard_list_user_info
@@ -138,18 +155,26 @@
   width: 30%;
   height: 100px;
   border: 0px solid red;
-  float: left;
+  position: absolute;
+  top: -48px;
+  left: 50px;
 }
 
 .jog_data_posts_leaderboard_list_user_info img
 {
   max-height: 70px;
+  margin-right: 8px;
+  border: 1px solid #CCC;
+  padding: 2px;
+  background: white;
 }
 
 .jog_data_posts_leaderboard_list_user_info span
 {
   vertical-align: middle;
-  font-size: 14px;
+  font-size: 17px;
+  color: #333;
+  text-shadow: 0px 1px 1px #666;
 }
 
 
@@ -218,4 +243,18 @@
   height: 30px;
   margin: 20px 0 20px 0; 
 
+}
+
+
+#jog_view_full_image
+{
+  display: none;
+  max-width: 500px;
+  max-height: 500px;
+}
+
+#jog_view_full_image img
+{
+  max-width: 500px;
+  max-height: 500px;
 }

@@ -4,7 +4,8 @@ var JOG = {
 				{
 					//JOG.Events.inviteUsersOnVote();
                     JOG.Events.voteClick();
-                    
+                    JOG.Events.fancyboxImgView();
+                    JOG.Events.initLoggedInUser();
 				},
 
 				inviteUsersOnVote: function()
@@ -42,6 +43,50 @@ var JOG = {
                         e.preventDefault();
                     });
                 },
+
+                fancyboxImgView: function()
+                {
+                    $(".jog_lb_view_image").live("click", function(){
+                        var $this = $(this);
+                        var url = $this.attr("data-value");
+                        $("#jog_view_full_image img").attr("src", url);
+                        var $dataID = $("#jog_view_full_image");
+                        $.fancybox({
+                            content: $dataID,
+                            'padding': 0, 
+                            'autoSize': false, 
+                            'height' : 'auto', 
+                            'width' : 'auto',
+                            openSpeed: 'normal',
+                            closeBtn: true,
+                            autoSize: true,
+                            topRatio: 0,
+                            beforeClose:function() {
+                                      //TODO: Nothing to be done on close
+                            }
+                        });
+                        e.preventDefault();
+                    });
+                },
+
+                initLoggedInUser: function()
+                {
+                    $.ajax({
+                        url: JOG.urls.loggedinUser,
+                        type: 'GET',
+                        dataType: 'json',
+                        contentType: 'application/json',
+                        data: '',
+                        success: function ( data ) {
+                            console.log("Logged in user"); 
+                            console.log(data);
+                            JOGCache.setData("loggedinUserData", data);
+                         },error:function(XMLHttpRequest,textStatus, errorThrown){ 
+                            // TODO: WHAT TO DO!!
+                            console.log("error while retrieving user");
+                        }
+                    });
+                },
 	},
 
 
@@ -65,6 +110,7 @@ var JOG = {
 	},
 
     "urls" : {
+        "fetchSinglePost" : "/fetch_single_post",
         "postUrl" : "/create_post",
         "postMetric" : "/post_metric",
         "fetchUser" : "/current_user_details",
@@ -72,11 +118,21 @@ var JOG = {
         "fetchPosts" : "/fetch_post",
         "leaderboardPosts" : "/leaderboard_posts",
         "fetchAllUser" : "/fetchAllUser",
+        "deletePost" : "/delete_post",
+        "loggedinUser" : "/loggedin_user"
     },
 
 	"currentUser": {
 
 	},
+
+    appUrl: function()
+    {
+        if (1)
+            return "http://localhost:3000/";
+        else
+            return "http://whispering-plains-8323.herokuapp.com/";
+    },
 
 
 };
@@ -101,7 +157,8 @@ $(document).ready(function(){
         JogPostListController.init();
         JogLeaderboardPanelController.init();
         break;
-    case "user_post_page" :
+    case "post_show_page" :
+        JogUserSinglePostController.init();
         break;
     case "landing_page" :
         JogLandingPostMetricController.init();

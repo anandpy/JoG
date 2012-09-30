@@ -34,6 +34,11 @@
   <script src="/javascript/model/jog_user_profile_info_model.js" type="text/javascript"></script>
   <script src="/javascript/view/jog_user_profile_info_view.js" type="text/javascript"></script>
 
+  <!-- Single Post View -->
+  <script src="/javascript/controller/jog_user_single_post_controller.js" type="text/javascript"></script>
+  <script src="/javascript/model/jog_user_single_post_model.js" type="text/javascript"></script>
+  <script src="/javascript/view/jog_user_single_post_view.js" type="text/javascript"></script>
+
 
 
 
@@ -92,7 +97,7 @@
 
 
 
-
+<!--
 <div id="jog_header">
     <div id="jog_header_content">
         <img class="jog_icon" src="../resources/jog.jpg" style="height:50px">
@@ -108,9 +113,19 @@
     </div>
     
 </div>
-
+-->
 
 <div id="jog_outer_container">
+  <div id="jog_header_content">
+        <div id="jog_searchbar">
+          <div class="input-prepend">
+            <span class="add-on">@</span><input class="span3" id="jog_search" size="46" type="text" placeholder="Search">
+          </div>
+        </div>
+        <a href="/logout">
+           <button id="jog_logout" class="btn btn-info" value="Logout">Logout</button>
+        </a>
+  </div>
   <div id="jog_container_header"></div>
   <div id="jog_metric_box">
     <div id="jog_user_metric"></div>
@@ -141,4 +156,8 @@
 </div>
 
 <div id="jog_detail_post_view_modal">
+</div>
+
+<div id="jog_view_full_image">
+    <img src="">
 </div>

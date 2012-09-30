@@ -22,9 +22,15 @@ var JogDataPostListView = {
 
     },
 
-    addPostEntry: function(data)
+    deletePostEntry: function(id)
     {
-        var html = JogDataPostListView.postHtml(data);
+        $("#jog_post_list_id_"+id).remove();
+    },
+
+
+    addPostEntry: function(data, user)
+    {
+        var html = JogDataPostListView.postHtml(data, user );
 
         $("#jog_data_posts_list").prepend(html);
 
@@ -33,23 +39,44 @@ var JogDataPostListView = {
     postHtml : function(data, user)
     {
         var imgHtml = (data.pic && data.pic !== "" ) ? '<img src="'+data.pic+'" align="right">' : "";  
+        var loggedinUser = JOGCache.getData("loggedinUserData", null);
+        
+        function postHtml()
+        {
+            
+            var html = (loggedinUser && data.user_uid == loggedinUser.uid) ? "" : '<div data-value="'+data.id+'" class="jog_data_post_list_vote_action jog_lb_vote_action"></div>';
+            return '<div class="jog_data_post_vote_box">'+
+                           '<div class="jog_lb_vote_count" post-id="'+data.id+'">'+data.vote_count+' Votes</div>'+
+                           //'<div data-value="'+data.id+'" class="jog_data_post_list_vote_action jog_lb_vote_action"></div>'+
+                           html+
+                       '</div>';  
 
-        var postHtml = (user && data.user_uid == user.uid) ? "" : 
-                            '<div class="jog_data_posts_box_metric_vote_action" post-id="'+data.id+'">'+
-                                 '<img src="/resources/heart.png">'+
-                                 '<span>Vote</span>'+
-                            '</div>';
+        }                    
+      
+        function deletePostHtml()
+        {
+            if (JOG.configs.page_title == "leaderboard" 
+                || JOG.configs.page_title == "user_show_page"
+                || JOG.configs.page_title == "post_show_page")
+                return "";
 
-        var html = '<div class="jog_data_posts_box" data-post-id="'+data.id+'" data-post-userid="'+data.user_id+'">'+
+            if (user && data.user_uid == user.uid)
+                return  '<div data-value="'+data.id+'" class="jog_data_post_delete">Delete Post</div>';
+            else
+                return "";
+        }
+
+        var html = '<div id="jog_post_list_id_'+data.id+'" class="jog_data_posts_box" data-post-id="'+data.id+'" data-post-userid="'+data.user_id+'">'+
                         '<h3 class="jog_data_posts_box_title">'+data.title +'</h3>'+
                         '<div class="jog_data_posts_box_content">'+
                             imgHtml+
                             JOG.utils.truncateText(data.text, 300)+
                         '</div>'+
                         '<div class="jog_data_posts_box_metric">'+
-                            postHtml+
-                            '<div class="jog_data_posts_box_metric_vote_count" post-id="'+data.id+'"> '+data.vote_count+' Votes  </div>'+
+                            postHtml()+
+                            //'<div class="jog_data_posts_box_metric_vote_count" post-id="'+data.id+'"> '+data.vote_count+' Votes  </div>'+
                         '</div>'+
+                        deletePostHtml()+
                         JogDataPostListView.socialShareHtml(data)+
                     '</div>';
         
@@ -58,7 +85,7 @@ var JogDataPostListView = {
 
     updateVoteCount: function(data)
     {
-        var $this = $(".jog_data_posts_box_metric_vote_count[post-id="+data.id+"]");
+        var $this = $(".jog_lb_vote_count[post-id="+data.id+"]");
      
         var text = data.vote_count + " Votes";
 

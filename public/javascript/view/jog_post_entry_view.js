@@ -18,7 +18,15 @@ var JogPostEntryView = {
 
         var user = JOGCache.getData("currentUserDetail",null);
         
-        var html = '<div id="jog_data_post_entry">'+
+        if (JOG.configs.page_title == "user_show_page") 
+            var html = '<div id="jog_data_post_entry" style="border:none;background:none;">'+
+                            '<div id="jog_data_post_entry_user_view">'+
+                                '<img id="jog_data_post_entry_user_pic" src="'+user.pic+'">'+
+                                '<span id="jog_data_post_entry_user_name">'+user.name+'</span>'+
+                            '</div>'+
+                        '</div>';
+        else
+            var html = '<div id="jog_data_post_entry">'+
                         '<div id="jog_data_post_entry_user_view">'+
                             '<img id="jog_data_post_entry_user_pic" src="'+user.pic+'">'+
                             '<span id="jog_data_post_entry_user_name">'+user.name+'</span>'+
@@ -63,7 +71,7 @@ var JogPostEntryView = {
                 $imgPreview.find("img").attr("src",data.url);
                 $imgPreview.show();
                 console.log(data);
-                alert(JSON.stringify(data)); 
+                //alert(JSON.stringify(data)); 
                 $loadSpin.hide();
                 JogPostEntryModel.filepick = data;
             });
