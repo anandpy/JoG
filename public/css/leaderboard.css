@@ -175,9 +175,10 @@
 
 .jog_lb_msg
 {
-  width: 76px;
   height: 26px;
-  background-image: url("/images/tmp_lb_deed.png");
+  /*background-image: url("/images/tmp_lb_deed.png");*/
+  font-size: 13px;
+  font-weight: bold;
 }
 
 .jog_lb_text

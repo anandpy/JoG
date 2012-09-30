@@ -65,7 +65,7 @@ var JogLeaderboardPanelView = {
                             '</div>'+
                         '</div>'+
                         '<div class="jog_lb_rightside">'+
-                            '<div class="jog_lb_msg"></div>'+
+                            '<div class="jog_lb_msg">'+JOG.utils.truncateText(data.post_title, 26)+'</div>'+
                             '<p class="jog_lb_text">'+JOG.utils.truncateText(data.post_text,120)+'</p>'+
                             '<div class="jog_lb_by">'+
                             '</div>'+
