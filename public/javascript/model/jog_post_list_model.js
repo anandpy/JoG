@@ -57,7 +57,7 @@ var JogPostListModel = {
                 type: 'POST',
                 dataType: 'json',
                 contentType: 'application/json',
-                data: data,
+                data: {"postID" : data},
                 success: function ( data ) {
                     console.log("post data vote success"); 
                     console.log(data);

@@ -39,18 +39,20 @@ var JogDataPostListView = {
     postHtml : function(data, user)
     {
         var imgHtml = (data.pic && data.pic !== "" ) ? '<img src="'+data.pic+'" align="right">' : "";  
-
-        var postHtml = (user && data.user_uid == user.uid) ? "" : 
-                            '<div class="jog_data_posts_box_metric_vote_action" post-id="'+data.id+'">'+
-                                 '<img src="/resources/heart.png">'+
-                                 '<span>Vote</span>'+
-                            '</div>';
-
-        //var deletePostHtml = (user && data.user_uid == user.uid) ? 
-        //                     '<div data-value="'+data.id+'" class="jog_data_post_delete">Delete Post</div>' 
-        //                     : "" ;
+        var loggedinUser = JOGCache.getData("loggedinUserData", null);
         
+        function postHtml()
+        {
+            
+            var html = (loggedinUser && data.user_uid == loggedinUser.uid) ? "" : '<div data-value="'+data.id+'" class="jog_data_post_list_vote_action jog_lb_vote_action"></div>';
+            return '<div class="jog_data_post_vote_box">'+
+                           '<div class="jog_lb_vote_count" post-id="'+data.id+'">'+data.vote_count+' Votes</div>'+
+                           //'<div data-value="'+data.id+'" class="jog_data_post_list_vote_action jog_lb_vote_action"></div>'+
+                           html+
+                       '</div>';  
 
+        }                    
+      
         function deletePostHtml()
         {
             if (JOG.configs.page_title == "leaderboard" 
@@ -71,8 +73,8 @@ var JogDataPostListView = {
                             JOG.utils.truncateText(data.text, 300)+
                         '</div>'+
                         '<div class="jog_data_posts_box_metric">'+
-                            postHtml+
-                            '<div class="jog_data_posts_box_metric_vote_count" post-id="'+data.id+'"> '+data.vote_count+' Votes  </div>'+
+                            postHtml()+
+                            //'<div class="jog_data_posts_box_metric_vote_count" post-id="'+data.id+'"> '+data.vote_count+' Votes  </div>'+
                         '</div>'+
                         deletePostHtml()+
                         JogDataPostListView.socialShareHtml(data)+
@@ -83,7 +85,7 @@ var JogDataPostListView = {
 
     updateVoteCount: function(data)
     {
-        var $this = $(".jog_data_posts_box_metric_vote_count[post-id="+data.id+"]");
+        var $this = $(".jog_lb_vote_count[post-id="+data.id+"]");
      
         var text = data.vote_count + " Votes";
 

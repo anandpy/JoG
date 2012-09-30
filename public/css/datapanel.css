@@ -48,7 +48,7 @@
 {
   position: absolute;
   bottom: 68px;
-  left: 15px;
+  right: 15px;
   cursor: pointer;
 }
 
@@ -60,6 +60,12 @@
   width: 97%;
 }
 
+.jog_data_post_vote_box
+{
+  position: absolute;
+  bottom: 10px;
+  left: 5px;
+}
 
 .jog_data_posts_box_metric_vote_action
 {
@@ -91,12 +97,9 @@
   right: 5px;
   top: 4px;
   height: 22px;
-  border: 1px solid #CCC;
   text-align: center;
   padding: 4px;
-  border-radius: 4px;
-  background: #CDBE70;
-  color: white;
+  color: #333;
   font-weight: bold;
 }
 

@@ -18,6 +18,7 @@ JoG::Application.routes.draw do
   match '/user' => 'home#show'
   match '/show/:id' => 'home#show'
   match '/post/:id' => 'home#show'
+  match '/loggedin_user' => "home#get_loggedin_user_details"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

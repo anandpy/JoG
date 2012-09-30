@@ -19,6 +19,14 @@ var JogPostListController = {
             e.preventDefault();
         });
 
+        $(".jog_data_post_list_vote_action").live("click", function(e){
+            var $this = $(this);
+            var postID = $this.attr("data-value");
+            JogPostListModel.updateVote(postID);
+            e.preventDefault();
+        });
+
+
     },
 
 	postVoteUpdate: function(obj)

@@ -5,6 +5,7 @@ var JOG = {
 					//JOG.Events.inviteUsersOnVote();
                     JOG.Events.voteClick();
                     JOG.Events.fancyboxImgView();
+                    JOG.Events.initLoggedInUser();
 				},
 
 				inviteUsersOnVote: function()
@@ -67,6 +68,25 @@ var JOG = {
                         e.preventDefault();
                     });
                 },
+
+                initLoggedInUser: function()
+                {
+                    $.ajax({
+                        url: JOG.urls.loggedinUser,
+                        type: 'GET',
+                        dataType: 'json',
+                        contentType: 'application/json',
+                        data: '',
+                        success: function ( data ) {
+                            console.log("Logged in user"); 
+                            console.log(data);
+                            JOGCache.setData("loggedinUserData", data);
+                         },error:function(XMLHttpRequest,textStatus, errorThrown){ 
+                            // TODO: WHAT TO DO!!
+                            console.log("error while retrieving user");
+                        }
+                    });
+                },
 	},
 
 
@@ -99,6 +119,7 @@ var JOG = {
         "leaderboardPosts" : "/leaderboard_posts",
         "fetchAllUser" : "/fetchAllUser",
         "deletePost" : "/delete_post",
+        "loggedinUser" : "/loggedin_user"
     },
 
 	"currentUser": {
