@@ -18,7 +18,7 @@ var JogPostEntryController = {
         postParam.title = $title.val();
         postParam.text = $text.val();
         postParam.imgSrc = JogPostEntryModel.filepick.url;
-        postParam.userID = "123456789";
+        postParam.userID = JOGCache.getData("currentUserDetail",null).uid;
 
         if (postParam.title === "") {
             $title.next().slideToggle();

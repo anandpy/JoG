@@ -22,9 +22,9 @@ var JogDataPostListView = {
 
     },
 
-    addPostEntry: function(data)
+    addPostEntry: function(data, user)
     {
-        var html = JogDataPostListView.postHtml(data);
+        var html = JogDataPostListView.postHtml(data, user );
 
         $("#jog_data_posts_list").prepend(html);
 
