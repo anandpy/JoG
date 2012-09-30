@@ -49,7 +49,7 @@ test: &test
 
 production:
   adapter: postgresql
-  database: jog_production
+  database: jog_productions
   username: sangam
   password: 'lemon124'
   charset: unicode
