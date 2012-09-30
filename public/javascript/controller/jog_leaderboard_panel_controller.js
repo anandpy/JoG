@@ -19,7 +19,7 @@ var JogLeaderboardPanelController = {
 		});
 	},
 
-	updateVote: function()
+	updateVote: function(postID)
 	{
 		var loggedinUser = JOGCache.getData("loggedinUserData",null);
 
