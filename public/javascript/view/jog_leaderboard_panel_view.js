@@ -175,6 +175,11 @@ var JogLeaderboardView = {
             }
         });
     },
+
+    udpateAppMetric: function()
+    {
+
+    },
 };
 
 

@@ -15,13 +15,19 @@ var JogLandingPostMetricModel = {
                     console.log(data);
                     
                     JOGCache.setData("leaderboardPosts", data);
-                    JogLandingPostMetricView.init(data);
+                    JogLandingPostMetricModel.updateView(data);
+                    
                 },error:function(XMLHttpRequest,textStatus, errorThrown){ 
                     // TODO: WHAT TO DO!!
                     console.log("error while retrieving user");
                 }
         });
-	}
+	},
+
+    updateView : function(data)
+    {
+        JogLandingPostMetricView.init(data);
+    },
 
 };
 

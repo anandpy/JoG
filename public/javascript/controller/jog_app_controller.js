@@ -145,6 +145,7 @@ $(document).ready(function(){
     case "leaderboard" :
         $("#jog_leader_board_side_panel").hide();
         JogLeaderboardPanelController.init();
+        JogLandingPostMetricController.init();
 
         break;
     case "user_show_page" :
