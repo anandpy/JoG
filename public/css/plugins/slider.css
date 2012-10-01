@@ -46,11 +46,6 @@
 	Set to display block
 */
 
-.slides_container a {
-	width:570px;
-	height:270px;
-	display:block;
-}
 
 .slides_container a img {
 	display:block;
