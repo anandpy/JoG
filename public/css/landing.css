@@ -8,7 +8,7 @@ body
 #jog_lp_container
 {
   width: 625px;
-  height: 670px;
+  min-height: 100%;
   margin: 0 auto;
   background: rgba(255, 255, 255, 0.8);
   padding: 8px;
@@ -27,11 +27,16 @@ body
 #jog_lp1_msg2
 {
   width: 506px;
-  height: 98px;
-  background-image: url("/images/lp_msg2.png");
+  height: 120px;
+  font-family: 'MyWebFont1';
+  font-size: 28px;
+  color: #6D6C6A;
   margin: 0 auto;
   margin-top: 35px;
   margin-bottom: 30px;
+  line-height: 30px;
+  text-align: center;
+  letter-spacing: 1px;
 }
 
 #jog_lp_msg3

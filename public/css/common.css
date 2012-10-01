@@ -1,8 +1,13 @@
-
+html {
+  height: 100%;
+}
 body
 {
   font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
   background-image: url("/images/leaderboard_bck.png");
+  margin: 0;
+  padding: 0;
+  height: 100%;
   
 }
 @font-face 
