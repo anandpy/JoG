@@ -124,7 +124,7 @@ body
   border: 0px solid white;
   position: relative;
   padding: 4px;
-  background-image: url("/images/lp_post_outer.png");
+  background-image: url("/images/lp_post_outer1.png");
   background-repeat: none;
 }
  
@@ -150,6 +150,8 @@ body
   font-size: 13px;
   color: #7a8fa0;
   text-shadow: 2px 1px 1px #fff;
+  margin-left: 15px;
+  margin-top: 12px;
 }
 
 .jog_lp_sp_ul1
@@ -161,10 +163,11 @@ body
 
 .jog_lp_sp_content
 {
-  width: 97%;
+  width: 88%;
   height: 160px;
   border: 0px solid green;
-  margin-left: 5px;
+  margin-left: 19px;
+  margin-top: 20px;
 }
 
 .jog_lp_sp_leftside, .jog_lp_sp_rightside
@@ -210,7 +213,7 @@ body
   float: left;
   font-size: 12px;
   font-weight: bold;
-  margin: 4px 3px 0px 4px;
+  margin: -41px 3px 0px 4px;
   text-shadow: 2px 3px 2px #fff;
 }
 
@@ -226,17 +229,19 @@ body
 
 .jog_lp_sp_rightside
 {
-  width: 58%;
+  width: 56%;
   height: 100%;
-  border: 0px solid blue; 
+  border: 0px solid blue;
   margin-top: 20px;
+  margin-left: 6px;
 }
 
 .jog_lp_sp_msg
 {
-  width: 76px;
+  width: 155px;
   height: 26px;
-  background-image: url("/images/tmp_lb_deed.png");
+  color: #333;
+  font-weight: bold;
 }
 
 .jog_lp_sp_text
