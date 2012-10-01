@@ -14,7 +14,7 @@ var JogSearchController = {
     init: function(data)
     {
 
-        $("#jog_search").autocomplete(
+        $("#jog_searchbar_v2 input").autocomplete(
             data, 
             {
                 multiple: false,

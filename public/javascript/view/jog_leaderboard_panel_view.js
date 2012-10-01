@@ -35,7 +35,7 @@ var JogLeaderboardPanelView = {
 
         html = html + '</div>';
 
-        $("#jog_leader_board_side_panel").html(html);
+        $("#jog_leader_board_side_panel").append(html);
 
         //$(".fnb_img").fancybox();
 
