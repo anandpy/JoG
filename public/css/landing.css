@@ -272,8 +272,8 @@ body
 #jog_lp_sp_view_all
 {
   position: absolute;
-  bottom: 12px;
-  right: 14px;
+  top: 18px;
+  right: 12px;
   font-weight: bold;
-  color: #8497a8;
+  color: #8497A8;
 }

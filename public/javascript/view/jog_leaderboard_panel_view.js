@@ -83,9 +83,9 @@ var JogLeaderboardPanelView = {
                         '</div>'+
                         '<div class="jog_lb_rightside">'+
                             '<a href="'+JOG.getPostLink(data.post_id)+'">'+
-                              '<div class="jog_lb_msg">'+JOG.utils.truncateText(data.post_title, 26)+'</div>'+
+                              '<div class="jog_lb_msg tipsy" original-title="'+data.post_title+'">'+JOG.utils.truncateText(data.post_title, 26)+'</div>'+
                             '</a>'+ 
-                            '<p class="jog_lb_text">'+JOG.utils.truncateText(data.post_text,120)+'</p>'+
+                            '<p class="jog_lb_text tipsy" original-title="'+data.post_text+'">'+JOG.utils.truncateText(data.post_text,120)+'</p>'+
                             '<div class="jog_lb_by">'+
                             '</div>'+
                         '</div>'+

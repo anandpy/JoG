@@ -6,6 +6,7 @@ var JOG = {
                     JOG.Events.voteClick();
                     JOG.Events.fancyboxImgView();
                     JOG.Events.initLoggedInUser();
+                    JOG.Events.enableTipsy();
 				},
 
 				inviteUsersOnVote: function()
@@ -85,6 +86,10 @@ var JOG = {
                             console.log("error while retrieving user");
                         }
                     });
+                },
+                enableTipsy: function()
+                {
+                    //$(".tipsy").tipsy({live: true});
                 },
 	},
 
