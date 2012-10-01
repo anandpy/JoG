@@ -51,6 +51,9 @@ class HomeController < ApplicationController
 			@page_mode = "post_show_page"
 			@page_id = params[:id]
 		else
+			if !user_signed_in? 
+			  redirect_to '/'
+			end
 			@page_mode = "loggedin_user"
 			@page_id = "nil"
 		end
