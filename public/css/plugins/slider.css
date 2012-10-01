@@ -63,16 +63,16 @@
 #jog_lp_slide_prev, #jog_lp_slide_next {
 	position: absolute;
 	top: 86px;
-	left: -71px;
-	width: 91px;
-	height: 64px;
+	left: -52px;
+	width: 53px;
+	height: 66px;
 	display: block;
 	z-index: -1;
 	cursor: pointer;
 }
 
 #jog_lp_slide_next {
-	left: 309px;
+	left: 324px;
 }
 
 /*
