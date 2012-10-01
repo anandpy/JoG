@@ -21,6 +21,15 @@ var JogUserSinglePostView = {
     postHtml : function(data)
     {
 
+        var loggedinUser = JOGCache.getData("loggedinUserData", null);
+
+        var truncateTextLength = (data.post_pic && data.post_pic !== "" ) ? 200 : 300; ;
+        var imgHtml = (data.post_pic && data.post_pic !== "" ) ? '<img src="'+data.post_pic+'" align="right">' : ""; 
+
+        var tipsyTitleClass = (data.post_title.length > 35) ? "enableTipsy" : "";
+        var tipsyPostClass = (data.post_title.length > truncateTextLength) ? "enableTipsy" : "";
+
+
         function userInfo()
         {
             return '<a href="'+JOG.getUserLink(data.user_uid)+'">'+
@@ -28,7 +37,6 @@ var JogUserSinglePostView = {
                      '<span>'+data.user_name+'</span>'+
                     '</a>'; 
         }
-        var loggedinUser = JOGCache.getData("loggedinUserData", null);
 
         function postHtml()
         {
@@ -41,8 +49,7 @@ var JogUserSinglePostView = {
 
         }     
 
-        var truncateTextLength = (data.post_pic && data.post_pic !== "" ) ? 200 : 300; ;
-        var imgHtml = (data.post_pic && data.post_pic !== "" ) ? '<img src="'+data.post_pic+'" align="right">' : ""; 
+        
 
         var html = '<div class="jog_data_posts_leaderboard_list_box" >'+
                         '<div class="jog_data_posts_leaderboard_list_user_info">'+
@@ -51,11 +58,12 @@ var JogUserSinglePostView = {
                         '<div class="jog_data_posts_leaderboard_list_box_content">'+ 
                             '<h5 class="jog_date_format">'+new Date($.prettyDate.parse(data.time_stamp)).toDateString()+'</h5>'+
                             '<a href="'+JOG.getPostLink(data.post_id)+'">'+
-                                '<h3 class="jog_data_posts_box_title">'+data.post_title +'</h3>'+
+                                '<h3 class="jog_data_posts_box_title '+tipsyTitleClass+'" original-title="'+data.post_title+'">'+JOG.utils.truncateText(data.post_title, 35)+'</h3>'+
                             '</a>'+
                             '<div class="jog_data_posts_box_content">'+
                                 imgHtml+
-                                JOG.utils.truncateText(data.post_text,truncateTextLength) +
+                                data.post_text+
+                                //JOG.utils.truncateText(data.post_text,truncateTextLength) +
                             '</div>'+
                             postHtml()+
                         '</div>'+

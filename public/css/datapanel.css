@@ -45,10 +45,12 @@
 .jog_data_posts_box_content
 {
   font-size: 13px;
-  height: 155px;
+  height: 145px;
   margin-top: 20px;
   line-height: 23px;
   overflow-y: auto;
+  margin-bottom: 10px;
+
 }
 
 .jog_data_posts_box_content img
@@ -59,7 +61,7 @@
 .jog_data_post_delete
 {
   position: absolute;
-  bottom: 68px;
+  bottom: 80px;
   right: 15px;
   cursor: pointer;
 }
@@ -76,7 +78,7 @@
   background-image: url("/images/leaderboard_bck.png");
   border: 1px solid #CCCCCC;
   border-radius: 6px 6px 6px 6px;
-  bottom: 10px;
+  /*bottom: 10px;*/
   left: 5px;
   padding: 3px;
   position: absolute;
@@ -154,6 +156,7 @@
 .jog_data_posts_leaderboard_list_box
 {
   width: 97%;
+  height: 246px;
   border: 1px solid #CCC;
   margin-top: 10px;
   position: relative;
