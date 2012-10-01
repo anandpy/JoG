@@ -382,6 +382,9 @@ a
   right: 100px;
   top: 10px;
   font-weight: normal;
+  font-size: 15px;
+  color: #333;
+  text-shadow: 0px 0px 1px #666;
 }
 
 #jog_logout_v2
