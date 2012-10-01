@@ -8,10 +8,13 @@ var JogPostEntryView = {
 	init:  function()
 	{
         $("#jog_data_post_entry").remove();
+        /*
         if (!JOG.configs.page_title == "leaderboard" 
            && !JOG.configs.page_title == "user_show_page" 
-           && !OG.configs.page_title == "landing_page" )
-		JogPostEntryView.display();
+           && !JOG.configs.page_title == "landing_page" )
+        */
+        if (JOG.configs.page_title == "loggedin_user")
+		  JogPostEntryView.display();
 	},
 
 
@@ -21,14 +24,14 @@ var JogPostEntryView = {
 
         var user = JOGCache.getData("currentUserDetail",null);
         
-        if (JOG.configs.page_title == "user_show_page") 
+        /*if (JOG.configs.page_title == "user_show_page") 
             var html = '<div id="jog_data_post_entry" style="border:none;background:none;">'+
                             '<div id="jog_data_post_entry_user_view">'+
                                 '<img id="jog_data_post_entry_user_pic" src="'+user.pic+'">'+
                                 '<span id="jog_data_post_entry_user_name">'+user.name+'</span>'+
                             '</div>'+
                         '</div>';
-        else
+        else*/
             var html = '<div id="jog_data_post_entry">'+
                         '<div id="jog_data_post_entry_user_view">'+
                             '<img id="jog_data_post_entry_user_pic" src="'+user.pic+'">'+

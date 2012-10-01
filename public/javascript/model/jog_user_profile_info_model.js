@@ -14,7 +14,6 @@ var JogUserProfileModel = {
                     console.log(data);
                     JOGCache.setData("currentUserDetail", data);
                     JogUserProfileInfoView.init(data);
-                    if (JOG.configs.pa_ti   )
                     JogPostEntryView.init();
                     //JogFacebookController.init();
                   

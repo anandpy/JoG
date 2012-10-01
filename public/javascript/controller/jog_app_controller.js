@@ -197,7 +197,6 @@ $(document).ready(function(){
         JogLandingLeaderboardPanelController.init();
         break;
     default:
-        JOG.configs.page_title = "user_console_page";
         JogUserProfileModel.init();
         JogLeaderboardPanelController.init();
         JogUserListModel.init();
