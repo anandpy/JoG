@@ -34,7 +34,7 @@ var JogPostEntryModel = {
             method: 'feed',
             name: 'Joy of Giving - a chance to win free tickets by MakeMyTrip',
             link: JOG.appUrl(),
-            picture: JOG.appUrl() + "/images/mmt_logo.png",
+            picture: JOG.appUrl() + "/images/mmt_share.jpg",
             caption: 'Joy of Giving',
             description: 'I just uploaded an entry to the Joy of Giving content,'+JOG.appUrl()+' , Vote for your friends at Joy of Giving Contest and help them win free tickets',
             message: 'Joy of Giving - a chance to win free tickets by MakeMyTrip'
