@@ -104,12 +104,16 @@ var JogLeaderboardView = {
     {
         var html = "";
           
-        html = html + '<div id="jog_data_posts_leaderboard_list">' +
+        html = html + '<div id="jog_data_posts_leaderboard_list_v2">' +
                         '<h1>Leaderboard</h1>';
                       
 
         $.each(data, function(index, post) { 
-            html = html + JogLeaderboardView.postHtml(post);
+            //html = html + JogLeaderboardView.postHtml(post);
+            html = html + '<div class="jog_data_posts_leaderboard_post_v2">';
+            html = html + JogLeaderboardPanelView.leaderPostHtml(post);
+            html = html + '</div>';
+
         });
 
         html = html + '</div>';

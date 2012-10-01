@@ -272,3 +272,22 @@
   max-width: 500px;
   max-height: 500px;
 }
+
+
+
+
+/* NEW LEADERBOARD */
+#jog_data_posts_leaderboard_list_v2
+{
+  width: 800px;
+  margin: 0 auto;
+  display: inline-block;
+  margin-left: 64px;
+}
+
+.jog_data_posts_leaderboard_post_v2
+{
+  width: 335px;
+  float: left;
+  margin-right: 64px
+}
