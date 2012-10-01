@@ -138,6 +138,7 @@ class HomeController < ApplicationController
 	    if !user_signed_in? 
 	    	Rails.logger.error("[CNTRL] [HOME] [get_current_user_details] ****USER NOT LOGGED IN****")
 	        render :json => {:error => "No user loggedin" }, :status => 400
+	        return
 	    	
 	    end
 
