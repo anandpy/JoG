@@ -36,7 +36,7 @@ var JogPostEntryModel = {
             link: JOG.appUrl(),
             picture: JOG.appUrl() + "/images/mmt_share.jpg",
             caption: 'Joy of Giving',
-            description: ' I have uploaded my entry to the Joy of Giving contest ,'+JOG.appUrl()+' , Vote for me and share your Joy in Giving too!',
+            description: ' I have uploaded my entry to the Joy of Giving contest ,http://apps.facebook.com/367153893359066/?fb_source=search&ref=ts&fref=ts , Vote for me and share your Joy in Giving too!',
             message: 'Joy of Giving - a chance to win free tickets by MakeMyTrip'
         }, function(response) {
             if (response && response.post_id) {
