@@ -174,6 +174,7 @@ $(document).ready(function(){
     switch (JOG.configs.page_title) {
     case "leaderboard" :
         $("#jog_leader_board_side_panel").hide();
+        JogUserProfileModel.init();
         JogLeaderboardPanelController.init();
         JogLandingPostMetricController.init();
 
@@ -196,6 +197,7 @@ $(document).ready(function(){
         JogLandingLeaderboardPanelController.init();
         break;
     default:
+        JOG.configs.page_title = "user_console_page";
         JogUserProfileModel.init();
         JogLeaderboardPanelController.init();
         JogUserListModel.init();

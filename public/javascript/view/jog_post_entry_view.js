@@ -8,6 +8,9 @@ var JogPostEntryView = {
 	init:  function()
 	{
         $("#jog_data_post_entry").remove();
+        if (!JOG.configs.page_title == "leaderboard" 
+           && !JOG.configs.page_title == "user_show_page" 
+           && !OG.configs.page_title == "landing_page" )
 		JogPostEntryView.display();
 	},
 

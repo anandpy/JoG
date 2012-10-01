@@ -31,9 +31,14 @@ class HomeController < ApplicationController
 
 		Rails.logger.info("[CNTRL] [HOME] [SHOW] #{request.env['PATH_INFO']}")
 
+ 
+
 		if request.env['PATH_INFO'].split("/")[1] == "leaderboard"
 			@page_mode = "leaderboard"
-			@page_id = "all"
+			
+			if user_signed_in?
+				@page_id = 	current_user.srv_uid
+			end	
 		elsif request.env['PATH_INFO'].split("/")[1] == "show"
 			if user_signed_in? && current_user.srv_uid == params[:id]
 				@page_mode = "loggedin_user"
