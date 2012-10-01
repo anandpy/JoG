@@ -210,8 +210,9 @@ $(document).ready(function(){
         $("#jog_leader_board_side_panel").hide();
         JogUserProfileModel.init();
         //JogLeaderboardPanelController.init();
-        JogAllPostsController.init();
         JogLandingPostMetricController.init();
+        JogAllPostsController.init();
+        
         break;
     default:
         JogUserProfileModel.init();

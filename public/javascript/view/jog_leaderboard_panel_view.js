@@ -45,8 +45,16 @@ var JogLeaderboardPanelView = {
         html = html + '</div>';
         $("#jog_leader_board_side_panel").append(html);
 
-
+        /* FIXME : I do not belong here, put me at right place */
+        if(JOG.configs.page_title == "leaderboard")
+            JogLeaderboardPanelView.showRecentPostLink();
 	},
+
+    showRecentPostLink: function()
+    {
+        $("#jog_js_dynnav_link").html('<a href="/all_posts"><div id="jog_view_timeline_posts">| View All Posts</div></a>')
+        
+    },
 
 	leaderPostHtml : function(data)
 	{

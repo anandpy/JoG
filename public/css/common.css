@@ -128,22 +128,23 @@ a
 #jog_user_metric
 {
   height: 24px;
-  position: absolute;
   left: 15px;
   top: 8px;
   color: #333;
   font-size: 27px;
+  float: left;
+  padding: 11px;
 }
 
 #jog_view_timeline_posts
 {
-  width: 49px;
   height: 10px;
-  position: absolute;
-  left: 300px;
-  top: 10px;
-  background-image: url("/images/view_all.png");
   cursor: pointer;
+  color: #7a8fa0;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-top: 12px;
+  float: left;
 }
 
 #jog_mmt_msg1

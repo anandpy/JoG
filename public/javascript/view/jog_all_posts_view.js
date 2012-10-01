@@ -6,6 +6,13 @@ var JogAllPostsView = {
     init:  function(data)
     {
         JogAllPostsView.display(data);
+        JogAllPostsView.showLeaderboardLink();
+    },
+
+    showLeaderboardLink: function()
+    {
+        $("#jog_js_dynnav_link").html('<a href="/leaderboard"><div id="jog_view_timeline_posts">| View Leaderboard</div></a>')
+        
     },
 
     display: function(data)
