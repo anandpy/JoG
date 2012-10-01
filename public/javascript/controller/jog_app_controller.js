@@ -139,7 +139,7 @@ var JOG = {
     {
         var loggedinUser = JOGCache.getData("loggedinUserData", null);
         if (!loggedinUser) {
-            $("#jog_logout").hide();
+            $("#jog_logout_v2").hide();
             $("#jog_home").hide();
         }
     },    
