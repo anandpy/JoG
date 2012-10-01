@@ -56,7 +56,7 @@ var JogLeaderboardPanelView = {
 
         var loggedinUser = JOGCache.getData("loggedinUserData", null);
 
-        var tipsyTitleClass = (data.post_title.length > 26) ? "enableTipsy" : "";
+        var tipsyTitleClass = (data.post_title.length > 18) ? "enableTipsy" : "";
         var tipsyPostClass = (data.post_title.length > 120) ? "enableTipsy" : "";
 
         function voteHtml()
@@ -86,7 +86,7 @@ var JogLeaderboardPanelView = {
                         '</div>'+
                         '<div class="jog_lb_rightside">'+
                             '<a href="'+JOG.getPostLink(data.post_id)+'">'+
-                              '<div class="jog_lb_msg '+tipsyTitleClass+'" original-title="'+data.post_title+'">'+JOG.utils.truncateText(data.post_title, 26)+'</div>'+
+                              '<div class="jog_lb_msg '+tipsyTitleClass+'" original-title="'+data.post_title+'">'+JOG.utils.truncateText(data.post_title, 18)+'</div>'+
                             '</a>'+ 
                             '<p class="jog_lb_text '+tipsyPostClass+'" original-title="'+data.post_text+'">'+JOG.utils.truncateText(data.post_text,120)+'</p>'+
                             '<div class="jog_lb_by">'+
