@@ -41,6 +41,8 @@ var JogDataPostListView = {
         var imgHtml = (data.pic && data.pic !== "" ) ? '<img src="'+data.pic+'" align="right">' : "";  
         var loggedinUser = JOGCache.getData("loggedinUserData", null);
         
+        var tipsyTitleClass = (data.title.length > 30) ? "enableTipsy" : "";
+
         function postHtml()
         {
             
@@ -68,7 +70,8 @@ var JogDataPostListView = {
 
         var html = '<div id="jog_post_list_id_'+data.id+'" class="jog_data_posts_box" data-post-id="'+data.id+'" data-post-userid="'+data.user_id+'">'+
                         '<div class="jog_data_posts_box_time">'+JOG.prettifyTimeStamps(data.created_at)+'</div>'+
-                        '<a href="'+JOG.getPostLink(data.id)+'"><h3 class="jog_data_posts_box_title">'+data.title +'</h3></a>'+
+                        '<a href="'+JOG.getPostLink(data.id)+'"><h3 class="jog_data_posts_box_title '+tipsyTitleClass+'" original-title="'+data.title+'">'+
+                                JOG.utils.truncateText(data.title, 30)+'</h3></a>'+
                         '<div class="jog_data_posts_box_content">'+
                             imgHtml+
                             JOG.utils.truncateText(data.text, 300)+

@@ -45,9 +45,10 @@
 .jog_data_posts_box_content
 {
   font-size: 13px;
-  height: 200px;
+  height: 155px;
   margin-top: 20px;
   line-height: 23px;
+  overflow-y: auto;
 }
 
 .jog_data_posts_box_content img
@@ -65,10 +66,9 @@
 
 .jog_data_posts_box_metric
 {
-  position: absolute;
-  bottom: 45px;
   height: 50px;
   width: 97%;
+  position: relative;
 }
 
 .jog_data_post_vote_box

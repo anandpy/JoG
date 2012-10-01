@@ -89,7 +89,7 @@ var JOG = {
                 },
                 enableTipsy: function()
                 {
-                    //$(".enableTipsy").tipsy({live: true});
+                    $(".enableTipsy").tipsy({live: true, gravity: 'w'});
                 },
 	},
 
