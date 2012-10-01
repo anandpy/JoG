@@ -163,7 +163,7 @@ var JOG = {
     {
         $("#slides").shadow('raised');
         $("#jog_fconnect").shadow({type:'sides', sides:'vt-1'});
-        $("#jog_lp_container").shadow({type:'sides', sides:'vt-1'});
+        //$("#jog_lp_container").shadow({type:'sides', sides:'vt-1'});
         $("#jog_data_post_entry").shadow('lifted');
     },
 };
@@ -193,6 +193,10 @@ $(document).ready(function(){
         break;
     case "post_show_page" :
         $("#jog_leader_board_side_panel").hide();
+        var loggedinUser = JOGCache.getData('loggedinUserData', null);
+        if (loggedinUser)
+            JogUserProfileInfoView.displayProfileInfo(loggedinUser);
+
         JogUserSinglePostController.init();
         JogLeaderboardPanelController.init();
         JogLandingPostMetricController.init();

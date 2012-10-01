@@ -9,11 +9,11 @@ var JogUserProfileModel = {
                 dataType: 'json',
                 contentType: 'application/json',
                 data: {"user_id" : JOG.configs.page_id},
-                success: function ( data ) {
+                success: function ( respData ) {
                     console.log("back something"); 
-                    console.log(data);
-                    JOGCache.setData("currentUserDetail", data);
-                    JogUserProfileInfoView.init(data);
+                    console.log(respData);
+                    JOGCache.setData("currentUserDetail", respData);
+                    JogUserProfileInfoView.init(respData);
                     JogPostEntryView.init();
                     //JogFacebookController.init();
                   

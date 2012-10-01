@@ -13,6 +13,9 @@ body
   background: rgba(255, 255, 255, 0.8);
   padding: 8px;
   position: relative;
+  -moz-box-shadow: 0 0 5px #333
+  -webkit-box-shadow: 0 0 5px#333;
+  box-shadow: 0 0 5px #333;
 }
 
 #jog_lp1_msg1
