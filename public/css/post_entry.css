@@ -5,6 +5,9 @@
   border: 1px solid #CCC;
   border-radius: 10px;
   background: #f4f4f4;
+  -webkit-box-shadow: 0 8px 6px -6px #333;
+     -moz-box-shadow: 0 8px 6px -6px #333;
+          box-shadow: 0 8px 6px -6px #333;
 }
 
 

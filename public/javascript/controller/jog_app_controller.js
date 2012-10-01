@@ -159,6 +159,7 @@ var JOG = {
         $("#slides").shadow('raised');
         $("#jog_fconnect").shadow({type:'sides', sides:'vt-1'});
         $("#jog_lp_container").shadow({type:'sides', sides:'vt-1'});
+        $("#jog_data_post_entry").shadow('lifted');
     },
 };
 
@@ -168,7 +169,7 @@ var JOG = {
 $(document).ready(function(){
 
     JOG.Events.init();
-    JOG.applyShadow();
+    
   
     switch (JOG.configs.page_title) {
     case "leaderboard" :
@@ -208,7 +209,7 @@ $(document).ready(function(){
     }
  
     JOG.btnNavSetup();
-   
+    JOG.applyShadow();
 
 });
 

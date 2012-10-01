@@ -8,7 +8,9 @@
 
 #jog_data_posts_list
 {
+  /* chnaged here */
   width: 600px;
+  width: 490px;
   border: 0px solid red;
 }
 

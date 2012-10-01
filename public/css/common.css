@@ -67,7 +67,9 @@ a
 
 #jog_outer_container
 {
+  /* changed here */
   width: 1024px;
+  width: 900px;
   height: auto;
   border: 1px solid #d6d6d6;
   border-radius: 5px;
@@ -82,7 +84,11 @@ a
 
 #jog_metric_box
 {
+  /*
+  changed here
   width: 1001px;
+  */
+  width: 880px;
   height: 38px;
   background-image: url("/images/metric_box.png");
   margin: 0 auto;
@@ -112,6 +118,7 @@ a
 #jog_main_container
 {
   width: 1001px;
+  width: 880px;
   margin-top: 20px;
   margin: 0 auto;
   background-image: url("/images/leaderboard_bck.png");
@@ -210,6 +217,7 @@ a
 {
   float:left;
   width: 600px;
+  width: 490px;
   border: 0px solid green;
   margin-left: 17px;
   margin-top: 56px;
@@ -314,7 +322,8 @@ a
 #jog_mmt_logo_v2
 {
   position: absolute;
-  right: 5px;
+  right: 11px;
+  top: 5px;
 }
 
 #jog_user_info_v2
