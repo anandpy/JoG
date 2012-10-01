@@ -32,11 +32,11 @@ var JogPostEntryModel = {
         FB.ui(
         {
             method: 'feed',
-            name: 'Joy of Giving - a chance to win free tickets by MakeMyTrip',
+            name: '“I just participated in MakeMyTrip – Joy of Giving contest',
             link: JOG.appUrl(),
             picture: JOG.appUrl() + "/images/mmt_share.jpg",
             caption: 'Joy of Giving',
-            description: 'I just uploaded an entry to the Joy of Giving content,'+JOG.appUrl()+' , Vote for your friends at Joy of Giving Contest and help them win free tickets',
+            description: ' I have uploaded my entry to the Joy of Giving contest ,'+JOG.appUrl()+' , Vote for me and share your Joy in Giving too!',
             message: 'Joy of Giving - a chance to win free tickets by MakeMyTrip'
         }, function(response) {
             if (response && response.post_id) {
