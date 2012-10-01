@@ -40,16 +40,11 @@ var JogLeaderboardPanelView = {
         html = html + 
                '<a href="/leaderboard">'+
                '<div id="jog_loadmore_lbp_v2"></div>';
-              //'<button id="jog_view_full_leaderboard" class="btn btn-info" value="View All">View All</button>'+
                '</a>';
 
         html = html + '</div>';
-
-
-         //html = html + '<div id="jog_loadmore_lbp_v2"></div>';
         $("#jog_leader_board_side_panel").append(html);
 
-        //$(".fnb_img").fancybox();
 
 	},
 
@@ -76,18 +71,15 @@ var JogLeaderboardPanelView = {
                         '<a href="/show/'+data.user_uid+'"><h5>'+data.user_name+'</h5></a>'+
                         '<div class="jog_lb_ul1"></div>'+
                     '</div>'+
+                    '<div class="jog_lb_post_date_data">'+
+                        JOG.prettifyTimeStamps(data.time_stamp) +
+                    '</div>'+
                     '<div class="jog_lb_content">'+
                         '<div class="jog_lb_leftside">'+
                             '<div class="jog_lb_user_photo">'+
                                 '<img src="'+data.user_pic+'">'+
                             '</div>'+
                             voteHtml()+
-                            /*
-                            '<div class="jog_lb_vote">'+
-                                '<div class="jog_lb_vote_count">'+data.votes_count+' Votes</div>'+
-                                '<div class="jog_lb_vote_action"></div>'+
-                            '</div>'+
-                            */
                         '</div>'+
                         '<div class="jog_lb_rightside">'+
                             '<a href="'+JOG.getPostLink(data.post_id)+'">'+

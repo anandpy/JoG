@@ -95,6 +95,16 @@
   text-shadow: 2px 1px 1px #fff;
 }
 
+.jog_lb_post_date_data
+{
+  width: 100%;
+  height: 18px;
+  font-size: 8px;
+  color: #333;
+  text-align: right;
+}
+
+
 .jog_lb_ul1
 {
   width: 35px;
