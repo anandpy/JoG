@@ -168,7 +168,6 @@ class HomeController < ApplicationController
 	    Rails.logger.info("[HOME] [get_current_user_details] auth #{response_json}")
 
 	    if request.xhr?
-	        expires_in 10.minutes
 	        render :json => response_json
 	        return
 	    end 
