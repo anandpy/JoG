@@ -176,5 +176,15 @@
   width: 230px;
   position: absolute;
   right: 4px;
+}
 
+#jog_data_post_entry_select_cat_msg
+{
+  width: 300px;
+  position: absolute;
+  left: 10px;
+  top: 8px;
+  color: #CCC;
+  font-size: 15px;
+  font-weight: bold;
 }

@@ -36,6 +36,7 @@ var JogPostEntryView = {
                         '<textarea id="jog_data_post_entry_text" style="resize: none;" cols="1000" rows="4" placeholder="Text" name="myTextarea"></textarea>'+
                         '<h5 class="jog_data_post_entry_error">Text field cannot be empty </h5>'+
                         '<div id="jog_data_post_entry_select_cat">'+
+                            '<div id="jog_data_post_entry_select_cat_msg">Choose your category</div>'+ 
                             '<select id="jog_data_post_entry_select_cat_val">'+
                                 '<option>Spades  : Goodness for the world</option>'+
                                 '<option>Hearts  : Goodness for unknown</option>'+
