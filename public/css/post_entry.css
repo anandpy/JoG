@@ -55,7 +55,7 @@
 {
   resize: none;
   width: 98%;
-  height: 150px;
+  height: 100px;
   margin: 0 auto;
 }
 
@@ -157,4 +157,24 @@
   position: absolute;
   top: 30px;
   right: 10px;
+}
+
+
+#jog_data_post_entry_select_cat
+{
+  width: 98%;
+  height: 30px;
+  margin-top: 8px;
+  padding: 4px;
+  border: 1px solid #CCC;
+  border-radius: 4px;
+  background: #fff;
+  position: relative;
+}
+#jog_data_post_entry_select_cat_val
+{
+  width: 230px;
+  position: absolute;
+  right: 4px;
+
 }

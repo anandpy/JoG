@@ -33,9 +33,17 @@ var JogPostEntryView = {
                         '</div>'+
                         '<input type="text" id="jog_data_post_entry_title" placeholder="Title for the post" ></input>'+
                         '<h5 class="jog_data_post_entry_error">Title field cannot be empty </h5>'+
-                        '<textarea id="jog_data_post_entry_text" style="resize: none;" cols="1000" rows="8" placeholder="Text" name="myTextarea"></textarea>'+
+                        '<textarea id="jog_data_post_entry_text" style="resize: none;" cols="1000" rows="4" placeholder="Text" name="myTextarea"></textarea>'+
                         '<h5 class="jog_data_post_entry_error">Text field cannot be empty </h5>'+
-                         '<div id="jog_data_post_entry_actions_init">'+
+                        '<div id="jog_data_post_entry_select_cat">'+
+                            '<select id="jog_data_post_entry_select_cat_val">'+
+                                '<option>Spades  : Goodness for the world</option>'+
+                                '<option>Hearts  : Goodness for unknown</option>'+
+                                '<option>Diamond : Goodness for known</option>'+
+                                '<option>Club    : Goodness for Self</option>'+
+                            '</select>'+
+                        '</div>'+
+                        '<div id="jog_data_post_entry_actions_init">'+
                             '<div id="jog_data_post_entry_actions_init_button">'+
                                 '<img src="/resources/upload_photo.png">'+
                                 '<span>Add Photo</span>'+
@@ -49,6 +57,7 @@ var JogPostEntryView = {
                                 '<img src="">'+
                                 '<button id="jog_cancel_img_preview" class="btn btn-warn" value="Cancel">Delete Image</button>'+
                         '</div>'+
+                        
                         '<div id="jog_data_post_entry_actions">'+
                             '<button id="jog_data_post_entry_action_submit" type="submit" class="btn btn-success">Share Joy of Giving</button>'+
                         '</div>'+
