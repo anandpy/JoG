@@ -74,7 +74,8 @@ var JogDataPostListView = {
                                 JOG.utils.truncateText(data.title, 30)+'</h3></a>'+
                         '<div class="jog_data_posts_box_content">'+
                             imgHtml+
-                            JOG.utils.truncateText(data.text, 300)+
+                            data.text+
+                            //JOG.utils.truncateText(data.text, 300)+
                         '</div>'+
                         '<div class="jog_data_posts_box_metric">'+
                             postHtml()+

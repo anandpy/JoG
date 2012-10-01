@@ -32815,3 +32815,84 @@ Processing by PostController#get_posts as JSON
   [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
   [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC
 Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/create_post" for 127.0.0.1 at 2012-10-02 00:57:23 +0530
+Processing by PostController#create_post as JSON
+  Parameters: {"title"=>"just checking just checking just checking just checking just checking just checking just checking just checking just checking ", "text"=>"Hi there, this is my first post, how are you Hi there, this is my first post, how are you Hi there, this is my first post, how are youHi there, this is my first post, how are you Hi there, this is my first post, how are youHi there, this is my first post, how are youHi there, this is my first post, how are you v Hi there, this is my first post, how are you vv Hi there, this is my first post, how are youv Hi there, this is my first post, how are you vvHi there, this is my first post, how are you Hi there, this is my first post, how are you vv Hi there, this is my first post, how are you vvv Hi there, this is my first post, how are you Hi there, this is my first post, how are you Hi there, this is my first post, how are you ", "cat"=>"spades", "userID"=>"1452186072"}
+[CNTRL] [POST] [CREATE] New post create requested
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+[HOME] [COMMON] current user id 1
+[CNTRL] [POST] [CREATE] params {"title"=>"just checking just checking just checking just checking just checking just checking just checking just checking just checking ", "text"=>"Hi there, this is my first post, how are you Hi there, this is my first post, how are you Hi there, this is my first post, how are youHi there, this is my first post, how are you Hi there, this is my first post, how are youHi there, this is my first post, how are youHi there, this is my first post, how are you v Hi there, this is my first post, how are you vv Hi there, this is my first post, how are youv Hi there, this is my first post, how are you vvHi there, this is my first post, how are you Hi there, this is my first post, how are you vv Hi there, this is my first post, how are you vvv Hi there, this is my first post, how are you Hi there, this is my first post, how are you Hi there, this is my first post, how are you ", "cat"=>"spades", "userID"=>"1452186072", "controller"=>"post", "action"=>"create_post"}
+[HOME] [COMMON] current user uid 1452186072
+[MODEL] [POST] [CREATE_POST] Entering {:user_id=>1, :user_uid=>"1452186072", :text=>"Hi there, this is my first post, how are you Hi there, this is my first post, how are you Hi there, this is my first post, how are youHi there, this is my first post, how are you Hi there, this is my first post, how are youHi there, this is my first post, how are youHi there, this is my first post, how are you v Hi there, this is my first post, how are you vv Hi there, this is my first post, how are youv Hi there, this is my first post, how are you vvHi there, this is my first post, how are you Hi there, this is my first post, how are you vv Hi there, this is my first post, how are you vvv Hi there, this is my first post, how are you Hi there, this is my first post, how are you Hi there, this is my first post, how are you ", :title=>"just checking just checking just checking just checking just checking just checking just checking just checking just checking ", :pic=>nil, :category=>"spades"}
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "posts" ("category", "created_at", "pic", "text", "title", "updated_at", "user_id", "user_uid", "votes_count") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["category", "spades"], ["created_at", Mon, 01 Oct 2012 19:27:23 UTC +00:00], ["pic", nil], ["text", "Hi there, this is my first post, how are you Hi there, this is my first post, how are you Hi there, this is my first post, how are youHi there, this is my first post, how are you Hi there, this is my first post, how are youHi there, this is my first post, how are youHi there, this is my first post, how are you v Hi there, this is my first post, how are you vv Hi there, this is my first post, how are youv Hi there, this is my first post, how are you vvHi there, this is my first post, how are you Hi there, this is my first post, how are you vv Hi there, this is my first post, how are you vvv Hi there, this is my first post, how are you Hi there, this is my first post, how are you Hi there, this is my first post, how are you "], ["title", "just checking just checking just checking just checking just checking just checking just checking just checking just checking "], ["updated_at", Mon, 01 Oct 2012 19:27:23 UTC +00:00], ["user_id", 1], ["user_uid", "1452186072"], ["votes_count", 0]]
+  [1m[35m (16.5ms)[0m  COMMIT
+[MODEL] [POST] [CREATE_POST] Leaving
+Completed 200 OK in 27ms (Views: 0.7ms | ActiveRecord: 18.7ms)
+
+
+Started GET "/user.1" for 127.0.0.1 at 2012-10-02 00:58:08 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.1
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 13ms (Views: 9.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-02 00:58:16 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+[HOME] [COMMON] current user id 1
+[HOME] [COMMON] current user data #<User:0x000000059bd9d0>
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>4, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>3}
+Completed 200 OK in 6ms (Views: 0.6ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-02 00:58:16 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[36mUser Load (2.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.8ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>4, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>3}
+Completed 200 OK in 9ms (Views: 0.4ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-02 00:58:16 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[35mPost Load (1.6ms)[0m  SELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10
+  [1m[36mUser Load (2.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Completed 200 OK in 19ms (Views: 2.6ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-02 00:58:16 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC[0m
+Completed 200 OK in 7ms (Views: 3.2ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/fetchAllUser?user_id=nil" for 127.0.0.1 at 2012-10-02 00:58:16 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" 
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.8ms)
