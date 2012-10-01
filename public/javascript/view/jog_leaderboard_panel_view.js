@@ -64,7 +64,7 @@ var JogLeaderboardPanelView = {
                             '</div>'+
                             '<div class="jog_lb_vote">'+
                                 '<div class="jog_lb_vote_count">'+data.votes_count+' Votes</div>'+
-                                //'<div class="jog_lb_vote_action"></div>'+
+                                '<div class="jog_lb_vote_action"></div>'+
                             '</div>'+
                         '</div>'+
                         '<div class="jog_lb_rightside">'+
