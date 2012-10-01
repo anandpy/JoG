@@ -376,6 +376,12 @@ a
   background: #fff;
 }
 
+#jog_user_profile_image_v2 img
+{
+  max-height: 55px;
+  max-width: 70px;
+}
+
 #jog_user_profile_name_v2
 {
   position: absolute;

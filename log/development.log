@@ -29159,3 +29159,301 @@ Processing by PostController#get_jog_post_metric as JSON
   [1m[36m (0.5ms)[0m  [1mSELECT SUM("posts"."votes_count") AS sum_id FROM "posts" [0m
 [CNTRL] [POST] [get_jog_post_metric] result {:post_count=>6, :votes_count=>4}
 Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/leaderboard" for 127.0.0.1 at 2012-10-01 23:33:26 +0530
+Processing by HomeController#show as HTML
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /leaderboard
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 12ms (Views: 10.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user.2" for 127.0.0.1 at 2012-10-01 23:34:50 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.2
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 9ms (Views: 6.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-01 23:34:52 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+[HOME] [COMMON] current user id 2
+[HOME] [COMMON] current user data #<User:0x000000060d9778>
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '100003748290843' LIMIT 1
+  [1m[36mPost Load (0.8ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 2[0m
+[HOME] [get_current_user_details] auth {:name=>"Rich Sam", :uid=>"100003748290843", :id=>2, :sex=>"male", :pic=>"http://graph.facebook.com/100003748290843/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBADm4OUsGTCW2EzMkrzLvBhlivcyZCviMCYM6NY6yDRcCb3dfC7XEGv871bHSDbPG8SkkfgPKw0iFdMcRwbuPBZAe1uwgZDZD", :post_count=>4}
+Completed 200 OK in 8ms (Views: 0.6ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-01 23:34:52 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '100003748290843' LIMIT 1[0m
+  [1m[35mPost Load (0.7ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 2
+[HOME] [get_current_user_details] auth {:name=>"Rich Sam", :uid=>"100003748290843", :id=>2, :sex=>"male", :pic=>"http://graph.facebook.com/100003748290843/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBADm4OUsGTCW2EzMkrzLvBhlivcyZCviMCYM6NY6yDRcCb3dfC7XEGv871bHSDbPG8SkkfgPKw0iFdMcRwbuPBZAe1uwgZDZD", :post_count=>4}
+Completed 200 OK in 8ms (Views: 0.5ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-01 23:34:52 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[36mPost Load (1.2ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Completed 200 OK in 17ms (Views: 2.7ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/fetchAllUser?user_id=nil" for 127.0.0.1 at 2012-10-01 23:34:52 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" 
+Completed 200 OK in 5ms (Views: 2.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-01 23:34:52 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '100003748290843' ORDER BY id DESC
+Completed 200 OK in 7ms (Views: 3.3ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-01 23:36:47 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+[CNTRL] [HOME] [get_current_user_details] ****USER NOT LOGGED IN****
+Completed 500 Internal Server Error in 2ms
+
+RuntimeError (Called id for nil, which would mistakenly be 4 -- if you really wanted the id of nil, use object_id):
+  app/controllers/home_controller.rb:144:in `get_loggedin_user_details'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.3ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.9ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.6ms)
+
+
+Started GET "/current_user_details?user_id=" for 127.0.0.1 at 2012-10-01 23:36:47 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"", "home"=>{"user_id"=>"", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[36mUser Load (5.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '' LIMIT 1[0m
+[HOME] [get_current_user_details] not legal uid, redirect to home
+Redirected to http://localhost:3000/
+Completed 500 Internal Server Error in 8ms
+
+NoMethodError (undefined method `[]' for nil:NilClass):
+  app/controllers/home_controller.rb:111:in `get_current_user_details'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.8ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.3ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.7ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-01 23:36:47 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Completed 200 OK in 16ms (Views: 2.8ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/post_metric" for 127.0.0.1 at 2012-10-01 23:36:47 +0530
+Processing by PostController#get_jog_post_metric as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_jog_post_metric] enter {"controller"=>"post", "action"=>"get_jog_post_metric", "post"=>{}}
+  [1m[36m (0.7ms)[0m  [1mSELECT COUNT(*) FROM "posts" [0m
+  [1m[35m (0.4ms)[0m  SELECT SUM("posts"."votes_count") AS sum_id FROM "posts" 
+[CNTRL] [POST] [get_jog_post_metric] result {:post_count=>6, :votes_count=>4}
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/leaderboard" for 127.0.0.1 at 2012-10-01 23:39:50 +0530
+Processing by HomeController#show as HTML
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /leaderboard
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 7ms (Views: 6.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-01 23:39:58 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+[CNTRL] [HOME] [get_current_user_details] ****USER NOT LOGGED IN****
+Completed 500 Internal Server Error in 1ms
+
+RuntimeError (Called id for nil, which would mistakenly be 4 -- if you really wanted the id of nil, use object_id):
+  app/controllers/home_controller.rb:144:in `get_loggedin_user_details'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.0ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.7ms)
+
+
+Started GET "/current_user_details?user_id=" for 127.0.0.1 at 2012-10-01 23:39:58 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"", "home"=>{"user_id"=>"", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '' LIMIT 1[0m
+[HOME] [get_current_user_details] not legal uid, redirect to home
+Redirected to http://localhost:3000/
+Completed 500 Internal Server Error in 4ms
+
+NoMethodError (undefined method `[]' for nil:NilClass):
+  app/controllers/home_controller.rb:111:in `get_current_user_details'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.3ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.0ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.0ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-01 23:39:58 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[35mPost Load (1.0ms)[0m  SELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Completed 200 OK in 17ms (Views: 2.3ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/post_metric" for 127.0.0.1 at 2012-10-01 23:39:58 +0530
+Processing by PostController#get_jog_post_metric as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_jog_post_metric] enter {"controller"=>"post", "action"=>"get_jog_post_metric", "post"=>{}}
+  [1m[36m (0.7ms)[0m  [1mSELECT COUNT(*) FROM "posts" [0m
+  [1m[35m (0.4ms)[0m  SELECT SUM("posts"."votes_count") AS sum_id FROM "posts" 
+[CNTRL] [POST] [get_jog_post_metric] result {:post_count=>6, :votes_count=>4}
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-01 23:40:12 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+[CNTRL] [HOME] [get_current_user_details] ****USER NOT LOGGED IN****
+Completed 500 Internal Server Error in 1ms
+
+RuntimeError (Called id for nil, which would mistakenly be 4 -- if you really wanted the id of nil, use object_id):
+  app/controllers/home_controller.rb:144:in `get_loggedin_user_details'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.2ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.3ms)
+
+
+Started GET "/images/lp_msg1.png" for 127.0.0.1 at 2012-10-01 23:40:12 +0530
+
+ActionController::RoutingError (No route matches [GET] "/images/lp_msg1.png"):
+  actionpack (3.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.1) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.1) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.1) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/static.rb:53:in `call'
+  railties (3.2.1) lib/rails/engine.rb:479:in `call'
+  railties (3.2.1) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.1) lib/rails/rack/log_tailer.rb:14:in `call'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  rack (1.4.1) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.1) lib/rack/server.rb:265:in `start'
+  railties (3.2.1) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.1) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.1) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.1) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.2ms)
+
+
+Started GET "/images/the_joy_of_giving" for 127.0.0.1 at 2012-10-01 23:40:12 +0530
+
+ActionController::RoutingError (No route matches [GET] "/images/the_joy_of_giving"):
+  actionpack (3.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.1) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.1) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.1) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/static.rb:53:in `call'
+  railties (3.2.1) lib/rails/engine.rb:479:in `call'
+  railties (3.2.1) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.1) lib/rails/rack/log_tailer.rb:14:in `call'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  rack (1.4.1) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.1) lib/rack/server.rb:265:in `start'
+  railties (3.2.1) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.1) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.1) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.1) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/users/auth/facebook" for 127.0.0.1 at 2012-10-01 23:40:13 +0530
+
+
+Started GET "/users/auth/facebook/callback?state=e0e6c30c594a38038158521f732b1166face441027238829&code=AQA5ereIR4TB1I3-cKHfsw-tHEFOxuXPvyi_ffOzKDns5gSl7UA-4gYq1binrH1s-U72Ly9NNEujoxV79qOo1dYUkGZ79Rd06zwRXF37YkdI0waocgvk4DQn0XJeP7BgTSfbhUFOFDWFBY6YaXaRaGOH-t3L_eXYcgfIkFUoge44ulxkVeTrZaZi9trU49QS6RJcvyhLKUgzqlmoLl20t5ed" for 127.0.0.1 at 2012-10-01 23:40:14 +0530
