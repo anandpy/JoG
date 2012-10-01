@@ -2,9 +2,18 @@ var JogUserProfileInfoView = {
 
 	init:  function(data)
 	{
-		JogUserProfileInfoView.display(data);
+		//JogUserProfileInfoView.display(data);
         JogUserProfileInfoView.displayPostMetric(data);
+        JogUserProfileInfoView.displayProfileInfo(data);
 	},
+
+    displayProfileInfo: function(data)
+    {
+        var html = '<img id="jog_user_profile_image_v2" src="'+data.pic+'">'+
+                   '<h4 id="jog_user_profile_name_v2">'+data.name+'</h4>';
+
+        $("#jog_user_info_v2").prepend(html);           
+    },
 
     displayPostMetric: function(data)
     {

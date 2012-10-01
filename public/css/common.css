@@ -277,3 +277,75 @@ a
   color: #333;
   text-shadow: 0px 1px 1px #666;
 }
+
+
+
+
+/* VERSION 2 */
+#jog_header_v2
+{
+  height: 60px;
+  border: 0px solid red;
+  position: relative;
+  width: 100%;
+}
+
+#jog_header_v2_img
+{
+  width: 88%;
+  background: rgba(256, 256, 256, 0.6);
+  background: #d4e3ea;
+  position: absolute;
+  left: 0px;
+  height: 60px;
+}
+#jog_header_img
+{
+  position: absolute;
+  top: 5px;
+  left: 10px;
+}
+
+#jog_mmt_logo_v2
+{
+  position: absolute;
+  right: 5px;
+}
+
+#jog_user_info_v2
+{
+  width: 315px;
+  height: 100%;
+  position: absolute;
+  right: 0px;
+}
+
+#jog_user_profile_image_v2
+{
+  position: absolute;
+  right: 0px;
+  max-height: 55px;
+  padding:2px;
+  background: #fff;
+}
+
+#jog_user_profile_name_v2
+{
+  position: absolute;
+  right: 100px;
+  top: 10px;
+  font-weight: normal;
+}
+
+#jog_logout_v2
+{
+  position: absolute;
+  right: 100px;
+  bottom: 5px;
+  width: 57px;
+  height: 21px;
+  font-weight: bold;
+  cursor: pointer;
+  background-image: url("/images/jog_logout2.png");
+
+}
