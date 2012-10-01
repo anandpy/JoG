@@ -39,6 +39,11 @@ class HomeController < ApplicationController
 			if user_signed_in?
 				@page_id = 	current_user.srv_uid
 			end	
+		elsif request.env['PATH_INFO'].split("/")[1] == "all_posts"
+			@page_mode = "all_posts"
+			if user_signed_in?
+				@page_id = 	current_user.srv_uid
+			end	
 		elsif request.env['PATH_INFO'].split("/")[1] == "show"
 			if user_signed_in? && current_user.srv_uid == params[:id]
 				@page_mode = "loggedin_user"

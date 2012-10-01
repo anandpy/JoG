@@ -127,7 +127,6 @@ a
 
 #jog_user_metric
 {
-  width: 395px;
   height: 24px;
   position: absolute;
   left: 15px;
@@ -136,15 +135,26 @@ a
   font-size: 27px;
 }
 
+#jog_view_timeline_posts
+{
+  width: 49px;
+  height: 10px;
+  position: absolute;
+  left: 300px;
+  top: 10px;
+  background-image: url("/images/view_all.png");
+  cursor: pointer;
+}
+
 #jog_mmt_msg1
 {
   position: absolute;
-  right: 42px;
   top: 12px;
   font-family: "MyWebFont1";
   font-size: 23px;
   color: #333;
   letter-spacing: 1px;
+  right: 5px;
 }
 
 

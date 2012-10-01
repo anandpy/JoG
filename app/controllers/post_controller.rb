@@ -164,6 +164,45 @@ class PostController < ApplicationController
         Rails.logger.info("[CNTRL] [POST] [get_popular_posts] leave");
     end
 
+
+    ################################################################################################
+    #
+    #
+    #
+    ################################################################################################# 
+    def all_post
+        Rails.logger.info("[CNTRL] [POST] [all_post] enter #{params}");
+        
+        response_json = []
+
+        posts = Post.all
+
+        posts.each do |p|
+            h = {}
+            user = p.user
+            h[:user_name] = user[:name]
+            h[:user_pic]  = user[:pic]
+            h[:user_uid] = user[:srv_uid]
+            h[:post_title] = p[:title]
+            h[:post_text] = p[:text]
+            h[:post_pic]  = p[:pic]
+            h[:post_id] = p[:id]
+            h[:time_stamp] = p[:created_at]
+            h[:votes_count] = p[:votes_count]
+            response_json << h
+        end
+
+        if request.xhr?
+            #Rails.logger.debug("[CNTRL] [HOME] [get_locations] Return:#{response_json.inspect}")
+            expires_in 10.minutes
+            render :json => response_json
+            return
+        end
+
+        Rails.logger.info("[CNTRL] [POST] [all_post] leave");
+
+    end
+
     ################################################################################################
     #
     #

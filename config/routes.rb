@@ -9,8 +9,10 @@ JoG::Application.routes.draw do
   match '/fetch_single_post' => "post#get_post_detail"
   match '/post_metric' => "post#get_jog_post_metric"
   match '/leaderboard' => "home#show"
-  match '/fetchAllUser' => "home#get_all_users"
+  match '/fetch_all_user' => "home#get_all_users"
   match '/leaderboard_posts' => "post#get_leaderboard_posts"
+  match '/fetch_all_posts' => "post#all_post"
+  match '/all_posts' => 'home#show'
   match '/fetch_post' => "post#get_posts"
   match '/current_user_details' => "home#get_current_user_details"
   match '/update_vote' => 'post#update_vote'

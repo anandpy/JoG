@@ -16,7 +16,7 @@ var JogLeaderboardPanelModel = {
                     
                     JOGCache.setData("leaderboardPosts", data);
                     
-                    if (JOG.configs.page_title === "leaderboard") {
+                    if (JOG.configs.page_title === "leaderboard" || JOG.configs.page_title === "all_posts") {
                         JogLeaderboardView.init(data);
                     } else {
                         JogLeaderboardPanelView.init(data);

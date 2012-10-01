@@ -121,9 +121,10 @@ var JOG = {
         "updateVoteCount" : "/update_vote",
         "fetchPosts" : "/fetch_post",
         "leaderboardPosts" : "/leaderboard_posts",
-        "fetchAllUser" : "/fetchAllUser",
+        "fetchAllUser" : "/fetch_all_user",
         "deletePost" : "/delete_post",
-        "loggedinUser" : "/loggedin_user"
+        "loggedinUser" : "/loggedin_user",
+        "allPosts" : "/fetch_all_posts",
     },
 
 	"currentUser": {
@@ -204,6 +205,13 @@ $(document).ready(function(){
     case "landing_page" :
         JogLandingPostMetricController.init();
         JogLandingLeaderboardPanelController.init();
+        break;
+    case "all_posts":
+        $("#jog_leader_board_side_panel").hide();
+        JogUserProfileModel.init();
+        //JogLeaderboardPanelController.init();
+        JogAllPostsController.init();
+        JogLandingPostMetricController.init();
         break;
     default:
         JogUserProfileModel.init();
