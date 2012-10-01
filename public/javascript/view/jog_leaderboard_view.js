@@ -33,6 +33,8 @@ var JogLeaderboardPanelView = {
 
         html = html + '</div></div>';
 
+        html = html + '<div id="jog_loadmore_lbp_v2"></div>';
+
         $("#jog_leader_board_side_panel").append(html);
 
 	},

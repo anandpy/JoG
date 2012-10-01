@@ -30,11 +30,14 @@ var JogLeaderboardPanelView = {
 
         html = html + 
                '<a href="/leaderboard">'+
-               '<button id="jog_view_full_leaderboard" class="btn btn-info" value="View All">View All</button>'+
+               '<div id="jog_loadmore_lbp_v2"></div>';
+              //'<button id="jog_view_full_leaderboard" class="btn btn-info" value="View All">View All</button>'+
                '</a>';
 
         html = html + '</div>';
 
+
+         //html = html + '<div id="jog_loadmore_lbp_v2"></div>';
         $("#jog_leader_board_side_panel").append(html);
 
         //$(".fnb_img").fancybox();

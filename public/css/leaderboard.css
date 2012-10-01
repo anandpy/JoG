@@ -217,3 +217,20 @@
   cursor: pointer;
   color: #218868;
 }
+
+/* VESRION 2 */
+#jog_loadmore_lbp_v2
+{
+  width: 342px;
+  height: 82px;
+  background-image: url("/images/jog_loadmore_lbs.png");
+  cursor: pointer;
+  border: 1px solid #ccc transparent;
+}
+
+#jog_loadmore_lbp_v2:hover
+{
+  -webkit-box-shadow: 0 8px 6px -6px black;
+     -moz-box-shadow: 0 8px 6px -6px black;
+          box-shadow: 0 8px 6px -6px black;
+}
