@@ -5,6 +5,17 @@ body
   background-image: url("/images/leaderboard_bck.png");
   
 }
+@font-face 
+{
+  font-family: 'MyWebFont1';
+  src: url('/resources/Avgardn.ttf')  format('truetype');
+}
+
+@font-face 
+{
+  font-family: 'MyWebFont2';
+  src: url('/resources/BORDOH.ttf')  format('truetype');
+}
 
 
 a
@@ -94,6 +105,7 @@ a
   margin: 0 auto;
   position: relative;
   margin-bottom: 3px;
+  font-family: "MyWebFont1";
 }
 
 #jog_user_metric
