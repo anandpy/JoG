@@ -68,7 +68,7 @@ var JogDataPostListView = {
 
         var html = '<div id="jog_post_list_id_'+data.id+'" class="jog_data_posts_box" data-post-id="'+data.id+'" data-post-userid="'+data.user_id+'">'+
                         '<div class="jog_data_posts_box_time">'+JOG.prettifyTimeStamps(data.created_at)+'</div>'+
-                        '<h3 class="jog_data_posts_box_title">'+data.title +'</h3>'+
+                        '<a href="'+JOG.getPostLink(data.id)+'"><h3 class="jog_data_posts_box_title">'+data.title +'</h3></a>'+
                         '<div class="jog_data_posts_box_content">'+
                             imgHtml+
                             JOG.utils.truncateText(data.text, 300)+

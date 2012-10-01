@@ -167,9 +167,8 @@
 
 .jog_data_posts_leaderboard_list_user_info
 {
-  width: 30%;
+  width: 60%;
   height: 100px;
-  border: 0px solid red;
   position: absolute;
   top: -48px;
   left: 50px;

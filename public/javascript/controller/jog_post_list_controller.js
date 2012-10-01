@@ -7,10 +7,10 @@ var JogPostListController = {
 
     initEvents: function()
     {
-		$(".jog_data_posts_box_title").live("click", function(e){
+		/*$(".jog_data_posts_box_title").live("click", function(e){
 		    JogPostListController.viewFullPost($(this));
 			e.preventDefault();
-		});
+		});*/
 		
         $(".jog_data_post_delete").live("click", function(e){
             var $this = $(this);
