@@ -12,6 +12,7 @@ class Post < ActiveRecord::Base
 	      :title => params[:title],
 	      :pic => params[:pic],
 	      :votes_count => 0,
+	      :category =>params[:category]
 	     }
 
 		p = Post.create!(h)

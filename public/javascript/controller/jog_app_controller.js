@@ -153,6 +153,13 @@ var JOG = {
     {
         return new Date($.prettyDate.parse(date)).toDateString();
     },
+
+    applyShadow: function()
+    {
+        $("#slides").shadow('raised');
+        $("#jog_fconnect").shadow({type:'sides', sides:'vt-1'});
+        $("#jog_lp_container").shadow({type:'sides', sides:'vt-1'});
+    },
 };
 
 
@@ -161,6 +168,7 @@ var JOG = {
 $(document).ready(function(){
 
     JOG.Events.init();
+    JOG.applyShadow();
   
     switch (JOG.configs.page_title) {
     case "leaderboard" :

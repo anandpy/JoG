@@ -12,11 +12,13 @@ var JogPostEntryController = {
 
         var $title = $("#jog_data_post_entry_title");
         var $text = $("#jog_data_post_entry_text");
+        var $cat = $("#jog_data_post_entry_select_cat_val");
       
         var valid = 1;
 
         postParam.title = $title.val();
         postParam.text = $text.val();
+        postParam.cat = $cat.val();
         postParam.imgSrc = JogPostEntryModel.filepick.url;
         postParam.userID = JOGCache.getData("currentUserDetail",null).uid;
 

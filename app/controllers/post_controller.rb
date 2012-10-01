@@ -18,7 +18,8 @@ class PostController < ApplicationController
             :user_uid => current_user.srv_uid,
             :text => params["text"],
             :title => params["title"],
-            :pic => params["imgSrc"]
+            :pic => params["imgSrc"],
+            :category => params["cat"],
         }
         
         p = Post.create_post(h)

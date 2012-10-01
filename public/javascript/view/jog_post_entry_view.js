@@ -38,10 +38,10 @@ var JogPostEntryView = {
                         '<div id="jog_data_post_entry_select_cat">'+
                             '<div id="jog_data_post_entry_select_cat_msg">Choose your category</div>'+ 
                             '<select id="jog_data_post_entry_select_cat_val">'+
-                                '<option>Spades  : Goodness for the world</option>'+
-                                '<option>Hearts  : Goodness for unknown</option>'+
-                                '<option>Diamond : Goodness for known</option>'+
-                                '<option>Club    : Goodness for Self</option>'+
+                                '<option value="spades">Spades  : Goodness for the world</option>'+
+                                '<option value="hearts">Hearts  : Goodness for unknown</option>'+
+                                '<option value="diamond">Diamond : Goodness for known</option>'+
+                                '<option value="club">Club    : Goodness for Self</option>'+
                             '</select>'+
                         '</div>'+
                         '<div id="jog_data_post_entry_actions_init">'+
