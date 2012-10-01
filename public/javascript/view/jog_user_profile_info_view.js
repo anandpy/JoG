@@ -9,8 +9,8 @@ var JogUserProfileInfoView = {
 
     displayProfileInfo: function(data)
     {
-        var html = '<img id="jog_user_profile_image_v2" src="'+data.pic+'">'+
-                   '<h4 id="jog_user_profile_name_v2">'+data.name+'</h4>';
+        var html = '<a href="/"><img id="jog_user_profile_image_v2" src="'+data.pic+'">'+
+                   '<h4 id="jog_user_profile_name_v2">'+data.name+'</h4></a>';
 
         $("#jog_user_info_v2").prepend(html);           
     },

@@ -6,13 +6,22 @@ var JogLeaderboardPanelView = {
     "config": {
         "panelViewCount" : 2,
     },
-
+ 
 
 	init:  function(data)
 	{
 		JogLeaderboardPanelView.display(data);
 	},
 
+    updateVoteCount: function(data)
+    {
+        var $this = $("#jog_update_postvote_with_id_"+data.id);
+     
+        var text = data.votes_count + " Votes";
+
+        $this.html(text);
+    },
+ 
 	display: function(data)
 	{
 		var html = "";
@@ -50,7 +59,24 @@ var JogLeaderboardPanelView = {
          
         var imgHtml = (data.post_pic && data.post_pic !== "" ) ? '<div class="jog_lb_view_image" data-value="'+data.post_pic+'"> View Image</div>' : "";  
 
-        
+        var loggedinUser = JOGCache.getData("loggedinUserData", null);
+
+        function voteHtml()
+        {
+            /* 
+            var html = (loggedinUser && data.user_uid == loggedinUser.uid) ? "" : '<div data-value="'+data.id+'" class="jog_data_post_list_vote_action jog_lb_vote_action"></div>';
+            return '<div class="jog_data_post_vote_box">'+
+                           '<div class="jog_lb_vote_count" post-id="'+data.id+'">'+data.votes_count+' Votes</div>'+
+                           //'<div data-value="'+data.id+'" class="jog_data_post_list_vote_action jog_lb_vote_action"></div>'+
+                           html+
+                       '</div>';  
+            */
+            var html =  (loggedinUser && data.user_uid == loggedinUser.uid) ? "" : '<div class="jog_lb_vote_action_v2" data-value="'+data.id+'"></div>';
+            return '<div class="jog_lb_vote">'+
+                                '<div id="jog_update_postvote_with_id_'+data.id+'" class="jog_lb_vote_count">'+data.votes_count+' Votes</div>'+
+                                html+
+                   '</div>';
+        }
 
         html = '<div class="jog_leader_board_entry">' +
                     '<div class="jog_lb_user_name">'+
@@ -62,10 +88,13 @@ var JogLeaderboardPanelView = {
                             '<div class="jog_lb_user_photo">'+
                                 '<img src="'+data.user_pic+'">'+
                             '</div>'+
+                            voteHtml()+
+                            /*
                             '<div class="jog_lb_vote">'+
                                 '<div class="jog_lb_vote_count">'+data.votes_count+' Votes</div>'+
                                 '<div class="jog_lb_vote_action"></div>'+
                             '</div>'+
+                            */
                         '</div>'+
                         '<div class="jog_lb_rightside">'+
                             '<a href="'+JOG.getPostLink(data.post_id)+'">'+
