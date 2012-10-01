@@ -156,6 +156,15 @@
   text-shadow: 2px 3px 2px #fff;
 }
 
+.jog_lb_vote_action_v2
+{
+  width: 47px;
+  height: 22px;
+  background-image: url("/images/vote_btn.png");
+  float: left;
+  cursor: pointer;
+}
+
 .jog_lb_vote_action
 {
   width: 47px;

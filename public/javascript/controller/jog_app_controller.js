@@ -51,7 +51,7 @@ var JOG = {
                         var $dataID = $("#jog_view_full_image");
                         $.fancybox({
                             content: $dataID,
-                            'padding': 0, 
+                            'padding': 20, 
                             'autoSize': false, 
                             'height' : 'auto', 
                             'width' : 'auto',

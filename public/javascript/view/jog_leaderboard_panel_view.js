@@ -4,7 +4,7 @@
 var JogLeaderboardPanelView = {
  
     "config": {
-        "panelViewCount" : 2,
+        "panelViewCount" : 6,
     },
  
 
@@ -63,19 +63,12 @@ var JogLeaderboardPanelView = {
 
         function voteHtml()
         {
-            /* 
-            var html = (loggedinUser && data.user_uid == loggedinUser.uid) ? "" : '<div data-value="'+data.id+'" class="jog_data_post_list_vote_action jog_lb_vote_action"></div>';
-            return '<div class="jog_data_post_vote_box">'+
-                           '<div class="jog_lb_vote_count" post-id="'+data.id+'">'+data.votes_count+' Votes</div>'+
-                           //'<div data-value="'+data.id+'" class="jog_data_post_list_vote_action jog_lb_vote_action"></div>'+
-                           html+
-                       '</div>';  
-            */
-            var html =  (loggedinUser && data.user_uid == loggedinUser.uid) ? "" : '<div class="jog_lb_vote_action_v2" data-value="'+data.id+'"></div>';
-            return '<div class="jog_lb_vote">'+
-                                '<div id="jog_update_postvote_with_id_'+data.id+'" class="jog_lb_vote_count">'+data.votes_count+' Votes</div>'+
+            var html =  (loggedinUser && data.user_uid == loggedinUser.uid) ? "" : '<div class="jog_lb_vote_action_v2" data-value="'+data.post_id+'"></div>';
+            var testHtml =  '<div class="jog_lb_vote">'+
+                                '<div id="jog_update_postvote_with_id_'+data.post_id+'" class="jog_lb_vote_count">'+data.votes_count+' Votes</div>'+
                                 html+
                    '</div>';
+            return testHtml;       
         }
 
         html = '<div class="jog_leader_board_entry">' +

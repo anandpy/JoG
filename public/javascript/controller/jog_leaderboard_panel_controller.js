@@ -35,12 +35,15 @@ var JogLeaderboardPanelController = {
         if (!loggedinUser)
             JOG.Events.inviteUsersOnVote();
         else
-
+        JogPostListModel.updateVote(postID, type);	
+        
+        /*
 		if (type == "big")
-			JogPostListModel.updateVote(postID);	
+			JogPostListModel.updateVote(postID, type);	
 		else if(type == "small")
+			JogPostListModel.updateVote(postID, );	
 			JogLeaderboardPanelView.updateVoteCount(postID);
-
+		*/
 		//JogPostListModel.updateVote(postID);
 	},
 

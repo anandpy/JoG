@@ -49,7 +49,7 @@ var JogPostListModel = {
     },
 
     /* update vote for a particular vote */
-    updateVote: function(data)
+    updateVote: function(data, type)
 	{
 		$.ajax({
 			    headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content'), 'Content-Type': 'application/x-www-form-urlencoded'},
@@ -58,12 +58,14 @@ var JogPostListModel = {
                 dataType: 'json',
                 contentType: 'application/json',
                 data: {"post_id" : data, "user_id": JOGCache.getData("loggedinUserData",null).id},
-                success: function ( data ) {
+                success: function ( resdata ) {
                     console.log("post data vote success"); 
-                    console.log(data);
+                    console.log(resdata);
 
-                    
-                    JogPostListModel.updateVoteCountView(data);
+                    if (type && type == "small")
+                        JogLeaderboardPanelView.updateVoteCount(resdata);
+                    else   
+                        JogPostListModel.updateVoteCountView(resdata);
                     
                     //JogUserProfileInfoView.init(data);
 

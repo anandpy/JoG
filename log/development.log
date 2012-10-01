@@ -23130,3 +23130,1762 @@ Processing by PostController#get_posts as JSON
   [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
   [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC
 Completed 200 OK in 8ms (Views: 4.9ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/user.2" for 127.0.0.1 at 2012-10-01 17:22:37 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.2
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 9ms (Views: 9.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user.2" for 127.0.0.1 at 2012-10-01 17:22:39 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.2
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 10ms (Views: 9.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-01 17:22:39 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+[HOME] [COMMON] current user id 2
+[HOME] [COMMON] current user data #<User:0x000000059fa290>
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '100003748290843' LIMIT 1
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 2[0m
+[HOME] [get_current_user_details] auth {:name=>"Rich Sam", :uid=>"100003748290843", :id=>2, :sex=>"male", :pic=>"http://graph.facebook.com/100003748290843/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBADm4OUsGTCW2EzMkrzLvBhlivcyZCviMCYM6NY6yDRcCb3dfC7XEGv871bHSDbPG8SkkfgPKw0iFdMcRwbuPBZAe1uwgZDZD", :post_count=>0}
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-01 17:22:39 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '100003748290843' LIMIT 1[0m
+  [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 2
+[HOME] [get_current_user_details] auth {:name=>"Rich Sam", :uid=>"100003748290843", :id=>2, :sex=>"male", :pic=>"http://graph.facebook.com/100003748290843/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBADm4OUsGTCW2EzMkrzLvBhlivcyZCviMCYM6NY6yDRcCb3dfC7XEGv871bHSDbPG8SkkfgPKw0iFdMcRwbuPBZAe1uwgZDZD", :post_count=>0}
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-01 17:22:39 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[36mPost Load (1.0ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10[0m
+  [1m[35mUser Load (1.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Completed 200 OK in 9ms (Views: 1.5ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/fetchAllUser?user_id=nil" for 127.0.0.1 at 2012-10-01 17:22:39 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[35mUser Load (1.3ms)[0m  SELECT "users".* FROM "users" 
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-01 17:22:39 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '100003748290843' ORDER BY id DESC
+Completed 200 OK in 3ms (Views: 0.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/user.2" for 127.0.0.1 at 2012-10-01 17:22:39 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.2
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 11ms (Views: 10.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user.1" for 127.0.0.1 at 2012-10-01 17:23:13 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.1
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 9ms (Views: 8.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-01 17:23:13 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+[HOME] [COMMON] current user id 1
+[HOME] [COMMON] current user data #<User:0x000000053442e8>
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-01 17:23:13 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (0.8ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 7ms (Views: 0.4ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-01 17:23:13 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[36mPost Load (0.8ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Completed 200 OK in 7ms (Views: 1.0ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/fetchAllUser?user_id=nil" for 127.0.0.1 at 2012-10-01 17:23:13 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" 
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-01 17:23:13 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[36mUser Load (2.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mPost Load (1.1ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC
+Completed 200 OK in 8ms (Views: 2.8ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/user.2" for 127.0.0.1 at 2012-10-01 17:23:32 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.2
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 86ms (Views: 85.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user.2" for 127.0.0.1 at 2012-10-01 17:23:33 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.2
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 12ms (Views: 11.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-01 17:23:33 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+[HOME] [COMMON] current user id 2
+[HOME] [COMMON] current user data #<User:0x00000005fe36e8>
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '100003748290843' LIMIT 1
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 2[0m
+[HOME] [get_current_user_details] auth {:name=>"Rich Sam", :uid=>"100003748290843", :id=>2, :sex=>"male", :pic=>"http://graph.facebook.com/100003748290843/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBADm4OUsGTCW2EzMkrzLvBhlivcyZCviMCYM6NY6yDRcCb3dfC7XEGv871bHSDbPG8SkkfgPKw0iFdMcRwbuPBZAe1uwgZDZD", :post_count=>0}
+Completed 200 OK in 8ms (Views: 0.6ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-01 17:23:34 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '100003748290843' LIMIT 1[0m
+  [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 2
+[HOME] [get_current_user_details] auth {:name=>"Rich Sam", :uid=>"100003748290843", :id=>2, :sex=>"male", :pic=>"http://graph.facebook.com/100003748290843/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBADm4OUsGTCW2EzMkrzLvBhlivcyZCviMCYM6NY6yDRcCb3dfC7XEGv871bHSDbPG8SkkfgPKw0iFdMcRwbuPBZAe1uwgZDZD", :post_count=>0}
+Completed 200 OK in 7ms (Views: 0.4ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-01 17:23:34 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Completed 200 OK in 8ms (Views: 1.0ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/fetchAllUser?user_id=nil" for 127.0.0.1 at 2012-10-01 17:23:34 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" 
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-01 17:23:34 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mPost Load (0.8ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '100003748290843' ORDER BY id DESC
+Completed 200 OK in 4ms (Views: 1.0ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/user.2" for 127.0.0.1 at 2012-10-01 17:23:34 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.2
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 10ms (Views: 10.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/leaderboard" for 127.0.0.1 at 2012-10-01 17:23:38 +0530
+Processing by HomeController#show as HTML
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /leaderboard
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 7ms (Views: 5.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/current_user_details?user_id=100003748290843" for 127.0.0.1 at 2012-10-01 17:23:38 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"100003748290843", "home"=>{"user_id"=>"100003748290843", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"100003748290843", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '100003748290843' LIMIT 1
+  [1m[36mPost Load (0.7ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 2[0m
+[HOME] [get_current_user_details] auth {:name=>"Rich Sam", :uid=>"100003748290843", :id=>2, :sex=>"male", :pic=>"http://graph.facebook.com/100003748290843/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBADm4OUsGTCW2EzMkrzLvBhlivcyZCviMCYM6NY6yDRcCb3dfC7XEGv871bHSDbPG8SkkfgPKw0iFdMcRwbuPBZAe1uwgZDZD", :post_count=>0}
+Completed 200 OK in 5ms (Views: 0.4ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/post_metric" for 127.0.0.1 at 2012-10-01 17:23:38 +0530
+Processing by PostController#get_jog_post_metric as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_jog_post_metric] enter {"controller"=>"post", "action"=>"get_jog_post_metric", "post"=>{}}
+  [1m[35m (1.2ms)[0m  SELECT COUNT(*) FROM "posts" 
+  [1m[36m (0.6ms)[0m  [1mSELECT SUM("posts"."votes_count") AS sum_id FROM "posts" [0m
+[CNTRL] [POST] [get_jog_post_metric] result {:post_count=>2, :votes_count=>0}
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/user.1" for 127.0.0.1 at 2012-10-01 17:24:43 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.1
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 11ms (Views: 10.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-01 17:24:43 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+[HOME] [COMMON] current user id 1
+[HOME] [COMMON] current user data #<User:0x00000005c98ab0>
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-01 17:24:43 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.8ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 8ms (Views: 0.5ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-01 17:24:43 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Completed 200 OK in 8ms (Views: 1.1ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/fetchAllUser?user_id=nil" for 127.0.0.1 at 2012-10-01 17:24:43 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Completed 200 OK in 5ms (Views: 2.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-01 17:24:43 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mPost Load (1.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC[0m
+Completed 200 OK in 7ms (Views: 3.1ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/leaderboard" for 127.0.0.1 at 2012-10-01 17:24:47 +0530
+Processing by HomeController#show as HTML
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /leaderboard
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 9ms (Views: 6.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-01 17:24:49 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+[HOME] [COMMON] current user id 2
+[HOME] [COMMON] current user data #<User:0x0000000568f768>
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '100003748290843' LIMIT 1
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 2[0m
+[HOME] [get_current_user_details] auth {:name=>"Rich Sam", :uid=>"100003748290843", :id=>2, :sex=>"male", :pic=>"http://graph.facebook.com/100003748290843/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBADm4OUsGTCW2EzMkrzLvBhlivcyZCviMCYM6NY6yDRcCb3dfC7XEGv871bHSDbPG8SkkfgPKw0iFdMcRwbuPBZAe1uwgZDZD", :post_count=>0}
+Completed 200 OK in 5ms (Views: 0.5ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/current_user_details?user_id=100003748290843" for 127.0.0.1 at 2012-10-01 17:24:49 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"100003748290843", "home"=>{"user_id"=>"100003748290843", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"100003748290843", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '100003748290843' LIMIT 1
+  [1m[36mPost Load (0.7ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 2[0m
+[HOME] [get_current_user_details] auth {:name=>"Rich Sam", :uid=>"100003748290843", :id=>2, :sex=>"male", :pic=>"http://graph.facebook.com/100003748290843/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBADm4OUsGTCW2EzMkrzLvBhlivcyZCviMCYM6NY6yDRcCb3dfC7XEGv871bHSDbPG8SkkfgPKw0iFdMcRwbuPBZAe1uwgZDZD", :post_count=>0}
+Completed 200 OK in 5ms (Views: 0.5ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-01 17:24:49 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[35mPost Load (1.1ms)[0m  SELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Completed 200 OK in 8ms (Views: 1.1ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/post_metric" for 127.0.0.1 at 2012-10-01 17:24:49 +0530
+Processing by PostController#get_jog_post_metric as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_jog_post_metric] enter {"controller"=>"post", "action"=>"get_jog_post_metric", "post"=>{}}
+  [1m[36m (0.7ms)[0m  [1mSELECT COUNT(*) FROM "posts" [0m
+  [1m[35m (0.4ms)[0m  SELECT SUM("posts"."votes_count") AS sum_id FROM "posts" 
+[CNTRL] [POST] [get_jog_post_metric] result {:post_count=>2, :votes_count=>0}
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-10-01 17:24:55 +0530
+Processing by HomeController#index as HTML
+[CNTRL] [HOME] [INDEX] New App Main Page requested
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+[CNTRL] [HOME] [INDEX] *****DETECTED USER***** #<User id: 2, srv: "facebook", srv_uid: "100003748290843", access_token: "AAADeYrgHl2sBADm4OUsGTCW2EzMkrzLvBhlivcyZCviMCYM6NY...", username: "---\n- !!null \n- male\n", name: "Rich Sam", pic: "http://graph.facebook.com/100003748290843/picture?t...", sex: "male", votes_count: 0, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2012-10-01 11:40:49", last_sign_in_at: "2012-10-01 11:40:49", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", authentication_token: nil, created_at: "2012-10-01 11:40:49", updated_at: "2012-10-01 11:40:49">
+Redirected to http://localhost:3000/user.2
+Completed 302 Found in 3ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/user.2" for 127.0.0.1 at 2012-10-01 17:24:55 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.2
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 10ms (Views: 9.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/create_post" for 127.0.0.1 at 2012-10-01 17:25:03 +0530
+Processing by PostController#create_post as JSON
+  Parameters: {"title"=>"testing", "text"=>"testing", "cat"=>"spades", "userID"=>"100003748290843"}
+[CNTRL] [POST] [CREATE] New post create requested
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+[HOME] [COMMON] current user id 2
+[CNTRL] [POST] [CREATE] params {"title"=>"testing", "text"=>"testing", "cat"=>"spades", "userID"=>"100003748290843", "controller"=>"post", "action"=>"create_post"}
+[HOME] [COMMON] current user uid 100003748290843
+[MODEL] [POST] [CREATE_POST] Entering {:user_id=>2, :user_uid=>"100003748290843", :text=>"testing", :title=>"testing", :pic=>nil, :category=>"spades"}
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "posts" ("category", "created_at", "pic", "text", "title", "updated_at", "user_id", "user_uid", "votes_count") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["category", "spades"], ["created_at", Mon, 01 Oct 2012 11:55:03 UTC +00:00], ["pic", nil], ["text", "testing"], ["title", "testing"], ["updated_at", Mon, 01 Oct 2012 11:55:03 UTC +00:00], ["user_id", 2], ["user_uid", "100003748290843"], ["votes_count", 0]]
+  [1m[36m (32.5ms)[0m  [1mCOMMIT[0m
+[MODEL] [POST] [CREATE_POST] Leaving
+Completed 200 OK in 44ms (Views: 0.9ms | ActiveRecord: 35.0ms)
+
+
+Started GET "/user.1" for 127.0.0.1 at 2012-10-01 17:25:14 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.1
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 88ms (Views: 87.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-01 17:25:15 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+[HOME] [COMMON] current user id 1
+[HOME] [COMMON] current user data #<User:0x0000000603c428>
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 6ms (Views: 0.5ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-01 17:25:15 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.8ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 7ms (Views: 0.4ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-01 17:25:15 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[35mPost Load (1.0ms)[0m  SELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Completed 200 OK in 10ms (Views: 1.4ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/fetchAllUser?user_id=nil" for 127.0.0.1 at 2012-10-01 17:25:15 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" 
+Completed 200 OK in 5ms (Views: 2.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-01 17:25:15 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC
+Completed 200 OK in 7ms (Views: 3.2ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/user.1" for 127.0.0.1 at 2012-10-01 17:26:16 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.1
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 11ms (Views: 10.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-01 17:26:17 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+[HOME] [COMMON] current user id 1
+[HOME] [COMMON] current user data #<User:0x00000005d603f8>
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.7ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 7ms (Views: 0.4ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-01 17:26:17 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (0.8ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 7ms (Views: 0.4ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-01 17:26:17 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Completed 200 OK in 10ms (Views: 1.3ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/fetchAllUser?user_id=nil" for 127.0.0.1 at 2012-10-01 17:26:17 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-01 17:26:17 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC[0m
+Completed 200 OK in 8ms (Views: 2.7ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/user.1" for 127.0.0.1 at 2012-10-01 17:27:50 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.1
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-01 17:27:52 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+[HOME] [COMMON] current user id 1
+[HOME] [COMMON] current user data #<User:0x000000059c8330>
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-01 17:27:52 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 9ms (Views: 0.5ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-01 17:27:52 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Completed 200 OK in 10ms (Views: 1.5ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/fetchAllUser?user_id=nil" for 127.0.0.1 at 2012-10-01 17:27:52 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" 
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-01 17:27:52 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC
+Completed 200 OK in 6ms (Views: 2.8ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/user.1" for 127.0.0.1 at 2012-10-01 17:28:40 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.1
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 10ms (Views: 10.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-01 17:28:41 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+[HOME] [COMMON] current user id 1
+[HOME] [COMMON] current user data #<User:0x0000000534c7b8>
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.7ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 7ms (Views: 0.4ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-01 17:28:41 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (0.8ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 7ms (Views: 0.5ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-01 17:28:41 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10[0m
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Completed 200 OK in 10ms (Views: 1.4ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/fetchAllUser?user_id=nil" for 127.0.0.1 at 2012-10-01 17:28:41 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-01 17:28:41 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mPost Load (1.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC[0m
+Completed 200 OK in 6ms (Views: 2.8ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/user.1" for 127.0.0.1 at 2012-10-01 17:29:05 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.1
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 79ms (Views: 78.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-01 17:29:06 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+[HOME] [COMMON] current user id 1
+[HOME] [COMMON] current user data #<User:0x0000000604aed8>
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-01 17:29:06 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.7ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 7ms (Views: 0.5ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-01 17:29:06 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Completed 200 OK in 11ms (Views: 1.5ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/fetchAllUser?user_id=nil" for 127.0.0.1 at 2012-10-01 17:29:06 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" 
+Completed 200 OK in 5ms (Views: 2.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-01 17:29:06 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mPost Load (1.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC
+Completed 200 OK in 6ms (Views: 2.7ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/user.1" for 127.0.0.1 at 2012-10-01 17:30:48 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.1
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 11ms (Views: 10.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-01 17:30:49 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+[HOME] [COMMON] current user id 1
+[HOME] [COMMON] current user data #<User:0x00000005d88d80>
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-01 17:30:49 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (1.4ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 8ms (Views: 0.5ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-01 17:30:49 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (1.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Completed 200 OK in 12ms (Views: 1.7ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/fetchAllUser?user_id=nil" for 127.0.0.1 at 2012-10-01 17:30:49 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Completed 200 OK in 5ms (Views: 2.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-01 17:30:49 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC[0m
+Completed 200 OK in 6ms (Views: 2.6ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/user.1" for 127.0.0.1 at 2012-10-01 17:31:00 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.1
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 8ms (Views: 7.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-01 17:31:01 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+[HOME] [COMMON] current user id 1
+[HOME] [COMMON] current user data #<User:0x00000005a268e0>
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-01 17:31:01 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 8ms (Views: 0.7ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-01 17:31:01 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mUser Load (1.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Completed 200 OK in 11ms (Views: 1.4ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/fetchAllUser?user_id=nil" for 127.0.0.1 at 2012-10-01 17:31:01 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" 
+Completed 200 OK in 6ms (Views: 3.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-01 17:31:01 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC
+Completed 200 OK in 7ms (Views: 3.4ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/user.1" for 127.0.0.1 at 2012-10-01 17:31:41 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.1
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 10ms (Views: 9.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-01 17:31:42 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+[HOME] [COMMON] current user id 1
+[HOME] [COMMON] current user data #<User:0x000000053a1d58>
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 5ms (Views: 0.5ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-01 17:31:42 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (0.8ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 9ms (Views: 0.5ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-01 17:31:42 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[36mPost Load (1.1ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Completed 200 OK in 13ms (Views: 1.6ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/fetchAllUser?user_id=nil" for 127.0.0.1 at 2012-10-01 17:31:42 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Completed 200 OK in 5ms (Views: 3.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-01 17:31:42 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mPost Load (1.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC[0m
+Completed 200 OK in 9ms (Views: 4.7ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/user.1" for 127.0.0.1 at 2012-10-01 17:31:48 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.1
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 9ms (Views: 8.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-01 17:31:49 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+[HOME] [COMMON] current user id 1
+[HOME] [COMMON] current user data #<User:0x00000005d65d80>
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 5ms (Views: 0.4ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-01 17:31:49 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.8ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 9ms (Views: 1.7ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-01 17:31:49 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[35mPost Load (0.8ms)[0m  SELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Completed 200 OK in 10ms (Views: 1.8ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/fetchAllUser?user_id=nil" for 127.0.0.1 at 2012-10-01 17:31:49 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" 
+Completed 200 OK in 5ms (Views: 2.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-01 17:31:49 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mPost Load (1.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC
+Completed 200 OK in 7ms (Views: 3.4ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/user.1" for 127.0.0.1 at 2012-10-01 17:37:29 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.1
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 11ms (Views: 11.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-01 17:37:31 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+[HOME] [COMMON] current user id 1
+[HOME] [COMMON] current user data #<User:0x00000005e052e0>
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-01 17:37:31 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 8ms (Views: 0.5ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-01 17:37:31 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[36mPost Load (1.0ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Completed 200 OK in 8ms (Views: 0.9ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/fetchAllUser?user_id=nil" for 127.0.0.1 at 2012-10-01 17:37:31 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Completed 200 OK in 5ms (Views: 2.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-01 17:37:31 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mPost Load (1.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC[0m
+Completed 200 OK in 7ms (Views: 2.9ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/update_vote" for 127.0.0.1 at 2012-10-01 17:37:33 +0530
+Processing by PostController#update_vote as JSON
+  Parameters: {"post_id"=>"3", "user_id"=>"1"}
+[POST][CNTL][update_vote] Entering {"post_id"=>"3", "user_id"=>"1", "controller"=>"post", "action"=>"update_vote"}
+  [1m[35mPost Load (0.7ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 3 LIMIT 1
+[POST] [update_vote] update #<Post id: 3, user_id: 2, pic: nil, title: "testing", text: "testing", votes_count: 0, user_uid: "100003748290843", created_at: "2012-10-01 11:55:03", updated_at: "2012-10-01 11:55:03", category: "spades">
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.4ms)[0m  INSERT INTO "votes" ("created_at", "post_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", Mon, 01 Oct 2012 12:07:33 UTC +00:00], ["post_id", 3], ["updated_at", Mon, 01 Oct 2012 12:07:33 UTC +00:00], ["user_id", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (16.1ms)[0m  UPDATE "users" SET "votes_count" = COALESCE("votes_count", 0) + 1 WHERE "users"."id" = 1
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 3 LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "posts" SET "votes_count" = COALESCE("votes_count", 0) + 1 WHERE "posts"."id" = 3
+  [1m[36m (25.2ms)[0m  [1mCOMMIT[0m
+[POST] [update_vote] update #<Post id: 3, user_id: 2, pic: nil, title: "testing", text: "testing", votes_count: 0, user_uid: "100003748290843", created_at: "2012-10-01 11:55:03", updated_at: "2012-10-01 11:55:03", category: "spades">
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 3 LIMIT 1
+Completed 200 OK in 72ms (Views: 0.8ms | ActiveRecord: 48.7ms)
+
+
+Started POST "/update_vote" for 127.0.0.1 at 2012-10-01 17:38:17 +0530
+Processing by PostController#update_vote as JSON
+  Parameters: {"post_id"=>"3", "user_id"=>"1"}
+[POST][CNTL][update_vote] Entering {"post_id"=>"3", "user_id"=>"1", "controller"=>"post", "action"=>"update_vote"}
+  [1m[36mPost Load (0.7ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 3 LIMIT 1[0m
+[POST] [update_vote] update #<Post id: 3, user_id: 2, pic: nil, title: "testing", text: "testing", votes_count: 1, user_uid: "100003748290843", created_at: "2012-10-01 11:55:03", updated_at: "2012-10-01 11:55:03", category: "spades">
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (22.4ms)[0m  [1mINSERT INTO "votes" ("created_at", "post_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", Mon, 01 Oct 2012 12:08:17 UTC +00:00], ["post_id", 3], ["updated_at", Mon, 01 Oct 2012 12:08:17 UTC +00:00], ["user_id", 1]]
+PG::Error: ERROR:  duplicate key value violates unique constraint "index_votes_on_user_id_and_post_id"
+DETAIL:  Key (user_id, post_id)=(1, 3) already exists.
+: INSERT INTO "votes" ("created_at", "post_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"
+  [1m[35m (0.2ms)[0m  ROLLBACK
+[POST] [update_vote] **** ERROR **** PG::Error: ERROR:  duplicate key value violates unique constraint "index_votes_on_user_id_and_post_id"
+DETAIL:  Key (user_id, post_id)=(1, 3) already exists.
+: INSERT INTO "votes" ("created_at", "post_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id" #<Post id: 3, user_id: 2, pic: nil, title: "testing", text: "testing", votes_count: 1, user_uid: "100003748290843", created_at: "2012-10-01 11:55:03", updated_at: "2012-10-01 11:55:03", category: "spades">
+Completed 400 Bad Request in 28ms (Views: 0.4ms | ActiveRecord: 23.6ms)
+
+
+Started GET "/user.1" for 127.0.0.1 at 2012-10-01 17:38:25 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.1
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 10ms (Views: 9.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-01 17:38:26 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[36mUser Load (1.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+[HOME] [COMMON] current user id 1
+[HOME] [COMMON] current user data #<User:0x0000000582d778>
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>1, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-01 17:38:26 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (2.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>1, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 9ms (Views: 0.5ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-01 17:38:26 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[36mPost Load (1.1ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Completed 200 OK in 11ms (Views: 1.6ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/fetchAllUser?user_id=nil" for 127.0.0.1 at 2012-10-01 17:38:26 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Completed 200 OK in 5ms (Views: 2.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-01 17:38:26 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC[0m
+Completed 200 OK in 7ms (Views: 3.2ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/create_post" for 127.0.0.1 at 2012-10-01 17:38:55 +0530
+Processing by PostController#create_post as JSON
+  Parameters: {"title"=>"kdfh", "text"=>"ksdjh sk", "cat"=>"spades", "userID"=>"100003748290843"}
+[CNTRL] [POST] [CREATE] New post create requested
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+[HOME] [COMMON] current user id 2
+[CNTRL] [POST] [CREATE] params {"title"=>"kdfh", "text"=>"ksdjh sk", "cat"=>"spades", "userID"=>"100003748290843", "controller"=>"post", "action"=>"create_post"}
+[HOME] [COMMON] current user uid 100003748290843
+[MODEL] [POST] [CREATE_POST] Entering {:user_id=>2, :user_uid=>"100003748290843", :text=>"ksdjh sk", :title=>"kdfh", :pic=>nil, :category=>"spades"}
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "posts" ("category", "created_at", "pic", "text", "title", "updated_at", "user_id", "user_uid", "votes_count") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["category", "spades"], ["created_at", Mon, 01 Oct 2012 12:08:55 UTC +00:00], ["pic", nil], ["text", "ksdjh sk"], ["title", "kdfh"], ["updated_at", Mon, 01 Oct 2012 12:08:55 UTC +00:00], ["user_id", 2], ["user_uid", "100003748290843"], ["votes_count", 0]]
+  [1m[36m (19.2ms)[0m  [1mCOMMIT[0m
+[MODEL] [POST] [CREATE_POST] Leaving
+Completed 200 OK in 27ms (Views: 0.8ms | ActiveRecord: 21.4ms)
+
+
+Started GET "/user.1" for 127.0.0.1 at 2012-10-01 17:39:07 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.1
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 10ms (Views: 9.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-01 17:39:08 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+[HOME] [COMMON] current user id 1
+[HOME] [COMMON] current user data #<User:0x000000048010e8>
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>1, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-01 17:39:08 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (1.8ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>1, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 9ms (Views: 0.5ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-01 17:39:08 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[35mPost Load (9.4ms)[0m  SELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10
+  [1m[36mUser Load (1.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mUser Load (1.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Completed 200 OK in 24ms (Views: 2.1ms | ActiveRecord: 12.3ms)
+
+
+Started GET "/fetchAllUser?user_id=nil" for 127.0.0.1 at 2012-10-01 17:39:08 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[36mUser Load (1.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Completed 200 OK in 6ms (Views: 3.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-01 17:39:08 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[35mUser Load (1.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mPost Load (1.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC[0m
+Completed 200 OK in 8ms (Views: 3.3ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/user.1" for 127.0.0.1 at 2012-10-01 17:39:16 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.1
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 11ms (Views: 10.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-01 17:39:17 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+[HOME] [COMMON] current user id 1
+[HOME] [COMMON] current user data #<User:0x00000005edc768>
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (0.7ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>1, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-01 17:39:17 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>1, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 7ms (Views: 0.5ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-01 17:39:17 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10
+  [1m[36mUser Load (1.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Completed 200 OK in 13ms (Views: 1.8ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/fetchAllUser?user_id=nil" for 127.0.0.1 at 2012-10-01 17:39:17 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Completed 200 OK in 5ms (Views: 2.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-01 17:39:17 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC[0m
+Completed 200 OK in 7ms (Views: 2.9ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/update_vote" for 127.0.0.1 at 2012-10-01 17:39:20 +0530
+Processing by PostController#update_vote as JSON
+  Parameters: {"post_id"=>"3", "user_id"=>"1"}
+[POST][CNTL][update_vote] Entering {"post_id"=>"3", "user_id"=>"1", "controller"=>"post", "action"=>"update_vote"}
+  [1m[35mPost Load (0.8ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 3 LIMIT 1
+[POST] [update_vote] update #<Post id: 3, user_id: 2, pic: nil, title: "testing", text: "testing", votes_count: 1, user_uid: "100003748290843", created_at: "2012-10-01 11:55:03", updated_at: "2012-10-01 11:55:03", category: "spades">
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.2ms)[0m  INSERT INTO "votes" ("created_at", "post_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", Mon, 01 Oct 2012 12:09:20 UTC +00:00], ["post_id", 3], ["updated_at", Mon, 01 Oct 2012 12:09:20 UTC +00:00], ["user_id", 1]]
+PG::Error: ERROR:  duplicate key value violates unique constraint "index_votes_on_user_id_and_post_id"
+DETAIL:  Key (user_id, post_id)=(1, 3) already exists.
+: INSERT INTO "votes" ("created_at", "post_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+[POST] [update_vote] **** ERROR **** PG::Error: ERROR:  duplicate key value violates unique constraint "index_votes_on_user_id_and_post_id"
+DETAIL:  Key (user_id, post_id)=(1, 3) already exists.
+: INSERT INTO "votes" ("created_at", "post_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id" #<Post id: 3, user_id: 2, pic: nil, title: "testing", text: "testing", votes_count: 1, user_uid: "100003748290843", created_at: "2012-10-01 11:55:03", updated_at: "2012-10-01 11:55:03", category: "spades">
+Completed 400 Bad Request in 7ms (Views: 0.3ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/user.1" for 127.0.0.1 at 2012-10-01 17:39:27 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.1
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-01 17:39:28 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+[HOME] [COMMON] current user id 1
+[HOME] [COMMON] current user data #<User:0x00000005c639c8>
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>1, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-01 17:39:28 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.8ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>1, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 8ms (Views: 0.5ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-01 17:39:28 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Completed 200 OK in 12ms (Views: 1.9ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/fetchAllUser?user_id=nil" for 127.0.0.1 at 2012-10-01 17:39:28 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Completed 200 OK in 5ms (Views: 2.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-01 17:39:28 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC[0m
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/user.1" for 127.0.0.1 at 2012-10-01 17:39:38 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.1
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 9ms (Views: 8.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-01 17:39:39 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+[HOME] [COMMON] current user id 1
+[HOME] [COMMON] current user data #<User:0x0000000567f1d8>
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>1, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 5ms (Views: 0.6ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-01 17:39:39 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.8ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>1, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 7ms (Views: 0.4ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-01 17:39:39 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Completed 200 OK in 13ms (Views: 1.8ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/fetchAllUser?user_id=nil" for 127.0.0.1 at 2012-10-01 17:39:39 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Completed 200 OK in 5ms (Views: 2.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-01 17:39:39 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC[0m
+Completed 200 OK in 7ms (Views: 2.9ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/update_vote" for 127.0.0.1 at 2012-10-01 17:40:23 +0530
+Processing by PostController#update_vote as JSON
+  Parameters: {"post_id"=>"4", "user_id"=>"1"}
+[POST][CNTL][update_vote] Entering {"post_id"=>"4", "user_id"=>"1", "controller"=>"post", "action"=>"update_vote"}
+  [1m[35mPost Load (0.8ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 4 LIMIT 1
+[POST] [update_vote] update #<Post id: 4, user_id: 2, pic: nil, title: "kdfh", text: "ksdjh sk", votes_count: 0, user_uid: "100003748290843", created_at: "2012-10-01 12:08:55", updated_at: "2012-10-01 12:08:55", category: "spades">
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "votes" ("created_at", "post_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", Mon, 01 Oct 2012 12:10:23 UTC +00:00], ["post_id", 4], ["updated_at", Mon, 01 Oct 2012 12:10:23 UTC +00:00], ["user_id", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "users" SET "votes_count" = COALESCE("votes_count", 0) + 1 WHERE "users"."id" = 1
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 4 LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "posts" SET "votes_count" = COALESCE("votes_count", 0) + 1 WHERE "posts"."id" = 4
+  [1m[36m (15.2ms)[0m  [1mCOMMIT[0m
+[POST] [update_vote] update #<Post id: 4, user_id: 2, pic: nil, title: "kdfh", text: "ksdjh sk", votes_count: 0, user_uid: "100003748290843", created_at: "2012-10-01 12:08:55", updated_at: "2012-10-01 12:08:55", category: "spades">
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 4 LIMIT 1
+Completed 200 OK in 26ms (Views: 0.7ms | ActiveRecord: 19.4ms)
+
+
+Started GET "/user.1" for 127.0.0.1 at 2012-10-01 17:41:00 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.1
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 11ms (Views: 10.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-01 17:41:01 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+[HOME] [COMMON] current user id 1
+[HOME] [COMMON] current user data #<User:0x000000029e73c8>
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>2, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-01 17:41:01 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (0.8ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>2, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 8ms (Views: 0.6ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-01 17:41:01 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Completed 200 OK in 87ms (Views: 8.4ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-01 17:41:02 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[35mUser Load (1.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mPost Load (0.7ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC[0m
+Completed 200 OK in 6ms (Views: 1.9ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/fetchAllUser?user_id=nil" for 127.0.0.1 at 2012-10-01 17:41:02 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" 
+Completed 200 OK in 5ms (Views: 2.9ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/create_post" for 127.0.0.1 at 2012-10-01 17:41:11 +0530
+Processing by PostController#create_post as JSON
+  Parameters: {"title"=>"hohoh", "text"=>"hohohh", "cat"=>"spades", "userID"=>"100003748290843"}
+[CNTRL] [POST] [CREATE] New post create requested
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+[HOME] [COMMON] current user id 2
+[CNTRL] [POST] [CREATE] params {"title"=>"hohoh", "text"=>"hohohh", "cat"=>"spades", "userID"=>"100003748290843", "controller"=>"post", "action"=>"create_post"}
+[HOME] [COMMON] current user uid 100003748290843
+[MODEL] [POST] [CREATE_POST] Entering {:user_id=>2, :user_uid=>"100003748290843", :text=>"hohohh", :title=>"hohoh", :pic=>nil, :category=>"spades"}
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "posts" ("category", "created_at", "pic", "text", "title", "updated_at", "user_id", "user_uid", "votes_count") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["category", "spades"], ["created_at", Mon, 01 Oct 2012 12:11:11 UTC +00:00], ["pic", nil], ["text", "hohohh"], ["title", "hohoh"], ["updated_at", Mon, 01 Oct 2012 12:11:11 UTC +00:00], ["user_id", 2], ["user_uid", "100003748290843"], ["votes_count", 0]]
+  [1m[35m (15.3ms)[0m  COMMIT
+[MODEL] [POST] [CREATE_POST] Leaving
+Completed 200 OK in 23ms (Views: 0.9ms | ActiveRecord: 17.5ms)
+
+
+Started GET "/user.1" for 127.0.0.1 at 2012-10-01 17:41:20 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.1
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 11ms (Views: 10.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-01 17:41:21 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+[HOME] [COMMON] current user id 1
+[HOME] [COMMON] current user data #<User:0x00000005f09880>
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>2, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 6ms (Views: 0.5ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-01 17:41:21 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[35mUser Load (1.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mUser Load (1.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (0.8ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>2, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 9ms (Views: 0.5ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-01 17:41:21 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Completed 200 OK in 15ms (Views: 2.5ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/fetchAllUser?user_id=nil" for 127.0.0.1 at 2012-10-01 17:41:21 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Completed 200 OK in 5ms (Views: 2.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-01 17:41:21 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mPost Load (1.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC[0m
+Completed 200 OK in 7ms (Views: 3.0ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/update_vote" for 127.0.0.1 at 2012-10-01 17:41:37 +0530
+Processing by PostController#update_vote as JSON
+  Parameters: {"post_id"=>"5", "user_id"=>"1"}
+[POST][CNTL][update_vote] Entering {"post_id"=>"5", "user_id"=>"1", "controller"=>"post", "action"=>"update_vote"}
+  [1m[35mPost Load (0.7ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 5 LIMIT 1
+[POST] [update_vote] update #<Post id: 5, user_id: 2, pic: nil, title: "hohoh", text: "hohohh", votes_count: 0, user_uid: "100003748290843", created_at: "2012-10-01 12:11:11", updated_at: "2012-10-01 12:11:11", category: "spades">
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "votes" ("created_at", "post_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", Mon, 01 Oct 2012 12:11:37 UTC +00:00], ["post_id", 5], ["updated_at", Mon, 01 Oct 2012 12:11:37 UTC +00:00], ["user_id", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "votes_count" = COALESCE("votes_count", 0) + 1 WHERE "users"."id" = 1
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 5 LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "posts" SET "votes_count" = COALESCE("votes_count", 0) + 1 WHERE "posts"."id" = 5
+  [1m[36m (18.5ms)[0m  [1mCOMMIT[0m
+[POST] [update_vote] update #<Post id: 5, user_id: 2, pic: nil, title: "hohoh", text: "hohohh", votes_count: 0, user_uid: "100003748290843", created_at: "2012-10-01 12:11:11", updated_at: "2012-10-01 12:11:11", category: "spades">
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 5 LIMIT 1
+Completed 200 OK in 29ms (Views: 0.7ms | ActiveRecord: 22.1ms)
+
+
+Started GET "/user.2" for 127.0.0.1 at 2012-10-01 17:42:09 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.2
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 10ms (Views: 9.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-01 17:42:11 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+[HOME] [COMMON] current user id 2
+[HOME] [COMMON] current user data #<User:0x00000005c31680>
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '100003748290843' LIMIT 1
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 2[0m
+[HOME] [get_current_user_details] auth {:name=>"Rich Sam", :uid=>"100003748290843", :id=>2, :sex=>"male", :pic=>"http://graph.facebook.com/100003748290843/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBADm4OUsGTCW2EzMkrzLvBhlivcyZCviMCYM6NY6yDRcCb3dfC7XEGv871bHSDbPG8SkkfgPKw0iFdMcRwbuPBZAe1uwgZDZD", :post_count=>3}
+Completed 200 OK in 7ms (Views: 0.4ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-01 17:42:11 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '100003748290843' LIMIT 1[0m
+  [1m[35mPost Load (0.7ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 2
+[HOME] [get_current_user_details] auth {:name=>"Rich Sam", :uid=>"100003748290843", :id=>2, :sex=>"male", :pic=>"http://graph.facebook.com/100003748290843/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBADm4OUsGTCW2EzMkrzLvBhlivcyZCviMCYM6NY6yDRcCb3dfC7XEGv871bHSDbPG8SkkfgPKw0iFdMcRwbuPBZAe1uwgZDZD", :post_count=>3}
+Completed 200 OK in 7ms (Views: 0.5ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-01 17:42:11 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Completed 200 OK in 13ms (Views: 1.9ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/fetchAllUser?user_id=nil" for 127.0.0.1 at 2012-10-01 17:42:11 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-01 17:42:11 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mPost Load (1.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '100003748290843' ORDER BY id DESC[0m
+Completed 200 OK in 6ms (Views: 3.1ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/user.1" for 127.0.0.1 at 2012-10-01 17:42:17 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.1
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 11ms (Views: 10.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-01 17:42:18 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+[HOME] [COMMON] current user id 1
+[HOME] [COMMON] current user data #<User:0x000000055e2d88>
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>3, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-01 17:42:18 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.8ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>3, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 8ms (Views: 0.6ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-01 17:42:18 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10
+  [1m[36mUser Load (1.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Completed 200 OK in 19ms (Views: 2.4ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-01 17:42:18 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mPost Load (1.4ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC[0m
+Completed 200 OK in 7ms (Views: 2.9ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/fetchAllUser?user_id=nil" for 127.0.0.1 at 2012-10-01 17:42:18 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" 
+Completed 200 OK in 5ms (Views: 2.7ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/create_post" for 127.0.0.1 at 2012-10-01 17:42:26 +0530
+Processing by PostController#create_post as JSON
+  Parameters: {"title"=>"asasasa", "text"=>"asasasas", "cat"=>"spades", "userID"=>"100003748290843"}
+[CNTRL] [POST] [CREATE] New post create requested
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+[HOME] [COMMON] current user id 2
+[CNTRL] [POST] [CREATE] params {"title"=>"asasasa", "text"=>"asasasas", "cat"=>"spades", "userID"=>"100003748290843", "controller"=>"post", "action"=>"create_post"}
+[HOME] [COMMON] current user uid 100003748290843
+[MODEL] [POST] [CREATE_POST] Entering {:user_id=>2, :user_uid=>"100003748290843", :text=>"asasasas", :title=>"asasasa", :pic=>nil, :category=>"spades"}
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "posts" ("category", "created_at", "pic", "text", "title", "updated_at", "user_id", "user_uid", "votes_count") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["category", "spades"], ["created_at", Mon, 01 Oct 2012 12:12:26 UTC +00:00], ["pic", nil], ["text", "asasasas"], ["title", "asasasa"], ["updated_at", Mon, 01 Oct 2012 12:12:26 UTC +00:00], ["user_id", 2], ["user_uid", "100003748290843"], ["votes_count", 0]]
+  [1m[35m (18.0ms)[0m  COMMIT
+[MODEL] [POST] [CREATE_POST] Leaving
+Completed 200 OK in 25ms (Views: 0.8ms | ActiveRecord: 20.0ms)
+
+
+Started GET "/user.1" for 127.0.0.1 at 2012-10-01 17:42:34 +0530
+Processing by HomeController#show as 
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user.1
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 9ms (Views: 8.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-01 17:42:35 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+[HOME] [COMMON] current user id 1
+[HOME] [COMMON] current user data #<User:0x00000002793f68>
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>3, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-01 17:42:35 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>3, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 8ms (Views: 0.6ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-01 17:42:35 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[36mPost Load (1.1ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Completed 200 OK in 15ms (Views: 2.2ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/fetchAllUser?user_id=nil" for 127.0.0.1 at 2012-10-01 17:42:35 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" 
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-01 17:42:35 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC
+Completed 200 OK in 5ms (Views: 2.1ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/update_vote" for 127.0.0.1 at 2012-10-01 17:42:39 +0530
+Processing by PostController#update_vote as JSON
+  Parameters: {"post_id"=>"6", "user_id"=>"1"}
+[POST][CNTL][update_vote] Entering {"post_id"=>"6", "user_id"=>"1", "controller"=>"post", "action"=>"update_vote"}
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 6 LIMIT 1[0m
+[POST] [update_vote] update #<Post id: 6, user_id: 2, pic: nil, title: "asasasa", text: "asasasas", votes_count: 0, user_uid: "100003748290843", created_at: "2012-10-01 12:12:26", updated_at: "2012-10-01 12:12:26", category: "spades">
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "votes" ("created_at", "post_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", Mon, 01 Oct 2012 12:12:39 UTC +00:00], ["post_id", 6], ["updated_at", Mon, 01 Oct 2012 12:12:39 UTC +00:00], ["user_id", 1]]
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1mUPDATE "users" SET "votes_count" = COALESCE("votes_count", 0) + 1 WHERE "users"."id" = 1[0m
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 6 LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "posts" SET "votes_count" = COALESCE("votes_count", 0) + 1 WHERE "posts"."id" = 6[0m
+  [1m[35m (18.3ms)[0m  COMMIT
+[POST] [update_vote] update #<Post id: 6, user_id: 2, pic: nil, title: "asasasa", text: "asasasas", votes_count: 0, user_uid: "100003748290843", created_at: "2012-10-01 12:12:26", updated_at: "2012-10-01 12:12:26", category: "spades">
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 6 LIMIT 1[0m
+Completed 200 OK in 35ms (Views: 1.3ms | ActiveRecord: 24.0ms)
