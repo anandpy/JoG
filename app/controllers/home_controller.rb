@@ -63,6 +63,8 @@ class HomeController < ApplicationController
 			@page_id = "nil"
 		end
 
+
+		
 		#if !user_signed_in? 
 		#  redirect_to '/'
 		#end
