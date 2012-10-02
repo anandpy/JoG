@@ -31,6 +31,44 @@ class PostController < ApplicationController
         end    
     end
 
+
+     ################################################################################################
+     # INPUT => MANDATORY ONES 
+     # 
+     ################################################################################################# 
+     def delete_post
+
+        Rails.logger.info("[CNTRL] [POST] [delete_post] post delete requested") 
+
+        if !user_signed_in? 
+
+          Rails.logger.error("[CNTRL] [HOME] [get_posts] ****USER NOT LOGGED IN****")
+          render :json => {:error => "No user loggedin" }, :status => 400
+        end
+        Rails.logger.info("[HOME] [COMMON] current user id #{current_user.id}")
+        Rails.logger.info("[CNTRL] [POST] [delete_post] params #{params.inspect}") 
+        Rails.logger.info("[HOME] [COMMON] current user uid #{current_user.srv_uid}")
+        
+        p = Post.where(:id => params["post_id"].to_i).first
+
+        if p and p.user_id.to_s == params[:user_id]
+            p.destroy
+        else
+            Rails.logger.info("[CNTRL] [POST] [CREATE] params #{p.inspect}") 
+            raise "wrong userid, no authentication"
+        end
+
+        #p = Post.delete(params[:post_id])
+        
+        if !p.blank? 
+            render :json => p ,:status => 200
+        else
+            render :json => {:error => "destroy post failed"}, :status => 400
+        end 
+
+    end
+
+
     ################################################################################################
     # Update vote
     # INPUT => {:post_id => 123, :user_id => 234}

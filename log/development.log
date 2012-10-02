@@ -54646,3 +54646,1699 @@ Processing by PostController#get_posts as JSON
   [1m[35mUser Load (2.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
   [1m[36mPost Load (1.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC[0m
 Completed 200 OK in 10ms (Views: 3.7ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/user" for 127.0.0.1 at 2012-10-03 00:05:39 +0530
+Processing by HomeController#show as HTML
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 10ms (Views: 8.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-03 00:05:40 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+[HOME] [COMMON] current user id 2
+[HOME] [COMMON] current user data #<User:0x00000006109478>
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 2[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>2, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 7ms (Views: 0.6ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-03 00:05:40 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (1.1ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 2
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>2, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 7ms (Views: 0.4ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-03 00:05:40 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[36mPost Load (0.8ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Completed 200 OK in 8ms (Views: 0.9ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/fetch_all_user?user_id=nil" for 127.0.0.1 at 2012-10-03 00:05:41 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-03 00:05:41 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mPost Load (0.8ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC[0m
+Completed 200 OK in 5ms (Views: 2.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/post/3" for 127.0.0.1 at 2012-10-03 00:05:45 +0530
+Processing by HomeController#show as HTML
+  Parameters: {"id"=>"3"}
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /post/3
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 6ms (Views: 5.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-03 00:05:45 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[35mUser Load (1.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+[HOME] [COMMON] current user id 2
+[HOME] [COMMON] current user data #<User:0x00000005f5d458>
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 2
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>2, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 9ms (Views: 0.9ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/fetch_single_post?post_id=3" for 127.0.0.1 at 2012-10-03 00:05:45 +0530
+Processing by PostController#get_post_detail as JSON
+  Parameters: {"post_id"=>"3", "post"=>{}}
+[CNTRL] [POST] [get_post_detail] enter {"post_id"=>"3", "controller"=>"post", "action"=>"get_post_detail", "post"=>{}}
+  [1m[36mPost Load (1.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 3[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+[CNTRL] [POST] [get_post_detail] detail:{:user_name=>"Samarth Deo", :user_pic=>"http://graph.facebook.com/1452186072/picture?type=large", :user_uid=>"1452186072", :post_title=>"Anna influence on Kejriwal's party: Jan Lokpal and 'topis'", :post_text=>"An anti-corruption activist and now a politician too, Arvind Kejriwal announced the launch of his political party amidst bhajans, clapping in the presence of cheering India [ Images ] Against Corruption volunteers and a crowd of around 2,000 in the New Delhi on Tuesday afternoon.  This is now an andolan which will also fight elections,\" said Manish Sisodia, his key associate, who was also a member of Team Anna.  At the party's launch, the traces of Anna Hazare's influence could not go unnoticed. The 'Mein hoon Anna' caps were replaced. The crowds donned white caps that read 'Mein hun aam admi, mujhe chahiye Jan Lokpal'. (I am the common man, I want Jan Lokpal.\"   ", :post_pic=>"https://www.filepicker.io/api/file/3gR6j_T6T6aaRsa4qNj5", :time_stamp=>Tue, 02 Oct 2012 18:31:17 UTC +00:00, :votes_count=>0, :post_id=>3}
+Completed 200 OK in 6ms (Views: 0.6ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/post_metric" for 127.0.0.1 at 2012-10-03 00:05:45 +0530
+Processing by PostController#get_jog_post_metric as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_jog_post_metric] enter {"controller"=>"post", "action"=>"get_jog_post_metric", "post"=>{}}
+  [1m[36m (0.7ms)[0m  [1mSELECT COUNT(*) FROM "posts" [0m
+  [1m[35m (0.5ms)[0m  SELECT SUM("posts"."votes_count") AS sum_id FROM "posts" 
+[CNTRL] [POST] [get_jog_post_metric] result {:post_count=>3, :votes_count=>0}
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/post/3" for 127.0.0.1 at 2012-10-03 00:07:19 +0530
+Processing by HomeController#show as HTML
+  Parameters: {"id"=>"3"}
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /post/3
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 7ms (Views: 6.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-03 00:07:21 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[36mUser Load (1.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+[HOME] [COMMON] current user id 2
+[HOME] [COMMON] current user data #<User:0x00000005c3cb98>
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 2[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>2, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 8ms (Views: 0.6ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/fetch_single_post?post_id=3" for 127.0.0.1 at 2012-10-03 00:07:21 +0530
+Processing by PostController#get_post_detail as JSON
+  Parameters: {"post_id"=>"3", "post"=>{}}
+[CNTRL] [POST] [get_post_detail] enter {"post_id"=>"3", "controller"=>"post", "action"=>"get_post_detail", "post"=>{}}
+  [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 3
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+[CNTRL] [POST] [get_post_detail] detail:{:user_name=>"Samarth Deo", :user_pic=>"http://graph.facebook.com/1452186072/picture?type=large", :user_uid=>"1452186072", :post_title=>"Anna influence on Kejriwal's party: Jan Lokpal and 'topis'", :post_text=>"An anti-corruption activist and now a politician too, Arvind Kejriwal announced the launch of his political party amidst bhajans, clapping in the presence of cheering India [ Images ] Against Corruption volunteers and a crowd of around 2,000 in the New Delhi on Tuesday afternoon.  This is now an andolan which will also fight elections,\" said Manish Sisodia, his key associate, who was also a member of Team Anna.  At the party's launch, the traces of Anna Hazare's influence could not go unnoticed. The 'Mein hoon Anna' caps were replaced. The crowds donned white caps that read 'Mein hun aam admi, mujhe chahiye Jan Lokpal'. (I am the common man, I want Jan Lokpal.\"   ", :post_pic=>"https://www.filepicker.io/api/file/3gR6j_T6T6aaRsa4qNj5", :time_stamp=>Tue, 02 Oct 2012 18:31:17 UTC +00:00, :votes_count=>0, :post_id=>3}
+Completed 200 OK in 6ms (Views: 0.6ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-03 00:07:21 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[35mPost Load (1.1ms)[0m  SELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Completed 200 OK in 11ms (Views: 1.5ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/all_posts" for 127.0.0.1 at 2012-10-03 00:07:34 +0530
+Processing by HomeController#show as HTML
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /all_posts
+  [1m[35mUser Load (1.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 9ms (Views: 6.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-03 00:07:34 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+[HOME] [COMMON] current user id 2
+[HOME] [COMMON] current user data #<User:0x000000058cecb8>
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 2[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>2, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 7ms (Views: 0.6ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/current_user_details?user_id=1452186072" for 127.0.0.1 at 2012-10-03 00:07:34 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"1452186072", "home"=>{"user_id"=>"1452186072", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"1452186072", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.7ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 2[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>2, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 5ms (Views: 0.5ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/fetch_all_posts" for 127.0.0.1 at 2012-10-03 00:07:34 +0530
+Processing by PostController#all_post as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [all_post] enter {"controller"=>"post", "action"=>"all_post", "post"=>{}}
+  [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts" ORDER BY id DESC LIMIT 30
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Completed 200 OK in 10ms (Views: 1.4ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2012-10-03 00:13:21 +0530
+Processing by Devise::SessionsController#destroy as HTML
+  [1m[35mUser Load (1.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.4ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 8ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-10-03 00:13:21 +0530
+Processing by HomeController#index as HTML
+[CNTRL] [HOME] [INDEX] New App Main Page requested
+[CNTRL] [HOME] [INDEX] ****USER NOT LOGGED IN****
+  Rendered home/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 13ms (Views: 11.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-03 00:13:21 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+[CNTRL] [HOME] [get_current_user_details] ****USER NOT LOGGED IN****
+Completed 400 Bad Request in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-10-03 00:16:32 +0530
+Processing by HomeController#index as HTML
+[CNTRL] [HOME] [INDEX] New App Main Page requested
+[CNTRL] [HOME] [INDEX] ****USER NOT LOGGED IN****
+  Rendered home/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 9ms (Views: 7.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-03 00:16:32 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+[CNTRL] [HOME] [get_current_user_details] ****USER NOT LOGGED IN****
+Completed 400 Bad Request in 2ms (Views: 0.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/post_metric" for 127.0.0.1 at 2012-10-03 00:16:32 +0530
+Processing by PostController#get_jog_post_metric as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_jog_post_metric] enter {"controller"=>"post", "action"=>"get_jog_post_metric", "post"=>{}}
+  [1m[36m (0.8ms)[0m  [1mSELECT COUNT(*) FROM "posts" [0m
+  [1m[35m (0.8ms)[0m  SELECT SUM("posts"."votes_count") AS sum_id FROM "posts" 
+[CNTRL] [POST] [get_jog_post_metric] result {:post_count=>3, :votes_count=>0}
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/users/auth/facebook" for 127.0.0.1 at 2012-10-03 00:52:59 +0530
+
+
+Started GET "/users/auth/facebook/callback?state=5bd56512f721037849b51653cfeb0d10b5f81d06d1811f7a&code=AQDQkpxSi0ucmVSWo6twORR9eoHsi52IYWUFaWkf90Bh7Vglta7y5D0wt1lQeFCY_-ft1CpVI0SH16J3NnN5qwBUfMLzZTxv6LTCYx8o-0RvRud2XtWc3J4reicCAzFJxWzxuC_XTJwB9r4Tbd18NnlCh7fSkL3qM_5ieeC7d7w2nzCFN5naJkWHc8HPe88A6FdS8uYqhhrn3ItzixIwUPQS" for 127.0.0.1 at 2012-10-03 00:53:00 +0530
+Processing by Users::OmniauthCallbacksController#facebook as HTML
+  Parameters: {"state"=>"5bd56512f721037849b51653cfeb0d10b5f81d06d1811f7a", "code"=>"AQDQkpxSi0ucmVSWo6twORR9eoHsi52IYWUFaWkf90Bh7Vglta7y5D0wt1lQeFCY_-ft1CpVI0SH16J3NnN5qwBUfMLzZTxv6LTCYx8o-0RvRud2XtWc3J4reicCAzFJxWzxuC_XTJwB9r4Tbd18NnlCh7fSkL3qM_5ieeC7d7w2nzCFN5naJkWHc8HPe88A6FdS8uYqhhrn3ItzixIwUPQS"}
+[CNTRL] [USERS] [OmniauthCallbacks] [FACEBOOK] Entering
+[MODEL] [USER] [CREATE_USER] Entering {:srv=>"facebook", :srv_uid=>"1452186072", :access_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :name=>"Samarth Deo", :pic=>"http://graph.facebook.com/1452186072/picture?type=square", :location=>"Bangalore, India", :sex=>"male", :username=>["samarth.deo1", "male"]}
+  [1m[36mUser Load (1.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' AND "users"."srv" = 'facebook' LIMIT 1[0m
+[MODEL] [USER] [CREATE_USER] signed_in
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36mUser Exists (1.2ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."srv_uid" = '1452186072' AND "users"."id" != 2 AND "users"."srv" = 'facebook') LIMIT 1[0m
+  [1m[35m (1.2ms)[0m  UPDATE "users" SET "username" = '---
+- samarth.deo1
+- male
+', "updated_at" = '2012-10-02 19:23:03.288502' WHERE "users"."id" = 2
+  [1m[36m (19.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+[MODEL] [USER] [CREATE_USER] Leaving
+[CNTRL] [USERS] [OmniauthCallbacks] [FACEBOOK] Leaving #<User id: 2, srv: "facebook", srv_uid: "1452186072", access_token: "AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0Z...", username: "---\n- samarth.deo1\n- male\n", name: "Samarth Deo", pic: "http://graph.facebook.com/1452186072/picture?type=l...", sex: "male", votes_count: 0, remember_created_at: nil, sign_in_count: 5, current_sign_in_at: "2012-10-02 18:22:57", last_sign_in_at: "2012-10-02 13:17:49", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", authentication_token: nil, created_at: "2012-10-02 12:43:13", updated_at: "2012-10-02 19:23:03">
+[CNTRL] [APPLICATION] [aw_sign_in] Entering
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.9ms)[0m  UPDATE "users" SET "last_sign_in_at" = '2012-10-02 18:22:57.968724', "current_sign_in_at" = '2012-10-02 19:23:03.316060', "sign_in_count" = 6, "updated_at" = '2012-10-02 19:23:03.317436' WHERE "users"."id" = 2
+  [1m[36m (8.5ms)[0m  [1mCOMMIT[0m
+[CNTRL] [APPLICATION] [aw_sign_in] Entering
+[CNTRL] [USERS] [OmniauthCallbacks] [FACEBOOK] sessio  
+Redirected to http://localhost:3000/user
+Completed 302 Found in 50ms (ActiveRecord: 33.9ms)
+
+
+Started GET "/user" for 127.0.0.1 at 2012-10-03 00:53:03 +0530
+Processing by HomeController#show as HTML
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user
+  [1m[35mUser Load (1.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 14ms (Views: 10.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-03 00:53:03 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+[HOME] [COMMON] current user id 2
+[HOME] [COMMON] current user data #<User:0x000000060a4b18>
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.7ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 2[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>2, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 7ms (Views: 0.7ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-03 00:53:03 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (1.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 2
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>2, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 8ms (Views: 0.4ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-03 00:53:03 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10[0m
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Completed 200 OK in 9ms (Views: 0.9ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/fetch_all_user?user_id=nil" for 127.0.0.1 at 2012-10-03 00:53:03 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-03 00:53:03 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC[0m
+Completed 200 OK in 5ms (Views: 2.4ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/delete_post" for 127.0.0.1 at 2012-10-03 00:53:07 +0530
+
+AbstractController::ActionNotFound (The action 'delete_post' could not be found for PostController):
+  actionpack (3.2.1) lib/abstract_controller/base.rb:116:in `process'
+  actionpack (3.2.1) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.1) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.1) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.1) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:66:in `call'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:66:in `dispatch'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:30:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:589:in `call'
+  omniauth (1.1.1) lib/omniauth/strategy.rb:177:in `call!'
+  omniauth (1.1.1) lib/omniauth/strategy.rb:157:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:35:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  activerecord (3.2.1) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:405:in `_run__1732298125190453356__call__3790703160915842976__callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.1) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.1) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.1) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/static.rb:53:in `call'
+  railties (3.2.1) lib/rails/engine.rb:479:in `call'
+  railties (3.2.1) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.1) lib/rails/rack/log_tailer.rb:14:in `call'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  rack (1.4.1) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.1) lib/rack/server.rb:265:in `start'
+  railties (3.2.1) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.1) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.1) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.1) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.5ms)
+
+
+Started POST "/delete_post" for 127.0.0.1 at 2012-10-03 00:53:10 +0530
+
+AbstractController::ActionNotFound (The action 'delete_post' could not be found for PostController):
+  actionpack (3.2.1) lib/abstract_controller/base.rb:116:in `process'
+  actionpack (3.2.1) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.1) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.1) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.1) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:66:in `call'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:66:in `dispatch'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:30:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:589:in `call'
+  omniauth (1.1.1) lib/omniauth/strategy.rb:177:in `call!'
+  omniauth (1.1.1) lib/omniauth/strategy.rb:157:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:35:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  activerecord (3.2.1) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:405:in `_run__1732298125190453356__call__3790703160915842976__callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.1) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.1) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.1) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/static.rb:53:in `call'
+  railties (3.2.1) lib/rails/engine.rb:479:in `call'
+  railties (3.2.1) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.1) lib/rails/rack/log_tailer.rb:14:in `call'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  rack (1.4.1) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.1) lib/rack/server.rb:265:in `start'
+  railties (3.2.1) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.1) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.1) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.1) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.5ms)
+
+
+Started POST "/delete_post" for 127.0.0.1 at 2012-10-03 00:53:11 +0530
+
+AbstractController::ActionNotFound (The action 'delete_post' could not be found for PostController):
+  actionpack (3.2.1) lib/abstract_controller/base.rb:116:in `process'
+  actionpack (3.2.1) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.1) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.1) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.1) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:66:in `call'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:66:in `dispatch'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:30:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:589:in `call'
+  omniauth (1.1.1) lib/omniauth/strategy.rb:177:in `call!'
+  omniauth (1.1.1) lib/omniauth/strategy.rb:157:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:35:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  activerecord (3.2.1) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:405:in `_run__1732298125190453356__call__3790703160915842976__callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.1) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.1) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.1) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/static.rb:53:in `call'
+  railties (3.2.1) lib/rails/engine.rb:479:in `call'
+  railties (3.2.1) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.1) lib/rails/rack/log_tailer.rb:14:in `call'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  rack (1.4.1) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.1) lib/rack/server.rb:265:in `start'
+  railties (3.2.1) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.1) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.1) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.1) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.5ms)
+
+
+Started POST "/delete_post" for 127.0.0.1 at 2012-10-03 00:53:12 +0530
+
+AbstractController::ActionNotFound (The action 'delete_post' could not be found for PostController):
+  actionpack (3.2.1) lib/abstract_controller/base.rb:116:in `process'
+  actionpack (3.2.1) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.1) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.1) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.1) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:66:in `call'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:66:in `dispatch'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:30:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:589:in `call'
+  omniauth (1.1.1) lib/omniauth/strategy.rb:177:in `call!'
+  omniauth (1.1.1) lib/omniauth/strategy.rb:157:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:35:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  activerecord (3.2.1) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:405:in `_run__1732298125190453356__call__3790703160915842976__callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.1) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.1) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.1) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/static.rb:53:in `call'
+  railties (3.2.1) lib/rails/engine.rb:479:in `call'
+  railties (3.2.1) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.1) lib/rails/rack/log_tailer.rb:14:in `call'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  rack (1.4.1) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.1) lib/rack/server.rb:265:in `start'
+  railties (3.2.1) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.1) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.1) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.1) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.5ms)
+
+
+Started POST "/delete_post" for 127.0.0.1 at 2012-10-03 00:53:12 +0530
+
+AbstractController::ActionNotFound (The action 'delete_post' could not be found for PostController):
+  actionpack (3.2.1) lib/abstract_controller/base.rb:116:in `process'
+  actionpack (3.2.1) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.1) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.1) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.1) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:66:in `call'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:66:in `dispatch'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:30:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:589:in `call'
+  omniauth (1.1.1) lib/omniauth/strategy.rb:177:in `call!'
+  omniauth (1.1.1) lib/omniauth/strategy.rb:157:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:35:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  activerecord (3.2.1) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:405:in `_run__1732298125190453356__call__3790703160915842976__callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.1) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.1) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.1) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/static.rb:53:in `call'
+  railties (3.2.1) lib/rails/engine.rb:479:in `call'
+  railties (3.2.1) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.1) lib/rails/rack/log_tailer.rb:14:in `call'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  rack (1.4.1) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.1) lib/rack/server.rb:265:in `start'
+  railties (3.2.1) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.1) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.1) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.1) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.5ms)
+
+
+Started POST "/delete_post" for 127.0.0.1 at 2012-10-03 00:53:12 +0530
+
+AbstractController::ActionNotFound (The action 'delete_post' could not be found for PostController):
+  actionpack (3.2.1) lib/abstract_controller/base.rb:116:in `process'
+  actionpack (3.2.1) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.1) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.1) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.1) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:66:in `call'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:66:in `dispatch'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:30:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:589:in `call'
+  omniauth (1.1.1) lib/omniauth/strategy.rb:177:in `call!'
+  omniauth (1.1.1) lib/omniauth/strategy.rb:157:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:35:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  activerecord (3.2.1) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:405:in `_run__1732298125190453356__call__3790703160915842976__callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.1) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.1) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.1) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/static.rb:53:in `call'
+  railties (3.2.1) lib/rails/engine.rb:479:in `call'
+  railties (3.2.1) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.1) lib/rails/rack/log_tailer.rb:14:in `call'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  rack (1.4.1) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.1) lib/rack/server.rb:265:in `start'
+  railties (3.2.1) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.1) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.1) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.1) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.5ms)
+
+
+Started POST "/delete_post" for 127.0.0.1 at 2012-10-03 00:53:12 +0530
+
+AbstractController::ActionNotFound (The action 'delete_post' could not be found for PostController):
+  actionpack (3.2.1) lib/abstract_controller/base.rb:116:in `process'
+  actionpack (3.2.1) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.1) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.1) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.1) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:66:in `call'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:66:in `dispatch'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:30:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:589:in `call'
+  omniauth (1.1.1) lib/omniauth/strategy.rb:177:in `call!'
+  omniauth (1.1.1) lib/omniauth/strategy.rb:157:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:35:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  activerecord (3.2.1) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:405:in `_run__1732298125190453356__call__3790703160915842976__callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.1) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.1) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.1) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/static.rb:53:in `call'
+  railties (3.2.1) lib/rails/engine.rb:479:in `call'
+  railties (3.2.1) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.1) lib/rails/rack/log_tailer.rb:14:in `call'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  rack (1.4.1) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.1) lib/rack/server.rb:265:in `start'
+  railties (3.2.1) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.1) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.1) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.1) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.5ms)
+
+
+Started POST "/delete_post" for 127.0.0.1 at 2012-10-03 00:53:13 +0530
+
+AbstractController::ActionNotFound (The action 'delete_post' could not be found for PostController):
+  actionpack (3.2.1) lib/abstract_controller/base.rb:116:in `process'
+  actionpack (3.2.1) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.1) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.1) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.1) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:66:in `call'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:66:in `dispatch'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:30:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:589:in `call'
+  omniauth (1.1.1) lib/omniauth/strategy.rb:177:in `call!'
+  omniauth (1.1.1) lib/omniauth/strategy.rb:157:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:35:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  activerecord (3.2.1) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:405:in `_run__1732298125190453356__call__3790703160915842976__callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.1) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.1) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.1) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/static.rb:53:in `call'
+  railties (3.2.1) lib/rails/engine.rb:479:in `call'
+  railties (3.2.1) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.1) lib/rails/rack/log_tailer.rb:14:in `call'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  rack (1.4.1) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.1) lib/rack/server.rb:265:in `start'
+  railties (3.2.1) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.1) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.1) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.1) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.5ms)
+
+
+Started POST "/delete_post" for 127.0.0.1 at 2012-10-03 00:53:14 +0530
+
+AbstractController::ActionNotFound (The action 'delete_post' could not be found for PostController):
+  actionpack (3.2.1) lib/abstract_controller/base.rb:116:in `process'
+  actionpack (3.2.1) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.1) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.1) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.1) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:66:in `call'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:66:in `dispatch'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:30:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:589:in `call'
+  omniauth (1.1.1) lib/omniauth/strategy.rb:177:in `call!'
+  omniauth (1.1.1) lib/omniauth/strategy.rb:157:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:35:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  activerecord (3.2.1) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:405:in `_run__1732298125190453356__call__3790703160915842976__callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.1) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.1) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.1) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/static.rb:53:in `call'
+  railties (3.2.1) lib/rails/engine.rb:479:in `call'
+  railties (3.2.1) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.1) lib/rails/rack/log_tailer.rb:14:in `call'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  rack (1.4.1) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.1) lib/rack/server.rb:265:in `start'
+  railties (3.2.1) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.1) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.1) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.1) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.5ms)
+
+
+Started POST "/delete_post" for 127.0.0.1 at 2012-10-03 00:53:24 +0530
+
+AbstractController::ActionNotFound (The action 'delete_post' could not be found for PostController):
+  actionpack (3.2.1) lib/abstract_controller/base.rb:116:in `process'
+  actionpack (3.2.1) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.1) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.1) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.1) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:66:in `call'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:66:in `dispatch'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:30:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:589:in `call'
+  omniauth (1.1.1) lib/omniauth/strategy.rb:177:in `call!'
+  omniauth (1.1.1) lib/omniauth/strategy.rb:157:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:35:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  activerecord (3.2.1) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:405:in `_run__1732298125190453356__call__3790703160915842976__callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.1) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.1) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.1) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/static.rb:53:in `call'
+  railties (3.2.1) lib/rails/engine.rb:479:in `call'
+  railties (3.2.1) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.1) lib/rails/rack/log_tailer.rb:14:in `call'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  rack (1.4.1) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.1) lib/rack/server.rb:265:in `start'
+  railties (3.2.1) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.1) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.1) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.1) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.5ms)
+
+
+Started GET "/user" for 127.0.0.1 at 2012-10-03 01:02:26 +0530
+Processing by HomeController#show as HTML
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 52ms (Views: 7.6ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-03 01:02:28 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+[HOME] [COMMON] current user id 2
+[HOME] [COMMON] current user data #<User:0x0000000622f410>
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.7ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 2[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>2, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 35ms (Views: 0.8ms | ActiveRecord: 6.7ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-03 01:02:28 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (0.7ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 2
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>2, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 10ms (Views: 0.4ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-03 01:02:28 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[36mPost Load (1.3ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Completed 200 OK in 13ms (Views: 1.3ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/fetch_all_user?user_id=nil" for 127.0.0.1 at 2012-10-03 01:02:28 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-03 01:02:28 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC[0m
+Completed 200 OK in 5ms (Views: 2.0ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/delete_post" for 127.0.0.1 at 2012-10-03 01:02:33 +0530
+Processing by PostController#delete_post as JSON
+  Parameters: {"post_id"=>"2", "user_id"=>"2"}
+[CNTRL] [POST] [delete_post] post delete requested
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+[HOME] [COMMON] current user id 2
+[CNTRL] [POST] [CREATE] params {"post_id"=>"2", "user_id"=>"2", "controller"=>"post", "action"=>"delete_post"}
+[HOME] [COMMON] current user uid 1452186072
+  [1m[36mSQL (18.6ms)[0m  [1mDELETE FROM "posts" WHERE "posts"."id" = 2[0m
+Completed 500 Internal Server Error in 22ms
+
+NoMethodError (undefined method `user' for 1:Fixnum):
+  app/controllers/post_controller.rb:53:in `delete_post'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.0ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.3ms)
+
+
+Started GET "/user" for 127.0.0.1 at 2012-10-03 01:03:50 +0530
+Processing by HomeController#show as HTML
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 50ms (Views: 7.2ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-03 01:03:52 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+[HOME] [COMMON] current user id 2
+[HOME] [COMMON] current user data #<User:0x000000060177b8>
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.8ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 2[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>2, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>1}
+Completed 200 OK in 82ms (Views: 0.5ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-03 01:03:52 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (1.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 2
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>2, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>1}
+Completed 200 OK in 9ms (Views: 0.5ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-03 01:03:52 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[36mPost Load (0.8ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Completed 200 OK in 11ms (Views: 0.8ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/fetch_all_user?user_id=nil" for 127.0.0.1 at 2012-10-03 01:03:52 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" 
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-03 01:03:52 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mPost Load (0.7ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC
+Completed 200 OK in 6ms (Views: 2.0ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/create_post" for 127.0.0.1 at 2012-10-03 01:04:00 +0530
+Processing by PostController#create_post as JSON
+  Parameters: {"title"=>"gfdfg", "text"=>"dfgdfgdfg", "cat"=>"spades", "userID"=>"1452186072"}
+[CNTRL] [POST] [CREATE] New post create requested
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+[HOME] [COMMON] current user id 2
+[CNTRL] [POST] [CREATE] params {"title"=>"gfdfg", "text"=>"dfgdfgdfg", "cat"=>"spades", "userID"=>"1452186072", "controller"=>"post", "action"=>"create_post"}
+[HOME] [COMMON] current user uid 1452186072
+[MODEL] [POST] [CREATE_POST] Entering {:user_id=>2, :user_uid=>"1452186072", :text=>"dfgdfgdfg", :title=>"gfdfg", :pic=>nil, :category=>"spades"}
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "posts" ("category", "created_at", "pic", "text", "title", "updated_at", "user_id", "user_uid", "votes_count") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["category", "spades"], ["created_at", Tue, 02 Oct 2012 19:34:00 UTC +00:00], ["pic", nil], ["text", "dfgdfgdfg"], ["title", "gfdfg"], ["updated_at", Tue, 02 Oct 2012 19:34:00 UTC +00:00], ["user_id", 2], ["user_uid", "1452186072"], ["votes_count", 0]]
+  [1m[35m (18.9ms)[0m  COMMIT
+[MODEL] [POST] [CREATE_POST] Leaving
+Completed 200 OK in 29ms (Views: 0.7ms | ActiveRecord: 21.4ms)
+
+
+Started POST "/delete_post" for 127.0.0.1 at 2012-10-03 01:04:05 +0530
+Processing by PostController#delete_post as JSON
+  Parameters: {"post_id"=>"4", "user_id"=>"2"}
+[CNTRL] [POST] [delete_post] post delete requested
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+[HOME] [COMMON] current user id 2
+[CNTRL] [POST] [CREATE] params {"post_id"=>"4", "user_id"=>"2", "controller"=>"post", "action"=>"delete_post"}
+[HOME] [COMMON] current user uid 1452186072
+  [1m[35mSQL (116.2ms)[0m  DELETE FROM "posts" WHERE "posts"."id" = 4
+Completed 500 Internal Server Error in 120ms
+
+NoMethodError (undefined method `user_id' for 1:Fixnum):
+  app/controllers/post_controller.rb:52:in `delete_post'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.1ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.4ms)
+
+
+Started GET "/user" for 127.0.0.1 at 2012-10-03 01:04:19 +0530
+Processing by HomeController#show as HTML
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 100ms (Views: 7.0ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-03 01:04:20 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[35mUser Load (1.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+[HOME] [COMMON] current user id 2
+[HOME] [COMMON] current user data #<User:0x00000006417368>
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 2
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>2, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>1}
+Completed 200 OK in 41ms (Views: 0.4ms | ActiveRecord: 7.6ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-03 01:04:20 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (1.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 2[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>2, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>1}
+Completed 200 OK in 11ms (Views: 0.7ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-03 01:04:20 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Completed 200 OK in 15ms (Views: 1.3ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/fetch_all_user?user_id=nil" for 127.0.0.1 at 2012-10-03 01:04:20 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Completed 200 OK in 6ms (Views: 2.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-03 01:04:20 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mPost Load (1.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC[0m
+Completed 200 OK in 8ms (Views: 2.6ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/create_post" for 127.0.0.1 at 2012-10-03 01:04:24 +0530
+Processing by PostController#create_post as JSON
+  Parameters: {"title"=>"fgdfsgdf", "text"=>"dfgdfgdfg", "cat"=>"spades", "userID"=>"1452186072"}
+[CNTRL] [POST] [CREATE] New post create requested
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+[HOME] [COMMON] current user id 2
+[CNTRL] [POST] [CREATE] params {"title"=>"fgdfsgdf", "text"=>"dfgdfgdfg", "cat"=>"spades", "userID"=>"1452186072", "controller"=>"post", "action"=>"create_post"}
+[HOME] [COMMON] current user uid 1452186072
+[MODEL] [POST] [CREATE_POST] Entering {:user_id=>2, :user_uid=>"1452186072", :text=>"dfgdfgdfg", :title=>"fgdfsgdf", :pic=>nil, :category=>"spades"}
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "posts" ("category", "created_at", "pic", "text", "title", "updated_at", "user_id", "user_uid", "votes_count") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["category", "spades"], ["created_at", Tue, 02 Oct 2012 19:34:24 UTC +00:00], ["pic", nil], ["text", "dfgdfgdfg"], ["title", "fgdfsgdf"], ["updated_at", Tue, 02 Oct 2012 19:34:24 UTC +00:00], ["user_id", 2], ["user_uid", "1452186072"], ["votes_count", 0]]
+  [1m[36m (19.7ms)[0m  [1mCOMMIT[0m
+[MODEL] [POST] [CREATE_POST] Leaving
+Completed 200 OK in 30ms (Views: 0.7ms | ActiveRecord: 21.9ms)
+
+
+Started POST "/delete_post" for 127.0.0.1 at 2012-10-03 01:04:29 +0530
+Processing by PostController#delete_post as JSON
+  Parameters: {"post_id"=>"5", "user_id"=>"2"}
+[CNTRL] [POST] [delete_post] post delete requested
+  [1m[35mUser Load (1.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+[HOME] [COMMON] current user id 2
+[CNTRL] [POST] [CREATE] params {"post_id"=>"5", "user_id"=>"2", "controller"=>"post", "action"=>"delete_post"}
+[HOME] [COMMON] current user uid 1452186072
+  [1m[36mSQL (50.3ms)[0m  [1mDELETE FROM "posts" WHERE "posts"."id" = 5[0m
+Completed 500 Internal Server Error in 56ms
+
+NoMethodError (undefined method `user' for 1:Fixnum):
+  app/controllers/post_controller.rb:52:in `delete_post'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.0ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.4ms)
+
+
+Started GET "/user" for 127.0.0.1 at 2012-10-03 01:10:26 +0530
+Processing by HomeController#show as HTML
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 58ms (Views: 7.3ms | ActiveRecord: 6.6ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-03 01:10:27 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+[HOME] [COMMON] current user id 2
+[HOME] [COMMON] current user data #<User:0x000000061e41b8>
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.7ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 2[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>2, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>1}
+Completed 200 OK in 33ms (Views: 0.4ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-03 01:10:27 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (0.7ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 2
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>2, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>1}
+Completed 200 OK in 9ms (Views: 0.5ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-03 01:10:28 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Completed 200 OK in 9ms (Views: 0.8ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/fetch_all_user?user_id=nil" for 127.0.0.1 at 2012-10-03 01:10:28 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" 
+Completed 200 OK in 5ms (Views: 2.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-03 01:10:28 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mPost Load (1.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC
+Completed 200 OK in 7ms (Views: 2.5ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/create_post" for 127.0.0.1 at 2012-10-03 01:10:33 +0530
+Processing by PostController#create_post as JSON
+  Parameters: {"title"=>"sdfdsfdsfds", "text"=>"sdfdsfdsfdsf", "cat"=>"spades", "userID"=>"1452186072"}
+[CNTRL] [POST] [CREATE] New post create requested
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+[HOME] [COMMON] current user id 2
+[CNTRL] [POST] [CREATE] params {"title"=>"sdfdsfdsfds", "text"=>"sdfdsfdsfdsf", "cat"=>"spades", "userID"=>"1452186072", "controller"=>"post", "action"=>"create_post"}
+[HOME] [COMMON] current user uid 1452186072
+[MODEL] [POST] [CREATE_POST] Entering {:user_id=>2, :user_uid=>"1452186072", :text=>"sdfdsfdsfdsf", :title=>"sdfdsfdsfds", :pic=>nil, :category=>"spades"}
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "posts" ("category", "created_at", "pic", "text", "title", "updated_at", "user_id", "user_uid", "votes_count") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["category", "spades"], ["created_at", Tue, 02 Oct 2012 19:40:33 UTC +00:00], ["pic", nil], ["text", "sdfdsfdsfdsf"], ["title", "sdfdsfdsfds"], ["updated_at", Tue, 02 Oct 2012 19:40:33 UTC +00:00], ["user_id", 2], ["user_uid", "1452186072"], ["votes_count", 0]]
+  [1m[35m (17.6ms)[0m  COMMIT
+[MODEL] [POST] [CREATE_POST] Leaving
+Completed 200 OK in 28ms (Views: 0.7ms | ActiveRecord: 19.7ms)
+
+
+Started POST "/delete_post" for 127.0.0.1 at 2012-10-03 01:10:37 +0530
+Processing by PostController#delete_post as JSON
+  Parameters: {"post_id"=>"6", "user_id"=>"2"}
+[CNTRL] [POST] [delete_post] post delete requested
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+[HOME] [COMMON] current user id 2
+[CNTRL] [POST] [CREATE] params {"post_id"=>"6", "user_id"=>"2", "controller"=>"post", "action"=>"delete_post"}
+[HOME] [COMMON] current user uid 1452186072
+  [1m[35mPost Load (1.1ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 6 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Completed 500 Internal Server Error in 10ms
+
+RuntimeError (wrong userid, no authentication):
+  app/controllers/post_controller.rb:57:in `delete_post'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.3ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.0ms)
+
+
+Started GET "/user" for 127.0.0.1 at 2012-10-03 01:12:24 +0530
+Processing by HomeController#show as HTML
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 50ms (Views: 7.1ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-03 01:12:26 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+[HOME] [COMMON] current user id 2
+[HOME] [COMMON] current user data #<User:0x00000005f09d80>
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 2[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>2, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 95ms (Views: 0.4ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-03 01:12:26 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mUser Load (1.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (0.8ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 2
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>2, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 10ms (Views: 0.6ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-03 01:12:26 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Completed 200 OK in 13ms (Views: 1.7ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/fetch_all_user?user_id=nil" for 127.0.0.1 at 2012-10-03 01:12:26 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Completed 200 OK in 6ms (Views: 2.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-03 01:12:26 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC[0m
+Completed 200 OK in 5ms (Views: 2.0ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/delete_post" for 127.0.0.1 at 2012-10-03 01:12:32 +0530
+Processing by PostController#delete_post as JSON
+  Parameters: {"post_id"=>"6", "user_id"=>"2"}
+[CNTRL] [POST] [delete_post] post delete requested
+  [1m[35mUser Load (1.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+[HOME] [COMMON] current user id 2
+[CNTRL] [POST] [CREATE] params {"post_id"=>"6", "user_id"=>"2", "controller"=>"post", "action"=>"delete_post"}
+[HOME] [COMMON] current user uid 1452186072
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 6 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+[CNTRL] [POST] [CREATE] params #<Post id: 6, user_id: 2, pic: nil, title: "sdfdsfdsfds", text: "sdfdsfdsfdsf", votes_count: 0, user_uid: "1452186072", created_at: "2012-10-02 19:40:33", updated_at: "2012-10-02 19:40:33", category: "spades">
+Completed 500 Internal Server Error in 9ms
+
+RuntimeError (wrong userid, no authentication):
+  app/controllers/post_controller.rb:58:in `delete_post'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.0ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.0ms)
+
+
+Started GET "/user" for 127.0.0.1 at 2012-10-03 01:13:57 +0530
+Processing by HomeController#show as HTML
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 97ms (Views: 7.1ms | ActiveRecord: 6.1ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-03 01:13:58 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[35mUser Load (1.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+[HOME] [COMMON] current user id 2
+[HOME] [COMMON] current user data #<User:0x000000063749d8>
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 2
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>2, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 39ms (Views: 0.4ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-03 01:13:58 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 2[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>2, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 10ms (Views: 0.4ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-03 01:13:58 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[35mPost Load (0.7ms)[0m  SELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Completed 200 OK in 11ms (Views: 1.6ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/fetch_all_user?user_id=nil" for 127.0.0.1 at 2012-10-03 01:13:58 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" 
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-03 01:13:58 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mPost Load (1.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC
+Completed 200 OK in 7ms (Views: 2.7ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/delete_post" for 127.0.0.1 at 2012-10-03 01:14:01 +0530
+Processing by PostController#delete_post as JSON
+  Parameters: {"post_id"=>"6", "user_id"=>"2"}
+[CNTRL] [POST] [delete_post] post delete requested
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+[HOME] [COMMON] current user id 2
+[CNTRL] [POST] [delete_post] params {"post_id"=>"6", "user_id"=>"2", "controller"=>"post", "action"=>"delete_post"}
+[HOME] [COMMON] current user uid 1452186072
+  [1m[35mPost Load (0.7ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 6 LIMIT 1
+[CNTRL] [POST] [CREATE] params #<Post id: 6, user_id: 2, pic: nil, title: "sdfdsfdsfds", text: "sdfdsfdsfdsf", votes_count: 0, user_uid: "1452186072", created_at: "2012-10-02 19:40:33", updated_at: "2012-10-02 19:40:33", category: "spades">
+Completed 500 Internal Server Error in 5ms
+
+RuntimeError (wrong userid, no authentication):
+  app/controllers/post_controller.rb:58:in `delete_post'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.3ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.5ms)
+
+
+Started GET "/user" for 127.0.0.1 at 2012-10-03 01:14:38 +0530
+Processing by HomeController#show as HTML
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 49ms (Views: 7.1ms | ActiveRecord: 6.1ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-03 01:14:39 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+[HOME] [COMMON] current user id 2
+[HOME] [COMMON] current user data #<User:0x000000061ad168>
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (0.7ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 2
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>2, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 31ms (Views: 0.4ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-03 01:14:39 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.7ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 2[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>2, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>2}
+Completed 200 OK in 9ms (Views: 0.6ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-03 01:14:39 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Completed 200 OK in 13ms (Views: 1.6ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/fetch_all_user?user_id=nil" for 127.0.0.1 at 2012-10-03 01:14:39 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" 
+Completed 200 OK in 5ms (Views: 2.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-03 01:14:39 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[36mUser Load (1.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mPost Load (1.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC
+Completed 200 OK in 82ms (Views: 76.7ms | ActiveRecord: 2.2ms)
+
+
+Started POST "/delete_post" for 127.0.0.1 at 2012-10-03 01:14:42 +0530
+Processing by PostController#delete_post as JSON
+  Parameters: {"post_id"=>"6", "user_id"=>"2"}
+[CNTRL] [POST] [delete_post] post delete requested
+  [1m[36mUser Load (1.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+[HOME] [COMMON] current user id 2
+[CNTRL] [POST] [delete_post] params {"post_id"=>"6", "user_id"=>"2", "controller"=>"post", "action"=>"delete_post"}
+[HOME] [COMMON] current user uid 1452186072
+  [1m[35mPost Load (0.8ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 6 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mVote Load (13.8ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."post_id" = 6
+  [1m[36mSQL (1.1ms)[0m  [1mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 6]]
+  [1m[35m (22.6ms)[0m  COMMIT
+Completed 200 OK in 74ms (Views: 1.6ms | ActiveRecord: 42.8ms)
