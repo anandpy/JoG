@@ -268,12 +268,15 @@
   display: none;
   max-width: 500px;
   max-height: 500px;
+  margin: 0 auto;
+  text-align: center
 }
 
 #jog_view_full_image img
 {
   max-width: 500px;
   max-height: 500px;
+  margin: 0 auto;
 }
 
 

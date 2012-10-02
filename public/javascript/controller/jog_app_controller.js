@@ -35,13 +35,13 @@ var JOG = {
                         var $dataID = $("#jog_view_full_image");
                         $.fancybox({
                             content: $dataID,
+                            'width': 500,
+                            'height': 500,
                             'padding': 20, 
                             'autoSize': false, 
-                            'height' : 'auto', 
-                            'width' : 'auto',
                             openSpeed: 'normal',
                             closeBtn: true,
-                            autoSize: true,
+                            autoSize: false,
                             topRatio: 0,
                             beforeClose:function() {
                                       //TODO: Nothing to be done on close
