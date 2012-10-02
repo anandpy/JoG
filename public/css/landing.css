@@ -29,7 +29,6 @@ body
 
 #jog_lp1_msg2
 {
-  width: 506px;
   height: 120px;
   font-family: 'MyWebFont1';
   font-size: 28px;
@@ -40,6 +39,19 @@ body
   line-height: 30px;
   text-align: center;
   letter-spacing: 1px;
+  position: relative;
+}
+
+#jog_landing_help
+{
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  bottom: 4px;
+  right: 126px;
+  background-image: url("/images/help.png");
+  cursor: pointer;
+
 }
 
 #jog_lp_msg3
@@ -288,4 +300,26 @@ body
   right: 12px;
   font-weight: bold;
   color: #8497A8;
+}
+
+#jog_help_window
+{
+  display: none;
+  width: 600px;
+  height: 400px;
+  font-size: 14px;
+  text-align: left;
+  font-family: Helvetica;
+}
+#jog_help_window h3
+{
+font-size: 22px;  
+text-align: center;
+}
+#jog_help_window h5
+{
+  text-align: left;
+  margin: 5px 0 5px 0;
+  font-size: 14px;
+  font-weight: normal;
 }

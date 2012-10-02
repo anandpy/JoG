@@ -185,6 +185,25 @@ var JOG = {
         //$("#jog_lp_container").shadow({type:'sides', sides:'vt-1'});
         $("#jog_data_post_entry").shadow('lifted');
     },
+
+    enableHelpWindow: function()
+    {
+        $("#jog_landing_help").live("click", function(){
+            var $dataID = $("#jog_help_window"); 
+            $.fancybox({
+                        content: $dataID,
+                        'padding': 10, 
+                        'autoSize': true, 
+                        openSpeed: 'normal',
+                        closeBtn: true,
+
+                        topRatio: 0,
+                        beforeClose:function() {
+                               //TODO: Nothing to be done on close
+                        }
+                       });
+        });
+    },
 };
 
 
@@ -221,6 +240,7 @@ $(document).ready(function(){
         JogLandingPostMetricController.init();
         break;
     case "landing_page" :
+        JOG.enableHelpWindow();
         JogLandingPostMetricController.init();
         JogLandingLeaderboardPanelController.init();
         break;
