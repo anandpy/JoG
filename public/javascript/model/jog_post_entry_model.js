@@ -33,7 +33,8 @@ var JogPostEntryModel = {
         {
             method: 'feed',
             name: 'MakeMyTrip – Joy of Giving contest',
-            link: 'http://www.facebook.com/makemytrip/app_124803241001108',
+            //link: 'http://www.facebook.com/makemytrip/app_124803241001108',
+            link: 'http://apps.facebook.com/367153893359066/?fb_source=search&ref=ts&fref=ts',
             picture: "https://s3.amazonaws.com/jogw/mmt_share.jpg",
             caption: 'I just participated in MakeMyTrip – Joy of Giving contest',
             description: 'I have uploaded my entry to the Joy of Giving contest ,http://apps.facebook.com/367153893359066/?fb_source=search&ref=ts&fref=ts , Vote for me and share your Joy in Giving too!',
