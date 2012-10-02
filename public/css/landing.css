@@ -44,12 +44,16 @@ body
 
 #jog_lp_msg3
 {
-  width: 354px;
   height: 15px;
-  background-image: url("/images/lp_msg3.png");
   margin: 0 auto;
   margin-top: 15px;
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
+  font-size: 18px;
+  text-align: center;
+  font-family: Helvetica;
+  color: #333;
+  letter-spacing: 0.1em;
+  text-shadow: 0px 1px 1px white;
 }
 
 #jog_lp_metric_count

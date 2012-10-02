@@ -77,7 +77,7 @@
 
 function redirectToCanvasApp()
 {
-    window.location.href = "https://apps.facebook.com/367153893359066/?fb_source=search&ref=ts&fref=ts";
+    top.location.href = "https://apps.facebook.com/367153893359066/?fb_source=search&ref=ts&fref=ts";
 }
 </script>
 
