@@ -53764,3 +53764,304 @@ Processing by PostController#get_leaderboard_posts as JSON
   [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
   [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
 Completed 200 OK in 9ms (Views: 0.9ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/all_posts" for 127.0.0.1 at 2012-10-02 23:09:48 +0530
+Processing by HomeController#show as HTML
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /all_posts
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 68ms (Views: 66.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-02 23:09:48 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+[CNTRL] [HOME] [get_current_user_details] ****USER NOT LOGGED IN****
+Completed 400 Bad Request in 2ms (Views: 0.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/fetch_all_posts" for 127.0.0.1 at 2012-10-02 23:09:48 +0530
+Processing by PostController#all_post as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [all_post] enter {"controller"=>"post", "action"=>"all_post", "post"=>{}}
+  [1m[35mPost Load (2.9ms)[0m  SELECT "posts".* FROM "posts" ORDER BY id DESC LIMIT 30
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Completed 200 OK in 15ms (Views: 2.6ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/current_user_details?user_id=" for 127.0.0.1 at 2012-10-02 23:09:48 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"", "home"=>{"user_id"=>"", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '' LIMIT 1[0m
+[HOME] [get_current_user_details] not legal uid, redirect to home
+Redirected to http://localhost:3000/
+Completed 500 Internal Server Error in 4ms
+
+NoMethodError (undefined method `[]' for nil:NilClass):
+  app/controllers/home_controller.rb:120:in `get_current_user_details'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.6ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (8.8ms)
+
+
+Started GET "/leaderboard" for 127.0.0.1 at 2012-10-02 23:09:55 +0530
+Processing by HomeController#show as HTML
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /leaderboard
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-02 23:09:55 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+[CNTRL] [HOME] [get_current_user_details] ****USER NOT LOGGED IN****
+Completed 400 Bad Request in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/current_user_details?user_id=" for 127.0.0.1 at 2012-10-02 23:09:55 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"", "home"=>{"user_id"=>"", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '' LIMIT 1
+[HOME] [get_current_user_details] not legal uid, redirect to home
+Redirected to http://localhost:3000/
+Completed 500 Internal Server Error in 3ms
+
+NoMethodError (undefined method `[]' for nil:NilClass):
+  app/controllers/home_controller.rb:120:in `get_current_user_details'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.3ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.0ms)
+
+
+Started GET "/update_call_back?link=posts&id=1" for 127.0.0.1 at 2012-10-02 23:10:01 +0530
+Processing by HomeController#update_call_back as JSON
+  Parameters: {"link"=>"posts", "id"=>"1", "home"=>{"link"=>"posts", "id"=>"1", "controller"=>"home", "action"=>"update_call_back"}}
+[HOME] [update_call_back] enter
+[HOME] [update_call_back] params {"link"=>"posts", "id"=>"1", "controller"=>"home", "action"=>"update_call_back", "home"=>{}}
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/update_call_back?link=posts&id=1" for 127.0.0.1 at 2012-10-02 23:10:34 +0530
+Processing by HomeController#update_call_back as JSON
+  Parameters: {"link"=>"posts", "id"=>"1", "home"=>{"link"=>"posts", "id"=>"1", "controller"=>"home", "action"=>"update_call_back"}}
+[HOME] [update_call_back] enter
+[HOME] [update_call_back] params {"link"=>"posts", "id"=>"1", "controller"=>"home", "action"=>"update_call_back", "home"=>{}}
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-10-02 23:11:01 +0530
+Processing by HomeController#index as HTML
+[CNTRL] [HOME] [INDEX] New App Main Page requested
+[CNTRL] [HOME] [INDEX] ****USER NOT LOGGED IN****
+  Rendered home/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 13ms (Views: 11.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-02 23:11:01 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+[CNTRL] [HOME] [get_current_user_details] ****USER NOT LOGGED IN****
+Completed 400 Bad Request in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/leaderboard" for 127.0.0.1 at 2012-10-02 23:13:10 +0530
+Processing by HomeController#show as HTML
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /leaderboard
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-02 23:13:12 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+[CNTRL] [HOME] [get_current_user_details] ****USER NOT LOGGED IN****
+Completed 400 Bad Request in 2ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/current_user_details?user_id=" for 127.0.0.1 at 2012-10-02 23:13:12 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"", "home"=>{"user_id"=>"", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '' LIMIT 1[0m
+[HOME] [get_current_user_details] not legal uid, redirect to home
+Redirected to http://localhost:3000/
+Completed 500 Internal Server Error in 4ms
+
+NoMethodError (undefined method `[]' for nil:NilClass):
+  app/controllers/home_controller.rb:120:in `get_current_user_details'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.2ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.7ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.4ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-02 23:13:13 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[35mPost Load (0.7ms)[0m  SELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Completed 200 OK in 7ms (Views: 1.1ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/post_metric" for 127.0.0.1 at 2012-10-02 23:13:13 +0530
+Processing by PostController#get_jog_post_metric as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_jog_post_metric] enter {"controller"=>"post", "action"=>"get_jog_post_metric", "post"=>{}}
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "posts" [0m
+  [1m[35m (0.5ms)[0m  SELECT SUM("posts"."votes_count") AS sum_id FROM "posts" 
+[CNTRL] [POST] [get_jog_post_metric] result {:post_count=>2, :votes_count=>0}
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/update_call_back?link=posts&id=1" for 127.0.0.1 at 2012-10-02 23:13:14 +0530
+Processing by HomeController#update_call_back as JSON
+  Parameters: {"link"=>"posts", "id"=>"1", "home"=>{"link"=>"posts", "id"=>"1", "controller"=>"home", "action"=>"update_call_back"}}
+[HOME] [update_call_back] enter
+[HOME] [update_call_back] params {"link"=>"posts", "id"=>"1", "controller"=>"home", "action"=>"update_call_back", "home"=>{}}
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/leaderboard" for 127.0.0.1 at 2012-10-02 23:14:11 +0530
+Processing by HomeController#show as HTML
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /leaderboard
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-02 23:14:13 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+[CNTRL] [HOME] [get_current_user_details] ****USER NOT LOGGED IN****
+Completed 400 Bad Request in 2ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/current_user_details?user_id=" for 127.0.0.1 at 2012-10-02 23:14:13 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"", "home"=>{"user_id"=>"", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '' LIMIT 1[0m
+[HOME] [get_current_user_details] not legal uid, redirect to home
+Redirected to http://localhost:3000/
+Completed 500 Internal Server Error in 3ms
+
+NoMethodError (undefined method `[]' for nil:NilClass):
+  app/controllers/home_controller.rb:120:in `get_current_user_details'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.9ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.1ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.4ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-02 23:14:13 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[35mPost Load (0.8ms)[0m  SELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Completed 200 OK in 8ms (Views: 0.9ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/post_metric" for 127.0.0.1 at 2012-10-02 23:14:13 +0530
+Processing by PostController#get_jog_post_metric as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_jog_post_metric] enter {"controller"=>"post", "action"=>"get_jog_post_metric", "post"=>{}}
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "posts" [0m
+  [1m[35m (0.3ms)[0m  SELECT SUM("posts"."votes_count") AS sum_id FROM "posts" 
+[CNTRL] [POST] [get_jog_post_metric] result {:post_count=>2, :votes_count=>0}
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/update_call_back?link=posts&id=1" for 127.0.0.1 at 2012-10-02 23:14:15 +0530
+Processing by HomeController#update_call_back as JSON
+  Parameters: {"link"=>"posts", "id"=>"1", "home"=>{"link"=>"posts", "id"=>"1", "controller"=>"home", "action"=>"update_call_back"}}
+[HOME] [update_call_back] enter
+[HOME] [update_call_back] params {"link"=>"posts", "id"=>"1", "controller"=>"home", "action"=>"update_call_back", "home"=>{}}
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/leaderboard" for 127.0.0.1 at 2012-10-02 23:15:48 +0530
+Processing by HomeController#show as HTML
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /leaderboard
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 7ms (Views: 5.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-02 23:15:49 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+[CNTRL] [HOME] [get_current_user_details] ****USER NOT LOGGED IN****
+Completed 400 Bad Request in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/current_user_details?user_id=" for 127.0.0.1 at 2012-10-02 23:15:49 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"", "home"=>{"user_id"=>"", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '' LIMIT 1[0m
+[HOME] [get_current_user_details] not legal uid, redirect to home
+Redirected to http://localhost:3000/
+Completed 500 Internal Server Error in 3ms
+
+NoMethodError (undefined method `[]' for nil:NilClass):
+  app/controllers/home_controller.rb:120:in `get_current_user_details'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.5ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.3ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.6ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-02 23:15:49 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[35mPost Load (0.7ms)[0m  SELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Completed 200 OK in 10ms (Views: 1.2ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/post_metric" for 127.0.0.1 at 2012-10-02 23:15:49 +0530
+Processing by PostController#get_jog_post_metric as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_jog_post_metric] enter {"controller"=>"post", "action"=>"get_jog_post_metric", "post"=>{}}
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "posts" [0m
+  [1m[35m (0.5ms)[0m  SELECT SUM("posts"."votes_count") AS sum_id FROM "posts" 
+[CNTRL] [POST] [get_jog_post_metric] result {:post_count=>2, :votes_count=>0}
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/update_call_back?link=posts&id=1" for 127.0.0.1 at 2012-10-02 23:15:52 +0530
+Processing by HomeController#update_call_back as JSON
+  Parameters: {"link"=>"posts", "id"=>"1", "home"=>{"link"=>"posts", "id"=>"1", "controller"=>"home", "action"=>"update_call_back"}}
+[HOME] [update_call_back] enter
+[HOME] [update_call_back] params {"link"=>"posts", "id"=>"1", "controller"=>"home", "action"=>"update_call_back", "home"=>{}}
+Completed 200 OK in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)

@@ -277,7 +277,7 @@ a
 {
   display: none;
   font-weight: bold;
-  width: 600px;
+  width: 650px;
   height: 200px;
   padding: 15px;
   text-align: center;
@@ -292,8 +292,10 @@ a
 }
 #jog_invite_user_for_signup h5
 {
-  font-size: 20px;
-  margin: 5px 0 20px 0;
+  font-size: 18px;
+  font-weight: normal;
+  margin: 35px 0 20px 0;
+
 }
 
 #jog_invite_mmt_logo
