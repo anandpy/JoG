@@ -57,7 +57,7 @@ var JogPostEntryView = {
                             '</div>'+
                             '<div id="jog_data_post_entry_attach_photo">'+
                                 '<input type="file" onchange="if (this.value) {JogPostEntryView.imgUploadProcess(this);}" style="margin-bottom: 0">'+
-                                '<img alt="Loading..." src="https://filepicker_static.s3.amazonaws.com/c1d1fae/img/throbber.gif"  id="jog_img_upload_spinner">'+
+                                '<img alt="Loading..." src="/images/ajax-loader.gif"  id="jog_img_upload_spinner">'+
                             '</div>'+
                         '</div>'+
                         '<div id="jog_img_upload_preview">'+

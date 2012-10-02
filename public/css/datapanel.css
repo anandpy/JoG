@@ -50,7 +50,6 @@
   line-height: 23px;
   overflow-y: auto;
   margin-bottom: 10px;
-
 }
 
 .jog_data_posts_box_content img
@@ -170,11 +169,12 @@
 
 .jog_data_posts_leaderboard_list_user_info
 {
-  width: 60%;
-  height: 100px;
+  width: 27%;
+  height: 250px;
   position: absolute;
   top: -48px;
-  left: 50px;
+  left: 15px;
+  top: 33px;
 }
 
 .jog_data_posts_leaderboard_list_user_info img
@@ -184,14 +184,15 @@
   border: 1px solid #CCC;
   padding: 2px;
   background: white;
+  display: block;
 }
 
 .jog_data_posts_leaderboard_list_user_info span
 {
   vertical-align: middle;
-  font-size: 17px;
-  color: #333;
-  text-shadow: 0px 1px 1px #666;
+  font-size: 13px;
+  color:    #333;
+  text-shadow: 0px 1px 1px  #DDD;
 }
 
 
