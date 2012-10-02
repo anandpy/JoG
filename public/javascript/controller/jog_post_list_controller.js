@@ -60,7 +60,7 @@ var JogPostListController = {
         var loggedinUser = JOGCache.getData("loggedinUserData",null);
 
         if (!loggedinUser)
-            JOG.Events.inviteUsersOnVote();
+            JOG.Events.inviteUsersOnVote(postID);
         else
 		    JogPostListModel.updateVote(postID);
 	},

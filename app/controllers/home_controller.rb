@@ -31,16 +31,16 @@ class HomeController < ApplicationController
 
 		Rails.logger.info("[CNTRL] [HOME] [SHOW] #{request.env['PATH_INFO']}")
 
- 
+ 		session["user_return_to_for_vote"] = ""	
 
 		if request.env['PATH_INFO'].split("/")[1] == "leaderboard"
 			@page_mode = "leaderboard"
-			
 			if user_signed_in?
 				@page_id = 	current_user.srv_uid
 			end	
 		elsif request.env['PATH_INFO'].split("/")[1] == "all_posts"
 			@page_mode = "all_posts"
+			session["user_return_to_for_vote"] = "hello sir how are you"
 			if user_signed_in?
 				@page_id = 	current_user.srv_uid
 			end	
@@ -90,14 +90,16 @@ class HomeController < ApplicationController
 	def get_current_user_details
 	    Rails.logger.info("[HOME] [get_current_user_details] Entering #{params}")
 
-	    if params[:user_id] != "nil"
+	    if params[:user_id] != ""
 	    	@user_uid = params[:user_id]
 	    else 
 	    	if !user_signed_in? 
 	      		Rails.logger.error("[CNTRL] [HOME] [get_current_user_details] ****USER NOT LOGGED IN****")
 	      		render :json => {:error => "No user loggedin" }, :status => 400
+	      		return
+	      	else
+	    		@user_uid = current_user.srv_uid
 	    	end
-	    	@user_uid = current_user.srv_uid
 	    end
 
 	    #Rails.logger.info("[HOME] [COMMON] current user id #{current_user.id}")
@@ -178,6 +180,24 @@ class HomeController < ApplicationController
 	    end 
 	end
 
+	################################################################################################
+	#
+	#
+	#
+	################################################################################################# 
+	def update_call_back
+		Rails.logger.info("[HOME] [update_call_back] enter")
+		Rails.logger.info("[HOME] [update_call_back] params #{params.inspect}")
+
+		session[:user_return_to_for_vote] = "/post/" + params[:id].to_s
+
+		response_json = {:link => session[:user_return_to_for_vote] }
+		if request.xhr?
+	        render :json => response_json
+	        return
+	    end 
+		Rails.logger.info("[HOME] [update_call_back] leave")
+	end
 	
 
 

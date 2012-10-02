@@ -9,26 +9,9 @@ var JOG = {
                     JOG.Events.enableTipsy();
 				},
 
-				inviteUsersOnVote: function()
+				inviteUsersOnVote: function(postID)
 				{
-					//$(".jog_data_posts_box_metric_vote_action").live("click",function(e){
-						var $dataID = $("#jog_invite_user_for_signup"); 
-						$.fancybox({
-                			content: $dataID,
-                			'padding': 10, 
-                			'autoSize': false, 
-                			'height' : 'auto', 
-                			'width' : 'auto',
-                			openSpeed: 'normal',
-                			closeBtn: true,
-                			autoSize: true,
-                			topRatio: 0,
-                			beforeClose:function() {
-                                      //TODO: Nothing to be done on close
-                            }
-                      	});
-					//	e.preventDefault();	
-					//});	
+                    JOG.Events.setRedirectCallbackForOuth(postID);
 				},
 
                 voteClick: function()
@@ -91,6 +74,40 @@ var JOG = {
                 {
                     $(".enableTipsy").tipsy({live: true, gravity: 'w'});
                 },
+
+                setRedirectCallbackForOuth: function(postID)
+                {
+                    $.ajax({
+                        url: JOG.urls.updateRedirectTo,
+                        type: 'GET',
+                        dataType: 'json',
+                        data: {"link":"posts", "id":postID},
+                        contentType: 'application/json',
+                        success: function ( respdata ) {
+                            console.log("Redirect To"); 
+                            console.log(respdata);
+                            JOGCache.setData("redirectTo", respdata);
+                            var $dataID = $("#jog_invite_user_for_signup"); 
+                            $.fancybox({
+                                content: $dataID,
+                                'padding': 10, 
+                                'autoSize': false, 
+                                'height' : 'auto', 
+                                'width' : 'auto',
+                                openSpeed: 'normal',
+                                closeBtn: true,
+                                autoSize: true,
+                                topRatio: 0,
+                                beforeClose:function() {
+                                      //TODO: Nothing to be done on close
+                                }
+                            });
+                         },error:function(XMLHttpRequest,textStatus, errorThrown){ 
+                            // TODO: WHAT TO DO!!
+                            console.log("error while retrieving user");
+                        }
+                    });
+                },
 	},
 
 
@@ -125,6 +142,7 @@ var JOG = {
         "deletePost" : "/delete_post",
         "loggedinUser" : "/loggedin_user",
         "allPosts" : "/fetch_all_posts",
+        "updateRedirectTo" : "/update_call_back"
     },
 
 	"currentUser": {
@@ -209,7 +227,6 @@ $(document).ready(function(){
     case "all_posts":
         $("#jog_leader_board_side_panel").hide();
         JogUserProfileModel.init();
-        //JogLeaderboardPanelController.init();
         JogLandingPostMetricController.init();
         JogAllPostsController.init();
         

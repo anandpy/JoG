@@ -22,7 +22,15 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     aw_sign_in(user)
 
-    redirect_to user
+    #redirect_to user
+
+    Rails.logger.info("[CNTRL] [USERS] [OmniauthCallbacks] [FACEBOOK] sessio  #{session[:user_return_to_for_vote]}")
+
+    if session[:user_return_to_for_vote] != ""
+      redirect_to session[:user_return_to_for_vote]
+    else
+      redirect_to user
+    end
   rescue => e
     Rails.logger.info("[CNTRL] [USERS] [OmniauthCallbacks] [FACEBOOK] ****RESCUE**** #{e.message}")
   end

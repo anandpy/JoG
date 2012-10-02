@@ -56,6 +56,7 @@ class PostController < ApplicationController
             render :json => {:error => "No post found" }, :status => 400
         end 
     rescue => e
+      session["user_return_to_for_vote"] = "hello sir how are you"  
       Rails.logger.error("[POST] [update_vote] **** ERROR **** #{e.message} #{post.inspect}")
       render :json => {:error => e.message }, :status => 400
     end 
