@@ -40,7 +40,7 @@ class HomeController < ApplicationController
 			end	
 		elsif request.env['PATH_INFO'].split("/")[1] == "all_posts"
 			@page_mode = "all_posts"
-			session["user_return_to_for_vote"] = "hello sir how are you"
+			#TODO session["user_return_to_for_vote"] = "hello sir how are you"
 			if user_signed_in?
 				@page_id = 	current_user.srv_uid
 			end	

@@ -1,11 +1,23 @@
 JoG::Application.routes.draw do
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
-  devise_for :users do
-    get 'logout' => 'devise/sessions#destroy'
-  end
+# devise_for :users
+devise_for :users, :controllers => {
+                                    :sessions => "users/sessions",
+                                    :registrations => "users/registrations",
+                                    :omniauth_callbacks => "users/omniauth_callbacks" 
+                                   }
 
-  match 'update_call_back' => "home#update_call_back"
+devise_scope :user do
+  get 'logout' => 'devise/sessions#destroy'
+end
+
+
+# devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+# devise_for :users do
+#   get 'logout' => 'devise/sessions#destroy'
+# end
+
+  match '/update_call_back' => "home#update_call_back"
   match '/delete_post' => "post#delete_post"
   match '/fetch_single_post' => "post#get_post_detail"
   match '/post_metric' => "post#get_jog_post_metric"
@@ -22,6 +34,9 @@ JoG::Application.routes.draw do
   match '/show/:id' => 'home#show'
   match '/post/:id' => 'home#show'
   match '/loggedin_user' => "home#get_loggedin_user_details"
+
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -74,9 +89,12 @@ JoG::Application.routes.draw do
   # just remember to delete public/index.html.
    root :to => 'home#index'
 
+
+
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id))(.:format)'
+  #match ':controller(/:action(/:id))(.:format)' ,:using_default_route => true
+  match '*path' => "home#index"
 end
