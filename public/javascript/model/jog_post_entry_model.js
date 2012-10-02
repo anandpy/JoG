@@ -32,12 +32,12 @@ var JogPostEntryModel = {
         FB.ui(
         {
             method: 'feed',
-            // name: '“I just participated in MakeMyTrip – Joy of Giving contest',
+            name: 'MakeMyTrip – Joy of Giving contest',
             link: 'http://www.facebook.com/makemytrip/app_124803241001108',
-            // picture: JOG.appUrl() + "/images/mmt_share.jpg",
-            // caption: 'Joy of Giving',
-            // description: ' I have uploaded my entry to the Joy of Giving contest ,http://apps.facebook.com/367153893359066/?fb_source=search&ref=ts&fref=ts , Vote for me and share your Joy in Giving too!',
-            // message: 'Joy of Giving - a chance to win free tickets by MakeMyTrip'
+            picture: "https://s3.amazonaws.com/jogw/mmt_share.jpg",
+            caption: 'I just participated in MakeMyTrip – Joy of Giving contest',
+            description: 'I have uploaded my entry to the Joy of Giving contest ,http://apps.facebook.com/367153893359066/?fb_source=search&ref=ts&fref=ts , Vote for me and share your Joy in Giving too!',
+            message: 'I just participated in MakeMyTrip – Joy of Giving contest'
         }, function(response) {
             if (response && response.post_id) {
                 console.log("FB post not published");
