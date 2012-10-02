@@ -6,7 +6,7 @@ class HomeController < ApplicationController
 	################################################################################################# 
 	def index
 		Rails.logger.info("[CNTRL] [HOME] [INDEX] New App Main Page requested")
-
+		session["user_return_to_for_vote"] = ""	
 		@page_mode = "landing_page"
 		@page_id = "all" 
 		if user_signed_in?
@@ -90,7 +90,7 @@ class HomeController < ApplicationController
 	def get_current_user_details
 	    Rails.logger.info("[HOME] [get_current_user_details] Entering #{params}")
 
-	    if params[:user_id] != ""
+	    if params[:user_id] != "nil"
 	    	@user_uid = params[:user_id]
 	    else 
 	    	if !user_signed_in? 
