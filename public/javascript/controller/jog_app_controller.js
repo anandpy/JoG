@@ -204,6 +204,25 @@ var JOG = {
                        });
         });
     },
+
+    enableTnCWindow: function()
+    {
+        $("#jog_tnc_click").live("click", function(){
+            var $dataID = $("#jog_tnc_window"); 
+            $.fancybox({
+                        content: $dataID,
+                        'padding': 10, 
+                        'autoSize': true, 
+                        openSpeed: 'normal',
+                        closeBtn: true,
+
+                        topRatio: 0,
+                        beforeClose:function() {
+                               //TODO: Nothing to be done on close
+                        }
+                       });
+        });
+    },
 };
 
 
@@ -241,6 +260,7 @@ $(document).ready(function(){
         break;
     case "landing_page" :
         JOG.enableHelpWindow();
+        JOG.enableTnCWindow();
         JogLandingPostMetricController.init();
         JogLandingLeaderboardPanelController.init();
         break;

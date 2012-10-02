@@ -316,10 +316,53 @@ body
 font-size: 22px;  
 text-align: center;
 }
+
 #jog_help_window h5
 {
   text-align: left;
   margin: 5px 0 5px 0;
   font-size: 14px;
   font-weight: normal;
+}
+
+
+#jog_tnc_click
+{
+  width: 100%;
+  height: 20px;
+  cursor: pointer;
+  font-size: 11px;  
+  color: #333;
+  margin: 12px 0 12px 0;
+  text-align: center;
+  font-weight: bold;
+}
+#jog_tnc_window
+{
+  display: none;
+  width: 500px;
+  height: 600px;
+  font-size: 14px;
+  text-align: left;
+  font-family: Helvetica;
+  overflow-y : auto;
+  font-family: Helvetica;
+}
+#jog_tnc_window h3
+{
+  font-size: 21px;
+  text-align: left;
+}
+#jog_tnc_window li
+{
+  margin: 9px 0 4px 0;
+}
+#tnc_mmt_logo
+{
+  height: 44px;
+  list-style-type: none;
+}
+#tnc_mmt_logo img 
+{
+  float: right;
 }
