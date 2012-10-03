@@ -109,7 +109,7 @@ var JogDataPostListView = {
     socialShareHtml: function(data)
     {
 
-        var shareURL = JOG.appUrl() + "/post/1";
+        var shareURL = "http://bit.ly/SVNMH3";
         
         function fbHtml()
         {
@@ -118,7 +118,7 @@ var JogDataPostListView = {
 
         function twitterHtml()
         {
-            return '<a href="https://twitter.com/share" class="twitter-share-button" data-url="'+shareURL+'" data-via="makemytrip" data-text="vote for me to win free tickets" data-lang="en">Tweet</a>'+
+            return '<a href="https://twitter.com/share" class="twitter-share-button" data-url="'+shareURL+'" data-via="makemytrip" data-text="Share your Joy of Giving and win exciting vouchers - MakeMyTrip Joy of Giving contest" data-lang="en">Tweet</a>'+
             '<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';
 
         }
