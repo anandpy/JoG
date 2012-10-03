@@ -32,13 +32,14 @@ var JogPostEntryModel = {
         FB.ui(
         {
             method: 'feed',
-            name: 'MakeMyTrip – Joy of Giving contest',
+            name: 'I just entered the MakeMyTrip – Joy of Giving contest',
             //link: 'http://www.facebook.com/makemytrip/app_124803241001108',
             link: 'http://apps.facebook.com/367153893359066/?fb_source=search&ref=ts&fref=ts',
             picture: "https://s3.amazonaws.com/jogw/mmt_share.jpg",
-            caption: 'I just participated in MakeMyTrip – Joy of Giving contest',
-            description: 'I have uploaded my entry to the Joy of Giving contest, Vote for me and share your Joy in Giving too!',
-            message: 'I just participated in MakeMyTrip – Joy of Giving contest'
+            //caption: 'Check out my entry, vote and share your Joy in Giving too!',
+            //description: 'I have uploaded my entry to the Joy of Giving contest, Vote for me and share your Joy in Giving too!',
+            caption: 'Check out my entry, vote and share your Joy in Giving too!',
+            //message: 'I just participated in MakeMyTrip – Joy of Giving contest'
         }, function(response) {
             if (response && response.post_id) {
                 console.log("FB post not published");
@@ -50,29 +51,7 @@ var JogPostEntryModel = {
         }
         );
 
-        /*FB.api('/me/feed', 'post', { message: status }, function(response) {
-            if (!response || response.error) {
-                console.log(response.error);
-                alert('Error occured');
-            } else {
-                alert('Status updated Successfully');
-            }
-        });
-        */
-        /*
-        FB.ui(
-        {
-            method: 'stream.publish',
-            message: 'Hi there, JoGw is around, whats your plan',
-            //user_message_prompt: 'Share your thoughts about Connect'
-        }, function(response) {
-                if (response && response.post_id) {
-                    //alert('Post was published.');
-                } else {
-                    //alert('Post was not published.');
-                }
-            }
-        );*/
+        
     },
 
     deleteUpload : function() {

@@ -232,7 +232,7 @@ $(document).ready(function(){
 
     JOG.Events.init();
     
-  
+    /* FIXME : REPEATATION */ 
     switch (JOG.configs.page_title) {
     case "leaderboard" :
         $("#jog_leader_board_side_panel").hide();
