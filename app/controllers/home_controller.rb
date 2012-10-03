@@ -117,12 +117,15 @@ class HomeController < ApplicationController
         	redirect_to '/'
         end
 
+        p = Post.where(:user_id => info.id).group(:votes_count).sum(:votes_count)
+        puts "==================== #{p.inspect}======================"
+
 	    response_json[:name] = info["name"]
 	    response_json[:uid] = @user_uid
 	    response_json[:id] = info["id"] 
 	    response_json[:sex] = info["sex"]
 	    response_json[:pic] = info["pic"]
-	    response_json[:votes_count] = info["votes_count"]
+	    response_json[:votes_count] = p.keys[0]
 	    #response_json[:auth_token] = current_user.access_token #session[:token]
 	    response_json[:auth_token] = info["access_token"] #session[:token]
 	    response_json[:post_count] = info.posts.length
