@@ -52,8 +52,10 @@ var JogUserSinglePostView = {
         function adminLevelPrivilege()
         {   
             var html = "";
+            
+            var loggedinData = JOGCache.getData("loggedinUserData", null);
 
-            if (JOGAdminUID.indexOf(JOGCache.getData("loggedinUserData", null).uid) != -1 ) {
+            if (loggedinData && JOGAdminUID.indexOf(loggedinData.uid) != -1 ) {
                 var html = '<input type="text" id="jog_admin_key" placeholder="Secret Key"></input>';
                 html = html + '<button class="btn btn-warning" id="jog_admin_delete" data-id="'+data.post_id+'"> Delete by Admin</button>';    
                 html = html + '<div id="jog_post_deleted_by_admin"> This post is deleted </div>';
