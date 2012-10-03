@@ -49,9 +49,23 @@ var JogUserSinglePostView = {
 
         }     
 
+        function adminLevelPrivilege()
+        {   
+            var html = "";
+
+            if (JOGCache.getData("loggedinUserData", null).uid == $("#jog_admin_id").val()) {
+                var html = '<input type="text" id="jog_admin_key" placeholder="Secret Key"></input>';
+                html = html + '<button class="btn btn-warning" id="jog_admin_delete" data-id="'+data.post_id+'"> Delete by Admin</button>';    
+                html = html + '<div id="jog_post_deleted_by_admin"> This post is deleted </div>';
+            }
+            
+            return html;
+        }
+
         
 
-        var html = '<div class="jog_data_posts_leaderboard_list_box" >'+
+        var html = '<div class="jog_data_posts_leaderboard_list_box">'+
+
                         '<div class="jog_data_posts_leaderboard_list_user_info">'+
                         userInfo()+
                         '</div>'+
@@ -67,9 +81,15 @@ var JogUserSinglePostView = {
                             '</div>'+
                             postHtml()+
                         '</div>'+
+                        adminLevelPrivilege()+
                     '</div>';
         
         return html;
+    },
+
+    deletePostMessage: function(message)
+    {
+       $("#jog_post_deleted_by_admin").text(message).show();
     },
 
     post1Html : function(data)
@@ -86,7 +106,7 @@ var JogUserSinglePostView = {
         var truncateTextLength = (data.post_pic && data.post_pic !== "" ) ? 200 : 300; ;
         var imgHtml = (data.post_pic && data.post_pic !== "" ) ? '<img src="'+data.post_pic+'" align="right">' : ""; 
 
-        var html = '<div class="jog_data_posts_leaderboard_list_box" >'+
+        var html = '<div class="jog_data_posts_leaderboard_list_box"  >'+
                         '<div class="jog_data_posts_leaderboard_list_user_info">'+
                         userInfo()+
                         '</div>'+

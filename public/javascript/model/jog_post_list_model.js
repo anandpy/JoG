@@ -22,27 +22,45 @@ var JogPostListModel = {
         });
     },
 
-	deletePost: function(id)
+	deletePost: function(id, cat)
     {
+        var type = cat || "user";
+
+        var sendParam = (type == "admin") ? 
+                        {
+                          "post_id" : id, 
+                          "user_id" : JOGCache.getData("loggedinUserData",null).id, 
+                          "type": type, 
+                          "key": $("#jog_admin_key").val(),
+                        } :
+                        {
+                          "post_id" : id, 
+                          "user_id" : JOGCache.getData("loggedinUserData",null).id, 
+                          "type": type, 
+                        } ;
+
+
         $.ajax({
                 headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content'), 'Content-Type': 'application/x-www-form-urlencoded'},
                 url: JOG.urls.deletePost,
                 type: 'POST',
                 dataType: 'json',
                 contentType: 'application/json',
-                data: {"post_id" : id, "user_id" : JOGCache.getData("loggedinUserData",null).id},
+                //data: {"post_id" : id, "user_id" : JOGCache.getData("loggedinUserData",null).id, "type": type},
+                data : sendParam,
                 success: function ( data ) {
                     console.log("post data vote success"); 
                     console.log(data);
 
-                    JogDataPostListView.deletePostEntry(id);
+                    if (type == "admin")   
+                        JogUserSinglePostView.deletePostMessage("This post is deleted");
+                    else    
+                        JogDataPostListView.deletePostEntry(id);
                     
-                    //JogUserProfileInfoView.init(data);
-
-                    //irisCacheApiSETData("iris.friends", data);
-                    //$('#irisSearchOptionFriends').trigger('click');
                 },error:function(XMLHttpRequest,textStatus, errorThrown){ 
                     // TODO: WHAT TO DO!!
+                    if (type == "admin")
+                        JogUserSinglePostView.deletePostMessage("Not authorized to delete post");
                     console.log("error while retrieving user");
                 }
           });

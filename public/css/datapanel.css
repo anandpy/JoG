@@ -169,6 +169,39 @@
 
 }
 
+#jog_admin_delete
+{
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+#jog_post_deleted_by_admin
+{
+  width: 97%;
+  height: 96%;
+  position: absolute;
+  top: 10px;
+  display: block;
+  padding: 0;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 38px;
+  color: red;
+  line-height: 5;
+  background: rgba(256, 256, 256, 0.6);
+  display: none;
+}
+
+#jog_admin_key
+{
+  position: absolute;
+  bottom: 30px;
+  left: 10px;
+  width: 108px;
+}
+
+
 .jog_data_posts_leaderboard_list_user_info
 {
   width: 27%;

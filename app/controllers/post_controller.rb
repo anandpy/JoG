@@ -41,7 +41,6 @@ class PostController < ApplicationController
         Rails.logger.info("[CNTRL] [POST] [delete_post] post delete requested") 
 
         if !user_signed_in? 
-
           Rails.logger.error("[CNTRL] [HOME] [get_posts] ****USER NOT LOGGED IN****")
           render :json => {:error => "No user loggedin" }, :status => 400
         end
@@ -49,6 +48,11 @@ class PostController < ApplicationController
         Rails.logger.info("[CNTRL] [POST] [delete_post] params #{params.inspect}") 
         Rails.logger.info("[HOME] [COMMON] current user uid #{current_user.srv_uid}")
         
+
+        if params[:type] == "admin"
+            raise "admin authentication wrong" if params[:user_id] != current_user.id.to_s or params[:key].blank? or params[:key] != AppConstants.mmt_key
+        end
+  
         p = Post.where(:id => params["post_id"].to_i).first
 
         if p and p.user_id.to_s == params[:user_id]
@@ -65,7 +69,9 @@ class PostController < ApplicationController
         else
             render :json => {:error => "destroy post failed"}, :status => 400
         end 
-
+    rescue => e
+      Rails.logger.error("[POST] [delete_post] **** ERROR **** #{e.message} ")
+      render :json => {:error => e.message }, :status => 400    
     end
 
 

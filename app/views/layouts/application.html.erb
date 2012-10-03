@@ -74,11 +74,13 @@
 <input type="hidden" id="jog_page_id">
 <input type="hidden" id="jog_url">
 <input type="hidden" id="jog_app_id">
+<input type="hidden" id="jog_admin_id">
 <script>
   $("#jog_page_mode").val("<%= @page_mode %>"); 
   $("#jog_page_id").val("<%= @page_id %>");
   $("#jog_url").val("<%= AppConstants.server_base %>");
   $("#jog_app_id").val("<%= AppConstants.facebook_app_id %>");
+  $("#jog_admin_id").val("<%= AppConstants.admin_uid %>");
 </script>
 
 <!-- ClickTale Top part -->
