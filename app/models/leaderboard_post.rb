@@ -6,6 +6,7 @@ class LeaderboardPost < ActiveRecord::Base
 
 		h = {
 	      :post_id => params[:post_id],
+	      :votes_count => params[:votes_count],
 	     }
 
 		p = LeaderboardPost.create!(h)

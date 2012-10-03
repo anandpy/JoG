@@ -42,22 +42,24 @@ class PostController < ApplicationController
 
         if !user_signed_in? 
           Rails.logger.error("[CNTRL] [POST] [delete_post] ****USER NOT LOGGED IN****")
-          render :json => {:error => "No user loggedin" }, :status => 400
+          raise "No user loggedin"
         end
+
         Rails.logger.info("[CNTRL] [POST] [delete_post] current user id #{current_user.id}")
         Rails.logger.info("[CNTRL] [POST] [delete_post] params #{params.inspect}") 
         Rails.logger.info("[CNTRL] [POST] [delete_post] current user uid #{current_user.srv_uid}")
         
-
+        p = Post.where(:id => params["post_id"].to_i).first
+        
         if params[:type] == "admin"
             raise "admin authentication wrong" if params[:user_id] != current_user.id.to_s or params[:key].blank? or params[:key] != AppConstants.mmt_key
         elsif params[:type] == "user"
-            raise "user authentication wrong" if p.user_id.to_s == params[:user_id] 
+            raise "user authentication wrong" if p.user_id.to_s != params[:user_id] 
         else 
             raise "wrong authentication type"
         end
   
-        p = Post.where(:id => params["post_id"].to_i).first
+        
 
         if p 
             p.destroy
@@ -327,13 +329,12 @@ class PostController < ApplicationController
 
         raise "not authorized to generate leaderboard" if params[:key].blank? or params[:key] != AppConstants.mmt_key
 
-        LeaderboardPost.delete_all
-
         posts = Post.order('votes_count DESC').limit(5)
 
         posts.each do |p|
             h = {}
             h[:post_id] = p[:id]
+            h[:votes_count] = p[:votes_count]
             LeaderboardPost.create_post(h)
         end 
 
@@ -357,24 +358,35 @@ class PostController < ApplicationController
         
         response_json = []
 
-        posts = LeaderboardPost.all
+        #posts = LeaderboardPost.order('created_at DESC')
 
-        posts.each do |lp|
-            h = {}
-            p = lp.post
-            user = p.user
-            h[:user_name] = user[:name]
-            h[:user_pic]  = user[:pic]
-            h[:user_uid] = user[:srv_uid]
-            h[:post_title] = p[:title]
-            h[:post_text] = p[:text]
-            h[:post_pic]  = p[:pic]
-            h[:post_id] = p[:id]
-            h[:time_stamp] = p[:created_at]
-            h[:votes_count] = p[:votes_count]
-            response_json << h
-        end
-       
+        leader_posts = LeaderboardPost.all(:order => 'DATE(created_at) DESC').group_by{ |item| item.created_at.to_date.to_s }
+        
+        response_json = []
+
+        leader_posts.each_pair do |k,v|
+            r_json = {}
+            Rails.logger.info("[CNTRL] [POST] [get_leaderboard_posts] print #{v}");
+            v.each do |lp|
+                Rails.logger.info("[CNTRL] [POST] [get_leaderboard_posts] print #{lp}");
+                h = {}
+                p = lp.post
+                user = p.user
+                h[:user_name] = user[:name]
+                h[:user_pic]  = user[:pic]
+                h[:user_uid] = user[:srv_uid]
+                h[:post_title] = p[:title]
+                h[:post_text] = p[:text]
+                h[:post_pic]  = p[:pic]
+                h[:post_id] = p[:id]
+                h[:time_stamp] = p[:created_at]
+                h[:votes_count] = p[:votes_count]
+                response_json << h
+            end
+            response_json[k] = r_json
+        end    
+
+ 
         render :json => response_json
         
         Rails.logger.info("[CNTRL] [POST] [get_leaderboard_posts] leave");
