@@ -17,6 +17,9 @@ end
 #   get 'logout' => 'devise/sessions#destroy'
 # end
 
+
+  match '/get_daily_leaderboard_post' => "post#get_daily_leaderboard_post"
+  match '/generate_daily_leaderboard' => "post#generate_daily_leaderboard"
   match '/update_call_back' => "home#update_call_back"
   match '/delete_post' => "post#delete_post"
   match '/fetch_single_post' => "post#get_post_detail"

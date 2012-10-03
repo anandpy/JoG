@@ -6,7 +6,7 @@ development: &default
   facebook_app_id:      '244515575666539'
   facebook_secret_key:  '2ce9532a07461bf35f2ea18b50ff2afa'
   server_base:          'http://localhost:3000'
-
+  mmt_key:              '9886034902'
 
 production:
 
@@ -15,6 +15,7 @@ production:
   facebook_app_id:      '367153893359066'
   facebook_secret_key:  'a682990551f7dc4b11dde5a7ffe375b6'
   server_base:          'http://whispering-plains-8323.herokuapp.com'
+  mmt_key:              '9886034902'
   <<: *default
   constant1:  "overriden value1"
 

@@ -208,6 +208,7 @@ class PostController < ApplicationController
     #
     #
     ################################################################################################# 
+    # FIXME:TAG-REMOVE-REPEAT
     def all_post
         Rails.logger.info("[CNTRL] [POST] [all_post] enter #{params}");
         
@@ -247,6 +248,7 @@ class PostController < ApplicationController
     #
     #
     ################################################################################################# 
+    # FIXME:TAG-REMOVE-REPEAT
     def get_leaderboard_posts
         Rails.logger.info("[CNTRL] [POST] [get_leaderboard_posts] enter #{params}");
         
@@ -302,6 +304,69 @@ class PostController < ApplicationController
             render :json => response_json
             return
         end
+    end
 
+    ################################################################################################
+    #
+    #
+    #
+    ################################################################################################# 
+    def generate_daily_leaderboard
+        Rails.logger.info("[CNTRL] [POST] [generate_daily_leaderboard] enter" );
+        Rails.logger.info("[CNTRL] [POST] [generate_daily_leaderboard] params #{params.inspect}");
+
+        raise "not authorized to generate leaderboard" if params[:key].blank? or params[:key] != AppConstants.mmt_key
+
+        LeaderboardPost.delete_all
+
+        posts = Post.order('votes_count DESC').limit(5)
+
+        posts.each do |p|
+            h = {}
+            h[:post_id] = p[:id]
+            LeaderboardPost.create_post(h)
+        end 
+
+        response_json = {:key => "success"}
+
+        render :json => response_json
+    rescue => e
+      Rails.logger.error("[POST] [generate_daily_leaderboard] **** ERROR **** #{e.message}")
+      render :json => {:error => e.message }, :status => 400
+    end
+
+
+    ################################################################################################
+    #
+    #
+    #
+    ################################################################################################# 
+    # FIXME:TAG-REMOVE-REPEAT
+    def get_daily_leaderboard_post
+        Rails.logger.info("[CNTRL] [POST] [get_leaderboard_posts] enter #{params}");
+        
+        response_json = []
+
+        posts = LeaderboardPost.all
+
+        posts.each do |lp|
+            h = {}
+            p = lp.post
+            user = p.user
+            h[:user_name] = user[:name]
+            h[:user_pic]  = user[:pic]
+            h[:user_uid] = user[:srv_uid]
+            h[:post_title] = p[:title]
+            h[:post_text] = p[:text]
+            h[:post_pic]  = p[:pic]
+            h[:post_id] = p[:id]
+            h[:time_stamp] = p[:created_at]
+            h[:votes_count] = p[:votes_count]
+            response_json << h
+        end
+       
+        render :json => response_json
+        
+        Rails.logger.info("[CNTRL] [POST] [get_leaderboard_posts] leave");
     end
 end

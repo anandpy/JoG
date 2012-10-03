@@ -57146,3 +57146,1351 @@ Processing by PostController#get_leaderboard_posts as JSON
   [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
   [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
 Completed 200 OK in 20ms (Views: 3.7ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-10-03 09:14:15 +0530
+Processing by HomeController#index as HTML
+[CNTRL] [HOME] [INDEX] New App Main Page requested
+[CNTRL] [HOME] [INDEX] ****USER NOT LOGGED IN****
+  Rendered home/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-03 09:14:16 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+[CNTRL] [HOME] [get_current_user_details] ****USER NOT LOGGED IN****
+Completed 400 Bad Request in 2ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/post_metric" for 127.0.0.1 at 2012-10-03 09:14:16 +0530
+Processing by PostController#get_jog_post_metric as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_jog_post_metric] enter {"controller"=>"post", "action"=>"get_jog_post_metric", "post"=>{}}
+  [1m[36m (1.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" [0m
+  [1m[35m (0.5ms)[0m  SELECT SUM("posts"."votes_count") AS sum_id FROM "posts" 
+[CNTRL] [POST] [get_jog_post_metric] result {:post_count=>10, :votes_count=>0}
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-03 09:14:16 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[36mPost Load (0.8ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Completed 200 OK in 15ms (Views: 3.2ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-10-03 09:14:30 +0530
+Processing by HomeController#index as HTML
+[CNTRL] [HOME] [INDEX] New App Main Page requested
+[CNTRL] [HOME] [INDEX] ****USER NOT LOGGED IN****
+  Rendered home/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-03 09:14:30 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+[CNTRL] [HOME] [get_current_user_details] ****USER NOT LOGGED IN****
+Completed 400 Bad Request in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/post_metric" for 127.0.0.1 at 2012-10-03 09:14:30 +0530
+Processing by PostController#get_jog_post_metric as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_jog_post_metric] enter {"controller"=>"post", "action"=>"get_jog_post_metric", "post"=>{}}
+  [1m[35m (1.6ms)[0m  SELECT COUNT(*) FROM "posts" 
+  [1m[36m (0.7ms)[0m  [1mSELECT SUM("posts"."votes_count") AS sum_id FROM "posts" [0m
+[CNTRL] [POST] [get_jog_post_metric] result {:post_count=>10, :votes_count=>0}
+Completed 200 OK in 5ms (Views: 0.4ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-03 09:14:30 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[35mPost Load (1.7ms)[0m  SELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10
+  [1m[36mUser Load (1.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Completed 200 OK in 17ms (Views: 2.2ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-10-03 09:14:45 +0530
+Processing by HomeController#index as HTML
+[CNTRL] [HOME] [INDEX] New App Main Page requested
+[CNTRL] [HOME] [INDEX] ****USER NOT LOGGED IN****
+  Rendered home/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 77ms (Views: 75.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-03 09:14:46 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+[CNTRL] [HOME] [get_current_user_details] ****USER NOT LOGGED IN****
+Completed 400 Bad Request in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/post_metric" for 127.0.0.1 at 2012-10-03 09:14:46 +0530
+Processing by PostController#get_jog_post_metric as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_jog_post_metric] enter {"controller"=>"post", "action"=>"get_jog_post_metric", "post"=>{}}
+  [1m[36m (0.9ms)[0m  [1mSELECT COUNT(*) FROM "posts" [0m
+  [1m[35m (0.7ms)[0m  SELECT SUM("posts"."votes_count") AS sum_id FROM "posts" 
+[CNTRL] [POST] [get_jog_post_metric] result {:post_count=>10, :votes_count=>0}
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-03 09:14:46 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[36mPost Load (1.1ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Completed 200 OK in 20ms (Views: 3.9ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-10-03 09:14:55 +0530
+Processing by HomeController#index as HTML
+[CNTRL] [HOME] [INDEX] New App Main Page requested
+[CNTRL] [HOME] [INDEX] ****USER NOT LOGGED IN****
+  Rendered home/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 9ms (Views: 7.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-03 09:14:55 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+[CNTRL] [HOME] [get_current_user_details] ****USER NOT LOGGED IN****
+Completed 400 Bad Request in 2ms (Views: 0.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/post_metric" for 127.0.0.1 at 2012-10-03 09:14:55 +0530
+Processing by PostController#get_jog_post_metric as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_jog_post_metric] enter {"controller"=>"post", "action"=>"get_jog_post_metric", "post"=>{}}
+  [1m[35m (1.2ms)[0m  SELECT COUNT(*) FROM "posts" 
+  [1m[36m (0.9ms)[0m  [1mSELECT SUM("posts"."votes_count") AS sum_id FROM "posts" [0m
+[CNTRL] [POST] [get_jog_post_metric] result {:post_count=>10, :votes_count=>0}
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-03 09:14:55 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Completed 200 OK in 19ms (Views: 3.8ms | ActiveRecord: 2.7ms)
+  [1m[36m (15.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to DeviseCreateUsers (20120921042859)
+Migrating to CreatePosts (20120922042327)
+Migrating to CreateVotes (20120930125225)
+Migrating to AddCategoryToPosts (20121001052724)
+Migrating to LeaderboardPost (20121003055145)
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (380.1ms)[0m  [1mCREATE TABLE "leaderboard_posts" ("id" serial primary key, "user_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (27.4ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'leaderboard_posts'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+
+  [1m[36m (58.8ms)[0m  [1mCREATE INDEX "index_leaderboard_posts_on_user_id" ON "leaderboard_posts" ("user_id")[0m
+  [1m[35m (19.7ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121003055145')
+  [1m[36m (20.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (5.7ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'leaderboard_posts'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_leaderboard_posts_on_user_id on leaderboard_posts (1.1ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 116466
+ AND a.attnum IN (2)
+
+  [1m[36m (3.2ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'posts'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_posts_on_user_id on posts (0.7ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 116441
+ AND a.attnum IN (2)
+
+  [1m[36mColumns for index index_posts_on_user_uid on posts (0.9ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 116441
+ AND a.attnum IN (7)
+[0m
+  [1m[35mColumns for index index_posts_on_votes_count on posts (0.7ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 116441
+ AND a.attnum IN (6)
+
+  [1m[36m (3.0ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_users_on_authentication_token on users (0.7ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 116424
+ AND a.attnum IN (16)
+
+  [1m[36mColumns for index index_users_on_srv on users (0.7ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 116424
+ AND a.attnum IN (2)
+[0m
+  [1m[35mColumns for index index_users_on_srv_uid_and_srv on users (0.8ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 116424
+ AND a.attnum IN (3,2)
+
+  [1m[36mColumns for index index_users_on_votes_count on users (0.9ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 116424
+ AND a.attnum IN (9)
+[0m
+  [1m[35m (2.8ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'votes'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+
+  [1m[36mColumns for index index_votes_on_post_id on votes (0.8ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 116456
+ AND a.attnum IN (3)
+[0m
+  [1m[35mColumns for index index_votes_on_user_id_and_post_id on votes (0.8ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 116456
+ AND a.attnum IN (2,3)
+
+  [1m[36m (14.1ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (3.4ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'schema_migrations'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+
+  [1m[36m (78.6ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.4ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to DeviseCreateUsers (20120921042859)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (118.0ms)[0m  CREATE TABLE "users" ("id" serial primary key, "srv" character varying(255), "srv_uid" character varying(255), "access_token" character varying(255), "username" character varying(255), "name" character varying(255), "pic" character varying(255), "sex" character varying(255), "votes_count" integer DEFAULT 0, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying(255), "last_sign_in_ip" character varying(255), "authentication_token" character varying(255), "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (1.4ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+  [1m[35m (83.2ms)[0m  CREATE UNIQUE INDEX "index_users_on_srv_uid_and_srv" ON "users" ("srv_uid", "srv")
+  [1m[36m (1.5ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_users_on_srv_uid_and_srv on users (0.8ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 116481
+ AND a.attnum IN (3,2)
+
+  [1m[36m (69.1ms)[0m  [1mCREATE INDEX "index_users_on_srv" ON "users" ("srv")[0m
+  [1m[35m (1.4ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+
+  [1m[36mColumns for index index_users_on_srv on users (0.4ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 116481
+ AND a.attnum IN (2)
+[0m
+  [1m[35mColumns for index index_users_on_srv_uid_and_srv on users (0.3ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 116481
+ AND a.attnum IN (3,2)
+
+  [1m[36m (56.5ms)[0m  [1mCREATE INDEX "index_users_on_votes_count" ON "users" ("votes_count")[0m
+  [1m[35m (1.7ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+
+  [1m[36mColumns for index index_users_on_srv on users (0.5ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 116481
+ AND a.attnum IN (2)
+[0m
+  [1m[35mColumns for index index_users_on_srv_uid_and_srv on users (0.3ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 116481
+ AND a.attnum IN (3,2)
+
+  [1m[36mColumns for index index_users_on_votes_count on users (0.3ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 116481
+ AND a.attnum IN (9)
+[0m
+  [1m[35m (62.5ms)[0m  CREATE UNIQUE INDEX "index_users_on_authentication_token" ON "users" ("authentication_token")
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120921042859')[0m
+  [1m[35m (21.0ms)[0m  COMMIT
+Migrating to CreatePosts (20120922042327)
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35m (131.1ms)[0m  CREATE TABLE "posts" ("id" serial primary key, "user_id" integer, "pic" character varying(255), "title" text, "text" text, "votes_count" integer DEFAULT 0, "user_uid" character varying(255), "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (1.7ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'posts'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+  [1m[35m (47.2ms)[0m  CREATE INDEX "index_posts_on_user_id" ON "posts" ("user_id")
+  [1m[36m (1.4ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'posts'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_posts_on_user_id on posts (0.4ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 116498
+ AND a.attnum IN (2)
+
+  [1m[36m (80.5ms)[0m  [1mCREATE INDEX "index_posts_on_votes_count" ON "posts" ("votes_count")[0m
+  [1m[35m (1.4ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'posts'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+
+  [1m[36mColumns for index index_posts_on_user_id on posts (0.4ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 116498
+ AND a.attnum IN (2)
+[0m
+  [1m[35mColumns for index index_posts_on_votes_count on posts (0.4ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 116498
+ AND a.attnum IN (6)
+
+  [1m[36m (55.0ms)[0m  [1mCREATE INDEX "index_posts_on_user_uid" ON "posts" ("user_uid")[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120922042327')
+  [1m[36m (19.9ms)[0m  [1mCOMMIT[0m
+Migrating to CreateVotes (20120930125225)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (63.1ms)[0m  [1mCREATE TABLE "votes" ("id" serial primary key, "user_id" integer, "post_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.2ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'votes'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+
+  [1m[36m (60.1ms)[0m  [1mCREATE UNIQUE INDEX "index_votes_on_user_id_and_post_id" ON "votes" ("user_id", "post_id")[0m
+  [1m[35m (1.4ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'votes'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+
+  [1m[36mColumns for index index_votes_on_user_id_and_post_id on votes (0.4ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 116513
+ AND a.attnum IN (2,3)
+[0m
+  [1m[35m (60.0ms)[0m  CREATE INDEX "index_votes_on_post_id" ON "votes" ("post_id")
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120930125225')[0m
+  [1m[35m (18.4ms)[0m  COMMIT
+Migrating to AddCategoryToPosts (20121001052724)
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "posts" ADD COLUMN "category" character varying(255)
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20121001052724')[0m
+  [1m[35m (11.5ms)[0m  COMMIT
+Migrating to LeaderboardPost (20121003055145)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (61.2ms)[0m  CREATE TABLE "leaderboard_posts" ("id" serial primary key, "post_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (1.4ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'leaderboard_posts'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+  [1m[35m (47.5ms)[0m  CREATE INDEX "index_leaderboard_posts_on_post_id" ON "leaderboard_posts" ("post_id")
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20121003055145')[0m
+  [1m[35m (25.6ms)[0m  COMMIT
+  [1m[36m (0.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (2.7ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'leaderboard_posts'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+
+  [1m[36mColumns for index index_leaderboard_posts_on_post_id on leaderboard_posts (0.5ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 116523
+ AND a.attnum IN (2)
+[0m
+  [1m[35m (2.0ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'posts'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+
+  [1m[36mColumns for index index_posts_on_user_id on posts (0.5ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 116498
+ AND a.attnum IN (2)
+[0m
+  [1m[35mColumns for index index_posts_on_user_uid on posts (0.3ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 116498
+ AND a.attnum IN (7)
+
+  [1m[36mColumns for index index_posts_on_votes_count on posts (0.3ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 116498
+ AND a.attnum IN (6)
+[0m
+  [1m[35m (1.5ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+
+  [1m[36mColumns for index index_users_on_authentication_token on users (0.4ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 116481
+ AND a.attnum IN (16)
+[0m
+  [1m[35mColumns for index index_users_on_srv on users (0.3ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 116481
+ AND a.attnum IN (2)
+
+  [1m[36mColumns for index index_users_on_srv_uid_and_srv on users (0.4ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 116481
+ AND a.attnum IN (3,2)
+[0m
+  [1m[35mColumns for index index_users_on_votes_count on users (0.3ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 116481
+ AND a.attnum IN (9)
+
+  [1m[36m (1.3ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'votes'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_votes_on_post_id on votes (0.4ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 116513
+ AND a.attnum IN (3)
+
+  [1m[36mColumns for index index_votes_on_user_id_and_post_id on votes (0.3ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 116513
+ AND a.attnum IN (2,3)
+[0m
+
+
+Started GET "/" for 127.0.0.1 at 2012-10-03 11:35:22 +0530
+Processing by HomeController#index as HTML
+[CNTRL] [HOME] [INDEX] New App Main Page requested
+[CNTRL] [HOME] [INDEX] ****USER NOT LOGGED IN****
+  Rendered home/index.html.erb within layouts/application (75.9ms)
+Completed 200 OK in 249ms (Views: 247.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-03 11:35:22 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+[CNTRL] [HOME] [get_current_user_details] ****USER NOT LOGGED IN****
+Completed 400 Bad Request in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/post_metric" for 127.0.0.1 at 2012-10-03 11:35:22 +0530
+Processing by PostController#get_jog_post_metric as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_jog_post_metric] enter {"controller"=>"post", "action"=>"get_jog_post_metric", "post"=>{}}
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" [0m
+  [1m[35m (0.7ms)[0m  SELECT SUM("posts"."votes_count") AS sum_id FROM "posts" 
+[CNTRL] [POST] [get_jog_post_metric] result {:post_count=>0, :votes_count=>0}
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-03 11:35:23 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[36mPost Load (1.2ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10[0m
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/generate_daily_leaderboard" for 127.0.0.1 at 2012-10-03 11:35:59 +0530
+Processing by PostController#generate_daily_leaderboard as HTML
+[CNTRL] [POST] [generate_daily_leaderboard] enter
+[CNTRL] [POST] [generate_daily_leaderboard] params {"controller"=>"post", "action"=>"generate_daily_leaderboard"}
+Completed 500 Internal Server Error in 106ms
+
+ActionView::MissingTemplate (Missing template post/generate_daily_leaderboard, application/generate_daily_leaderboard with {:locale=>[:en], :formats=>[:html], :handlers=>[:erb, :builder]}. Searched in:
+  * "/home/sammy/actwitty/makemytrip/joy_of_giving/rails/JoG/app/views"
+  * "/home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/devise-2.1.2/app/views"
+):
+  actionpack (3.2.1) lib/action_view/path_set.rb:58:in `find'
+  actionpack (3.2.1) lib/action_view/lookup_context.rb:109:in `find'
+  actionpack (3.2.1) lib/action_view/renderer/abstract_renderer.rb:3:in `find_template'
+  actionpack (3.2.1) lib/action_view/renderer/template_renderer.rb:28:in `determine_template'
+  actionpack (3.2.1) lib/action_view/renderer/template_renderer.rb:10:in `render'
+  actionpack (3.2.1) lib/action_view/renderer/renderer.rb:36:in `render_template'
+  actionpack (3.2.1) lib/action_view/renderer/renderer.rb:17:in `render'
+  actionpack (3.2.1) lib/abstract_controller/rendering.rb:109:in `_render_template'
+  actionpack (3.2.1) lib/action_controller/metal/streaming.rb:225:in `_render_template'
+  actionpack (3.2.1) lib/abstract_controller/rendering.rb:103:in `render_to_body'
+  actionpack (3.2.1) lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+  actionpack (3.2.1) lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+  actionpack (3.2.1) lib/abstract_controller/rendering.rb:88:in `render'
+  actionpack (3.2.1) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (3.2.1) lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+  activesupport (3.2.1) lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+  /home/sammy/.rvm/rubies/ruby-1.9.2-p318/lib/ruby/1.9.1/benchmark.rb:310:in `realtime'
+  activesupport (3.2.1) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  actionpack (3.2.1) lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+  actionpack (3.2.1) lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+  activerecord (3.2.1) lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'
+  actionpack (3.2.1) lib/action_controller/metal/instrumentation.rb:39:in `render'
+  actionpack (3.2.1) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (3.2.1) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (3.2.1) lib/abstract_controller/base.rb:167:in `process_action'
+  actionpack (3.2.1) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (3.2.1) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:414:in `_run__2961592867084586941__process_action__2871259088100750859__callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.1) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.1) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.1) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.1) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.1) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.1) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.1) lib/action_controller/metal/params_wrapper.rb:205:in `process_action'
+  activerecord (3.2.1) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (3.2.1) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.1) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.1) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.1) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.1) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:66:in `call'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:66:in `dispatch'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:30:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:589:in `call'
+  omniauth (1.1.1) lib/omniauth/strategy.rb:177:in `call!'
+  omniauth (1.1.1) lib/omniauth/strategy.rb:157:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  activerecord (3.2.1) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:405:in `_run__1040819121197060594__call__4173580994275057554__callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.1) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.1) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.1) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/static.rb:53:in `call'
+  railties (3.2.1) lib/rails/engine.rb:479:in `call'
+  railties (3.2.1) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.1) lib/rails/rack/log_tailer.rb:14:in `call'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  rack (1.4.1) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.1) lib/rack/server.rb:265:in `start'
+  railties (3.2.1) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.1) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.1) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.1) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.6ms)
+
+
+Started POST "/generate_daily_leaderboard" for 127.0.0.1 at 2012-10-03 11:39:10 +0530
+Processing by PostController#generate_daily_leaderboard as */*
+  Parameters: {"key"=>"9886034902"}
+WARNING: Can't verify CSRF token authenticity
+[CNTRL] [POST] [generate_daily_leaderboard] enter
+[CNTRL] [POST] [generate_daily_leaderboard] params {"key"=>"9886034902", "controller"=>"post", "action"=>"generate_daily_leaderboard"}
+Completed 500 Internal Server Error in 7ms
+
+ActionView::MissingTemplate (Missing template post/generate_daily_leaderboard, application/generate_daily_leaderboard with {:locale=>[:en], :formats=>[:html, :text, :js, :css, :ics, :csv, :png, :jpeg, :gif, :bmp, :tiff, :mpeg, :xml, :rss, :atom, :yaml, :multipart_form, :url_encoded_form, :json, :pdf, :zip], :handlers=>[:erb, :builder]}. Searched in:
+  * "/home/sammy/actwitty/makemytrip/joy_of_giving/rails/JoG/app/views"
+  * "/home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/devise-2.1.2/app/views"
+):
+  actionpack (3.2.1) lib/action_view/path_set.rb:58:in `find'
+  actionpack (3.2.1) lib/action_view/lookup_context.rb:109:in `find'
+  actionpack (3.2.1) lib/action_view/renderer/abstract_renderer.rb:3:in `find_template'
+  actionpack (3.2.1) lib/action_view/renderer/template_renderer.rb:28:in `determine_template'
+  actionpack (3.2.1) lib/action_view/renderer/template_renderer.rb:10:in `render'
+  actionpack (3.2.1) lib/action_view/renderer/renderer.rb:36:in `render_template'
+  actionpack (3.2.1) lib/action_view/renderer/renderer.rb:17:in `render'
+  actionpack (3.2.1) lib/abstract_controller/rendering.rb:109:in `_render_template'
+  actionpack (3.2.1) lib/action_controller/metal/streaming.rb:225:in `_render_template'
+  actionpack (3.2.1) lib/abstract_controller/rendering.rb:103:in `render_to_body'
+  actionpack (3.2.1) lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+  actionpack (3.2.1) lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+  actionpack (3.2.1) lib/abstract_controller/rendering.rb:88:in `render'
+  actionpack (3.2.1) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (3.2.1) lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+  activesupport (3.2.1) lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+  /home/sammy/.rvm/rubies/ruby-1.9.2-p318/lib/ruby/1.9.1/benchmark.rb:310:in `realtime'
+  activesupport (3.2.1) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  actionpack (3.2.1) lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+  actionpack (3.2.1) lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+  activerecord (3.2.1) lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'
+  actionpack (3.2.1) lib/action_controller/metal/instrumentation.rb:39:in `render'
+  actionpack (3.2.1) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (3.2.1) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (3.2.1) lib/abstract_controller/base.rb:167:in `process_action'
+  actionpack (3.2.1) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (3.2.1) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:414:in `_run__2961592867084586941__process_action__2871259088100750859__callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.1) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.1) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.1) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.1) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.1) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.1) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.1) lib/action_controller/metal/params_wrapper.rb:205:in `process_action'
+  activerecord (3.2.1) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (3.2.1) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.1) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.1) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.1) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.1) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:66:in `call'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:66:in `dispatch'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:30:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:589:in `call'
+  omniauth (1.1.1) lib/omniauth/strategy.rb:177:in `call!'
+  omniauth (1.1.1) lib/omniauth/strategy.rb:157:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:35:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  activerecord (3.2.1) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:405:in `_run__1040819121197060594__call__4173580994275057554__callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.1) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.1) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.1) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/static.rb:53:in `call'
+  railties (3.2.1) lib/rails/engine.rb:479:in `call'
+  railties (3.2.1) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.1) lib/rails/rack/log_tailer.rb:14:in `call'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  rack (1.4.1) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.1) lib/rack/server.rb:265:in `start'
+  railties (3.2.1) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.1) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.1) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.1) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.5ms)
+
+
+Started POST "/generate_daily_leaderboard" for 127.0.0.1 at 2012-10-03 11:40:34 +0530
+Processing by PostController#generate_daily_leaderboard as */*
+  Parameters: {"key"=>"9886034902"}
+WARNING: Can't verify CSRF token authenticity
+[CNTRL] [POST] [generate_daily_leaderboard] enter
+[CNTRL] [POST] [generate_daily_leaderboard] params {"key"=>"9886034902", "controller"=>"post", "action"=>"generate_daily_leaderboard"}
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-10-03 11:52:13 +0530
+Processing by HomeController#index as HTML
+[CNTRL] [HOME] [INDEX] New App Main Page requested
+[CNTRL] [HOME] [INDEX] ****USER NOT LOGGED IN****
+  Rendered home/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 19ms (Views: 6.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-03 11:52:14 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+[CNTRL] [HOME] [get_current_user_details] ****USER NOT LOGGED IN****
+Completed 400 Bad Request in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/post_metric" for 127.0.0.1 at 2012-10-03 11:52:14 +0530
+Processing by PostController#get_jog_post_metric as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_jog_post_metric] enter {"controller"=>"post", "action"=>"get_jog_post_metric", "post"=>{}}
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "posts" 
+  [1m[36m (0.3ms)[0m  [1mSELECT SUM("posts"."votes_count") AS sum_id FROM "posts" [0m
+[CNTRL] [POST] [get_jog_post_metric] result {:post_count=>0, :votes_count=>0}
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/leaderboard_posts" for 127.0.0.1 at 2012-10-03 11:52:14 +0530
+Processing by PostController#get_leaderboard_posts as JSON
+  Parameters: {"post"=>{}}
+[CNTRL] [POST] [get_leaderboard_posts] enter {"controller"=>"post", "action"=>"get_leaderboard_posts", "post"=>{}}
+  [1m[35mPost Load (0.7ms)[0m  SELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/auth/facebook" for 127.0.0.1 at 2012-10-03 11:52:16 +0530
+
+
+Started GET "/users/auth/facebook/callback?state=f326f62a7590f9a1fe0cbf8c83ebfb72530cd76b3cd8386f&code=AQDiyVeLrWKkRbTQmgMZCdNKmsPmvMYFcCz33JaBn7_VqlhEQ-66PM35JqbPm0d49JKzGVdmCYA6ayN1nV2tHCMSfB2HrtAgcJG0D2JU6f8zKGuO0LV3xxkD8gDwMunoFx9KthEwv3IqMRU5DIWeD6j-2Q8EalJdI-BvGw3R0vPD31qqvhCoWgIX3LbiZ2lGfRPYJ0dQtP7lPhlZ6QqpXGUj" for 127.0.0.1 at 2012-10-03 11:52:18 +0530
+Processing by Users::OmniauthCallbacksController#facebook as HTML
+  Parameters: {"state"=>"f326f62a7590f9a1fe0cbf8c83ebfb72530cd76b3cd8386f", "code"=>"AQDiyVeLrWKkRbTQmgMZCdNKmsPmvMYFcCz33JaBn7_VqlhEQ-66PM35JqbPm0d49JKzGVdmCYA6ayN1nV2tHCMSfB2HrtAgcJG0D2JU6f8zKGuO0LV3xxkD8gDwMunoFx9KthEwv3IqMRU5DIWeD6j-2Q8EalJdI-BvGw3R0vPD31qqvhCoWgIX3LbiZ2lGfRPYJ0dQtP7lPhlZ6QqpXGUj"}
+[CNTRL] [USERS] [OmniauthCallbacks] [FACEBOOK] Entering
+[MODEL] [USER] [CREATE_USER] Entering {:srv=>"facebook", :srv_uid=>"1452186072", :access_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :name=>"Samarth Deo", :pic=>"http://graph.facebook.com/1452186072/picture?type=square", :location=>"Bangalore, India", :sex=>"male", :username=>["samarth.deo1", "male"]}
+  [1m[36mUser Load (1.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' AND "users"."srv" = 'facebook' LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36mUser Exists (0.8ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."srv_uid" = '1452186072' AND "users"."srv" = 'facebook') LIMIT 1[0m
+  [1m[35mSQL (74.9ms)[0m  INSERT INTO "users" ("access_token", "authentication_token", "created_at", "current_sign_in_at", "current_sign_in_ip", "last_sign_in_at", "last_sign_in_ip", "name", "pic", "remember_created_at", "sex", "sign_in_count", "srv", "srv_uid", "updated_at", "username", "votes_count") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17) RETURNING "id"  [["access_token", "AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD"], ["authentication_token", nil], ["created_at", Wed, 03 Oct 2012 06:22:29 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["name", "Samarth Deo"], ["pic", "http://graph.facebook.com/1452186072/picture?type=large"], ["remember_created_at", nil], ["sex", "male"], ["sign_in_count", 0], ["srv", "facebook"], ["srv_uid", "1452186072"], ["updated_at", Wed, 03 Oct 2012 06:22:29 UTC +00:00], ["username", ["samarth.deo1", "male"]], ["votes_count", 0]]
+  [1m[36m (15.5ms)[0m  [1mCOMMIT[0m
+[MODEL] [USER] [CREATE_USER] Leaving
+[CNTRL] [USERS] [OmniauthCallbacks] [FACEBOOK] Leaving #<User id: 1, srv: "facebook", srv_uid: "1452186072", access_token: "AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0Z...", username: ["samarth.deo1", "male"], name: "Samarth Deo", pic: "http://graph.facebook.com/1452186072/picture?type=l...", sex: "male", votes_count: 0, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, authentication_token: nil, created_at: "2012-10-03 06:22:29", updated_at: "2012-10-03 06:22:29">
+[CNTRL] [APPLICATION] [aw_sign_in] Entering
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (12.7ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2012-10-03 06:22:29.537570', "current_sign_in_at" = '2012-10-03 06:22:29.537570', "last_sign_in_ip" = '127.0.0.1', "current_sign_in_ip" = '127.0.0.1', "sign_in_count" = 1, "updated_at" = '2012-10-03 06:22:29.540251' WHERE "users"."id" = 1[0m
+  [1m[35m (13.4ms)[0m  COMMIT
+[CNTRL] [APPLICATION] [aw_sign_in] Entering
+[CNTRL] [USERS] [OmniauthCallbacks] [FACEBOOK] sessio  
+Redirected to http://localhost:3000/user
+Completed 302 Found in 353ms (ActiveRecord: 123.1ms)
+
+
+Started GET "/user" for 127.0.0.1 at 2012-10-03 11:52:29 +0530
+Processing by HomeController#show as HTML
+[CNTRL] [HOME] [SHOW] Entering
+[CNTRL] [HOME] [SHOW] /user
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+[CNTRL] [HOME] [SHOW] Leaving
+  Rendered home/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 11ms (Views: 6.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/loggedin_user" for 127.0.0.1 at 2012-10-03 11:52:29 +0530
+Processing by HomeController#get_loggedin_user_details as JSON
+  Parameters: {"home"=>{"controller"=>"home", "action"=>"get_loggedin_user_details"}}
+[HOME] [get_current_user_details] Entering {"controller"=>"home", "action"=>"get_loggedin_user_details", "home"=>{}}
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+[HOME] [COMMON] current user id 1
+[HOME] [COMMON] current user data #<User:0x00000004918238>
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1[0m
+  [1m[35mPost Load (0.8ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>0}
+Completed 200 OK in 142ms (Views: 0.5ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/current_user_details?user_id=nil" for 127.0.0.1 at 2012-10-03 11:52:30 +0530
+Processing by HomeController#get_current_user_details as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details"}}
+[HOME] [get_current_user_details] Entering {"user_id"=>"nil", "controller"=>"home", "action"=>"get_current_user_details", "home"=>{}}
+  [1m[36mUser Load (1.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."srv_uid" = '1452186072' LIMIT 1
+  [1m[36mPost Load (0.7ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1[0m
+[HOME] [get_current_user_details] auth {:name=>"Samarth Deo", :uid=>"1452186072", :id=>1, :sex=>"male", :pic=>"http://graph.facebook.com/1452186072/picture?type=large", :votes_count=>0, :auth_token=>"AAADeYrgHl2sBAP3STw5pXD7O2PFn7ldgIZBpTuJF2RyZCJEx0ZBkTrffPPGOyBUTQa3gl1OWhFrH57EHVWQZAZA4syllHqyomKRdynKcHCQZDZD", :post_count=>0}
+Completed 200 OK in 8ms (Views: 0.4ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/fetch_all_user?user_id=nil" for 127.0.0.1 at 2012-10-03 11:52:30 +0530
+Processing by HomeController#get_all_users as JSON
+  Parameters: {"user_id"=>"nil", "home"=>{"user_id"=>"nil", "controller"=>"home", "action"=>"get_all_users"}}
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" 
+Completed 200 OK in 5ms (Views: 1.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/fetch_post?user_id=nil" for 127.0.0.1 at 2012-10-03 11:52:30 +0530
+Processing by PostController#get_posts as JSON
+  Parameters: {"user_id"=>"nil", "post"=>{"user_id"=>"nil"}}
+[CNTRL] [POST] [get_posts] enter {"user_id"=>"nil", "controller"=>"post", "action"=>"get_posts", "post"=>{}}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_uid" = '1452186072' ORDER BY id DESC
+Completed 200 OK in 5ms (Views: 1.3ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/create_post" for 127.0.0.1 at 2012-10-03 11:52:40 +0530
+Processing by PostController#create_post as JSON
+  Parameters: {"title"=>"asasa", "text"=>"asasas", "cat"=>"spades", "userID"=>"1452186072"}
+[CNTRL] [POST] [CREATE] New post create requested
+  [1m[36mUser Load (1.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+[HOME] [COMMON] current user id 1
+[CNTRL] [POST] [CREATE] params {"title"=>"asasa", "text"=>"asasas", "cat"=>"spades", "userID"=>"1452186072", "controller"=>"post", "action"=>"create_post"}
+[HOME] [COMMON] current user uid 1452186072
+[MODEL] [POST] [CREATE_POST] Entering {:user_id=>1, :user_uid=>"1452186072", :text=>"asasas", :title=>"asasa", :pic=>nil, :category=>"spades"}
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36mSQL (1.9ms)[0m  [1mINSERT INTO "posts" ("category", "created_at", "pic", "text", "title", "updated_at", "user_id", "user_uid", "votes_count") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["category", "spades"], ["created_at", Wed, 03 Oct 2012 06:22:40 UTC +00:00], ["pic", nil], ["text", "asasas"], ["title", "asasa"], ["updated_at", Wed, 03 Oct 2012 06:22:40 UTC +00:00], ["user_id", 1], ["user_uid", "1452186072"], ["votes_count", 0]]
+  [1m[35m (17.2ms)[0m  COMMIT
+[MODEL] [POST] [CREATE_POST] Leaving
+Completed 200 OK in 102ms (Views: 0.9ms | ActiveRecord: 20.6ms)
+
+
+Started POST "/create_post" for 127.0.0.1 at 2012-10-03 11:52:48 +0530
+Processing by PostController#create_post as JSON
+  Parameters: {"title"=>"asas", "text"=>"asasas", "cat"=>"spades", "userID"=>"1452186072"}
+[CNTRL] [POST] [CREATE] New post create requested
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+[HOME] [COMMON] current user id 1
+[CNTRL] [POST] [CREATE] params {"title"=>"asas", "text"=>"asasas", "cat"=>"spades", "userID"=>"1452186072", "controller"=>"post", "action"=>"create_post"}
+[HOME] [COMMON] current user uid 1452186072
+[MODEL] [POST] [CREATE_POST] Entering {:user_id=>1, :user_uid=>"1452186072", :text=>"asasas", :title=>"asas", :pic=>nil, :category=>"spades"}
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "posts" ("category", "created_at", "pic", "text", "title", "updated_at", "user_id", "user_uid", "votes_count") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["category", "spades"], ["created_at", Wed, 03 Oct 2012 06:22:48 UTC +00:00], ["pic", nil], ["text", "asasas"], ["title", "asas"], ["updated_at", Wed, 03 Oct 2012 06:22:48 UTC +00:00], ["user_id", 1], ["user_uid", "1452186072"], ["votes_count", 0]]
+  [1m[35m (15.7ms)[0m  COMMIT
+[MODEL] [POST] [CREATE_POST] Leaving
+Completed 200 OK in 24ms (Views: 0.6ms | ActiveRecord: 17.7ms)
+
+
+Started POST "/create_post" for 127.0.0.1 at 2012-10-03 11:52:57 +0530
+Processing by PostController#create_post as JSON
+  Parameters: {"title"=>"bcvbcvcv", "text"=>"cvbcvb", "cat"=>"spades", "userID"=>"1452186072"}
+[CNTRL] [POST] [CREATE] New post create requested
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+[HOME] [COMMON] current user id 1
+[CNTRL] [POST] [CREATE] params {"title"=>"bcvbcvcv", "text"=>"cvbcvb", "cat"=>"spades", "userID"=>"1452186072", "controller"=>"post", "action"=>"create_post"}
+[HOME] [COMMON] current user uid 1452186072
+[MODEL] [POST] [CREATE_POST] Entering {:user_id=>1, :user_uid=>"1452186072", :text=>"cvbcvb", :title=>"bcvbcvcv", :pic=>nil, :category=>"spades"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "posts" ("category", "created_at", "pic", "text", "title", "updated_at", "user_id", "user_uid", "votes_count") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["category", "spades"], ["created_at", Wed, 03 Oct 2012 06:22:57 UTC +00:00], ["pic", nil], ["text", "cvbcvb"], ["title", "bcvbcvcv"], ["updated_at", Wed, 03 Oct 2012 06:22:57 UTC +00:00], ["user_id", 1], ["user_uid", "1452186072"], ["votes_count", 0]]
+  [1m[35m (18.5ms)[0m  COMMIT
+[MODEL] [POST] [CREATE_POST] Leaving
+Completed 200 OK in 25ms (Views: 0.6ms | ActiveRecord: 20.2ms)
+
+
+Started POST "/generate_daily_leaderboard" for 127.0.0.1 at 2012-10-03 11:53:35 +0530
+Processing by PostController#generate_daily_leaderboard as */*
+  Parameters: {"key"=>"9886034902"}
+WARNING: Can't verify CSRF token authenticity
+[CNTRL] [POST] [generate_daily_leaderboard] enter
+[CNTRL] [POST] [generate_daily_leaderboard] params {"key"=>"9886034902", "controller"=>"post", "action"=>"generate_daily_leaderboard"}
+  [1m[36mSQL (0.7ms)[0m  [1mDELETE FROM "leaderboard_posts"[0m
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.2ms)[0m  INSERT INTO "leaderboard_posts" ("created_at", "post_id", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", Wed, 03 Oct 2012 06:23:35 UTC +00:00], ["post_id", 1], ["updated_at", Wed, 03 Oct 2012 06:23:35 UTC +00:00]]
+  [1m[36m (12.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "leaderboard_posts" ("created_at", "post_id", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", Wed, 03 Oct 2012 06:23:35 UTC +00:00], ["post_id", 2], ["updated_at", Wed, 03 Oct 2012 06:23:35 UTC +00:00]]
+  [1m[35m (5.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "leaderboard_posts" ("created_at", "post_id", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", Wed, 03 Oct 2012 06:23:35 UTC +00:00], ["post_id", 3], ["updated_at", Wed, 03 Oct 2012 06:23:35 UTC +00:00]]
+  [1m[36m (6.4ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 51ms (Views: 0.3ms | ActiveRecord: 30.7ms)
+
+
+Started POST "/generate_daily_leaderboard" for 127.0.0.1 at 2012-10-03 11:55:38 +0530
+Processing by PostController#generate_daily_leaderboard as */*
+  Parameters: {"key"=>"9886034902"}
+WARNING: Can't verify CSRF token authenticity
+[CNTRL] [POST] [generate_daily_leaderboard] enter
+[CNTRL] [POST] [generate_daily_leaderboard] params {"key"=>"9886034902", "controller"=>"post", "action"=>"generate_daily_leaderboard"}
+  [1m[35mSQL (16.0ms)[0m  DELETE FROM "leaderboard_posts"
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 10[0m
+[MODEL] [POST] [LeaderboardPost] Entering {:post_id=>1}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "leaderboard_posts" ("created_at", "post_id", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", Wed, 03 Oct 2012 06:25:38 UTC +00:00], ["post_id", 1], ["updated_at", Wed, 03 Oct 2012 06:25:38 UTC +00:00]]
+  [1m[35m (10.3ms)[0m  COMMIT
+[MODEL] [POST] [LeaderboardPost] Leaving
+[MODEL] [POST] [LeaderboardPost] Entering {:post_id=>2}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "leaderboard_posts" ("created_at", "post_id", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", Wed, 03 Oct 2012 06:25:38 UTC +00:00], ["post_id", 2], ["updated_at", Wed, 03 Oct 2012 06:25:38 UTC +00:00]]
+  [1m[36m (5.6ms)[0m  [1mCOMMIT[0m
+[MODEL] [POST] [LeaderboardPost] Leaving
+[MODEL] [POST] [LeaderboardPost] Entering {:post_id=>3}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "leaderboard_posts" ("created_at", "post_id", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", Wed, 03 Oct 2012 06:25:38 UTC +00:00], ["post_id", 3], ["updated_at", Wed, 03 Oct 2012 06:25:38 UTC +00:00]]
+  [1m[35m (6.4ms)[0m  COMMIT
+[MODEL] [POST] [LeaderboardPost] Leaving
+Completed 200 OK in 72ms (Views: 0.3ms | ActiveRecord: 43.5ms)
+
+
+Started POST "/get_daily_leaderboard_post" for 127.0.0.1 at 2012-10-03 12:01:24 +0530
+Processing by PostController#get_daily_leaderboard_post as */*
+  Parameters: {"key"=>"9886034902"}
+WARNING: Can't verify CSRF token authenticity
+[CNTRL] [POST] [get_leaderboard_posts] enter {"key"=>"9886034902", "controller"=>"post", "action"=>"get_daily_leaderboard_post"}
+  [1m[36mLeaderboardPost Load (0.6ms)[0m  [1mSELECT "leaderboard_posts".* FROM "leaderboard_posts" [0m
+  [1m[35mPost Load (0.8ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mPost Load (0.8ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 3 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+[CNTRL] [POST] [get_leaderboard_posts] leave
+Completed 500 Internal Server Error in 113ms
+
+ActionView::MissingTemplate (Missing template post/get_daily_leaderboard_post, application/get_daily_leaderboard_post with {:locale=>[:en], :formats=>[:html, :text, :js, :css, :ics, :csv, :png, :jpeg, :gif, :bmp, :tiff, :mpeg, :xml, :rss, :atom, :yaml, :multipart_form, :url_encoded_form, :json, :pdf, :zip], :handlers=>[:erb, :builder]}. Searched in:
+  * "/home/sammy/actwitty/makemytrip/joy_of_giving/rails/JoG/app/views"
+  * "/home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/devise-2.1.2/app/views"
+):
+  actionpack (3.2.1) lib/action_view/path_set.rb:58:in `find'
+  actionpack (3.2.1) lib/action_view/lookup_context.rb:109:in `find'
+  actionpack (3.2.1) lib/action_view/renderer/abstract_renderer.rb:3:in `find_template'
+  actionpack (3.2.1) lib/action_view/renderer/template_renderer.rb:28:in `determine_template'
+  actionpack (3.2.1) lib/action_view/renderer/template_renderer.rb:10:in `render'
+  actionpack (3.2.1) lib/action_view/renderer/renderer.rb:36:in `render_template'
+  actionpack (3.2.1) lib/action_view/renderer/renderer.rb:17:in `render'
+  actionpack (3.2.1) lib/abstract_controller/rendering.rb:109:in `_render_template'
+  actionpack (3.2.1) lib/action_controller/metal/streaming.rb:225:in `_render_template'
+  actionpack (3.2.1) lib/abstract_controller/rendering.rb:103:in `render_to_body'
+  actionpack (3.2.1) lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+  actionpack (3.2.1) lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+  actionpack (3.2.1) lib/abstract_controller/rendering.rb:88:in `render'
+  actionpack (3.2.1) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (3.2.1) lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+  activesupport (3.2.1) lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+  /home/sammy/.rvm/rubies/ruby-1.9.2-p318/lib/ruby/1.9.1/benchmark.rb:310:in `realtime'
+  activesupport (3.2.1) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  actionpack (3.2.1) lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+  actionpack (3.2.1) lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+  activerecord (3.2.1) lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'
+  actionpack (3.2.1) lib/action_controller/metal/instrumentation.rb:39:in `render'
+  actionpack (3.2.1) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (3.2.1) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (3.2.1) lib/abstract_controller/base.rb:167:in `process_action'
+  actionpack (3.2.1) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (3.2.1) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:414:in `_run__2961592867084586941__process_action__4564241015171639418__callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.1) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.1) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.1) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.1) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.1) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.1) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.1) lib/action_controller/metal/params_wrapper.rb:205:in `process_action'
+  activerecord (3.2.1) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (3.2.1) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.1) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.1) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.1) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.1) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:66:in `call'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:66:in `dispatch'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:30:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:589:in `call'
+  omniauth (1.1.1) lib/omniauth/strategy.rb:177:in `call!'
+  omniauth (1.1.1) lib/omniauth/strategy.rb:157:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:35:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  activerecord (3.2.1) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:405:in `_run__1040819121197060594__call__4173580994275057554__callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.1) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.1) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.1) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/static.rb:53:in `call'
+  railties (3.2.1) lib/rails/engine.rb:479:in `call'
+  railties (3.2.1) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.1) lib/rails/rack/log_tailer.rb:14:in `call'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  rack (1.4.1) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.1) lib/rack/server.rb:265:in `start'
+  railties (3.2.1) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.1) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.1) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.1) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.6ms)
+
+
+Started POST "/get_daily_leaderboard_post" for 127.0.0.1 at 2012-10-03 12:01:54 +0530
+Processing by PostController#get_daily_leaderboard_post as */*
+  Parameters: {"key"=>"9886034902"}
+WARNING: Can't verify CSRF token authenticity
+[CNTRL] [POST] [get_leaderboard_posts] enter {"key"=>"9886034902", "controller"=>"post", "action"=>"get_daily_leaderboard_post"}
+  [1m[35mLeaderboardPost Load (0.5ms)[0m  SELECT "leaderboard_posts".* FROM "leaderboard_posts" 
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 3 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+[CNTRL] [POST] [get_leaderboard_posts] leave
+Completed 200 OK in 116ms (Views: 1.0ms | ActiveRecord: 11.1ms)
+
+
+Started POST "/get_daily_leaderboard_post" for 127.0.0.1 at 2012-10-03 12:47:18 +0530
+Processing by PostController#get_daily_leaderboard_post as */*
+  Parameters: {"key"=>"9886034902"}
+WARNING: Can't verify CSRF token authenticity
+[CNTRL] [POST] [get_leaderboard_posts] enter {"key"=>"9886034902", "controller"=>"post", "action"=>"get_daily_leaderboard_post"}
+  [1m[36mLeaderboardPost Load (0.3ms)[0m  [1mSELECT "leaderboard_posts".* FROM "leaderboard_posts" [0m
+  [1m[35mPost Load (0.7ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mPost Load (0.7ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 3 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+[CNTRL] [POST] [get_leaderboard_posts] leave
+Completed 200 OK in 65ms (Views: 1.2ms | ActiveRecord: 7.9ms)
+
+
+Started POST "/generate_daily_leaderboard" for 127.0.0.1 at 2012-10-03 12:51:48 +0530
+Processing by PostController#generate_daily_leaderboard as */*
+  Parameters: {"key"=>"9886034902"}
+WARNING: Can't verify CSRF token authenticity
+[CNTRL] [POST] [generate_daily_leaderboard] enter
+[CNTRL] [POST] [generate_daily_leaderboard] params {"key"=>"9886034902", "controller"=>"post", "action"=>"generate_daily_leaderboard"}
+  [1m[35mSQL (16.2ms)[0m  DELETE FROM "leaderboard_posts"
+  [1m[36mPost Load (0.7ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 5[0m
+[MODEL] [POST] [LeaderboardPost] Entering {:post_id=>1}
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "leaderboard_posts" ("created_at", "post_id", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", Wed, 03 Oct 2012 07:21:48 UTC +00:00], ["post_id", 1], ["updated_at", Wed, 03 Oct 2012 07:21:48 UTC +00:00]]
+  [1m[35m (8.8ms)[0m  COMMIT
+[MODEL] [POST] [LeaderboardPost] Leaving
+[MODEL] [POST] [LeaderboardPost] Entering {:post_id=>2}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "leaderboard_posts" ("created_at", "post_id", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", Wed, 03 Oct 2012 07:21:48 UTC +00:00], ["post_id", 2], ["updated_at", Wed, 03 Oct 2012 07:21:48 UTC +00:00]]
+  [1m[36m (5.6ms)[0m  [1mCOMMIT[0m
+[MODEL] [POST] [LeaderboardPost] Leaving
+[MODEL] [POST] [LeaderboardPost] Entering {:post_id=>3}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "leaderboard_posts" ("created_at", "post_id", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", Wed, 03 Oct 2012 07:21:48 UTC +00:00], ["post_id", 3], ["updated_at", Wed, 03 Oct 2012 07:21:48 UTC +00:00]]
+  [1m[35m (6.2ms)[0m  COMMIT
+[MODEL] [POST] [LeaderboardPost] Leaving
+Completed 200 OK in 70ms (Views: 0.3ms | ActiveRecord: 43.4ms)
+
+
+Started POST "/generate_daily_leaderboard" for 127.0.0.1 at 2012-10-03 12:52:07 +0530
+Processing by PostController#generate_daily_leaderboard as */*
+  Parameters: {"key"=>"98860349"}
+WARNING: Can't verify CSRF token authenticity
+[CNTRL] [POST] [generate_daily_leaderboard] enter
+[CNTRL] [POST] [generate_daily_leaderboard] params {"key"=>"98860349", "controller"=>"post", "action"=>"generate_daily_leaderboard"}
+  [1m[36mSQL (68.7ms)[0m  [1mDELETE FROM "leaderboard_posts"[0m
+  [1m[35mPost Load (0.7ms)[0m  SELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 5
+[MODEL] [POST] [LeaderboardPost] Entering {:post_id=>1}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "leaderboard_posts" ("created_at", "post_id", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", Wed, 03 Oct 2012 07:22:07 UTC +00:00], ["post_id", 1], ["updated_at", Wed, 03 Oct 2012 07:22:07 UTC +00:00]]
+  [1m[36m (3.5ms)[0m  [1mCOMMIT[0m
+[MODEL] [POST] [LeaderboardPost] Leaving
+[MODEL] [POST] [LeaderboardPost] Entering {:post_id=>2}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "leaderboard_posts" ("created_at", "post_id", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", Wed, 03 Oct 2012 07:22:07 UTC +00:00], ["post_id", 2], ["updated_at", Wed, 03 Oct 2012 07:22:07 UTC +00:00]]
+  [1m[35m (6.2ms)[0m  COMMIT
+[MODEL] [POST] [LeaderboardPost] Leaving
+[MODEL] [POST] [LeaderboardPost] Entering {:post_id=>3}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "leaderboard_posts" ("created_at", "post_id", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", Wed, 03 Oct 2012 07:22:07 UTC +00:00], ["post_id", 3], ["updated_at", Wed, 03 Oct 2012 07:22:07 UTC +00:00]]
+  [1m[36m (6.1ms)[0m  [1mCOMMIT[0m
+[MODEL] [POST] [LeaderboardPost] Leaving
+Completed 200 OK in 94ms (Views: 0.2ms | ActiveRecord: 87.5ms)
+
+
+Started POST "/generate_daily_leaderboard" for 127.0.0.1 at 2012-10-03 12:53:09 +0530
+Processing by PostController#generate_daily_leaderboard as */*
+  Parameters: {"key"=>"98860349"}
+WARNING: Can't verify CSRF token authenticity
+[CNTRL] [POST] [generate_daily_leaderboard] enter
+[CNTRL] [POST] [generate_daily_leaderboard] params {"key"=>"98860349", "controller"=>"post", "action"=>"generate_daily_leaderboard"}
+  [1m[36mSQL (14.1ms)[0m  [1mDELETE FROM "leaderboard_posts"[0m
+  [1m[35mPost Load (1.1ms)[0m  SELECT "posts".* FROM "posts" ORDER BY votes_count DESC LIMIT 5
+[MODEL] [POST] [LeaderboardPost] Entering {:post_id=>1}
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (7.7ms)[0m  INSERT INTO "leaderboard_posts" ("created_at", "post_id", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", Wed, 03 Oct 2012 07:23:11 UTC +00:00], ["post_id", 1], ["updated_at", Wed, 03 Oct 2012 07:23:11 UTC +00:00]]
+  [1m[36m (9.7ms)[0m  [1mCOMMIT[0m
+[MODEL] [POST] [LeaderboardPost] Leaving
+[MODEL] [POST] [LeaderboardPost] Entering {:post_id=>2}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "leaderboard_posts" ("created_at", "post_id", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", Wed, 03 Oct 2012 07:23:11 UTC +00:00], ["post_id", 2], ["updated_at", Wed, 03 Oct 2012 07:23:11 UTC +00:00]]
+  [1m[35m (5.4ms)[0m  COMMIT
+[MODEL] [POST] [LeaderboardPost] Leaving
+[MODEL] [POST] [LeaderboardPost] Entering {:post_id=>3}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "leaderboard_posts" ("created_at", "post_id", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", Wed, 03 Oct 2012 07:23:11 UTC +00:00], ["post_id", 3], ["updated_at", Wed, 03 Oct 2012 07:23:11 UTC +00:00]]
+  [1m[36m (6.4ms)[0m  [1mCOMMIT[0m
+[MODEL] [POST] [LeaderboardPost] Leaving
+Completed 200 OK in 116ms (Views: 0.3ms | ActiveRecord: 48.6ms)
+
+
+Started POST "/generate_daily_leaderboard" for 127.0.0.1 at 2012-10-03 12:53:54 +0530
+Processing by PostController#generate_daily_leaderboard as */*
+  Parameters: {"key"=>"98860349"}
+WARNING: Can't verify CSRF token authenticity
+[CNTRL] [POST] [generate_daily_leaderboard] enter
+[CNTRL] [POST] [generate_daily_leaderboard] params {"key"=>"98860349", "controller"=>"post", "action"=>"generate_daily_leaderboard"}
+Completed 500 Internal Server Error in 241ms
+
+NameError (undefined local variable or method `post' for #<PostController:0x000000058072a8>):
+  app/controllers/post_controller.rb:334:in `rescue in generate_daily_leaderboard'
+  app/controllers/post_controller.rb:315:in `generate_daily_leaderboard'
+
+
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.3ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /home/sammy/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (54.7ms)
+
+
+Started POST "/generate_daily_leaderboard" for 127.0.0.1 at 2012-10-03 12:54:27 +0530
+Processing by PostController#generate_daily_leaderboard as */*
+  Parameters: {"key"=>"98860349"}
+WARNING: Can't verify CSRF token authenticity
+[CNTRL] [POST] [generate_daily_leaderboard] enter
+[CNTRL] [POST] [generate_daily_leaderboard] params {"key"=>"98860349", "controller"=>"post", "action"=>"generate_daily_leaderboard"}
+[POST] [generate_daily_leaderboard] **** ERROR **** not authorized to generate leaderboard
+Completed 400 Bad Request in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/generate_daily_leaderboard" for 127.0.0.1 at 2012-10-03 12:54:58 +0530
+Processing by PostController#generate_daily_leaderboard as */*
+  Parameters: {"key"=>nil}
+WARNING: Can't verify CSRF token authenticity
+[CNTRL] [POST] [generate_daily_leaderboard] enter
+[CNTRL] [POST] [generate_daily_leaderboard] params {"key"=>nil, "controller"=>"post", "action"=>"generate_daily_leaderboard"}
+[POST] [generate_daily_leaderboard] **** ERROR **** not authorized to generate leaderboard
+Completed 400 Bad Request in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
