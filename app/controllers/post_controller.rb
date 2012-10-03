@@ -41,25 +41,29 @@ class PostController < ApplicationController
         Rails.logger.info("[CNTRL] [POST] [delete_post] post delete requested") 
 
         if !user_signed_in? 
-          Rails.logger.error("[CNTRL] [HOME] [get_posts] ****USER NOT LOGGED IN****")
+          Rails.logger.error("[CNTRL] [POST] [delete_post] ****USER NOT LOGGED IN****")
           render :json => {:error => "No user loggedin" }, :status => 400
         end
-        Rails.logger.info("[HOME] [COMMON] current user id #{current_user.id}")
+        Rails.logger.info("[CNTRL] [POST] [delete_post] current user id #{current_user.id}")
         Rails.logger.info("[CNTRL] [POST] [delete_post] params #{params.inspect}") 
-        Rails.logger.info("[HOME] [COMMON] current user uid #{current_user.srv_uid}")
+        Rails.logger.info("[CNTRL] [POST] [delete_post] current user uid #{current_user.srv_uid}")
         
 
         if params[:type] == "admin"
             raise "admin authentication wrong" if params[:user_id] != current_user.id.to_s or params[:key].blank? or params[:key] != AppConstants.mmt_key
+        elsif params[:type] == "user"
+            raise "user authentication wrong" if p.user_id.to_s == params[:user_id] 
+        else 
+            raise "wrong authentication type"
         end
   
         p = Post.where(:id => params["post_id"].to_i).first
 
-        if p and p.user_id.to_s == params[:user_id]
+        if p 
             p.destroy
         else
-            Rails.logger.info("[CNTRL] [POST] [CREATE] params #{p.inspect}") 
-            raise "wrong userid, no authentication"
+            Rails.logger.info("[CNTRL] [POST] [delete_post] params #{p.inspect}") 
+            raise "wrong user id, no authentication"
         end
 
         #p = Post.delete(params[:post_id])
