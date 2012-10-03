@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
 	      :name => params[:name],
 	      :pic => "http://graph.facebook.com/#{params[:srv_uid]}/picture?type=large",
 	      :sex => params[:sex],
+	      #:email => params[:email]
 	     }
 
 	h[:access_token] = params[:access_token] if !params[:access_token].blank?
