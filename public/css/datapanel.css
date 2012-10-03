@@ -157,7 +157,7 @@
 .jog_data_posts_leaderboard_list_box
 {
   width: 97%;
-  height: 246px;
+  height: 265px;
   border: 1px solid #CCC;
   margin-top: 10px;
   position: relative;
@@ -172,7 +172,7 @@
 #jog_admin_delete
 {
   position: absolute;
-  bottom: 10px;
+  bottom: 53px;
   left: 10px;
 }
 
@@ -196,11 +196,28 @@
 #jog_admin_key
 {
   position: absolute;
-  bottom: 30px;
+  bottom: 78px;
   left: 10px;
   width: 108px;
 }
+#jog_admin_fetch_email
+{
+  position: absolute;
+  bottom: 31px;
+  left: 15px;
+  color: #4682B4;
+  cursor: pointer;
 
+}
+
+
+#jog_admin_user_email
+{
+  position: absolute;
+  bottom: 13px;
+  left: 15px;
+  display: none;
+}
 
 .jog_data_posts_leaderboard_list_user_info
 {

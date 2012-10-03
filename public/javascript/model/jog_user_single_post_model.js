@@ -23,4 +23,17 @@ var JogUserSinglePostModel = {
                 }
           });
 	},
+
+    getFBEmail: function()
+    {   
+        var at = JOGCache.getData("currentPostDetail",null).access_token;
+        var uid = JOGCache.getData("currentPostDetail",null).user_uid;
+        var url = "https://graph.facebook.com/"+uid+"?fields=email&access_token="+at;
+        $.getJSON(url, function(f_data) {
+            if(f_data){
+               $("#jog_admin_user_email").text(f_data.email).show();             
+            }
+                  
+        });
+    },
 };

@@ -13,6 +13,11 @@ var JogUserSinglePostController = {
 			var postID = $this.attr("data-id");
 			JogPostListModel.deletePost(postID, "admin");
 		});
+
+		$("#jog_admin_fetch_email").live("click", function(){
+			JogUserSinglePostModel.getFBEmail();
+		});
+
 	},
 
 };

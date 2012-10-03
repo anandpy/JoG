@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121003055145) do
+ActiveRecord::Schema.define(:version => 20121003135113) do
+
+  create_table "emails", :force => true do |t|
+    t.string   "email"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "emails", ["user_id"], :name => "index_emails_on_user_id", :unique => true
 
   create_table "leaderboard_posts", :force => true do |t|
     t.integer  "post_id"

@@ -137,6 +137,7 @@ class PostController < ApplicationController
             response_json[:time_stamp] = p[:created_at]
             response_json[:votes_count] = p[:votes_count]
             response_json[:post_id] = p[:id]
+            response_json[:access_token] = user[:access_token]
             if request.xhr?
                 Rails.logger.debug("[CNTRL] [POST] [get_post_detail] detail:#{response_json.inspect}")
                 expires_in 10.minutes

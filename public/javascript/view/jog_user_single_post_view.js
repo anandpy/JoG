@@ -57,6 +57,8 @@ var JogUserSinglePostView = {
                 var html = '<input type="text" id="jog_admin_key" placeholder="Secret Key"></input>';
                 html = html + '<button class="btn btn-warning" id="jog_admin_delete" data-id="'+data.post_id+'"> Delete by Admin</button>';    
                 html = html + '<div id="jog_post_deleted_by_admin"> This post is deleted </div>';
+                html = html + '<div id="jog_admin_fetch_email">View Email</div>';
+                html = html + '<div id="jog_admin_user_email"></div>';
             }
             
             return html;
