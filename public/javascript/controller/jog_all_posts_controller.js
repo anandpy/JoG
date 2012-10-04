@@ -27,6 +27,13 @@ var JogAllPostsController = {
         });
 	},
 
+	enablePagination: function()
+	{
+		$("#jog_recpost_loadmore").live("click", function() {
+			JogAllPostsView.paginateAllRecentPosts();
+		});
+	},
+
     /* FIXME: change the variable type to something proper */ 
 	updateVote: function(postID, type)
 	{

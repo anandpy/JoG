@@ -117,6 +117,8 @@ var JogLeaderboardPanelView = {
 
 
 /* Leaderboard Page View */
+
+/* FIXME  : Since now we have both recent and leadeboard as same view, replace this duplication */
 var JogLeaderboardView = {
  
     "configs" : {
@@ -175,7 +177,7 @@ var JogLeaderboardView = {
 
     handleLoadMore: function() 
     {
-        if (JogLeaderboardView.configs.dataLength < JogLeaderboardView.configs.paginationPoint)
+        if (JogLeaderboardView.configs.dataLength <= JogLeaderboardView.configs.paginationPoint)
             $("#jog_lbv_loadmore").hide();
     },
     
@@ -215,6 +217,8 @@ var JogLeaderboardView = {
         JogLeaderboardView.handleLoadMore();
         
         $("#jog_data_posts_leaderboard_list_v2").append(html);
+
+        JOG.scrollAfterPagination();
 
     },
 

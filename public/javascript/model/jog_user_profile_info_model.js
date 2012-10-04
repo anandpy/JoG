@@ -15,6 +15,7 @@ var JogUserProfileModel = {
                     JOGCache.setData("currentUserDetail", respData);
                     JogUserProfileInfoView.init(respData);
                     JogPostEntryView.init();
+                    JOGCache.setData("currentUserMetric", respData);
                     //JogFacebookController.init();
                   
                 },error:function(XMLHttpRequest,textStatus, errorThrown){ 

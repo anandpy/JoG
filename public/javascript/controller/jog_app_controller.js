@@ -225,6 +225,14 @@ var JOG = {
                        });
         });
     },
+
+    scrollAfterPagination: function()
+    {
+        var offset = $("#jog_data_posts_leaderboard_list_v2").offset().top + $("#jog_data_posts_leaderboard_list_v2").height();
+        $('html, body').animate({
+            scrollTop: offset
+        }, 1000);
+    },
 };
 
 

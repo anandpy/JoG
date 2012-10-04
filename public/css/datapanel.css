@@ -351,11 +351,18 @@
   margin-right: 64px
 }
 
-#jog_lbv_loadmore
+#jog_lbv_loadmore , #jog_recpost_loadmore
 {
   width: 342px;
   height: 82px;
   margin: 0 auto;
   background-image: url(/images/jog_loadmore_lbs.png);
   cursor: pointer;
+}
+
+#jog_recpost_loadmore:hover, #jog_lbv_loadmore:hover
+{
+  -webkit-box-shadow: 0 8px 6px -6px black;
+     -moz-box-shadow: 0 8px 6px -6px black;
+          box-shadow: 0 8px 6px -6px black;
 }

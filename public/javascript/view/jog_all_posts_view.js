@@ -1,13 +1,26 @@
 
 
+/* FIXME  : Since now we have both recent and leadeboard as same view, replace this duplication */
 
 var JogAllPostsView = {
 
+    "configs" : {
+            "paginateSize" : 20,
+            "paginationPoint" : 0,
+            "dataLength" : 0,
+    },  
+
     init:  function(data)
     {
+        JogAllPostsView.configs.dataLength = data.length;
         JogAllPostsView.display(data);
         JogAllPostsView.showLeaderboardLink();
     },
+
+    updatePaginationPoint: function()
+    {
+        JogAllPostsView.configs.paginationPoint += JogAllPostsView.configs.paginateSize;
+    }, 
 
     showLeaderboardLink: function()
     {
@@ -18,6 +31,10 @@ var JogAllPostsView = {
     display: function(data)
     {
         var html = "";
+
+        var postCount = data.length;  
+
+        var enablePagination = false;
           
         html = html + '<div id="jog_data_posts_leaderboard_list_v2">' +
                         '<h1>Recent Posts</h1>';
@@ -25,6 +42,10 @@ var JogAllPostsView = {
 
         $.each(data, function(index, post) { 
             //html = html + JogLeaderboardView.postHtml(post);
+            if (index >= JogAllPostsView.configs.paginateSize) {
+                enablePagination = true;
+                return false;
+            }
             html = html + '<div class="jog_data_posts_leaderboard_post_v2">';
             html = html + JogAllPostsView.postHtml(post);
             html = html + '</div>';
@@ -33,10 +54,62 @@ var JogAllPostsView = {
 
         html = html + '</div>';
 
+        if (enablePagination) {
+            html = html + '<div id="jog_recpost_loadmore"></div>';
+            JogAllPostsView.updatePaginationPoint();
+            JogAllPostsController.enablePagination();
+
+        }
+
         $("#jog_data_container").append(html);
     },
 
-    
+    handleLoadMore: function() 
+    {
+        if (JogAllPostsView.configs.dataLength <= JogAllPostsView.configs.paginationPoint)
+            $("#jog_recpost_loadmore").hide();
+    },
+
+    paginateAllRecentPosts: function()
+    {
+
+        function minVal(a,b)
+        {
+            return ( a < b) ? a : b;
+        }
+
+        var data = JOGCache.getData("allPosts", null);
+        var minVal = minVal(JogAllPostsView.configs.dataLength,JogAllPostsView.configs.paginateSize)
+
+        var size = JogAllPostsView.configs.paginationPoint + JogAllPostsView.configs.paginateSize;
+
+        var paginateData = data.slice(JogAllPostsView.configs.paginationPoint, size);
+
+        var enablePagination = false;
+
+        var html = "";
+
+        $.each(paginateData, function(index, post) { 
+            //html = html + JogLeaderboardView.postHtml(post);
+            if (index >= JogAllPostsView.configs.paginateSize) {
+                enablePagination = true;
+                return false;
+            }
+                
+            html = html + '<div class="jog_data_posts_leaderboard_post_v2">';
+            html = html + JogLeaderboardPanelView.leaderPostHtml(post);
+            html = html + '</div>';
+        });
+
+        JogAllPostsView.updatePaginationPoint();
+
+        JogAllPostsView.handleLoadMore();
+        
+        $("#jog_data_posts_leaderboard_list_v2").append(html);
+
+        JOG.scrollAfterPagination();
+
+    },
 
     postHtml : function(data)
     {
@@ -108,9 +181,5 @@ var JogAllPostsView = {
         });
     },
 
-    udpateAppMetric: function()
-    {
-
-    },
-
+   
 };
