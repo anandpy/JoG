@@ -140,7 +140,7 @@ class PostController < ApplicationController
             response_json[:access_token] = user[:access_token]
             if request.xhr?
                 Rails.logger.debug("[CNTRL] [POST] [get_post_detail] detail:#{response_json.inspect}")
-                expires_in 10.minutes
+                expires_in 3.minutes
                 render :json => response_json
                 return
             end
@@ -180,7 +180,7 @@ class PostController < ApplicationController
 
         if request.xhr?
             #Rails.logger.debug("[CNTRL] [HOME] [get_locations] Return:#{response_json.inspect}")
-            expires_in 10.minutes
+            expires_in 3.minutes
             render :json => response_json
             return
         end
@@ -207,7 +207,7 @@ class PostController < ApplicationController
 
         if request.xhr?
             #Rails.logger.debug("[CNTRL] [HOME] [get_locations] Return:#{response_json.inspect}")
-            expires_in 10.minutes
+            expires_in 3.minutes
             render :json => response_json
             return
         end
@@ -247,7 +247,7 @@ class PostController < ApplicationController
 
         if request.xhr?
             #Rails.logger.debug("[CNTRL] [HOME] [get_locations] Return:#{response_json.inspect}")
-            expires_in 10.minutes
+            expires_in 3.minutes
             render :json => response_json
             return
         end
@@ -286,7 +286,7 @@ class PostController < ApplicationController
 
         if request.xhr?
             #Rails.logger.debug("[CNTRL] [HOME] [get_locations] Return:#{response_json.inspect}")
-            expires_in 10.minutes
+            expires_in 3.minutes
             render :json => response_json
             return
         end
@@ -313,7 +313,7 @@ class PostController < ApplicationController
 
         if request.xhr?
             #Rails.logger.debug("[CNTRL] [HOME] [get_locations] Return:#{response_json.inspect}")
-            expires_in 10.minutes
+            expires_in 3.minutes
             render :json => response_json
             return
         end

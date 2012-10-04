@@ -139,7 +139,7 @@ class HomeController < ApplicationController
 	    Rails.logger.info("[HOME] [get_current_user_details] auth #{response_json}")
 
 	    if request.xhr?
-	        expires_in 10.minutes
+	        #expires_in 10.minutes
 	        render :json => response_json
 	        return
 	    end 
@@ -222,7 +222,7 @@ class HomeController < ApplicationController
 		response_json = User.all
 
 		if request.xhr?
-	        expires_in 10.minutes
+	        expires_in 5.minutes
 	        render :json => response_json
 	        return
 	    end 
