@@ -12,6 +12,7 @@ class HomeController < ApplicationController
 		if user_signed_in?
 		  Rails.logger.error("[CNTRL] [HOME] [INDEX] *****DETECTED USER***** #{current_user.inspect}")
 		  redirect_to current_user
+		  return
 		else
 		  Rails.logger.info("[CNTRL] [HOME] [INDEX] ****USER NOT LOGGED IN****")
 		  respond_to { |format|
@@ -115,6 +116,7 @@ class HomeController < ApplicationController
         if !info
         	Rails.logger.info("[HOME] [get_current_user_details] not legal uid, redirect to home")
         	redirect_to '/'
+        	return
         end
 
         p = Post.where(:user_id => info.id).group(:votes_count).sum(:votes_count)

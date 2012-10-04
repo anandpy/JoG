@@ -26,8 +26,10 @@ class PostController < ApplicationController
 
         if !p.blank?
             render :json => p ,:status => 200
+            return
         else
             render :json => {:error => "Create post failed"}, :status => 400
+            return
         end    
     end
 
@@ -72,8 +74,10 @@ class PostController < ApplicationController
         
         if !p.blank? 
             render :json => p ,:status => 200
+            return
         else
             render :json => {:error => "destroy post failed"}, :status => 400
+            return
         end 
     rescue => e
       Rails.logger.error("[POST] [delete_post] **** ERROR **** #{e.message} ")
@@ -102,8 +106,10 @@ class PostController < ApplicationController
             p = Post.where(:id => params["post_id"].to_i).first
             #post.reload!
             render :json => p, :status => 200
+            return
         else
             render :json => {:error => "No post found" }, :status => 400
+            return
         end 
     rescue => e
       Rails.logger.error("[POST] [update_vote] **** ERROR **** #{e.message} #{post.inspect}")
@@ -164,6 +170,7 @@ class PostController < ApplicationController
             if !user_signed_in? 
                 Rails.logger.error("[CNTRL] [HOME] [get_current_user_details] ****USER NOT LOGGED IN****")
                 render :json => {:error => "No user loggedin" }, :status => 400
+                return
             end
             @user_uid = current_user.srv_uid
         end
@@ -198,6 +205,7 @@ class PostController < ApplicationController
         if !user_signed_in? 
           Rails.logger.error("[CNTRL] [POST] [get_popular_posts] ****USER NOT LOGGED IN****")
           render :json => {:error => "No user loggedin" }, :status => 400
+          return
         end
 
         #Rails.logger.info("[HOME] [COMMON] current user id #{session[:current_user_id]}")
@@ -342,6 +350,7 @@ class PostController < ApplicationController
         response_json = {:key => "success"}
 
         render :json => response_json
+        return
     rescue => e
       Rails.logger.error("[POST] [generate_daily_leaderboard] **** ERROR **** #{e.message}")
       render :json => {:error => e.message }, :status => 400
@@ -389,7 +398,9 @@ class PostController < ApplicationController
 
  
         render :json => response_json
+
         
         Rails.logger.info("[CNTRL] [POST] [get_leaderboard_posts] leave");
+        return
     end
 end
