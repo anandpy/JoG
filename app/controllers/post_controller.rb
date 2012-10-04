@@ -228,7 +228,7 @@ class PostController < ApplicationController
         response_json = []
 
         #posts = Post.find(:all, :order => "id desc", :limit => 40).reverse
-        posts = Post.order('id DESC').limit(30)
+        posts = Post.order('id DESC').limit(60)
 
         posts.each do |p|
             h = {}
