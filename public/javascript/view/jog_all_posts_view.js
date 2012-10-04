@@ -105,9 +105,11 @@ var JogAllPostsView = {
 
         JogAllPostsView.handleLoadMore();
         
+        var ht = $("#jog_data_posts_leaderboard_list_v2").height();
+        
         $("#jog_data_posts_leaderboard_list_v2").append(html);
 
-        JOG.scrollAfterPagination();
+        JOG.scrollAfterPagination(ht);
 
     },
 

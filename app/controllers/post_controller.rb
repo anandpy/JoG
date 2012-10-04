@@ -275,7 +275,7 @@ class PostController < ApplicationController
         
         response_json = []
 
-        posts = Post.order('votes_count DESC').limit(10)
+        posts = Post.order('votes_count DESC')
 
         posts.each do |p|
             h = {}
@@ -321,7 +321,7 @@ class PostController < ApplicationController
 
         if request.xhr?
             #Rails.logger.debug("[CNTRL] [HOME] [get_locations] Return:#{response_json.inspect}")
-            expires_in 3.minutes
+            expires_in 1.minutes
             render :json => response_json
             return
         end

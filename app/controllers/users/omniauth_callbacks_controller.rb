@@ -1,14 +1,12 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
+  
   def facebook
     Rails.logger.info("[CNTRL] [USERS] [OmniauthCallbacks] [FACEBOOK] Entering")
 
-
-
-
     auth = request.env["omniauth.auth"]
 
-     Rails.logger.info("[CNTRL] [USERS] [OmniauthCallbacks] [FACEBOOK] Leaving #{auth.inspect}")
+    Rails.logger.info("[CNTRL] [USERS] [OmniauthCallbacks] [FACEBOOK] Leaving #{auth.inspect}")
 
     h = {:srv => auth.provider, :srv_uid => auth.uid, :access_token => auth.credentials.token}
 
@@ -34,8 +32,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     if session[:user_return_to_for_vote].include?("post")
       redirect_to session[:user_return_to_for_vote]
+      return
     else
       redirect_to user_path
+      return
     end
   rescue => e
     Rails.logger.info("[CNTRL] [USERS] [OmniauthCallbacks] [FACEBOOK] ****RESCUE**** #{e.message}")

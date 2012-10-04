@@ -1,5 +1,5 @@
   <script>
-    $.backstretch("/images/landing.png");
+    $.backstretch("https://s3.amazonaws.com/jogw/landing.png");
   </script>
   <!-- COMMON SCRIPTS -->
   <script src="/javascript/json/json.js" type="text/javascript"></script>
@@ -27,6 +27,7 @@
     });
   }
   preload([
+    'https://s3.amazonaws.com/jogw/landing.png',
     '../images/landing.png',
     '../images/la1.png',
     '../images/ra1.png',
@@ -58,7 +59,7 @@
         Give, Post, Vote, Inspire
         <div id="jog_landing_help" class="enableTipsy" original-title="How to participate"></div>
   </div>	
- 	<a href="<%= user_omniauth_authorize_path(:facebook) %>">
+ 	<a id="jog_fb_auto_login" href="<%= user_omniauth_authorize_path(:facebook) %>">
     	<div id="jog_fconnect"></div>
     </a>
     <div id="jog_lp_metric_count"></div>

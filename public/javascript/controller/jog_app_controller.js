@@ -226,9 +226,9 @@ var JOG = {
         });
     },
 
-    scrollAfterPagination: function()
+    scrollAfterPagination: function(ht)
     {
-        var offset = $("#jog_data_posts_leaderboard_list_v2").offset().top + $("#jog_data_posts_leaderboard_list_v2").height();
+        var offset = $("#jog_data_posts_leaderboard_list_v2").offset().top + ht;
         $('html, body').animate({
             scrollTop: offset
         }, 1000);
@@ -238,10 +238,10 @@ var JOG = {
 
 
 
-$(document).ready(function(){
-
+$(document).ready(function()
+{
     JOG.Events.init();
-    
+
     /* FIXME : REPEATATION */ 
     switch (JOG.configs.page_title) {
     case "leaderboard" :
@@ -294,8 +294,10 @@ $(document).ready(function(){
 
     }
  
+    
     JOG.btnNavSetup();
     JOG.applyShadow();
+    
 
 });
 
