@@ -109,7 +109,7 @@ var JogDataPostListView = {
     socialShareHtml: function(data)
     {
 
-        var shareURL = " https://apps.facebook.com/joy-app/?utm_source=t";
+        var shareURL = "https://apps.facebook.com/joy-app/?utm_source=t";
         
         function fbHtml()
         {

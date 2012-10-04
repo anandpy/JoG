@@ -216,7 +216,7 @@ var JogLeaderboardView = {
 
         JogLeaderboardView.handleLoadMore();
         
-        var ht = $("#jog_data_posts_leaderboard_list_v2").height()
+        var ht = $("#jog_data_posts_leaderboard_list_v2").height();
 
         $("#jog_data_posts_leaderboard_list_v2").append(html);
 
