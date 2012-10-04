@@ -28,10 +28,12 @@ var JOG = {
 
                 fancyboxImgView: function()
                 {
+                    var $boxID = $("#jog_view_full_image img");
+                    $boxID.attr("src", "");
                     $(".jog_lb_view_image").live("click", function(){
                         var $this = $(this);
                         var url = $this.attr("data-value");
-                        $("#jog_view_full_image img").attr("src", url);
+                        $boxID.attr("src", url);
                         var $dataID = $("#jog_view_full_image");
                         $.fancybox({
                             content: $dataID,

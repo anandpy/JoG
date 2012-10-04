@@ -27,6 +27,14 @@ var JogLeaderboardPanelController = {
         });
 	},
 
+	enablePagination: function()
+	{
+		$("#jog_lbv_loadmore").live("click", function() {
+			
+			JogLeaderboardView.paginateLeaderboard();
+		});
+	},
+
     /* FIXME: change the variable type to something proper */ 
 	updateVote: function(postID, type)
 	{
@@ -36,15 +44,6 @@ var JogLeaderboardPanelController = {
             JOG.Events.inviteUsersOnVote(postID);
         else
         JogPostListModel.updateVote(postID, type);	
-        
-        /*
-		if (type == "big")
-			JogPostListModel.updateVote(postID, type);	
-		else if(type == "small")
-			JogPostListModel.updateVote(postID, );	
-			JogLeaderboardPanelView.updateVoteCount(postID);
-		*/
-		//JogPostListModel.updateVote(postID);
 	},
 
 };

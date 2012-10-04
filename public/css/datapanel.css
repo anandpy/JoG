@@ -350,3 +350,12 @@
   float: left;
   margin-right: 64px
 }
+
+#jog_lbv_loadmore
+{
+  width: 342px;
+  height: 82px;
+  margin: 0 auto;
+  background-image: url(/images/jog_loadmore_lbs.png);
+  cursor: pointer;
+}

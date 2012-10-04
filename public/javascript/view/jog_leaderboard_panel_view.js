@@ -119,35 +119,107 @@ var JogLeaderboardPanelView = {
 /* Leaderboard Page View */
 var JogLeaderboardView = {
  
+    "configs" : {
+            "paginateSize" : 20,
+            "paginationPoint" : 0,
+            "dataLength" : 0,
+    },  
 
     init:  function(data)
     {
+        JogLeaderboardView.configs.dataLength = data.length;
         JogLeaderboardView.display(data);
     },
+
+    updatePaginationPoint: function()
+    {
+        JogLeaderboardView.configs.paginationPoint += JogLeaderboardView.configs.paginateSize;
+    }, 
 
     display: function(data)
     {
         var html = "";
-          
+        
+        var postCount = data.length;  
+
+        var enablePagination = false;
+       
         html = html + '<div id="jog_data_posts_leaderboard_list_v2">' +
                         '<h1>Leaderboard</h1>';
                       
 
         $.each(data, function(index, post) { 
             //html = html + JogLeaderboardView.postHtml(post);
+            if (index >= JogLeaderboardView.configs.paginateSize) {
+                enablePagination = true;
+                return false;
+            }
+                
             html = html + '<div class="jog_data_posts_leaderboard_post_v2">';
             html = html + JogLeaderboardPanelView.leaderPostHtml(post);
             html = html + '</div>';
+            
 
         });
 
         html = html + '</div>';
 
+        if (enablePagination) {
+            html = html + '<div id="jog_lbv_loadmore"></div>';
+            JogLeaderboardView.updatePaginationPoint();
+            JogLeaderboardPanelController.enablePagination();
+
+        }
         $("#jog_data_container").append(html);
     },
 
+    handleLoadMore: function() 
+    {
+        if (JogLeaderboardView.configs.dataLength < JogLeaderboardView.configs.paginationPoint)
+            $("#jog_lbv_loadmore").hide();
+    },
     
+    paginateLeaderboard: function()
+    {
 
+        function minVal(a,b)
+        {
+            return ( a < b) ? a : b;
+        }
+
+        var data = JOGCache.getData("leaderboardPosts", null);
+        var minVal = minVal(JogLeaderboardView.configs.dataLength,JogLeaderboardView.configs.paginateSize)
+
+        var size = JogLeaderboardView.configs.paginationPoint + JogLeaderboardView.configs.paginateSize;
+
+        var paginateData = data.slice(JogLeaderboardView.configs.paginationPoint, size);
+
+        var enablePagination = false;
+
+        var html = "";
+
+        $.each(paginateData, function(index, post) { 
+            //html = html + JogLeaderboardView.postHtml(post);
+            if (index >= JogLeaderboardView.configs.paginateSize) {
+                enablePagination = true;
+                return false;
+            }
+                
+            html = html + '<div class="jog_data_posts_leaderboard_post_v2">';
+            html = html + JogLeaderboardPanelView.leaderPostHtml(post);
+            html = html + '</div>';
+        });
+
+        JogLeaderboardView.updatePaginationPoint();
+
+        JogLeaderboardView.handleLoadMore();
+        
+        $("#jog_data_posts_leaderboard_list_v2").append(html);
+
+    },
+
+
+    /* FIXME : DELETE THIS NOT USED */
     postHtml : function(data)
     {
 
