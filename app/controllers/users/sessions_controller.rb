@@ -6,22 +6,37 @@ class Users::SessionsController < Devise::SessionsController
   end   
 
   def create
-=begin
-  	Rails.logger.info("[CNTRL] [USERS] [Sessions] [CREATE] Entering")
-    h = {:srv => params[:provider], :srv_uid => params[:srv_uid], :access_token => params[:access_token]}
 
-    user = User.update_client_loggedin_user(h)
-    if user.nil?
-      redirect_to '/'
+    if request.xhr?
+        Rails.logger.info("[CNTRL] [USERS] [Sessions] [CREATE] Entering  #{params.inspect}")
+        h = {:srv_uid => params[:srv_uid], :access_token => params[:access_token]}
 
-      return
+        user = User.update_client_loggedin_user(h)
+        if user.nil?
+          raise "user is not logged in"
+          return
+        else
+          Rails.logger.info("[CNTRL] [USERS] [Sessions] [CREATE] Logging In")
+          user_id = user.id
+          Rails.logger.info("[CNTRL] [USERS] [Sessions] [CREATE] Logging In=========== #{user_id}")
+          aw_sign_in(user)
+          Rails.logger.info("[CNTRL] [USERS] [Sessions] [CREATE] current user data #{current_user.inspect}")
+          #redirect_to '/'
+          response_json = {:id => current_user.id}
+          render :json => response_json
+          return
+        end 
     else
-      Rails.logger.info("[CNTRL] [USERS] [Sessions] [CREATE] Logging In")
-      aw_sign_in(user)      
-    end	
-=end
-	redirect_to '/'
-	return    
+    	redirect_to '/'
+  	  return 
+    end   
+  rescue => e
+    Rails.logger.error("[CNTRL] [HOME] [create] ****RESCUE**** #{e.message}")
+    render :json => {:error => e.message }, :status => 400
+  end
+
+  def sign_in_user
+    
   end
 
 end

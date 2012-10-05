@@ -16,11 +16,15 @@ class User < ActiveRecord::Base
 
   has_many :votes
 
-=begin
-  def self.update_client_loggedin_user
+
+
+  def self.update_client_loggedin_user(params)
   	Rails.logger.info("[MODEL] [USER] [update_client_loggedin_user] Entering #{params.inspect}")
 
-	u = User.where(:srv_uid => params[:srv_uid].to_s(), :srv => params[:srv]).first
+	u = User.where(:srv_uid => params[:srv_uid].to_s()).first
+
+    h = {}
+	h[:access_token] = params[:access_token] if !params[:access_token].blank?
 
 	if !u.blank?
 		u.update_attributes!(h)
@@ -32,7 +36,9 @@ class User < ActiveRecord::Base
 		Rails.logger.error("[MODEL] [USER] [update_client_loggedin_user] ****RESCUE**** #{e.message}")
 		return nil
   end
-=end
+
+
+
 
   def self.create_user(params)
 	Rails.logger.info("[MODEL] [USER] [CREATE_USER] Entering #{params.inspect}")

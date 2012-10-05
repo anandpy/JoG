@@ -46,6 +46,7 @@ var JOG = {
                             autoSize: false,
                             topRatio: 0,
                             beforeClose:function() {
+                                $boxID.attr("src", "");
                                       //TODO: Nothing to be done on close
                             }
                         });
@@ -144,7 +145,8 @@ var JOG = {
         "deletePost" : "/delete_post",
         "loggedinUser" : "/loggedin_user",
         "allPosts" : "/fetch_all_posts",
-        "updateRedirectTo" : "/update_call_back"
+        "updateRedirectTo" : "/update_call_back",
+        "signInUser" : "/users/sign_in",
     },
 
 	"currentUser": {
@@ -233,6 +235,30 @@ var JOG = {
             scrollTop: offset
         }, 1000);
     },
+
+    redirectOnFBResponse: function(fbResponse)
+    {
+         /*
+         var data = {"access_token" : fbResponse.authResponse.accessToken, "srv_uid": fbResponse.authResponse.userID};
+         $.ajax({
+                headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content'), 'Content-Type': 'application/x-www-form-urlencoded'},
+                url: JOG.urls.signInUser,
+                type: 'POST',
+                dataType: 'json',
+                contentType: 'application/json',
+                data: data,
+                success: function ( data ) {
+                    console.log("*(*(*( Return SUCCESS from user signin *)*)*)");
+                    console.log(data);
+                    window.location.href = "/user."+data.id;
+                },error:function(XMLHttpRequest,textStatus, errorThrown){ 
+                    // TODO: WHAT TO DO!!
+                    console.log("*(*(*( Return ERROR from user signin *)*)*)");
+                    
+                }
+          });
+        */
+    },
 };
 
 
@@ -297,6 +323,8 @@ $(document).ready(function()
     
     JOG.btnNavSetup();
     JOG.applyShadow();
+
+    //JOG.checkFBLogin();
     
 
 });

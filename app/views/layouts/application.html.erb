@@ -70,6 +70,8 @@
 
 </head>
 <body>
+
+
 <input type="hidden" id="jog_page_mode">
 <input type="hidden" id="jog_page_id">
 <input type="hidden" id="jog_url">
@@ -83,6 +85,47 @@
   var JOGAdminUID = "<%= AppConstants.admin_uid %>".split(',');
   $("#jog_admin_id").val("<%= AppConstants.admin_uid %>");
 </script>
+
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '<%= AppConstants.facebook_app_id %>', 
+      //appId      : '367153893359066', // App ID
+      //appId      : '244515575666539',
+      channelUrl  : '<%= AppConstants.server_base %>/',
+      //channelUrl : 'http://whispering-plains-8323.herokuapp.com/', // Channel File
+      //channelUrl : 'http://localhost:3000/', // Channel File
+      status     : true, // check login status
+      cookie     : true, // enable cookies to allow the server to access the session
+      xfbml      : true  // parse XFBML
+
+    });
+    
+    FB.getLoginStatus(function(response) {
+            if (response.status === 'connected' && $("#jog_page_mode").val() == "landing_page") {
+                console.log('********AUTHORIZED *********');
+                console.log("Access Token " + response.authResponse.accessToken);
+                console.log("User ID " +response.authResponse.userID);
+                JOG.redirectOnFBResponse(response, true);
+            } else if (response.status === 'not_authorized') {
+                console.log('********NOT AUTHORIZED *********');
+            }
+        });
+
+    // Additional initialization code here
+  };
+
+  // Load the SDK Asynchronously
+  (function(d){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     ref.parentNode.insertBefore(js, ref);
+   }(document));
+</script>
+
 
 <!-- ClickTale Top part -->
 <script type="text/javascript">
