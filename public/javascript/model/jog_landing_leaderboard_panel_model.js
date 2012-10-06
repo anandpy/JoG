@@ -1,15 +1,17 @@
 
 
 var JogLandingLeaderboardPanelModel = {
-
+ 
+    // FIXME : REPEATATIONc
 	getPosts : function()
 	{
+        var postLimit = 6;
 		$.ajax({
                 url: JOG.urls.leaderboardPosts,
                 type: 'GET',
                 dataType: 'json',
                 contentType: 'application/json',
-                data: $("#cookie_val").val(),
+                data: {"limit" : postLimit},
                 success: function ( data ) {
                     console.log("leaderboard success"); 
                     console.log(data);

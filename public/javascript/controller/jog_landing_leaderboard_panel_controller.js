@@ -21,7 +21,7 @@ var JogLandingLeaderboardPanelController = {
 
     updatePrevSlideIndex: function()
     {
-    	if ( JogLandingLeaderboardPanelController.slideConfig.current >= 0)
+    	if ( JogLandingLeaderboardPanelController.slideConfig.current >= 1)
     		JogLandingLeaderboardPanelController.slideConfig.current--;
     	else
     		JogLandingLeaderboardPanelController.slideConfig.current = JogLandingLeaderboardPanelController.slideConfig.total-1;

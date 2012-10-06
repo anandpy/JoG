@@ -4,12 +4,16 @@ var JogLeaderboardPanelModel = {
 
 	getPosts : function()
 	{
+        if (JOG.configs.page_title === "leaderboard")
+           var postData = {}; 
+        else
+           var postData = {"limit" : 6};
 		$.ajax({
                 url: JOG.urls.leaderboardPosts,
                 type: 'GET',
                 dataType: 'json',
                 contentType: 'application/json',
-                data: $("#cookie_val").val(),
+                data: postData,
                 success: function ( data ) {
                     console.log("leaderboard success"); 
                     console.log(data);

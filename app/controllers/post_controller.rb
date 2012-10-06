@@ -236,7 +236,9 @@ class PostController < ApplicationController
         response_json = []
 
         #posts = Post.find(:all, :order => "id desc", :limit => 40).reverse
-        posts = Post.order('id DESC').limit(60)
+        #posts = Post.order('id DESC').limit(60)
+
+        posts = Post.order('id DESC')
 
         posts.each do |p|
             h = {}
@@ -275,7 +277,15 @@ class PostController < ApplicationController
         
         response_json = []
 
-        posts = Post.order('votes_count DESC')
+        if !params[:limit].blank?
+            posts = Post.order('votes_count DESC').limit(params[:limit])
+            Rails.logger.info("[CNTRL] [POST] [get_leaderboard_posts] post count limited #{posts.length}");
+        else
+            posts = Post.order('votes_count DESC')
+            Rails.logger.info("[CNTRL] [POST] [get_leaderboard_posts] post count #{posts.length}");
+        end
+ 
+        #posts = Post.order('votes_count DESC')
 
         posts.each do |p|
             h = {}
@@ -313,7 +323,9 @@ class PostController < ApplicationController
 
         post_count = Post.count
 
-        votes_count = Post.sum("votes_count")
+        #votes_count = Post.sum("votes_count")
+
+        votes_count = Vote.count
 
         response_json = { :post_count => post_count , :votes_count => votes_count}
 
