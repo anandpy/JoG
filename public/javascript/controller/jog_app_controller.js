@@ -175,7 +175,7 @@ var JOG = {
     {
         var message = "I voted for Joy of Giving";
         var pic = "https://s3.amazonaws.com/jogw/mmt_share.jpg";
-        var link = "https://apps.facebook.com/joy-app/?utm_source=app_vote_fshare";
+        var link = "http://apps.facebook.com/joy-app/";
         var desc = "Check out the act of kindness on the Joy of Giving app  by MakeMyTrip. I just cast my vote, vote for your favorite entry now.";
 
         function postToWallCallBackHandler(response) {
@@ -336,6 +336,7 @@ $(document).ready(function()
         JogPostListModel.init();
         JogPostListController.init();
         JogLeaderboardPanelController.init();
+        JogLandingPostMetricController.init();
         break;
     case "post_show_page" :
         $("#jog_leader_board_side_panel").hide();
@@ -366,6 +367,7 @@ $(document).ready(function()
         JogUserListModel.init();
         JogPostListController.init();    
         JogPostEntryController.init();
+        JogLandingPostMetricController.init();
         
         //JogDataPostListView.init(postList);
         JogPostListModel.init();

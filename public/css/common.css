@@ -269,7 +269,15 @@ a
 
 
 
-
+#jog_current_user_metric
+{
+  width: 100%;
+  height: 30px;
+  font-family: "MyWebFont1";
+  color: #333;
+  font-size: 24px;
+  text-align: right;
+}
 
 
 /** IN FancyBox **/

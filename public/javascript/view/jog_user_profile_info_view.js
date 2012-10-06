@@ -3,6 +3,7 @@ var JogUserProfileInfoView = {
 	init:  function(data)
 	{
 		//JogUserProfileInfoView.display(data);
+        
         JogUserProfileInfoView.displayPostMetric(data);
         JogUserProfileInfoView.displayProfileInfo(data);
 	},
@@ -17,8 +18,15 @@ var JogUserProfileInfoView = {
 
     displayPostMetric: function(data)
     {
+        var $contentBox = $("#jog_current_user_metric")
+        if (  JOG.configs.page_title == "leaderboard" || JOG.configs.page_title == "all_posts" ) {
+            $contentBox.hide();
+            return;
+        }
+
         var html = '<span>'+data.post_count+' Entries, '+data.votes_count+' Votes</span>';
-        $("#jog_user_metric").html(html);
+        //$("#jog_user_metric").html(html);
+        $("#jog_current_user_metric").html(html);
     },
    
 	display: function(data)
