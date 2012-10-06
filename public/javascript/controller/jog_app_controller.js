@@ -175,9 +175,10 @@ var JOG = {
     {
         var message = "I voted for Joy of Giving";
         var pic = "https://s3.amazonaws.com/jogw/mmt_share.jpg";
-        var link = "http://apps.facebook.com/joy-app";
+        //var link = "http://apps.facebook.com/joy-app";
+        var link = "https://apps.facebook.com/joy-app/?utm_source=app_vote_fshare";
         var desc = "Check out the act of kindness on the Joy of Giving app  by MakeMyTrip. I just cast my vote, vote for your favorite entry now.";
-
+        var caption = 'https://apps.facebook.com/joy-app';
         function postToWallCallBackHandler(response) {
             if (!response || response.error) {
                 console.log(response.error.message);
@@ -191,7 +192,8 @@ var JOG = {
             FB.api('/me/feed', 'post', { message: message, 
                                          picture: pic, 
                                          link: link, 
-                                         description: desc 
+                                         description: desc,
+                                         caption: caption 
                                        }, function (response){
                                             callbackHandler(response);
                                        }
