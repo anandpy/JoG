@@ -7,7 +7,21 @@ var JOG = {
                     JOG.Events.fancyboxImgView();
                     JOG.Events.initLoggedInUser();
                     JOG.Events.enableTipsy();
+                    //JOG.Events.appLogout();
 				},
+
+                appLogout : function()
+                {
+                    $("#jog_logout_v2").live("click", function(){
+                        FB.logout(function(response) {
+                            // user is now logged out
+                            console.log("*&*&*&*&*&*&* LOGGING OUT FROM FACEBOOK ***&*&*&*&*&*&*");
+                            console.log(response);
+                            //window.href.link = JOG.appUrl();
+                            $("#jog_logout_v2_from_app").trigger("click");
+                        });
+                    });
+                },
 
 				inviteUsersOnVote: function(postID)
 				{
@@ -113,6 +127,8 @@ var JOG = {
                         }
                     });
                 },
+
+
 	},
 
 
@@ -294,6 +310,8 @@ var JOG = {
           });
         */
     },
+
+    
 };
 
 
