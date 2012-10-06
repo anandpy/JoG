@@ -32,6 +32,7 @@ gem 'thin'
 
 gem 'jquery-rails'
 
+
 #omniauth-facebook
 gem 'omniauth-facebook'
 

@@ -1,0 +1,37 @@
+package_assets: always 
+embed_assets: datauri
+compress_assets: on
+gzip_assets: off
+javascript_compressor: uglifier
+javascripts:
+  plugins:
+    - public/bootstrap/js/bootstrap.min.js
+    - public/javascript/plugins/jquery.backstretch.min.js
+    - public/javascript/plugins/jquery-autocomplete/lib/jquery.bgiframe.min.js
+    - public/javascript/plugins/jquery-autocomplete/lib/jquery.ajaxQueue.js
+    - public/javascript/plugins/jquery-autocomplete/lib/thickbox-compressed.js
+    - public/javascript/plugins/jquery-autocomplete/jquery.autocomplete.js
+    - public/javascript/plugins/slides.min.jquery.js
+    - public/javascript/plugins/jquery.prettydate.js
+    - public/javascript/plugins/jquery.shadow.js
+    - public/javascript/plugins/jquery.tipsy.js
+    - public/javascript/plugins/jquery-waitLoading/jquery.showLoading.min.js
+    - public/fancybox/source/jquery.fancybox.js
+  
+
+
+stylesheets:
+  defaults:
+    - public/bootstrap/css/bootstrap.css
+    - public/css/plugins/jquery.shadow.css
+    - public/css/jquery.autocomplete.css
+    - public/css/thickbox.css
+    - public/css/showLoading.css
+    - public/fancybox/source/jquery.fancybox.css
+    - public/css/tipsy.css
+    - public/css/common.css
+    - public/css/leaderboard.css
+    - public/css/datapanel.css
+    - public/css/post_entry.css
+
+  
