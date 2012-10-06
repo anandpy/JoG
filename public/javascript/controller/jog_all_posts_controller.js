@@ -14,7 +14,7 @@ var JogAllPostsController = {
 			var $this = $(this);
             var postID = $this.attr("data-value");
             JogAllPostsController.updateVote(postID,"big");
-            JOG.postToFBWallOnVote();
+            //JOG.postToFBWallOnVote();
             //JogPostListModel.updateVote(postID);
             e.preventDefault();
 		});
@@ -23,7 +23,7 @@ var JogAllPostsController = {
             var $this = $(this);
             var postID = $this.attr("data-value");
             JogAllPostsController.updateVote(postID, "small");    
-            JOG.postToFBWallOnVote();
+            //JOG.postToFBWallOnVote();
             e.preventDefault();
         });
 	},

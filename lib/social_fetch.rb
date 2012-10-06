@@ -27,10 +27,23 @@ module SocialFetch
 
         json = JSON.parse(response)
 
-        return {} if json.blank? or json["email"].blank?
-        json["email"]
+        return {} if json.blank? or json.blank?
+        json
 
       end
+
+      def self.get_fb_data(url)
+        #puts "[CHECK FB URL ]"
+        response = http_get(url)
+
+        json_data = JSON.parse(response)
+
+        #Rails.logger.info("[RESPONSE #{json_data.inspect}]")
+        return {} if json_data.blank? 
+        json_data
+
+      end
+
       def self.populate_email_ids
         feed = "https://graph.facebook.com/"
         users = User.all
@@ -67,6 +80,72 @@ module SocialFetch
 
         Rails.logger.info("[TOTAL SUCCESS] : #{success_count} [FAILED] :#{failed_count} ")
       end
+
+
+      def self.populate_demographics
+  
+        old_logger = ActiveRecord::Base.logger
+        ActiveRecord::Base.logger = nil
+
+
+        feed = "https://graph.facebook.com/"
+        users = User.all
+        success_count = 0
+        failed_count = 0
+   
+        jFile = File.new("demo.json","w")
+        
+
+        users.each do |u|
+          if !u.access_token.nil? and !u.srv_uid.nil?
+           
+
+
+            p = Post.where(:user_id => u.id).group(:votes_count).sum(:votes_count)
+            if p.blank?
+              votes_count = 0
+            else 
+              votes_count = p.keys[0]
+            end
+
+            url = "#{feed}#{u.srv_uid}?access_token=#{u.access_token}"      
+
+            jData = get_fb_data(url)
+
+            puts u.inspect
+            if !jData.blank? 
+              
+              jsonData = jData
+
+              #puts "[JSON #{jsonData.inspect}]"
+
+              json_conf = {}
+              json_conf[:name] = jsonData["name"] || ""
+              json_conf[:uid] = jsonData["id"] || ""
+              json_conf[:email] = jsonData["email"] || ""
+              json_conf[:location] = jsonData["location"] || ""
+              json_conf[:birthday] = jsonData["birthday"] || ""
+              json_conf[:gender] = jsonData["gender"] || ""
+              json_conf[:total_votes] = votes_count
+              json_conf[:total_posts] = u.posts.length
+
+              #ret_email = Email.create_email(email_conf)
+              
+              jFile.write(JSON.pretty_generate(json_conf))
+              
+              puts "[SUCCESS #{success_count}]"
+
+              success_count = success_count + 1
+            else
+              failed_count = failed_count + 1
+            end            
+          
+          end  #email nil end
+
+        end #Do end
+        jFile.close
+        Rails.logger.info("[TOTAL SUCCESS] : #{success_count} [FAILED] :#{failed_count} ")
+      end  
 
 end
 

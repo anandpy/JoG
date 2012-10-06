@@ -11,7 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121003135113) do
+ActiveRecord::Schema.define(:version => 20121006133923) do
+
+  create_table "demographics", :force => true do |t|
+    t.string   "uid"
+    t.string   "access_token"
+    t.string   "name"
+    t.string   "gender"
+    t.string   "email"
+    t.string   "home_location"
+    t.string   "location"
+    t.string   "birthday"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "emails", :force => true do |t|
     t.string   "email"

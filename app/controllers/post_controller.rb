@@ -98,14 +98,20 @@ class PostController < ApplicationController
         post = Post.where(:id => params["post_id"].to_i).first
         Rails.logger.info("[POST] [update_vote] update #{post.inspect}")
         
+        vote_fb_share = false
+
         if !post.blank?
             Vote.create!(:user_id => params["user_id"].to_i, :post_id => params["post_id"].to_i)
             
             Rails.logger.info("[POST] [update_vote] update #{post.inspect}")
 
             p = Post.where(:id => params["post_id"].to_i).first
+            
+            if session[:vote_fb_share].nil?
+                session[:vote_fb_share] = vote_fb_share = true
+            end
             #post.reload!
-            render :json => p, :status => 200
+            render :json => {:post => p,:vote_fb_share => vote_fb_share}, :status => 200
             return
         else
             render :json => {:error => "No post found" }, :status => 400

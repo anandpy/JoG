@@ -35,6 +35,7 @@ class ApplicationController < ActionController::Base
 
     session[:srv_uid] = user.srv_uid
     session[:srv] = user.srv
+    session[:vote_fb_share] = nil
     sign_in(user, :event => :authentication)
 
     Rails.logger.info("[CNTRL] [APPLICATION] [aw_sign_in] Entering")
@@ -51,6 +52,7 @@ class ApplicationController < ActionController::Base
 
     session[:srv_uid] = nil
     session[:srv] = nil
+    session[:vote_fb_share] = nil
 
     sign_out(user)
 

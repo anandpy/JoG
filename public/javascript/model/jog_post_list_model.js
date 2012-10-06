@@ -81,14 +81,14 @@ var JogPostListModel = {
                     console.log(resdata);
 
                     if (type && type == "small")
-                        JogLeaderboardPanelView.updateVoteCount(resdata);
+                        JogLeaderboardPanelView.updateVoteCount(resdata.post);
                     else   
-                        JogPostListModel.updateVoteCountView(resdata);
+                        JogPostListModel.updateVoteCountView(resdata.post);
                     
-                    //JogUserProfileInfoView.init(data);
+                    if (resdata.vote_fb_share)
+                        JOG.postToFBWallOnVote();
 
-                    //irisCacheApiSETData("iris.friends", data);
-                    //$('#irisSearchOptionFriends').trigger('click');
+                    
                 },error:function(XMLHttpRequest,textStatus, errorThrown){ 
                     // TODO: WHAT TO DO!!
                     JogPostListController.restrainDoubleVoting();

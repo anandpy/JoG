@@ -14,7 +14,7 @@ var JogLeaderboardPanelController = {
 			var $this = $(this);
             var postID = $this.attr("data-value");
             JogLeaderboardPanelController.updateVote(postID,"big");
-            JOG.postToFBWallOnVote();
+            //JOG.postToFBWallOnVote();
             //JogPostListModel.updateVote(postID);
             e.preventDefault();
 		});
@@ -23,7 +23,7 @@ var JogLeaderboardPanelController = {
             var $this = $(this);
             var postID = $this.attr("data-value");
             JogLeaderboardPanelController.updateVote(postID, "small");    
-            JOG.postToFBWallOnVote();
+            //JOG.postToFBWallOnVote();
             e.preventDefault();
         });
 	},
