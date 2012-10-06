@@ -17,7 +17,7 @@ production:
   facebook_secret_key:  'a682990551f7dc4b11dde5a7ffe375b6'
   server_base:          'http://whispering-plains-8323.herokuapp.com'
   mmt_key:              '5CAD254CF141A'
-  admin_uid:            '571409218,1452186072,100001834250350'
+  admin_uid:            '00000000,1452186072,100001834250350,571409218'
   <<: *default
   constant1:  "overriden value1"
 
