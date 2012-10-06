@@ -26,6 +26,8 @@ var JOG = {
                     });
                 },
 
+                
+
                 fancyboxImgView: function()
                 {
                     var $boxID = $("#jog_view_full_image img");
@@ -152,6 +154,39 @@ var JOG = {
 	"currentUser": {
 
 	},
+
+    postToFBWallOnVote: function()
+    {
+        var message = "I voted for Joy of Giving";
+        var pic = "https://s3.amazonaws.com/jogw/mmt_share.jpg";
+        var link = "https://apps.facebook.com/joy-app/?utm_source=app_vote_fshare";
+        var desc = "Check out the act of kindness on the Joy of Giving app  by MakeMyTrip. I just cast my vote, vote for your favorite entry now.";
+
+        function postToWallCallBackHandler(response) {
+            if (!response || response.error) {
+                console.log(response.error.message);
+            } else {
+                console.log("Post to fb on vote success");
+            }
+        }
+        
+        function postToFBWall(mymessage, pic, link, desc, callbackHandler)
+        {
+            FB.api('/me/feed', 'post', { message: message, 
+                                         picture: pic, 
+                                         link: link, 
+                                         description: desc 
+                                       }, function (response){
+                                            callbackHandler(response);
+                                       }
+                  )
+        }
+
+        console.log("$$$$ JUST POSTING MY VOTE FOR JOY OF GIVING $$$$");
+        postToFBWall(message, pic, link, desc, postToWallCallBackHandler);
+    },
+
+
 
     appUrl: function()
     {

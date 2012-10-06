@@ -110,15 +110,17 @@ var JogDataPostListView = {
     {
 
         var shareURL = "https://apps.facebook.com/joy-app/?utm_source=t";
+        var fbShareURL = "https://apps.facebook.com/joy-app/?utm_source=app_entry_fshare";
+        var twShareURL = "https://apps.facebook.com/joy-app/?utm_source=app_entry_tweet";
         
         function fbHtml()
         {
-            return '<div class="fb-send" data-href="'+shareURL+'" data-font="lucida grande"></div>';
+            return '<div class="fb-send" data-href="'+fbShareURL+'" data-font="lucida grande"></div>';
         }
 
         function twitterHtml()
         {
-            return '<a href="https://twitter.com/share" class="twitter-share-button" data-url="'+shareURL+'" data-via="makemytrip" data-text="Share your Joy of Giving and win exciting vouchers - MakeMyTrip Joy of Giving contest" data-lang="en">Tweet</a>'+
+            return '<a href="https://twitter.com/share" class="twitter-share-button" data-url="'+twShareURL+'" data-via="makemytrip" data-text="Share your Joy of Giving and win exciting vouchers - MakeMyTrip Joy of Giving contest" data-lang="en">Tweet</a>'+
             '<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';
 
         }
