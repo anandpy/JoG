@@ -175,7 +175,7 @@ var JOG = {
     {
         var message = "I voted for Joy of Giving";
         var pic = "https://s3.amazonaws.com/jogw/mmt_share.jpg";
-        var link = "http://apps.facebook.com/joy-app/";
+        var link = "http://apps.facebook.com/joy-app";
         var desc = "Check out the act of kindness on the Joy of Giving app  by MakeMyTrip. I just cast my vote, vote for your favorite entry now.";
 
         function postToWallCallBackHandler(response) {

@@ -17,7 +17,8 @@ var JogLandingPostMetricView = {
         
         if (JOG.configs.page_title == "leaderboard" 
             || JOG.configs.page_title == "post_show_page"
-            || JOG.configs.page_title == "all_posts")
+            || JOG.configs.page_title == "all_posts"
+            || JOG.configs.page_title == "loggedin_user")
         	$("#jog_user_metric").html(html);
         else
         	$("#jog_lp_metric_count").html(html);
