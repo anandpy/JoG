@@ -4,7 +4,7 @@
 var JogLandingLeaderboardPanelView = {
  
     "config": {
-        "panelViewCount" : 3,
+        "panelViewCount" : 6,
     },
 
 
