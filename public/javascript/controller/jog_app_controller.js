@@ -7,6 +7,7 @@ var JOG = {
                     JOG.Events.fancyboxImgView();
                     JOG.Events.initLoggedInUser();
                     JOG.Events.enableTipsy();
+                    JOG.Events.setUserSearch();
                     //JOG.Events.appLogout();
 				},
 
@@ -128,6 +129,15 @@ var JOG = {
                     });
                 },
 
+                setUserSearch: function()
+                {
+                    $("#jog_searchbar_v2 input").focus(function() {
+                        if (!JOG.configs.userSearchEnabled) {
+                            JogUserListModel.init();
+                        }
+                    });
+                },
+
 
 	},
 
@@ -149,6 +159,7 @@ var JOG = {
 	"configs" :{
 			"page_title" : $("#jog_page_mode").val(),
             "page_id" : $("#jog_page_id").val(),
+            "userSearchEnabled" : false,
 	},
 
     "urls" : {
@@ -366,7 +377,7 @@ $(document).ready(function()
     default:
         JogUserProfileModel.init();
         JogLeaderboardPanelController.init();
-        JogUserListModel.init();
+        //JogUserListModel.init();
         JogPostListController.init();    
         JogPostEntryController.init();
         JogLandingPostMetricController.init();

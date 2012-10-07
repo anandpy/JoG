@@ -13,6 +13,7 @@ var JogUserListModel = {
                     console.log("fetch all user success"); 
                     console.log(data);
                     JOGCache.setData("allUsers", data);
+                    JOG.configs.userSearchEnabled = true;
                     JogSearchController.init(data);
 
                 },error:function(XMLHttpRequest,textStatus, errorThrown){ 
