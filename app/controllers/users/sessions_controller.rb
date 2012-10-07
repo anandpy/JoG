@@ -35,6 +35,12 @@ class Users::SessionsController < Devise::SessionsController
     render :json => {:error => e.message }, :status => 400
   end
 
+
+  # def destroy
+  #   Rails.logger.info("[CNTRL] [USERS] [Sessions] [destroy] Entering  #{params.inspect}")
+  #   super
+  # end
+
   def sign_in_user
     
   end

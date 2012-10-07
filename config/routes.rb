@@ -9,6 +9,7 @@ devise_for :users, :controllers => {
 
 devise_scope :user do
   get 'logout' => 'devise/sessions#destroy'
+  #get 'logout' => 'users/sessions#destroy'
 end
 
 

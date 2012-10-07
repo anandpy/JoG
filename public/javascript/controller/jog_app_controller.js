@@ -302,7 +302,9 @@ var JOG = {
 
     redirectOnFBResponse: function(fbResponse)
     {
-         /*
+         if (JOG.configs.page_title == "leaderboard"
+            || JOG.configs.page_title == "all_posts")
+            return; 
          var data = {"access_token" : fbResponse.authResponse.accessToken, "srv_uid": fbResponse.authResponse.userID};
          $.ajax({
                 headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content'), 'Content-Type': 'application/x-www-form-urlencoded'},
@@ -321,7 +323,7 @@ var JOG = {
                     
                 }
           });
-        */
+        
     },
 
     

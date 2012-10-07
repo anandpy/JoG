@@ -56,12 +56,22 @@ class ApplicationController < ActionController::Base
 
     sign_out(user)
 
+
+
     Rails.logger.info("[CNTRL] [APPLICATION] [aw_sign_out] Leaving")
 
     return true
   rescue => e
     Rails.logger.info("[CNTRL] [APPLICATION] [aw_sign_out] ****RESCUE**** #{e.message}")
     return false
+  end
+
+
+  def after_sign_out_path_for(resource_or_scope)
+    # Redirecting to leaderboard after sign out from the path
+    Rails.logger.info("[CNTRL] [APPLICATION] [after_sign_out_path_for] Entering")
+    session[:vote_fb_share] = nil
+    "/leaderboard"
   end
   
 end
