@@ -1,5 +1,10 @@
 class HomeController < ApplicationController
 
+
+	def over
+	end
+
+
 	################################################################################################
 	# INPUT => MANDATORY ONES
 	#  { :srv => "facebook" , :srv_uid => "1234444", :access_token => "ADFFSFFjhjjhjjhjhj.."

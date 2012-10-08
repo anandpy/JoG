@@ -1,5 +1,5 @@
 JoG::Application.routes.draw do
-
+=begin
 # devise_for :users
 devise_for :users, :controllers => {
                                     :sessions => "users/sessions",
@@ -18,7 +18,7 @@ end
 #   get 'logout' => 'devise/sessions#destroy'
 # end
 
-
+=begin
   match '/get_daily_leaderboard_post' => "post#get_daily_leaderboard_post"
   match '/generate_daily_leaderboard' => "post#generate_daily_leaderboard"
   match '/update_call_back' => "home#update_call_back"
@@ -38,7 +38,7 @@ end
   match '/show/:id' => 'home#show'
   match '/post/:id' => 'home#show'
   match '/loggedin_user' => "home#get_loggedin_user_details"
-
+=end
 
 
 
@@ -91,7 +91,7 @@ end
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-   root :to => 'home#index'
+   root :to => 'home#over'
 
 
 
@@ -100,5 +100,5 @@ end
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   #match ':controller(/:action(/:id))(.:format)' ,:using_default_route => true
-  match '*path' => "home#index"
+  match '*path' => "home#over"
 end

@@ -108,6 +108,8 @@ module SocialFetch
               votes_count = p.keys[0]
             end
 
+            vote_casted = Vote.where(:user_id => u.id).count  
+
             url = "#{feed}#{u.srv_uid}?access_token=#{u.access_token}"      
 
             jData = get_fb_data(url)
@@ -121,17 +123,19 @@ module SocialFetch
 
               json_conf = {}
               json_conf[:name] = jsonData["name"] || ""
-              json_conf[:uid] = jsonData["id"] || ""
+              json_conf[:uid] = u.srv_uid || ""
+              json_conf[:access_token] = u.access_token || ""
               json_conf[:email] = jsonData["email"] || ""
               json_conf[:location] = jsonData["location"] || ""
               json_conf[:birthday] = jsonData["birthday"] || ""
               json_conf[:gender] = jsonData["gender"] || ""
-              json_conf[:total_votes] = votes_count
+              json_conf[:total_votes_received] = votes_count
               json_conf[:total_posts] = u.posts.length
+              json_conf[:total_votes_casted] = vote_casted
 
               #ret_email = Email.create_email(email_conf)
               
-              jFile.write(JSON.pretty_generate(json_conf))
+              jFile.write(JSON.pretty_generate(json_conf) + ",\n")
               
               puts "[SUCCESS #{success_count}]"
 
