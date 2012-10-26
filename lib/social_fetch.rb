@@ -81,9 +81,64 @@ module SocialFetch
         Rails.logger.info("[TOTAL SUCCESS] : #{success_count} [FAILED] :#{failed_count} ")
       end
 
-
-      def self.populate_demographics
+      ##############################################################################
+      #
+      #
+      #
+      #
+      def self.populate_posts
   
+        old_logger = ActiveRecord::Base.logger
+        ActiveRecord::Base.logger = nil
+
+
+        posts = Post.order('votes_count DESC')
+        success_count = 0
+        failed_count = 0
+   
+        jFile = File.new("demo_post.json","w")
+        
+
+        posts.each do |p|
+          if !p.id.nil?
+
+            h = {}
+            user = p.user
+            h[:post_id] = p[:id]
+            h[:user_name] = user[:name]
+            h[:user_pic]  = user[:pic]
+            h[:user_uid] = user[:srv_uid]
+            h[:post_title] = p[:title]
+            h[:post_text] = p[:text]
+            h[:post_pic]  = p[:pic]
+            h[:votes_count] = p[:votes_count]
+            h[:time_stamp] = p[:created_at]
+            if !h.blank? 
+              
+              jsonData = h
+
+              jFile.write(JSON.pretty_generate(jsonData) + ",\n")
+              
+              puts "[SUCCESS #{success_count}]"
+
+              success_count = success_count + 1
+            else
+              failed_count = failed_count + 1
+            end            
+          
+          end  #email nil end
+
+        end #Do end
+        jFile.close
+        Rails.logger.info("[TOTAL SUCCESS] : #{success_count} [FAILED] :#{failed_count} ")
+      end  
+
+      ##############################################################################
+      #
+      #
+      #
+      #
+      def self.populate_demographics
         old_logger = ActiveRecord::Base.logger
         ActiveRecord::Base.logger = nil
 
@@ -148,8 +203,52 @@ module SocialFetch
 
         end #Do end
         jFile.close
-        Rails.logger.info("[TOTAL SUCCESS] : #{success_count} [FAILED] :#{failed_count} ")
-      end  
+        Rails.logger.info("[TOTAL SUCCESS] : #{success_count} [FAILED] :#{failed_count} ")  
+      end
+
+      ##############################################################################
+      #
+      #
+      #
+      #
+      def self.populate_posts_analytics
+        old_logger = ActiveRecord::Base.logger
+        ActiveRecord::Base.logger = nil
+
+        success_count = 0
+        failed_count = 0
+
+        posts = Post.order('votes_count DESC').limit(3)
+   
+        jFile = File.new("votes_for_posts.json","w")
+        
+        success_count = 0
+        posts.each do |p|
+          post_json = {}
+          post_json[:user] = p.user.name
+          post_json[:text] = p.text
+          post_json[:vote] = p.votes_count
+          jFile.write(JSON.pretty_generate(post_json) + ",\n")
+
+          votes = Vote.where(:post_id => p.id)
+          puts "[VOTES COUNT #{votes.length}]"
+          user_json = {}
+          success_count = 0
+          votes.each do |v|
+            if !v.user.nil?
+              user_json[:name] = v.user.name || " "
+              user_json[:fbuid] = v.user.srv_uid || " "
+              jFile.write(JSON.pretty_generate(user_json) + ",\n")            
+              success_count = success_count + 1
+            else 
+              #puts v.user_id
+            end
+          end
+          puts "[SUCCESS #{success_count}]"
+        end
+        jFile.close
+      end
+
 
 end
 

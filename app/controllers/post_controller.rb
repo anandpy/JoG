@@ -92,8 +92,12 @@ class PostController < ApplicationController
 
     def update_vote
         Rails.logger.info("[POST][CNTL][update_vote] Entering #{params.inspect}")
-        
+
         raise "wrong number of parameters" if params[:user_id].blank? or params[:post_id].blank?
+
+        if current_user.id != params[:user_id] || !user_signed_in?
+            raise "wrong authentication"            
+        end
 
         post = Post.where(:id => params["post_id"].to_i).first
         Rails.logger.info("[POST] [update_vote] update #{post.inspect}")
